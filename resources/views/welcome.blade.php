@@ -11,10 +11,4 @@
             <p>{{ $user->email }}</p>
         @endforeach
     </div>
-
-    <div x-data="{
-        users: @entangle('users'),
-    }">
-        <p x-text="users"></p>
-    </div>
 </x-layout.app>
