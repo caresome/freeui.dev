@@ -1,32 +1,28 @@
 <x-layouts.app>
     <!-- Hero Section -->
-    <section class="bg-neo-bg dark:bg-neo-bg-dark py-20 transition-colors duration-200 sm:py-28">
+    <section class="bg-stone-50 py-20 transition-colors duration-200 sm:py-28 dark:bg-neutral-950">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-3xl text-center">
                 <!-- Badge -->
                 <div
-                    class="border-neo-black bg-neo-surface dark:border-neo-text-dark dark:bg-neo-surface-dark mb-8 inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 shadow-[4px_4px_0px_0px_rgba(12,12,12,1)] dark:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
+                    class="mb-8 inline-flex items-center gap-2 rounded-full border-2 border-neutral-900 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <span class="relative flex h-2 w-2">
                         <span
-                            class="bg-neo-black dark:bg-neo-text-dark absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
+                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-neutral-900 opacity-75 dark:bg-white"
                         ></span>
-                        <span
-                            class="bg-neo-black dark:bg-neo-text-dark relative inline-flex h-2 w-2 rounded-full"
-                        ></span>
+                        <span class="relative inline-flex h-2 w-2 rounded-full bg-neutral-900 dark:bg-white"></span>
                     </span>
-                    <span class="text-neo-text dark:text-neo-text-dark text-sm font-bold">New components weekly</span>
+                    <span class="text-sm font-bold text-neutral-900 dark:text-white">New components weekly</span>
                 </div>
 
                 <!-- Headline -->
-                <h1
-                    class="text-neo-text dark:text-neo-text-dark text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl"
-                >
+                <h1 class="text-4xl font-black tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl dark:text-white">
                     Beautiful UI
                     <span class="relative inline-block">
                         <span class="relative z-10">Components</span>
                         <span
-                            class="bg-neo-black/10 dark:bg-neo-text-dark/20 absolute right-0 -bottom-2 left-0 h-4 -rotate-1 sm:h-5"
+                            class="absolute right-0 -bottom-2 left-0 h-4 -rotate-1 bg-neutral-900/10 sm:h-5 dark:bg-white/20"
                         ></span>
                     </span>
                     <br />
@@ -34,9 +30,7 @@
                 </h1>
 
                 <!-- Description -->
-                <p
-                    class="text-neo-text-muted dark:text-neo-text-muted-dark mx-auto mt-8 max-w-xl text-lg leading-relaxed"
-                >
+                <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
                     Free, open-source Tailwind CSS components. Copy, paste, and build amazing projects faster than ever.
                 </p>
 
@@ -44,7 +38,7 @@
                 <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <a
                         href="#components"
-                        class="border-neo-black bg-neo-black dark:border-neo-text-dark dark:bg-neo-text-dark dark:text-neo-black inline-flex items-center gap-2 rounded-xl border-2 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(12,12,12,0.2)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:shadow-[4px_4px_0px_0px_rgba(250,250,250,0.2)]"
+                        class="inline-flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-neutral-900 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
                     >
                         Browse Components
                         <x-heroicon-o-arrow-down class="h-4 w-4" />
@@ -52,7 +46,7 @@
                     <a
                         href="https://github.com/ankitthapa/freeui"
                         target="_blank"
-                        class="border-neo-black bg-neo-surface text-neo-text dark:border-neo-text-dark dark:bg-neo-surface-dark dark:text-neo-text-dark inline-flex items-center gap-2 rounded-xl border-2 px-6 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
+                        class="inline-flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 text-sm font-bold text-neutral-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                     >
                         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -69,20 +63,17 @@
     </section>
 
     <!-- Categories Section -->
-    <section
-        id="components"
-        class="bg-neo-surface dark:bg-neo-surface-dark py-20 transition-colors duration-200 sm:py-28"
-    >
+    <section id="components" class="bg-white py-20 transition-colors duration-200 sm:py-28 dark:bg-neutral-900">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <!-- Section Header -->
             <div class="mb-12 flex items-end justify-between">
                 <div>
-                    <h2 class="text-neo-text dark:text-neo-text-dark text-3xl font-black sm:text-4xl">Categories</h2>
-                    <p class="text-neo-text-muted dark:text-neo-text-muted-dark mt-2">Pick a category to explore</p>
+                    <h2 class="text-3xl font-black text-neutral-900 sm:text-4xl dark:text-white">Categories</h2>
+                    <p class="mt-2 text-neutral-600 dark:text-neutral-400">Pick a category to explore</p>
                 </div>
                 <a
                     href="{{ route('components.index') }}"
-                    class="text-neo-text hover:text-neo-text-muted dark:text-neo-text-dark dark:hover:text-neo-text-muted-dark hidden items-center gap-1 text-sm font-bold transition-colors sm:flex"
+                    class="hidden items-center gap-1 text-sm font-bold text-neutral-900 transition-colors hover:text-neutral-600 sm:flex dark:text-white dark:hover:text-neutral-400"
                 >
                     View all
                     <x-heroicon-o-arrow-right class="h-4 w-4" />
@@ -94,11 +85,11 @@
                 @foreach ($categories as $category)
                     <a
                         href="{{ route('components.category', $category->slug) }}"
-                        class="border-neo-black bg-neo-bg dark:border-neo-text-dark dark:bg-neo-bg-dark group relative overflow-hidden rounded-xl border-2 p-6 shadow-[6px_6px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none dark:shadow-[6px_6px_0px_0px_rgba(250,250,250,1)]"
+                        class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-stone-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none dark:border-white dark:bg-neutral-950 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                     >
                         <!-- Icon -->
                         <div
-                            class="border-neo-black bg-neo-surface text-neo-text dark:border-neo-text-dark dark:bg-neo-surface-dark dark:text-neo-text-dark mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border-2"
+                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 dark:border-white dark:bg-neutral-900 dark:text-white"
                         >
                             @if ($category->icon)
                                 @svg($category->icon, 'h-6 w-6')
@@ -108,15 +99,13 @@
                         </div>
 
                         <!-- Content -->
-                        <h3 class="text-neo-text dark:text-neo-text-dark text-xl font-bold">{{ $category->title }}</h3>
-                        <p class="text-neo-text-muted dark:text-neo-text-muted-dark mt-1 text-sm">
+                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">{{ $category->title }}</h3>
+                        <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
                             {{ $category->description ?? 'Explore ' . strtolower($category->title) . ' components' }}
                         </p>
 
                         <!-- Arrow -->
-                        <div
-                            class="text-neo-text dark:text-neo-text-dark mt-4 flex items-center gap-1 text-sm font-bold"
-                        >
+                        <div class="mt-4 flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white">
                             <span>View components</span>
                             <x-heroicon-o-arrow-right class="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -128,7 +117,7 @@
             <div class="mt-8 text-center sm:hidden">
                 <a
                     href="{{ route('components.index') }}"
-                    class="text-neo-text dark:text-neo-text-dark inline-flex items-center gap-1 text-sm font-bold"
+                    class="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white"
                 >
                     View all components
                     <x-heroicon-o-arrow-right class="h-4 w-4" />
@@ -138,21 +127,21 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="bg-neo-surface dark:bg-neo-surface-dark py-16 transition-colors duration-200">
+    <section class="bg-white py-16 transition-colors duration-200 dark:bg-neutral-900">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div
-                class="border-neo-black bg-neo-black dark:border-neo-text-dark dark:bg-neo-text-dark mx-auto max-w-2xl rounded-xl border-2 p-8 text-center shadow-[8px_8px_0px_0px_rgba(12,12,12,0.2)] sm:p-12 dark:shadow-[8px_8px_0px_0px_rgba(250,250,250,0.2)]"
+                class="mx-auto max-w-2xl rounded-xl border-2 border-neutral-900 bg-neutral-900 p-8 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] sm:p-12 dark:border-white dark:bg-white dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)]"
             >
-                <h2 class="dark:text-neo-black text-2xl font-black text-white sm:text-3xl">
+                <h2 class="text-2xl font-black text-white sm:text-3xl dark:text-neutral-900">
                     Ready to build something awesome?
                 </h2>
-                <p class="dark:text-neo-black/70 mt-4 text-white/70">
+                <p class="mt-4 text-white/70 dark:text-neutral-900/70">
                     Start using our free components today. No sign up required.
                 </p>
                 <div class="mt-8">
                     <a
                         href="#components"
-                        class="text-neo-black dark:border-neo-black dark:bg-neo-black dark:text-neo-text-dark inline-flex items-center gap-2 rounded-xl border-2 border-white bg-white px-8 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:shadow-[4px_4px_0px_0px_rgba(12,12,12,0.3)]"
+                        class="inline-flex items-center gap-2 rounded-xl border-2 border-white bg-white px-8 py-3 text-sm font-bold text-neutral-900 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:border-neutral-900 dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
                     >
                         Get Started Free
                         <x-heroicon-o-arrow-right class="h-4 w-4" />

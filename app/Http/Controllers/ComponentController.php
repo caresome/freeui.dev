@@ -6,11 +6,25 @@ use App\Models\Component;
 
 class ComponentController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function index(\Illuminate\Http\Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
-        $components = Component::all();
+        $search = $request->input('search');
+        $components = Component::query();
 
-        return view('pages.components.index', ['components' => $components]);
+        if ($search) {
+            $components = $components->get()->filter(function ($component) use ($search): bool {
+                // Determine category title from relationship or fallback
+                $categoryTitle = $component->categoryModel ? $component->categoryModel->title : $component->category;
+
+                return stripos((string) $component->title, (string) $search) !== false
+                    || stripos((string) $component->description, (string) $search) !== false
+                    || stripos($categoryTitle, (string) $search) !== false;
+            });
+        } else {
+            $components = $components->get();
+        }
+
+        return view('pages.components.index', ['components' => $components, 'search' => $search]);
     }
 
     public function category($category): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

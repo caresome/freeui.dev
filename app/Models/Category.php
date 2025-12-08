@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Schema\Blueprint;
 use Orbit\Concerns\Orbital;
 
+/**
+ * @property string $slug
+ * @property string $title
+ * @property string|null $description
+ * @property string|null $icon
+ */
 class Category extends Model
 {
     use HasFactory;

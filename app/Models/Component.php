@@ -17,6 +17,7 @@ use Orbit\Concerns\Orbital;
  * @property string|null $github
  * @property-read string $github_url
  * @property-read string $avatar_url
+ * @property-read Category|null $categoryModel
  */
 class Component extends Model
 {

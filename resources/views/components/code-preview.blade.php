@@ -15,35 +15,35 @@
     </template>
 
     <div
-        class="border-neo-black bg-neo-surface text-neo-text dark:border-neo-text-dark dark:bg-neo-surface-dark dark:text-neo-text-dark group relative flex flex-col overflow-hidden rounded-xl border-2 shadow-[6px_6px_0px_0px_rgba(12,12,12,1)] transition-all dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
+        class="group relative flex flex-col overflow-hidden rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
     >
         {{-- Header Bar --}}
         <div
-            class="border-neo-black dark:border-neo-text-dark flex flex-wrap items-center justify-between gap-4 border-b-2 bg-white/50 px-4 py-3 backdrop-blur-sm dark:bg-black/20"
+            class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-neutral-900 bg-white/50 px-4 py-3 backdrop-blur-sm dark:border-white dark:bg-black/20"
         >
             {{-- Left: Dots & Toggles --}}
             <div class="flex items-center gap-4 sm:gap-6">
                 {{-- Mac Dots (Neo Style) --}}
                 <div class="flex gap-1.5 sm:gap-2">
                     <div
-                        class="border-neo-black dark:border-neo-text-dark h-3 w-3 rounded-full border-2 bg-[#ff5f57] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5"
+                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#ff5f57] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
                     ></div>
                     <div
-                        class="border-neo-black dark:border-neo-text-dark h-3 w-3 rounded-full border-2 bg-[#febc2e] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5"
+                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#febc2e] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
                     ></div>
                     <div
-                        class="border-neo-black dark:border-neo-text-dark h-3 w-3 rounded-full border-2 bg-[#28c840] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5"
+                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#28c840] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
                     ></div>
                 </div>
 
                 {{-- View Toggles --}}
                 <div
-                    class="border-neo-black dark:border-neo-text-dark dark:bg-neo-bg-dark flex items-center rounded-xl border-2 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    class="flex items-center rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <button
                         @click="switchTab('preview')"
-                        :class="activeTab === 'preview' ? 'bg-neo-black text-white dark:bg-neo-text-dark dark:text-neo-black' :
-                            'text-neo-text hover:bg-neo-black/5 dark:text-neo-text-dark dark:hover:bg-white/10'"
+                        :class="activeTab === 'preview' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
+                            'text-neutral-900 hover:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
                     >
                         <x-heroicon-o-eye class="h-4 w-4" />
@@ -51,8 +51,8 @@
                     </button>
                     <button
                         @click="switchTab('code')"
-                        :class="activeTab === 'code' ? 'bg-neo-black text-white dark:bg-neo-text-dark dark:text-neo-black' :
-                            'text-neo-text hover:bg-neo-black/5 dark:text-neo-text-dark dark:hover:bg-white/10'"
+                        :class="activeTab === 'code' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
+                            'text-neutral-900 hover:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
                     >
                         <x-heroicon-o-code-bracket class="h-4 w-4" />
@@ -67,15 +67,15 @@
                 <div
                     x-show="activeTab === 'preview'"
                     x-transition:enter="transition duration-200 ease-out"
-                    x-transition:enter-start="scale-95 opacity-0"
-                    x-transition:enter-end="scale-100 opacity-100"
-                    class="border-neo-black dark:border-neo-text-dark dark:bg-neo-bg-dark hidden items-center gap-1 rounded-xl border-2 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] lg:flex dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    x-transition:enter-start="translate-y-1 opacity-0"
+                    x-transition:enter-end="translate-y-0 opacity-100"
+                    class="hidden items-center gap-1 rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] lg:flex dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <button
                         @click="setDevice('100%')"
                         title="Desktop"
                         :class="previewWidth === '100%' ?
-                            'bg-neo-black text-white dark:bg-neo-text-dark dark:text-neo-black' :
+                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
                     >
@@ -85,7 +85,7 @@
                         @click="setDevice('768px')"
                         title="Tablet"
                         :class="previewWidth === '768px' ?
-                            'bg-neo-black text-white dark:bg-neo-text-dark dark:text-neo-black' :
+                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
                     >
@@ -95,7 +95,7 @@
                         @click="setDevice('375px')"
                         title="Mobile"
                         :class="previewWidth === '375px' ?
-                            'bg-neo-black text-white dark:bg-neo-text-dark dark:text-neo-black' :
+                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
                     >
@@ -108,7 +108,7 @@
                     <a
                         href="{{ route('components.preview', ['category' => $category, 'slug' => $slug]) }}"
                         target="_blank"
-                        class="border-neo-black bg-neo-surface dark:border-neo-text-dark dark:bg-neo-surface-dark group flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:shadow-[2px_2px_0px_0px_rgba(250,250,250,1)]"
+                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                         title="View Full Page"
                     >
                         <x-heroicon-o-arrows-pointing-out class="h-4 w-4" />
@@ -119,7 +119,7 @@
                 {{-- Copy Button --}}
                 <button
                     @click="copyCode()"
-                    class="border-neo-black bg-neo-surface dark:border-neo-text-dark dark:bg-neo-surface-dark group flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:shadow-[2px_2px_0px_0px_rgba(250,250,250,1)]"
+                    class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <span x-show="!copied" class="flex items-center gap-2">
                         <x-heroicon-o-clipboard-document class="h-4 w-4" />
@@ -135,12 +135,15 @@
 
         {{-- Main Content Window --}}
         <div
-            class="border-neo-black dark:border-neo-text-dark relative flex max-h-[600px] min-h-[600px] flex-1 flex-col border-t-2 bg-gray-50/50 dark:bg-black/20"
+            class="relative flex max-h-[600px] min-h-[600px] flex-1 flex-col border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
         >
             {{-- Preview Wrapper --}}
             <div
                 x-show="activeTab === 'preview'"
-                class="flex h-full w-full flex-1 overflow-auto bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] p-8 transition-all duration-300 dark:bg-[radial-gradient(#333_1px,transparent_1px)]"
+                x-transition:enter="transition duration-200 ease-out"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                class="flex h-full w-full flex-1 overflow-auto bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] p-8 dark:bg-[radial-gradient(#333_1px,transparent_1px)]"
             >
                 <div :style="{ width: previewWidth }" class="m-auto transition-all duration-500 ease-in-out">
                     <iframe
@@ -164,23 +167,21 @@
                     <a
                         href="{{ $profile }}"
                         target="_blank"
-                        class="border-neo-black bg-neo-surface dark:border-neo-text-dark dark:bg-neo-surface-dark group flex items-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
+                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                     >
                         @if ($avatar)
                             <img
                                 src="{{ $avatar }}"
                                 alt="{{ $username }}"
-                                class="border-neo-black dark:border-neo-text-dark h-8 w-8 rounded-lg border-2 object-cover"
+                                class="h-8 w-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white"
                             />
                         @endif
 
                         <div class="flex flex-col">
-                            <span
-                                class="text-neo-text-muted dark:text-neo-text-muted-dark text-left text-[10px] leading-tight"
-                            >
+                            <span class="text-left text-[10px] leading-tight text-neutral-600 dark:text-neutral-400">
                                 Contributed by
                             </span>
-                            <span class="text-neo-text dark:text-neo-text-dark leading-tight">{{ $username }}</span>
+                            <span class="leading-tight text-neutral-900 dark:text-white">{{ $username }}</span>
                         </div>
                     </a>
                 </div>
@@ -189,6 +190,9 @@
             {{-- Code Wrapper --}}
             <div
                 x-show="activeTab === 'code'"
+                x-transition:enter="transition duration-200 ease-out"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
                 style="display: none"
                 class="h-full w-full flex-1 overflow-auto bg-black p-0 text-sm dark:bg-black/20"
             >
@@ -220,12 +224,24 @@
 
                 // Watch tab changes
                 this.$watch('activeTab', (val) => {
-                    if (val === 'code' && window.hljs) {
-                        this.$nextTick(() => {
-                            if (!this.$refs.codeBlock.dataset.highlighted) {
-                                window.hljs.highlightElement(this.$refs.codeBlock);
+                    if (val === 'code') {
+                        // Retry mechanic for hljs if not loaded yet (e.g. slight network delay)
+                        let checkCount = 0;
+                        const checkHljs = setInterval(() => {
+                            checkCount++;
+                            if (window.hljs) {
+                                clearInterval(checkHljs);
+                                this.$nextTick(() => {
+                                    if (!this.$refs.codeBlock.dataset.highlighted) {
+                                        window.hljs.highlightElement(this.$refs.codeBlock);
+                                    }
+                                });
+                            } else if (checkCount > 20) {
+                                // Give up after ~2 seconds (20 * 100ms)
+                                clearInterval(checkHljs);
+                                console.warn('Highlight.js not loaded');
                             }
-                        });
+                        }, 100);
                     }
                 });
 

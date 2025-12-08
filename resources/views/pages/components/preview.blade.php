@@ -1,10 +1,4 @@
-<x-layouts.app
-    :title="$uiComponent->title . ' - Preview'"
-    :hide-footer="true"
-    :show-components-link="false"
-    :show-github="false"
-    :force-solid-header="true"
->
+<x-layouts.preview :title="$uiComponent->title . ' - Preview'">
     <x-slot:headerRight>
         <div
             x-data="{
@@ -70,7 +64,7 @@
         >
             <button
                 @click="share()"
-                class="border-neo-black bg-neo-surface text-neo-text dark:border-neo-text-dark dark:bg-neo-surface-dark dark:text-neo-text-dark flex h-9 items-center gap-2 rounded-xl border-2 px-3 text-sm font-bold shadow-[3px_3px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:shadow-[3px_3px_0px_0px_rgba(250,250,250,1)]"
+                class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-bold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
             >
                 <template x-if="!copied">
                     <div class="flex items-center gap-2">
@@ -98,18 +92,18 @@
             <a
                 href="{{ $profile }}"
                 target="_blank"
-                class="border-neo-black bg-neo-surface dark:border-neo-text-dark dark:bg-neo-surface-dark group flex items-center gap-2 rounded-xl border-2 px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(12,12,12,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:shadow-[4px_4px_0px_0px_rgba(250,250,250,1)]"
+                class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
             >
                 <img
                     src="{{ $avatar }}"
                     alt="{{ $uiComponent->github }}"
-                    class="border-neo-black dark:border-neo-text-dark h-8 w-8 rounded-lg border-2 object-cover"
+                    class="h-8 w-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white"
                 />
                 <div class="flex flex-col">
-                    <span class="text-neo-text-muted dark:text-neo-text-muted-dark text-left text-[10px] leading-tight">
+                    <span class="text-left text-[10px] leading-tight text-neutral-600 dark:text-neutral-400">
                         Contributed by
                     </span>
-                    <span class="text-neo-text dark:text-neo-text-dark leading-tight">{{ $uiComponent->github }}</span>
+                    <span class="leading-tight text-neutral-900 dark:text-white">{{ $uiComponent->github }}</span>
                 </div>
             </a>
         </div>
@@ -118,4 +112,4 @@
     <div class="mx-auto h-full w-full bg-transparent">
         {!! $uiComponent->content !!}
     </div>
-</x-layouts.app>
+</x-layouts.preview>

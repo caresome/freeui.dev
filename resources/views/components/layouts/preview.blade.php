@@ -8,7 +8,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{{ $title ?? 'FreeUI' }}</title>
+        <title>{{ $title ?? 'Preview - FreeUI' }}</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -74,15 +74,15 @@
             },
         }"
     >
-        <x-layout.header>
-            {{ $headerRight ?? '' }}
+        <x-layout.header :show-components-link="false" :show-github="false" :force-solid-header="true">
+            @isset($headerRight)
+                {{ $headerRight }}
+            @endisset
         </x-layout.header>
 
         <main class="flex-grow">
             {{ $slot }}
         </main>
-
-        <x-layout.footer />
 
         @livewireScripts
     </body>
