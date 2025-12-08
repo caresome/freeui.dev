@@ -78,7 +78,7 @@
             {{ $headerRight ?? '' }}
         </x-layout.header>
 
-        <main class="flex-grow">
+        <main id="main-content" class="flex-grow" tabindex="-1">
             {{ $slot }}
         </main>
 

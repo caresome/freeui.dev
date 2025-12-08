@@ -43,19 +43,21 @@
                     <button
                         @click="switchTab('preview')"
                         :class="activeTab === 'preview' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-neutral-900 hover:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10'"
+                            'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
+                        aria-label="Show Preview"
                     >
-                        <x-heroicon-o-eye class="h-4 w-4" />
+                        <x-heroicon-o-eye class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Preview</span>
                     </button>
                     <button
                         @click="switchTab('code')"
                         :class="activeTab === 'code' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-neutral-900 hover:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10'"
+                            'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
+                        aria-label="Show Code"
                     >
-                        <x-heroicon-o-code-bracket class="h-4 w-4" />
+                        <x-heroicon-o-code-bracket class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Code</span>
                     </button>
                 </div>
@@ -76,30 +78,33 @@
                         title="Desktop"
                         :class="previewWidth === '100%' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
+                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
+                        aria-label="Desktop specific view"
                     >
-                        <x-heroicon-o-computer-desktop class="h-4 w-4" />
+                        <x-heroicon-o-computer-desktop class="h-4 w-4" aria-hidden="true" />
                     </button>
                     <button
                         @click="setDevice('768px')"
                         title="Tablet"
                         :class="previewWidth === '768px' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
+                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
+                        aria-label="Tablet specific view"
                     >
-                        <x-heroicon-o-device-tablet class="h-4 w-4" />
+                        <x-heroicon-o-device-tablet class="h-4 w-4" aria-hidden="true" />
                     </button>
                     <button
                         @click="setDevice('375px')"
                         title="Mobile"
                         :class="previewWidth === '375px' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5'"
+                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
+                        aria-label="Mobile specific view"
                     >
-                        <x-heroicon-o-device-phone-mobile class="h-4 w-4" />
+                        <x-heroicon-o-device-phone-mobile class="h-4 w-4" aria-hidden="true" />
                     </button>
                 </div>
 
@@ -108,10 +113,10 @@
                     <a
                         href="{{ route('components.preview', ['category' => $category, 'slug' => $slug]) }}"
                         target="_blank"
-                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                         title="View Full Page"
                     >
-                        <x-heroicon-o-arrows-pointing-out class="h-4 w-4" />
+                        <x-heroicon-o-arrows-pointing-out class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Full Screen</span>
                     </a>
                 @endif
@@ -119,14 +124,14 @@
                 {{-- Copy Button --}}
                 <button
                     @click="copyCode()"
-                    class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <span x-show="!copied" class="flex items-center gap-2">
-                        <x-heroicon-o-clipboard-document class="h-4 w-4" />
+                        <x-heroicon-o-clipboard-document class="h-4 w-4" aria-hidden="true" />
                         <span>Copy</span>
                     </span>
                     <span x-show="copied" class="flex items-center gap-2 text-green-600 dark:text-green-400" x-cloak>
-                        <x-heroicon-o-check class="h-4 w-4" />
+                        <x-heroicon-o-check class="h-4 w-4" aria-hidden="true" />
                         <span>Copied!</span>
                     </span>
                 </button>
@@ -152,6 +157,7 @@
                         :style="{ height: iframeHeight }"
                         scrolling="no"
                         sandbox="allow-scripts allow-same-origin"
+                        tabindex="-1"
                     ></iframe>
                 </div>
             </div>
@@ -167,7 +173,7 @@
                     <a
                         href="{{ $profile }}"
                         target="_blank"
-                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                     >
                         @if ($avatar)
                             <img

@@ -40,11 +40,12 @@
                         <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                             <a
                                 href="{{ route('components.show', ['category' => $uiComponent->category, 'slug' => $uiComponent->slug]) }}"
-                                class="group flex items-center gap-2 text-xl font-bold text-neutral-900 transition-colors hover:text-neutral-600 dark:text-white dark:hover:text-neutral-400"
+                                class="group flex items-center gap-2 text-xl font-bold text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:focus-visible:text-neutral-400"
                             >
                                 {{ $uiComponent->title }}
                                 <x-heroicon-o-arrow-right
-                                    class="h-5 w-5 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                                    class="h-5 w-5 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100 group-focus-visible:translate-x-1 group-focus-visible:opacity-100"
+                                    aria-hidden="true"
                                 />
                             </a>
                         </div>
@@ -72,7 +73,7 @@
                     <div
                         class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl border-2 border-neutral-900 bg-stone-50 dark:border-white dark:bg-neutral-950"
                     >
-                        <x-heroicon-o-cube class="h-8 w-8 text-neutral-600 dark:text-neutral-400" />
+                        <x-heroicon-o-cube class="h-8 w-8 text-neutral-600 dark:text-neutral-400" aria-hidden="true" />
                     </div>
                     <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
                         No components in this category yet

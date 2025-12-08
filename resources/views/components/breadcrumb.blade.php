@@ -12,7 +12,7 @@
             <div>
                 <a
                     href="{{ route('home') }}"
-                    class="text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    class="text-neutral-500 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
                 >
                     <x-heroicon-s-home class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
                     <span class="sr-only">Home</span>
@@ -35,7 +35,7 @@
                     @if (isset($segment['url']) && ! $loop->last)
                         <a
                             href="{{ $segment['url'] }}"
-                            class="ml-2 text-sm font-bold text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                            class="ml-2 text-sm font-bold text-neutral-500 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
                         >
                             {{ $segment['label'] }}
                         </a>

@@ -12,14 +12,14 @@
             <div class="flex items-center gap-6">
                 <a
                     href="{{ route('components.index') }}"
-                    class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
                 >
                     Components
                 </a>
                 <a
                     href="https://github.com/ankitthapa/freeui"
                     target="_blank"
-                    class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
+                    class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
                 >
                     GitHub
                 </a>

@@ -7,8 +7,10 @@
                     <button
                         type="submit"
                         class="absolute top-1/2 left-4 z-10 -translate-y-1/2 text-neutral-500 focus:outline-none dark:text-neutral-400"
+                        aria-label="Search"
+                        tabindex="-1"
                     >
-                        <x-heroicon-o-magnifying-glass class="h-5 w-5" />
+                        <x-heroicon-o-magnifying-glass class="h-5 w-5" aria-hidden="true" />
                     </button>
                     <input
                         type="text"
@@ -27,7 +29,7 @@
                                 in_array($category->slug, $selectedCategories)
                                     ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                                     : 'bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white'
-                            }} rounded-xl border-2 border-neutral-900 px-4 py-2 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                            }} rounded-xl border-2 border-neutral-900 px-4 py-2 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                         >
                             {{ $category->title }}
                         </button>
@@ -47,7 +49,10 @@
             <div
                 class="flex items-center gap-3 rounded-xl border-2 border-neutral-900 bg-neutral-900 px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
             >
-                <x-heroicon-o-arrow-path class="h-6 w-6 animate-spin text-white dark:text-neutral-900" />
+                <x-heroicon-o-arrow-path
+                    class="h-6 w-6 animate-spin text-white dark:text-neutral-900"
+                    aria-hidden="true"
+                />
                 <span class="font-bold text-white dark:text-neutral-900">Loading components...</span>
             </div>
         </div>
@@ -72,7 +77,7 @@
                     @foreach ($components as $component)
                         <a
                             href="{{ route('components.show', ['category' => $component->category, 'slug' => $component->slug]) }}"
-                            class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
+                            class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                         >
                             <!-- Preview Area -->
                             <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-50 dark:bg-neutral-950">
@@ -80,7 +85,7 @@
                                     <div
                                         class="flex h-16 w-16 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                                     >
-                                        <x-heroicon-o-cube class="h-8 w-8" />
+                                        <x-heroicon-o-cube class="h-8 w-8" aria-hidden="true" />
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +110,8 @@
                                 >
                                     <span>View component</span>
                                     <x-heroicon-o-arrow-right
-                                        class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                        class="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
+                                        aria-hidden="true"
                                     />
                                 </div>
                             </div>
@@ -120,7 +126,10 @@
                         <div
                             class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border-2 border-neutral-900 bg-stone-50 dark:border-white dark:bg-neutral-950"
                         >
-                            <x-heroicon-o-magnifying-glass class="h-10 w-10 text-neutral-900 dark:text-white" />
+                            <x-heroicon-o-magnifying-glass
+                                class="h-10 w-10 text-neutral-900 dark:text-white"
+                                aria-hidden="true"
+                            />
                         </div>
 
                         @if ($search)
@@ -135,13 +144,13 @@
                             <div class="mt-8 flex justify-center gap-4">
                                 <button
                                     wire:click="$set('search', '')"
-                                    class="items-center rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                                    class="items-center rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                                 >
                                     Clear Search
                                 </button>
                                 <a
                                     href="{{ route('components.index') }}"
-                                    class="flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-neutral-900 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                                    class="flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-neutral-900 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                                 >
                                     Browse All
                                 </a>
