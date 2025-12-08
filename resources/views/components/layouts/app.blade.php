@@ -74,15 +74,15 @@
             },
         }"
     >
-        <x-layout.header>
+        <x-header>
             {{ $headerRight ?? '' }}
-        </x-layout.header>
+        </x-header>
 
         <main id="main-content" class="flex-grow" tabindex="-1">
             {{ $slot }}
         </main>
 
-        <x-layout.footer />
+        <x-footer />
 
         @livewireScripts
     </body>

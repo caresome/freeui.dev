@@ -1,9 +1,13 @@
 ---
-title: Hero Simple
-slug: ankitthapa-hero-simple
+slug: caresome-hero-simple
+title: 'Hero Simple'
 category: hero-sections
-description: A simple hero section with centered text and buttons.
+description: 'A simple hero section with centered text and buttons.'
 github: caresome
+og_image: og-images/caresome-hero-simple.png
+thumbnail_path: thumbnails/caresome-hero-simple.png
+content_hash: 581d18d580a52e9af8d762ee5ccf9328
+updated_at: 2025-12-08T21:33:23+00:00
 ---
 
 <div class="bg-white">

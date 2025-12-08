@@ -1,9 +1,13 @@
 ---
-title: Pricing Card
-slug: ankitthapa-pricing-card
+slug: caresome-pricing-card
+title: 'Pricing Card'
 category: pricing
-description: A simple, clean pricing card with a highlight feature.
+description: 'A simple, clean pricing card with a highlight feature.'
 github: caresome
+og_image: og-images/caresome-pricing-card.png
+thumbnail_path: thumbnails/caresome-pricing-card.png
+content_hash: 339bb27b0ff51f00a24d15079e660e49
+updated_at: 2025-12-08T21:33:18+00:00
 ---
 
 <div class="max-w-sm mx-auto overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">

@@ -74,11 +74,11 @@
             },
         }"
     >
-        <x-layout.header :show-components-link="false" :show-github="false" :force-solid-header="true">
+        <x-header :show-components-link="false" :show-github="false" :force-solid-header="true">
             @isset($headerRight)
                 {{ $headerRight }}
             @endisset
-        </x-layout.header>
+        </x-header>
 
         <main class="flex-grow">
             {{ $slot }}

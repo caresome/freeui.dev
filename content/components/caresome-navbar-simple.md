@@ -1,9 +1,13 @@
 ---
-title: Navbar Simple
-slug: ankitthapa-navbar-simple
+slug: caresome-navbar-simple
+title: 'Navbar Simple'
 category: navbars
-description: A standard simple navbar with logo and links.
+description: 'A standard simple navbar with logo and links.'
 github: caresome
+og_image: og-images/caresome-navbar-simple.png
+thumbnail_path: thumbnails/caresome-navbar-simple.png
+content_hash: 8ec761e6306cc30d0d6fe8dff1455424
+updated_at: 2025-12-08T21:33:13+00:00
 ---
 
 <nav class="bg-white border-b border-gray-200">

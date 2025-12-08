@@ -9,3 +9,5 @@ Route::get('/components', [ComponentController::class, 'index'])->name('componen
 Route::get('/components/{category}', [ComponentController::class, 'category'])->name('components.category');
 Route::get('/components/{category}/{slug}', [ComponentController::class, 'show'])->name('components.show');
 Route::get('/components/{category}/{slug}/preview', [ComponentController::class, 'preview'])->name('components.preview');
+Route::get('/components/{category}/{slug}/og', [ComponentController::class, 'og'])->name('components.og');
+Route::get('/components/{category}/{slug}/thumbnail', [ComponentController::class, 'thumbnail'])->name('components.thumbnail');
