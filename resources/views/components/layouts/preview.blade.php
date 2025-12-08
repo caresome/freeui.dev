@@ -1,6 +1,16 @@
 @props([
     'title' => null,
+    'description' => 'Free, open-source UI components for your next project. Copy and paste beautiful Tailwind CSS components.',
+    'ogImage' => null,
+    'ogUrl' => null,
 ])
+
+@php
+    $pageTitle = $title ? $title . ' - FreeUI' : 'Preview - FreeUI';
+    $pageDescription = $description;
+    $pageOgImage = $ogImage ?? asset('og-default.png');
+    $pageUrl = $ogUrl ?? url()->current();
+@endphp
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full antialiased">
@@ -8,7 +18,22 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{{ $title ?? 'Preview - FreeUI' }}</title>
+        <title>{{ $pageTitle }}</title>
+        <meta name="description" content="{{ $pageDescription }}" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ $pageUrl }}" />
+        <meta property="og:title" content="{{ $pageTitle }}" />
+        <meta property="og:description" content="{{ $pageDescription }}" />
+        <meta property="og:image" content="{{ $pageOgImage }}" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="{{ $pageUrl }}" />
+        <meta name="twitter:title" content="{{ $pageTitle }}" />
+        <meta name="twitter:description" content="{{ $pageDescription }}" />
+        <meta name="twitter:image" content="{{ $pageOgImage }}" />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

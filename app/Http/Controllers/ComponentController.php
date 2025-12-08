@@ -15,7 +15,7 @@ class ComponentController extends Controller
 
     public function category($category): View
     {
-        $components = Component::where('category', $category)->get();
+        $components = Component::with('categoryModel')->where('category', $category)->get();
 
         return view('pages.components.category', ['components' => $components, 'category' => $category]);
     }

@@ -100,7 +100,7 @@ class Component extends Model
         }
 
         // Fallback
-        return asset('og-images/'.$this->slug.'.png');
+        return asset('og-images/'.$this->slug.'.webp');
     }
 
     /**
@@ -113,6 +113,6 @@ class Component extends Model
         }
 
         // Fallback
-        return asset('thumbnails/'.$this->slug.'.png');
+        return asset('thumbnails/'.$this->slug.'.webp');
     }
 }

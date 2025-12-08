@@ -1,4 +1,8 @@
-<x-layouts.app :title="$uiComponent->title ?? 'Component'">
+<x-layouts.app
+    :title="$uiComponent->title ?? 'Component'"
+    :description="$uiComponent->description ?? 'A free UI component for your next project.'"
+    :og-image="$uiComponent->og_image_url"
+>
     <section class="bg-stone-50 py-12 transition-colors duration-200 dark:bg-neutral-950">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <!-- Breadcrumb -->

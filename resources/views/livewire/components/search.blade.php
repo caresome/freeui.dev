@@ -126,6 +126,38 @@
                     @endforeach
                 </div>
 
+                {{-- Infinite Scroll Trigger --}}
+                @if ($hasMorePages)
+                    <div
+                        x-data="{
+                            init() {
+                                const observer = new IntersectionObserver(
+                                    (entries) => {
+                                        entries.forEach((entry) => {
+                                            if (entry.isIntersecting) {
+                                                @this.dispatch('load-more')
+                                            }
+                                        })
+                                    },
+                                    { rootMargin: '100px' },
+                                )
+                                observer.observe(this.$el)
+                            },
+                        }"
+                        class="mt-8 flex justify-center"
+                    >
+                        <div
+                            class="flex items-center gap-3 rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                        >
+                            <x-heroicon-o-arrow-path
+                                class="h-5 w-5 animate-spin text-neutral-900 dark:text-white"
+                                aria-hidden="true"
+                            />
+                            <span class="font-bold text-neutral-900 dark:text-white">Loading more...</span>
+                        </div>
+                    </div>
+                @endif
+
                 @if ($components->isEmpty())
                     <div
                         class="rounded-xl border-2 border-neutral-900 bg-white p-12 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"

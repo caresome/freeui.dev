@@ -43,10 +43,10 @@ class GenerateOgImages extends Command
         foreach ($components as $component) {
             $this->info("Checking: {$component->slug}");
 
-            // Define paths
-            $ogPathRelative = "og-images/{$component->slug}.png";
+            // Define paths (using WebP for smaller file sizes)
+            $ogPathRelative = "og-images/{$component->slug}.webp";
             $ogPathFull = public_path($ogPathRelative);
-            $thumbPathRelative = "thumbnails/{$component->slug}.png";
+            $thumbPathRelative = "thumbnails/{$component->slug}.webp";
             $thumbPathFull = public_path($thumbPathRelative);
 
             // Calculate Hash of content (Title, Description, Category, Content, Github, Layouts)
@@ -88,6 +88,7 @@ class GenerateOgImages extends Command
                         ->setOption('args', ['--no-sandbox', '--disable-setuid-sandbox'])
                         ->ignoreHttpsErrors()
                         ->windowSize(1200, 630)
+                        ->setScreenshotType('webp', 85)
                         ->waitUntilNetworkIdle()
                         ->save($ogPathFull);
                 } catch (\Exception $e) {
@@ -105,6 +106,7 @@ class GenerateOgImages extends Command
                         ->setOption('args', ['--no-sandbox', '--disable-setuid-sandbox'])
                         ->ignoreHttpsErrors()
                         ->windowSize(800, 500)
+                        ->setScreenshotType('webp', 85)
                         ->waitUntilNetworkIdle()
                         ->save($thumbPathFull);
                 } catch (\Exception $e) {

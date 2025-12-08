@@ -4,10 +4,10 @@ title: 'Pricing Card'
 category: pricing
 description: 'A simple, clean pricing card with a highlight feature.'
 github: caresome
-og_image: og-images/caresome-pricing-card.png
-thumbnail_path: thumbnails/caresome-pricing-card.png
-content_hash: 339bb27b0ff51f00a24d15079e660e49
-updated_at: 2025-12-08T21:33:18+00:00
+og_image: og-images/caresome-pricing-card.webp
+thumbnail_path: thumbnails/caresome-pricing-card.webp
+content_hash: 11741e216b1045481ab7836f777502f9
+updated_at: 2025-12-08T23:29:17+00:00
 ---
 
 <div class="max-w-sm mx-auto overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
