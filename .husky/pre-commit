@@ -1,3 +1,2 @@
-npm run format
-composer format
-composer refactor
+npx lint-staged
+php artisan orbit:cache
