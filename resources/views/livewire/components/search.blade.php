@@ -1,5 +1,4 @@
 <div>
-    <!-- Search Form -->
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
             <div class="mt-10">
@@ -20,7 +19,6 @@
                     />
                 </form>
 
-                <!-- Category Filters -->
                 <div class="mt-8 flex flex-wrap justify-center gap-3 pb-4">
                     @foreach ($allCategories as $category)
                         <button
@@ -39,9 +37,7 @@
         </div>
     </div>
 
-    <!-- Components Grid -->
     <section class="relative min-h-[400px] bg-white py-16 transition-colors duration-200 sm:py-20 dark:bg-neutral-900">
-        <!-- Loading State -->
         <div
             wire:loading.flex
             class="absolute inset-0 z-20 flex items-start justify-center bg-white/80 pt-40 backdrop-blur-[2px] dark:bg-neutral-900/80"
@@ -79,7 +75,6 @@
                             href="{{ route('components.show', ['category' => $component->category, 'slug' => $component->slug]) }}"
                             class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                         >
-                            <!-- Preview Area -->
                             <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-50 dark:bg-neutral-950">
                                 <div class="flex h-full w-full items-center justify-center">
                                     <div
@@ -90,7 +85,6 @@
                                 </div>
                             </div>
 
-                            <!-- Content -->
                             <div class="p-5">
                                 <div class="mb-3">
                                     <span

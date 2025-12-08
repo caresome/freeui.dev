@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Components;
 
+use App\Models\Category;
 use App\Models\Component as UiComponent;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class Search extends Component
@@ -28,9 +30,9 @@ class Search extends Component
         }
     }
 
-    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function render(): View
     {
-        $allCategories = \App\Models\Category::orderBy('title')->get();
+        $allCategories = Category::orderBy('title')->get();
 
         $components = UiComponent::query()
             ->when($this->search, function ($query, $search): void {

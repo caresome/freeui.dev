@@ -1,9 +1,6 @@
 <x-layouts.app :title="$category . ' Components'">
-    <!-- Header Section -->
     <section class="bg-stone-50 py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-950">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <!-- Breadcrumb -->
-            <!-- Breadcrumb -->
             <x-breadcrumb
                 :segments="[['label' => 'Components', 'url' => route('components.index')], ['label' => $category]]"
             />
@@ -30,13 +27,11 @@
         </div>
     </section>
 
-    <!-- Components List -->
     <section class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="space-y-12">
                 @foreach ($components as $uiComponent)
                     <div class="scroll-mt-20" id="{{ $uiComponent->slug }}">
-                        <!-- Component Header -->
                         <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                             <a
                                 href="{{ route('components.show', ['category' => $uiComponent->category, 'slug' => $uiComponent->slug]) }}"
@@ -50,7 +45,6 @@
                             </a>
                         </div>
 
-                        <!-- Component Preview -->
                         <div class="mt-4">
                             <x-code-preview
                                 :content="$uiComponent->content"
