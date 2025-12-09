@@ -17,7 +17,7 @@
                     Components
                 </a>
                 <a
-                    href="https://github.com/ankitthapa/freeui"
+                    href="https://github.com/caresome/freeui.dev"
                     target="_blank"
                     class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
                 >
