@@ -44,7 +44,7 @@
                         <x-heroicon-o-arrow-down class="h-4 w-4" aria-hidden="true" />
                     </a>
                     <a
-                        href="https://github.com/ankitthapa/freeui"
+                        href="https://github.com/caresome/freeui.dev"
                         target="_blank"
                         class="inline-flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 text-sm font-bold text-neutral-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none focus-visible:translate-x-[3px] focus-visible:translate-y-[3px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                     >
