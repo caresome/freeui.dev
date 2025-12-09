@@ -73,9 +73,9 @@
                     <div class="mb-8 flex items-center gap-4">
                         @if ($collection->icon)
                             <div
-                                class="inline-flex h-10 w-10 items-center justify-center rounded-lg border-2 border-neutral-900 bg-white text-neutral-900 dark:border-white dark:bg-neutral-900 dark:text-white"
+                                class="inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                             >
-                                @svg($collection->icon, ['class' => 'h-5 w-5', 'aria-hidden' => 'true'])
+                                @svg($collection->icon, ['class' => 'h-6 w-6', 'aria-hidden' => 'true'])
                             </div>
                         @endif
 

@@ -34,7 +34,7 @@
                         class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                     >
                         <div
-                            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border-2 border-neutral-900 bg-stone-50 dark:border-white dark:bg-neutral-950"
+                            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                         >
                             @if ($collection->icon)
                                 <x-dynamic-component

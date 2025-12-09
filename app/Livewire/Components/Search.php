@@ -71,7 +71,6 @@ class Search extends Component
                 $query->where(function ($subQuery) use ($search): void {
                     $term = '%'.$search.'%';
                     $subQuery->where('title', 'like', $term)
-                        ->orWhere('description', 'like', $term)
                         ->orWhereHas('categoryModel', function ($catQuery) use ($term): void {
                             $catQuery->where('title', 'like', $term);
                         })

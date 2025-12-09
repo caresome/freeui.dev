@@ -10,26 +10,27 @@
 
             <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                    <div class="mb-4 flex items-center gap-3">
+                    <div class="flex items-center gap-4">
                         @if ($collection->icon)
                             <div
-                                class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white dark:border-white dark:bg-neutral-900"
+                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                             >
                                 <x-dynamic-component
                                     :component="$collection->icon"
-                                    class="h-6 w-6 text-neutral-900 dark:text-white"
+                                    class="h-7 w-7 text-neutral-900 dark:text-white"
                                     aria-hidden="true"
                                 />
                             </div>
                         @endif
+
+                        <h1
+                            class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white"
+                        >
+                            {{ $collection->title }}
+                        </h1>
                     </div>
-                    <h1
-                        class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white"
-                    >
-                        {{ $collection->title }}
-                    </h1>
                     @if ($collection->description)
-                        <p class="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
+                        <p class="mt-3 text-lg text-neutral-600 dark:text-neutral-400">
                             {{ $collection->description }}
                         </p>
                     @endif

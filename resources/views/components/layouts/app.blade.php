@@ -109,6 +109,8 @@
 
         <x-footer />
 
+        <livewire:command-palette />
+
         @livewireScripts
     </body>
 </html>
