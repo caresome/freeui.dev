@@ -91,25 +91,12 @@
                             class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                         >
                             <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-50 dark:bg-neutral-950">
-                                <div
-                                    class="relative aspect-[16/10] w-full overflow-hidden bg-stone-50 dark:bg-neutral-950"
-                                >
-                                    @if ($component->thumbnail_path)
-                                        <img
-                                            src="{{ $component->thumbnail_url }}"
-                                            alt="{{ $component->title }} preview"
-                                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                            loading="lazy"
-                                        />
-                                    @else
-                                        <div class="flex h-full w-full items-center justify-center">
-                                            <div
-                                                class="flex h-16 w-16 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
-                                            >
-                                                <x-heroicon-o-cube class="h-8 w-8" aria-hidden="true" />
-                                            </div>
-                                        </div>
-                                    @endif
+                                <div class="flex h-full w-full items-center justify-center">
+                                    <div
+                                        class="flex h-16 w-16 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                                    >
+                                        <x-heroicon-o-cube class="h-8 w-8" aria-hidden="true" />
+                                    </div>
                                 </div>
                             </div>
 

@@ -33,12 +33,10 @@ class GenerateOgImages extends Command
         $force = $this->option('force');
         $this->info('Found '.$components->count().' components.');
 
-        // Ensure directories exist
-        $paths = [public_path('thumbnails'), public_path('og-images')];
-        foreach ($paths as $path) {
-            if (! File::exists($path)) {
-                File::makeDirectory($path, 0755, true);
-            }
+        // Ensure OG images directory exists
+        $ogImagesPath = public_path('og-images');
+        if (! File::exists($ogImagesPath)) {
+            File::makeDirectory($ogImagesPath, 0755, true);
         }
 
         foreach ($components as $component) {
@@ -47,16 +45,12 @@ class GenerateOgImages extends Command
             // Define paths (using WebP for smaller file sizes)
             $ogPathRelative = "og-images/{$component->slug}.webp";
             $ogPathFull = public_path($ogPathRelative);
-            $thumbPathRelative = "thumbnails/{$component->slug}.webp";
-            $thumbPathFull = public_path($thumbPathRelative);
 
-            // Calculate Hash of content (Title, Description, Category, Content, Github, Layouts)
-            // We include layout files effectively version the images based on their design.
+            // Calculate Hash of content (Title, Category, Content, Github, Layouts)
+            // We include layout files to effectively version the images based on their design.
             $layoutFiles = [
                 resource_path('views/components/layouts/og.blade.php'),
                 resource_path('views/pages/components/og/show.blade.php'),
-                resource_path('views/components/layouts/thumbnail.blade.php'),
-                resource_path('views/pages/components/thumbnail/show.blade.php'),
             ];
 
             $layoutHash = '';
@@ -71,16 +65,15 @@ class GenerateOgImages extends Command
 
             // Check if generation is needed
             $ogExists = File::exists($ogPathFull);
-            $thumbExists = File::exists($thumbPathFull);
             $hashMatch = ($component->content_hash === $currentHash);
 
-            if (! $force && $ogExists && $thumbExists && $hashMatch) {
+            if (! $force && $ogExists && $hashMatch) {
                 $this->comment('  - Skipped (Hash Match)');
 
                 continue;
             }
 
-            // 1. Generate OG Image (1200x630)
+            // Generate OG Image (1200x630)
             if ($force || ! $ogExists || ! $hashMatch) {
                 $collection = $component->categoryModel->collection ?? 'marketing';
                 $ogUrl = route('components.og', ['collection' => $collection, 'category' => $component->category, 'slug' => $component->slug]);
@@ -99,30 +92,10 @@ class GenerateOgImages extends Command
                 }
             }
 
-            // 2. Generate Thumbnail (800x500)
-            if ($force || ! $thumbExists || ! $hashMatch) {
-                $collection = $component->categoryModel->collection ?? 'marketing';
-                $thumbUrl = route('components.thumbnail', ['collection' => $collection, 'category' => $component->category, 'slug' => $component->slug]);
-                try {
-                    $this->info('  - Generating Thumbnail...');
-                    Browsershot::url($thumbUrl)
-                        ->setOption('args', ['--no-sandbox', '--disable-setuid-sandbox'])
-                        ->ignoreHttpsErrors()
-                        ->windowSize(800, 500)
-                        ->setScreenshotType('webp', 85)
-                        ->waitUntilNetworkIdle()
-                        ->save($thumbPathFull);
-                } catch (\Exception $e) {
-                    $this->error('  - Thumbnail Failed: '.$e->getMessage());
-                    $thumbPathRelative = null;
-                }
-            }
-
-            // Update Component Model (Images + Hash)
-            if ($ogPathRelative || $thumbPathRelative) {
+            // Update Component Model (OG Image + Hash)
+            if ($ogPathRelative) {
                 $component->update([
                     'og_image' => $ogPathRelative,
-                    'thumbnail_path' => $thumbPathRelative,
                     'content_hash' => $currentHash,
                 ]);
                 $this->info('  - Records & Hash updated');

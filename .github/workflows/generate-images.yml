@@ -62,4 +62,4 @@ jobs:
               uses: stefanzweifel/git-auto-commit-action@v5
               with:
                   commit_message: 'chore: update og images [skip ci]'
-                  file_pattern: 'public/og-images/*.webp public/thumbnails/*.webp content/components/*.md'
+                  file_pattern: 'public/og-images/*.webp content/components/*.md'

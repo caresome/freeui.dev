@@ -59,11 +59,4 @@ class ComponentController extends Controller
 
         return view('pages.components.og.show', ['uiComponent' => $uiComponent]);
     }
-
-    public function thumbnail(string $collection, string $category, string $slug): View
-    {
-        $uiComponent = Component::where('slug', $slug)->where('category', $category)->firstOrFail();
-
-        return view('pages.components.thumbnail.show', ['uiComponent' => $uiComponent]);
-    }
 }

@@ -15,12 +15,10 @@ use Orbit\Concerns\Orbital;
  * @property string|null $content
  * @property string|null $github
  * @property string|null $og_image
- * @property string|null $thumbnail_path
  * @property string|null $content_hash
  * @property-read string $github_url
  * @property-read string $avatar_url
  * @property-read string $og_image_url
- * @property-read string $thumbnail_url
  * @property-read Category|null $categoryModel
  */
 class Component extends Model
@@ -41,7 +39,6 @@ class Component extends Model
         'content',
         'github',
         'og_image',
-        'thumbnail_path',
         'content_hash',
     ];
 
@@ -59,7 +56,6 @@ class Component extends Model
         $table->text('content')->nullable();
         $table->string('github')->nullable();
         $table->string('og_image')->nullable();
-        $table->string('thumbnail_path')->nullable();
         $table->string('content_hash')->nullable();
     }
 
@@ -98,18 +94,5 @@ class Component extends Model
 
         // Fallback
         return asset('og-images/'.$this->slug.'.webp');
-    }
-
-    /**
-     * Get the Thumbnail image URL.
-     */
-    public function getThumbnailUrlAttribute(): string
-    {
-        if ($this->thumbnail_path) {
-            return asset($this->thumbnail_path);
-        }
-
-        // Fallback
-        return asset('thumbnails/'.$this->slug.'.webp');
     }
 }
