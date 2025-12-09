@@ -1,8 +1,11 @@
-<x-layouts.app :title="$category . ' Components'">
+<x-layouts.app :title="$category->title . ' Components'">
     <section class="bg-stone-50 py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-950">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <x-breadcrumb
-                :segments="[['label' => 'Components', 'url' => route('components.index')], ['label' => $category]]"
+                :segments="[
+                    ['label' => $collection->title, 'url' => route('collections.show', $collection->slug)],
+                    ['label' => $category->title],
+                ]"
             />
 
             <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -10,10 +13,10 @@
                     <h1
                         class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white"
                     >
-                        {{ $category }}
+                        {{ $category->title }}
                     </h1>
                     <p class="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
-                        Browse our collection of {{ strtolower($category) }} components.
+                        {{ $category->description ?? 'Browse our collection of ' . strtolower($category->title) . ' components.' }}
                     </p>
                 </div>
                 <div
@@ -34,7 +37,7 @@
                     <div class="scroll-mt-20" id="{{ $uiComponent->slug }}">
                         <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                             <a
-                                href="{{ route('components.show', ['category' => $uiComponent->category, 'slug' => $uiComponent->slug]) }}"
+                                href="{{ route('components.show', ['collection' => $collection->slug, 'category' => $uiComponent->category, 'slug' => $uiComponent->slug]) }}"
                                 class="group flex items-center gap-2 text-xl font-bold text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:focus-visible:text-neutral-400"
                             >
                                 {{ $uiComponent->title }}
@@ -50,6 +53,7 @@
                                 :content="$uiComponent->content"
                                 :title="$uiComponent->title"
                                 :slug="$uiComponent->slug"
+                                :collection="$collection->slug"
                                 :category="$uiComponent->category"
                                 :username="$uiComponent->github"
                                 :author-avatar="$uiComponent->avatar_url"

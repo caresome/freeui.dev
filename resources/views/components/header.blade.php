@@ -20,8 +20,8 @@
             <nav class="hidden gap-1 md:flex">
                 @if ($showComponentsLink)
                     <a
-                        href="{{ route('components.index') }}"
-                        class="{{ request()->is('components*') ? 'bg-neutral-900/5 text-neutral-900 dark:bg-white/10 dark:text-white' : 'text-neutral-600 hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:bg-neutral-900/5 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white dark:focus-visible:bg-white/10 dark:focus-visible:text-white' }} rounded-xl px-3 py-2 text-sm font-medium transition-colors"
+                        href="{{ route('home') }}#components"
+                        class="rounded-xl px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:bg-neutral-900/5 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white dark:focus-visible:bg-white/10 dark:focus-visible:text-white"
                     >
                         Components
                     </a>

@@ -2,7 +2,6 @@
 slug: caresome-navbar-simple
 title: 'Navbar Simple'
 category: navbars
-description: 'A standard simple navbar with logo and links.'
 github: caresome
 og_image: og-images/caresome-navbar-simple.webp
 thumbnail_path: thumbnails/caresome-navbar-simple.webp

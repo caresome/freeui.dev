@@ -19,15 +19,30 @@
                     />
                 </form>
 
-                <div class="mt-8 flex flex-wrap justify-center gap-3 pb-4">
+                <div class="mt-6 flex flex-wrap justify-center gap-2">
+                    @foreach ($allCollections as $collection)
+                        <button
+                            wire:click="toggleCollection('{{ $collection->slug }}')"
+                            class="{{
+                                in_array($collection->slug, $selectedCollections)
+                                    ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
+                                    : 'bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white'
+                            }} rounded-xl border-2 border-neutral-900 px-4 py-2 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                        >
+                            {{ $collection->title }}
+                        </button>
+                    @endforeach
+                </div>
+
+                <div class="mt-4 flex flex-wrap justify-center gap-2 pb-4">
                     @foreach ($allCategories as $category)
                         <button
                             wire:click="toggleCategory('{{ $category->slug }}')"
                             class="{{
                                 in_array($category->slug, $selectedCategories)
                                     ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
-                                    : 'bg-white text-neutral-900 dark:bg-neutral-900 dark:text-white'
-                            }} rounded-xl border-2 border-neutral-900 px-4 py-2 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                                    : 'bg-stone-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300'
+                            }} rounded-lg border-2 border-neutral-900 px-3 py-1.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:shadow-none dark:border-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                         >
                             {{ $category->title }}
                         </button>
@@ -72,7 +87,7 @@
 
                     @foreach ($components as $component)
                         <a
-                            href="{{ route('components.show', ['category' => $component->category, 'slug' => $component->slug]) }}"
+                            href="{{ route('components.show', ['collection' => $component->categoryModel?->collection, 'category' => $component->category, 'slug' => $component->slug]) }}"
                             class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
                         >
                             <div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-50 dark:bg-neutral-950">
@@ -99,9 +114,17 @@
                             </div>
 
                             <div class="p-5">
-                                <div class="mb-3">
+                                <div class="mb-3 flex flex-wrap gap-2">
+                                    @if ($component->categoryModel?->collectionModel)
+                                        <span
+                                            class="inline-flex items-center rounded-lg border-2 border-neutral-900 bg-neutral-900 px-2 py-0.5 text-xs font-bold text-white dark:border-white dark:bg-white dark:text-neutral-900"
+                                        >
+                                            {!! highlight($component->categoryModel->collectionModel->title, $search) !!}
+                                        </span>
+                                    @endif
+
                                     <span
-                                        class="inline-flex items-center rounded-xl border-2 border-neutral-900 bg-stone-50 px-2.5 py-1 text-xs font-bold text-neutral-900 dark:border-white dark:bg-neutral-950 dark:text-white"
+                                        class="inline-flex items-center rounded-lg border-2 border-neutral-900 bg-stone-50 px-2 py-0.5 text-xs font-bold text-neutral-900 dark:border-white dark:bg-neutral-950 dark:text-white"
                                     >
                                         {!! highlight($component->categoryModel ? $component->categoryModel->title : $component->category, $search) !!}
                                     </span>
@@ -109,9 +132,6 @@
                                 <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
                                     {!! highlight($component->title, $search) !!}
                                 </h3>
-                                <p class="mt-2 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-400">
-                                    {!! highlight($component->description, $search) !!}
-                                </p>
                                 <div
                                     class="mt-4 flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white"
                                 >
@@ -180,19 +200,13 @@
                                 <span class="font-bold text-neutral-900 dark:text-white">{{ $search }}</span>
                                 ".
                             </p>
-                            <div class="mt-8 flex justify-center gap-4">
+                            <div class="mt-8 flex justify-center">
                                 <button
                                     wire:click="$set('search', '')"
                                     class="items-center rounded-xl border-2 border-neutral-900 bg-white px-6 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                                 >
                                     Clear Search
                                 </button>
-                                <a
-                                    href="{{ route('components.index') }}"
-                                    class="flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-neutral-900 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-                                >
-                                    Browse All
-                                </a>
                             </div>
                         @else
                             <h3 class="text-2xl font-black text-neutral-900 dark:text-white">Ready to explore?</h3>

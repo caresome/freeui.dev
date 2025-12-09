@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Collection;
 use Illuminate\Contracts\View\View;
 
 class HomeController extends Controller
@@ -12,10 +12,12 @@ class HomeController extends Controller
      */
     public function __invoke(): View
     {
-        $categories = Category::orderBy('title')->get();
+        $collections = Collection::with(['categories' => function ($query): void {
+            $query->orderBy('title');
+        }])->orderBy('title')->get();
 
         return view('pages.home', [
-            'categories' => $categories,
+            'collections' => $collections,
         ]);
     }
 }

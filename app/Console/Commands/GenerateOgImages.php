@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Category;
 use App\Models\Component;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -28,7 +29,7 @@ class GenerateOgImages extends Command
      */
     public function handle(): void
     {
-        $components = Component::all();
+        $components = Component::with('categoryModel')->get();
         $force = $this->option('force');
         $this->info('Found '.$components->count().' components.');
 
@@ -65,7 +66,7 @@ class GenerateOgImages extends Command
                 }
             }
 
-            $contentSource = $component->title.$component->description.$component->category.$component->content.$component->github.$layoutHash;
+            $contentSource = $component->title.$component->category.$component->content.$component->github.$layoutHash;
             $currentHash = md5($contentSource);
 
             // Check if generation is needed
@@ -81,7 +82,8 @@ class GenerateOgImages extends Command
 
             // 1. Generate OG Image (1200x630)
             if ($force || ! $ogExists || ! $hashMatch) {
-                $ogUrl = route('components.og', ['category' => $component->category, 'slug' => $component->slug]);
+                $collection = $component->categoryModel->collection ?? 'marketing';
+                $ogUrl = route('components.og', ['collection' => $collection, 'category' => $component->category, 'slug' => $component->slug]);
                 try {
                     $this->info('  - Generating OG...');
                     Browsershot::url($ogUrl)
@@ -99,7 +101,8 @@ class GenerateOgImages extends Command
 
             // 2. Generate Thumbnail (800x500)
             if ($force || ! $thumbExists || ! $hashMatch) {
-                $thumbUrl = route('components.thumbnail', ['category' => $component->category, 'slug' => $component->slug]);
+                $collection = $component->categoryModel->collection ?? 'marketing';
+                $thumbUrl = route('components.thumbnail', ['collection' => $collection, 'category' => $component->category, 'slug' => $component->slug]);
                 try {
                     $this->info('  - Generating Thumbnail...');
                     Browsershot::url($thumbUrl)

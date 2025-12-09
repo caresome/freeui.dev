@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Schema\Blueprint;
 use Orbit\Concerns\Orbital;
@@ -12,12 +11,10 @@ use Orbit\Concerns\Orbital;
 /**
  * @property string $slug
  * @property string $title
- * @property string|null $collection
  * @property string|null $description
  * @property string|null $icon
- * @property-read Collection|null $collectionModel
  */
-class Category extends Model
+class Collection extends Model
 {
     use HasFactory;
     use Orbital;
@@ -31,32 +28,25 @@ class Category extends Model
     protected $fillable = [
         'title',
         'slug',
-        'collection',
         'description',
         'icon',
     ];
 
     public static function getOrbitalPath(): string
     {
-        return base_path('content/categories');
+        return base_path('content/collections');
     }
 
     public static function schema(Blueprint $table): void
     {
         $table->string('slug')->primary();
         $table->string('title');
-        $table->string('collection')->nullable();
         $table->text('description')->nullable();
         $table->string('icon')->nullable();
     }
 
-    public function collectionModel(): BelongsTo
+    public function categories(): HasMany
     {
-        return $this->belongsTo(Collection::class, 'collection', 'slug');
-    }
-
-    public function components(): HasMany
-    {
-        return $this->hasMany(Component::class, 'category', 'slug');
+        return $this->hasMany(Category::class, 'collection', 'slug');
     }
 }

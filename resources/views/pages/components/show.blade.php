@@ -1,6 +1,6 @@
 <x-layouts.app
     :title="$uiComponent->title ?? 'Component'"
-    :description="$uiComponent->description ?? 'A free UI component for your next project.'"
+    description="A free UI component for your next project."
     :og-image="$uiComponent->og_image_url"
 >
     <section class="bg-stone-50 py-12 transition-colors duration-200 dark:bg-neutral-950">
@@ -8,10 +8,13 @@
             <!-- Breadcrumb -->
             <x-breadcrumb
                 :segments="[
-                    ['label' => 'Components', 'url' => route('components.index')],
+                    [
+                        'label' => $uiComponent->categoryModel->collectionModel->title,
+                        'url' => route('collections.show', $uiComponent->categoryModel->collection),
+                    ],
                     [
                         'label' => $uiComponent->categoryModel->title,
-                        'url' => route('components.category', $uiComponent->category),
+                        'url' => route('components.category', ['collection' => $uiComponent->categoryModel->collection, 'category' => $uiComponent->category]),
                     ],
                     ['label' => $uiComponent->title],
                 ]"
@@ -19,16 +22,9 @@
 
             <!-- Header -->
             <div class="mb-8">
-                <div class="flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                        <h1 class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
-                            {{ $uiComponent->title }}
-                        </h1>
-                        <p class="mt-3 text-lg text-neutral-600 dark:text-neutral-400">
-                            {{ $uiComponent->description }}
-                        </p>
-                    </div>
-                </div>
+                <h1 class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
+                    {{ $uiComponent->title }}
+                </h1>
             </div>
 
             <!-- Preview/Code Area -->
@@ -36,6 +32,7 @@
                 :content="$uiComponent->content"
                 :title="$uiComponent->title"
                 :slug="$uiComponent->slug"
+                :collection="$uiComponent->categoryModel->collection"
                 :category="$uiComponent->category"
                 :username="$uiComponent->github"
                 :author-avatar="$uiComponent->avatar_url"

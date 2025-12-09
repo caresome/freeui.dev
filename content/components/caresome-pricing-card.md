@@ -2,7 +2,6 @@
 slug: caresome-pricing-card
 title: 'Pricing Card'
 category: pricing
-description: 'A simple, clean pricing card with a highlight feature.'
 github: caresome
 og_image: og-images/caresome-pricing-card.webp
 thumbnail_path: thumbnails/caresome-pricing-card.webp

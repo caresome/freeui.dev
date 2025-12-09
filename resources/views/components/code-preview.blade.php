@@ -2,6 +2,7 @@
     'content',
     'title',
     'slug',
+    'collection' => null,
     'category' => null,
     'username' => null,
     'authorAvatar' => null,
@@ -109,9 +110,9 @@
                 </div>
 
                 {{-- Full Page Button --}}
-                @if ($category && $slug)
+                @if ($collection && $category && $slug)
                     <a
-                        href="{{ route('components.preview', ['category' => $category, 'slug' => $slug]) }}"
+                        href="{{ route('components.preview', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) }}"
                         target="_blank"
                         class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                         title="View Full Page"

@@ -3,6 +3,7 @@
 namespace App\Livewire\Components;
 
 use App\Models\Category;
+use App\Models\Collection;
 use App\Models\Component as UiComponent;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
@@ -12,6 +13,8 @@ class Search extends Component
 {
     public $search = '';
 
+    public $selectedCollections = [];
+
     public $selectedCategories = [];
 
     public int $perPage = 12;
@@ -20,13 +23,24 @@ class Search extends Component
     {
         return [
             'search' => ['except' => ''],
+            'selectedCollections' => ['except' => []],
             'selectedCategories' => ['except' => []],
         ];
     }
 
+    public function toggleCollection(string $collectionSlug): void
+    {
+        $this->perPage = 12;
+
+        if (in_array($collectionSlug, $this->selectedCollections)) {
+            $this->selectedCollections = array_diff($this->selectedCollections, [$collectionSlug]);
+        } else {
+            $this->selectedCollections[] = $collectionSlug;
+        }
+    }
+
     public function toggleCategory(string $categorySlug): void
     {
-        // Reset pagination when category changes
         $this->perPage = 12;
 
         if (in_array($categorySlug, $this->selectedCategories)) {
@@ -38,7 +52,6 @@ class Search extends Component
 
     public function updatedSearch(): void
     {
-        // Reset pagination when search changes
         $this->perPage = 12;
     }
 
@@ -50,9 +63,10 @@ class Search extends Component
 
     public function render(): View
     {
-        $allCategories = Category::orderBy('title')->get();
+        $allCollections = Collection::orderBy('title')->get();
+        $allCategories = Category::with('collectionModel')->orderBy('title')->get();
 
-        $query = UiComponent::with('categoryModel')
+        $query = UiComponent::with('categoryModel.collectionModel')
             ->when($this->search, function ($query, $search): void {
                 $query->where(function ($subQuery) use ($search): void {
                     $term = '%'.$search.'%';
@@ -60,7 +74,15 @@ class Search extends Component
                         ->orWhere('description', 'like', $term)
                         ->orWhereHas('categoryModel', function ($catQuery) use ($term): void {
                             $catQuery->where('title', 'like', $term);
+                        })
+                        ->orWhereHas('categoryModel.collectionModel', function ($colQuery) use ($term): void {
+                            $colQuery->where('title', 'like', $term);
                         });
+                });
+            })
+            ->when(! empty($this->selectedCollections), function ($query): void {
+                $query->whereHas('categoryModel', function ($catQuery): void {
+                    $catQuery->whereIn('collection', $this->selectedCollections);
                 });
             })
             ->when(! empty($this->selectedCategories), function ($query): void {
@@ -73,6 +95,7 @@ class Search extends Component
 
         return view('livewire.components.search', [
             'components' => $components,
+            'allCollections' => $allCollections,
             'allCategories' => $allCategories,
             'hasMorePages' => $hasMorePages,
             'totalCount' => $totalCount,

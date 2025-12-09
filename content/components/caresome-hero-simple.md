@@ -2,7 +2,6 @@
 slug: caresome-hero-simple
 title: 'Hero Simple'
 category: hero-sections
-description: 'A simple hero section with centered text and buttons.'
 github: caresome
 og_image: og-images/caresome-hero-simple.webp
 thumbnail_path: thumbnails/caresome-hero-simple.webp

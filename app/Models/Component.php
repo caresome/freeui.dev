@@ -12,7 +12,6 @@ use Orbit\Concerns\Orbital;
  * @property string $slug
  * @property string $title
  * @property string $category
- * @property string|null $description
  * @property string|null $content
  * @property string|null $github
  * @property string|null $og_image
@@ -39,7 +38,6 @@ class Component extends Model
         'title',
         'slug',
         'category',
-        'description',
         'content',
         'github',
         'og_image',
@@ -58,7 +56,6 @@ class Component extends Model
         $table->string('slug')->primary();
         $table->string('title');
         $table->string('category')->default('Uncategorized');
-        $table->text('description')->nullable();
         $table->text('content')->nullable();
         $table->string('github')->nullable();
         $table->string('og_image')->nullable();

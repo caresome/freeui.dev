@@ -62,70 +62,76 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
+    <!-- Collections & Categories Section -->
     <section id="components" class="bg-white py-20 transition-colors duration-200 sm:py-28 dark:bg-neutral-900">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="mb-12 flex items-end justify-between">
-                <div>
-                    <h2 class="text-3xl font-black text-neutral-900 sm:text-4xl dark:text-white">Categories</h2>
-                    <p class="mt-2 text-neutral-600 dark:text-neutral-400">Pick a category to explore</p>
-                </div>
-                <a
-                    href="{{ route('components.index') }}"
-                    class="hidden items-center gap-1 text-sm font-bold text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:text-neutral-600 sm:flex dark:text-white dark:hover:text-neutral-400 dark:focus-visible:text-neutral-400"
+            @foreach ($collections as $collection)
+                <div
+                    class="@if (!$loop->first) mt-16 border-t border-neutral-200 pt-16 dark:border-neutral-800 @endif"
                 >
-                    View all
-                    <x-heroicon-o-arrow-right class="h-4 w-4" aria-hidden="true" />
-                </a>
-            </div>
+                    <!-- Collection Header -->
+                    <div class="mb-8 flex items-center gap-4">
+                        @if ($collection->icon)
+                            <div
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-lg border-2 border-neutral-900 bg-white text-neutral-900 dark:border-white dark:bg-neutral-900 dark:text-white"
+                            >
+                                @svg($collection->icon, ['class' => 'h-5 w-5', 'aria-hidden' => 'true'])
+                            </div>
+                        @endif
 
-            <!-- Category Grid -->
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                @foreach ($categories as $category)
-                    <a
-                        href="{{ route('components.category', $category->slug) }}"
-                        class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-stone-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-950 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
-                    >
-                        <!-- Icon -->
-                        <div
-                            class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 dark:border-white dark:bg-neutral-900 dark:text-white"
-                        >
-                            @if ($category->icon)
-                                @svg($category->icon, ['class' => 'h-6 w-6', 'aria-hidden' => 'true'])
-                            @else
-                                <x-heroicon-o-cube class="h-6 w-6" aria-hidden="true" />
+                        <div>
+                            <h2 class="text-2xl font-black text-neutral-900 sm:text-3xl dark:text-white">
+                                {{ $collection->title }}
+                            </h2>
+                            @if ($collection->description)
+                                <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                                    {{ $collection->description }}
+                                </p>
                             @endif
                         </div>
+                    </div>
 
-                        <!-- Content -->
-                        <h3 class="text-xl font-bold text-neutral-900 dark:text-white">{{ $category->title }}</h3>
-                        <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
-                            {{ $category->description ?? 'Explore ' . strtolower($category->title) . ' components' }}
-                        </p>
+                    <!-- Category Grid -->
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        @foreach ($collection->categories as $category)
+                            <a
+                                href="{{ route('components.category', ['collection' => $collection->slug, 'category' => $category->slug]) }}"
+                                class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-stone-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-950 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
+                            >
+                                <!-- Icon -->
+                                <div
+                                    class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 dark:border-white dark:bg-neutral-900 dark:text-white"
+                                >
+                                    @if ($category->icon)
+                                        @svg($category->icon, ['class' => 'h-6 w-6', 'aria-hidden' => 'true'])
+                                    @else
+                                        <x-heroicon-o-cube class="h-6 w-6" aria-hidden="true" />
+                                    @endif
+                                </div>
 
-                        <!-- Arrow -->
-                        <div class="mt-4 flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white">
-                            <span>View components</span>
-                            <x-heroicon-o-arrow-right
-                                class="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
-                                aria-hidden="true"
-                            />
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+                                <!-- Content -->
+                                <h3 class="text-xl font-bold text-neutral-900 dark:text-white">
+                                    {{ $category->title }}
+                                </h3>
+                                <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+                                    {{ $category->description ?? 'Explore ' . strtolower($category->title) . ' components' }}
+                                </p>
 
-            <!-- Mobile view all -->
-            <div class="mt-8 text-center sm:hidden">
-                <a
-                    href="{{ route('components.index') }}"
-                    class="inline-flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white"
-                >
-                    View all components
-                    <x-heroicon-o-arrow-right class="h-4 w-4" aria-hidden="true" />
-                </a>
-            </div>
+                                <!-- Arrow -->
+                                <div
+                                    class="mt-4 flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white"
+                                >
+                                    <span>View components</span>
+                                    <x-heroicon-o-arrow-right
+                                        class="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
         </div>
     </section>
 
