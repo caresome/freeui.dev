@@ -22,8 +22,8 @@ class CommandPalette extends Component
 
         $term = '%'.$this->search.'%';
 
-        // Get collections (limit 3)
         $collections = Collection::where('title', 'like', $term)
+            ->whereHas('categories.components')
             ->limit(3)
             ->get()
             ->map(fn ($c): array => [
@@ -34,9 +34,9 @@ class CommandPalette extends Component
                 'icon' => $c->icon ?? 'heroicon-o-rectangle-stack',
             ]);
 
-        // Get categories (limit 5)
         $categories = Category::with('collectionModel')
             ->where('title', 'like', $term)
+            ->whereHas('components')
             ->limit(5)
             ->get()
             ->map(fn ($c): array => [
@@ -50,7 +50,6 @@ class CommandPalette extends Component
                 'icon' => $c->icon ?? 'heroicon-o-folder',
             ]);
 
-        // Get components (limit 10)
         $components = UiComponent::with('categoryModel.collectionModel')
             ->where('title', 'like', $term)
             ->limit(10)

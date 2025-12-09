@@ -1,7 +1,6 @@
 <x-layouts.preview
     :title="$uiComponent->title . ' - Preview'"
     description="A free UI component for your next project."
-    :og-image="$uiComponent->og_image_url"
 >
     <x-slot:headerRight>
         <div

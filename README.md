@@ -10,15 +10,15 @@ Create a markdown file in `content/components/`:
 ---
 slug: your-username-component-name
 title: Component Name
-category: hero-sections
+category: cards
 github: your-github-username
 ---
 
-<section class="bg-white dark:bg-gray-900 py-24">
-  <h1 class="text-4xl font-bold text-gray-900 dark:text-white">
-    Hello World
-  </h1>
-</section>
+<div class="p-8">
+  <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Hello World</h2>
+  </div>
+</div>
 ```
 
 That's it! Submit a PR.
@@ -33,11 +33,11 @@ That's it! Submit a PR.
 
 ## Categories
 
-| Collection    | Categories                            |
-| ------------- | ------------------------------------- |
-| `marketing`   | `hero-sections`, `navbars`, `pricing` |
-| `ecommerce`   | `product-cards`, `carts`              |
-| `application` | `buttons`, `forms`, `tables`          |
+| Collection    | Categories |
+| ------------- | ---------- |
+| `application` | `cards`    |
+
+Want a new category? Create it in `content/categories/` with your PR.
 
 ## License
 

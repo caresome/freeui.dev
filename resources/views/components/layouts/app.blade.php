@@ -35,16 +35,30 @@
         <meta name="twitter:description" content="{{ $pageDescription }}" />
         <meta name="twitter:image" content="{{ $pageOgImage }}" />
 
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="canonical" href="{{ $pageUrl }}" />
+        <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any" />
+        <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        />
+        <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
+            media="print"
+            onload="this.media = 'all'"
         />
+        <noscript>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+                rel="stylesheet"
+            />
+        </noscript>
 
         <script>
             // Immediately apply theme to avoid FOUC
@@ -99,9 +113,14 @@
             },
         }"
     >
-        <x-header>
-            {{ $headerRight ?? '' }}
-        </x-header>
+        <a
+            href="#main-content"
+            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:border-2 focus:border-neutral-900 focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-neutral-900 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:border-white dark:focus:bg-neutral-900 dark:focus:text-white dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+        >
+            Skip to main content
+        </a>
+
+        <x-header />
 
         <main id="main-content" class="flex-grow" tabindex="-1">
             {{ $slot }}

@@ -52,11 +52,4 @@ class ComponentController extends Controller
             'collection' => $collection,
         ]);
     }
-
-    public function og(string $collection, string $category, string $slug): View
-    {
-        $uiComponent = Component::where('slug', $slug)->where('category', $category)->firstOrFail();
-
-        return view('pages.components.og.show', ['uiComponent' => $uiComponent]);
-    }
 }

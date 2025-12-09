@@ -14,8 +14,7 @@
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/volt": "^1.7.0",
-        "ryangjchandler/orbit": "^1.4",
-        "spatie/browsershot": "^5.1"
+        "ryangjchandler/orbit": "^1.4"
     },
     "require-dev": {
         "driftingly/rector-laravel": "^2.1",

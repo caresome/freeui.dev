@@ -13,4 +13,3 @@ Route::get('/collections/{collection}', [CollectionController::class, 'show'])->
 Route::get('/{collection}/{category}', [ComponentController::class, 'category'])->name('components.category');
 Route::get('/{collection}/{category}/{slug}', [ComponentController::class, 'show'])->name('components.show');
 Route::get('/{collection}/{category}/{slug}/preview', [ComponentController::class, 'preview'])->name('components.preview');
-Route::get('/{collection}/{category}/{slug}/og', [ComponentController::class, 'og'])->name('components.og');
