@@ -36,6 +36,7 @@
         <meta name="twitter:image" content="{{ $pageOgImage }}" />
 
         <link rel="canonical" href="{{ $pageUrl }}" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any" />
         <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}" />
