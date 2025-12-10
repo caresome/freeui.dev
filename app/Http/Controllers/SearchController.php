@@ -1,30 +1,28 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Component as UiComponent;
-use Illuminate\Contracts\View\View;
-use Livewire\Attributes\Computed;
-use Livewire\Component;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class CommandPalette extends Component
+class SearchController extends Controller
 {
-    public string $search = '';
-
-    #[Computed]
-    public function results(): \Illuminate\Support\Collection
+    public function __invoke(Request $request): JsonResponse
     {
-        if (strlen($this->search) < 2) {
-            return collect();
+        $search = $request->get('q', '');
+
+        if (strlen((string) $search) < 2) {
+            return response()->json([]);
         }
 
-        $term = '%'.$this->search.'%';
+        $term = '%'.$search.'%';
 
         $collections = Collection::where('title', 'like', $term)
             ->whereHas('categories.components')
-            ->limit(3)
+            ->limit(config('freeui.pagination.command_palette.collections', 3))
             ->get()
             ->map(fn ($c): array => [
                 'type' => 'collection',
@@ -37,7 +35,7 @@ class CommandPalette extends Component
         $categories = Category::with('collectionModel')
             ->where('title', 'like', $term)
             ->whereHas('components')
-            ->limit(5)
+            ->limit(config('freeui.pagination.command_palette.categories', 5))
             ->get()
             ->map(fn ($c): array => [
                 'type' => 'category',
@@ -52,7 +50,7 @@ class CommandPalette extends Component
 
         $components = UiComponent::with('categoryModel.collectionModel')
             ->where('title', 'like', $term)
-            ->limit(10)
+            ->limit(config('freeui.pagination.command_palette.components', 10))
             ->get()
             ->map(fn ($c): array => [
                 'type' => 'component',
@@ -66,11 +64,8 @@ class CommandPalette extends Component
                 'icon' => 'heroicon-o-cube',
             ]);
 
-        return $collections->concat($categories)->concat($components);
-    }
-
-    public function render(): View
-    {
-        return view('livewire.command-palette');
+        return response()->json(
+            $collections->concat($categories)->concat($components)->values()
+        );
     }
 }

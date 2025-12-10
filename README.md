@@ -2,6 +2,15 @@
 
 Free, open-source Tailwind CSS components.
 
+## Built With
+
+Components are built and tested with:
+
+- **Tailwind CSS** 4.0
+- **Alpine.js** 3.x
+
+Components may work with older versions but are primarily developed against the above.
+
 ## How to Contribute
 
 Create a markdown file in `content/components/`:

@@ -25,10 +25,16 @@
                 </a>
             </div>
         </div>
-        <div class="mt-8 border-t-2 border-dashed border-neutral-200 pt-8 text-center dark:border-neutral-800">
-            <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                &copy; {{ date('Y') }} FreeUI. Open source and free forever.
-            </p>
+        <div class="mt-8 border-t-2 border-dashed border-neutral-200 pt-8 dark:border-neutral-800">
+            <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+                <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                    &copy; {{ date('Y') }} FreeUI. Open source and free forever.
+                </p>
+                <p class="text-xs text-neutral-500 dark:text-neutral-500">
+                    Built for Tailwind CSS {{ config('freeui.tailwind_version') }} + Alpine.js
+                    {{ config('freeui.alpine_version') }}
+                </p>
+            </div>
         </div>
     </div>
 </footer>

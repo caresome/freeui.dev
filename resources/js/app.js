@@ -1,3 +1,4 @@
+import Alpine from 'alpinejs';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -14,3 +15,6 @@ hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('json', json);
 
 window.hljs = hljs;
+window.Alpine = Alpine;
+
+Alpine.start();
