@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Collection;
 use App\Models\Component;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class ComponentController extends Controller
@@ -47,36 +46,6 @@ class ComponentController extends Controller
             'uiComponent' => $uiComponent,
             'collection' => $collection,
         ]);
-    }
-
-    /**
-     * Return component data as JSON for AI tools (v0, Lovable, etc.)
-     */
-    public function registry(string $collection, string $category, string $slug): JsonResponse
-    {
-        $uiComponent = $this->findComponent($category, $slug);
-
-        $registryData = [
-            '$schema' => config('freeui.registry_schema'),
-            'name' => $uiComponent->slug,
-            'type' => 'registry:block',
-            'description' => $uiComponent->title.' - A Tailwind CSS component from FreeUI',
-            'files' => [
-                [
-                    'path' => "components/{$uiComponent->slug}.html",
-                    'content' => $uiComponent->content,
-                    'type' => 'registry:component',
-                ],
-            ],
-            'meta' => [
-                'source' => 'FreeUI',
-                'sourceUrl' => url("/{$uiComponent->categoryModel->collection}/{$uiComponent->category}/{$uiComponent->slug}"),
-                'category' => $uiComponent->categoryModel->title ?? $uiComponent->category,
-                'collection' => $uiComponent->categoryModel->collectionModel->title ?? $uiComponent->categoryModel->collection,
-            ],
-        ];
-
-        return response()->json($registryData);
     }
 
     /**
