@@ -1,12 +1,12 @@
 @props([
     'title' => null,
-    'description' => 'Free, open-source UI components for your next project. Copy and paste beautiful Tailwind CSS components.',
+    'description' => 'Free, open-source Tailwind CSS and Alpine.js components. Copy, paste, and build amazing projects faster.',
     'ogImage' => null,
     'ogUrl' => null,
 ])
 
 @php
-    $pageTitle = $title ? $title . ' - FreeUI' : 'FreeUI - Free Tailwind CSS Components';
+    $pageTitle = $title ? $title . ' - FreeUI' : 'FreeUI - Free Tailwind CSS & Alpine.js Components';
     $pageDescription = $description;
     $pageOgImage = $ogImage ?? asset('og-default.png');
     $pageUrl = $ogUrl ?? url()->current();

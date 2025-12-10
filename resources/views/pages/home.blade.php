@@ -28,7 +28,8 @@
 
                 <!-- Description -->
                 <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-                    Free, open-source Tailwind CSS components. Copy, paste, and build amazing projects faster than ever.
+                    Free, open-source Tailwind CSS and Alpine.js components. Copy, paste, and build amazing projects
+                    faster than ever.
                 </p>
 
                 <!-- CTAs -->

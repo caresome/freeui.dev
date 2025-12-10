@@ -259,8 +259,21 @@
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10">
                             <template x-if="!boltCopied">
                                 <div class="flex items-center gap-3">
-                                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                        <path d="M11 15H6L13 1V9H18L11 23V15Z" />
+                                    <svg
+                                        class="h-4 w-4"
+                                        viewBox="0 0 512 512"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        stroke-linejoin="round"
+                                        stroke-miterlimit="2"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M505.998 130.999v250c0 69-56 124.999-125 124.999h-250C62 505.998 6 449.998 6 380.998v-250C6 62 62 6 131 6h250c69 0 124.999 56 124.999 125z"
+                                            fill="currentColor" />
+                                        <path
+                                            d="M276.124 373.905c-22.625 0-44.844-8.063-57.594-25.438l-4.5 20.469-83.031 43.312 8.969-43.312 60.468-269.187h74.031l-21.375 94.875c17.25-18.563 33.313-25.438 53.875-25.438 44.406 0 74.031 28.688 74.031 81.156 0 54.125-34.125 123.563-104.874 123.563zm28.374-108.219c0 25.031-18.093 44.031-41.562 44.031-13.156 0-25.062-4.844-32.875-13.344l11.5-49.656c8.625-8.468 18.5-13.312 30.031-13.312 17.688 0 32.906 12.906 32.906 32.281z"
+                                            fill="#fff" />
                                     </svg>
                                     <span>Copy for Bolt</span>
                                 </div>
@@ -530,9 +543,9 @@
                             body > * { margin-left: auto !important; margin-right: auto !important; }
                         </style>
                     </head>
-                    <body class="antialiased font-sans">
-                        <div class="p-4">
-                        ${content}
+                    <body class="antialiased font-sans h-full">
+                        <div class="p-4 flex items-center justify-center h-full">
+                            <div class="w-full">${content}</div>
                         </div>
                         <script type="text/javascript">
                             (function() {

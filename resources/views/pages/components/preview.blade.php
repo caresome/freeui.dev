@@ -32,7 +32,7 @@
     @endif
 
     <div class="mx-auto flex h-[calc(100vh-75px)] w-full items-center justify-center overflow-y-auto bg-transparent">
-        <div>
+        <div class="w-full">
             {!! $uiComponent->content !!}
         </div>
     </div>

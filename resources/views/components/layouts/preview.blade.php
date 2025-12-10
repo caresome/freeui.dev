@@ -1,6 +1,6 @@
 @props([
     'title' => null,
-    'description' => 'Free, open-source UI components for your next project. Copy and paste beautiful Tailwind CSS components.',
+    'description' => 'Free, open-source Tailwind CSS and Alpine.js components. Copy, paste, and build amazing projects faster.',
     'ogImage' => null,
     'ogUrl' => null,
     'componentContent' => '',

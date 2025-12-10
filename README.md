@@ -1,6 +1,6 @@
 # FreeUI
 
-Free, open-source Tailwind CSS components.
+Free, open-source Tailwind CSS and Alpine.js components.
 
 ## Built With
 

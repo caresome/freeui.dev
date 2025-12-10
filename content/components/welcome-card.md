@@ -14,7 +14,7 @@ github: caresome
         </div>
         <h2 class="mb-3 text-2xl font-bold text-neutral-900 dark:text-white">Welcome to FreeUI</h2>
         <p class="mb-6 text-neutral-600 dark:text-neutral-400">
-            Free, open-source Tailwind CSS components. Copy, paste, and build something amazing.
+            Free, open-source Tailwind CSS and Alpine.js components. Copy, paste, and build something amazing.
         </p>
         <a
             href="https://github.com/ankitthapa/freeui"
