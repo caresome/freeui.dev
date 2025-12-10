@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Removing\Rector\FuncCall\RemoveFuncCallRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use RectorLaravel\Set\LaravelSetList;
@@ -24,4 +25,11 @@ return RectorConfig::configure()
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
         LaravelSetList::LARAVEL_110,
+    ])
+    ->withConfiguredRule(RemoveFuncCallRector::class, [
+        'dd',
+        'dump',
+        'var_dump',
+        'print_r',
+        'ray',
     ]);
