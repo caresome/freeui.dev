@@ -46,19 +46,16 @@
         <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
             media="print"
-            onload="this.media = 'all'"
-        />
+            onload="this.media = 'all'" />
         <noscript>
             <link
                 href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-                rel="stylesheet"
-            />
+                rel="stylesheet" />
         </noscript>
 
         <x-theme-scripts />
@@ -90,12 +87,10 @@
                         window.matchMedia('(prefers-color-scheme: dark)').matches)
                 document.documentElement.classList.toggle('dark', isDark)
             },
-        }"
-    >
+        }">
         <a
             href="#main-content"
-            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:border-2 focus:border-neutral-900 focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-neutral-900 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:border-white dark:focus:bg-neutral-900 dark:focus:text-white dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-        >
+            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:border-2 focus:border-neutral-900 focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-neutral-900 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:border-white dark:focus:bg-neutral-900 dark:focus:text-white dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
             Skip to main content
         </a>
 

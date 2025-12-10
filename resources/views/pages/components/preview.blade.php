@@ -1,7 +1,6 @@
 <x-layouts.preview
     :title="$uiComponent->title . ' - Preview'"
-    description="A free UI component for your next project."
->
+    description="A free UI component for your next project.">
     <x-slot:headerRight>
         <div
             x-data="{
@@ -63,12 +62,10 @@
                     this.copied = true
                     setTimeout(() => (this.copied = false), 2000)
                 },
-            }"
-        >
+            }">
             <button
                 @click="share()"
-                class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-bold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
-            >
+                class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-bold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]">
                 <template x-if="!copied">
                     <div class="flex items-center gap-2">
                         <x-heroicon-o-share class="h-4 w-4" />
@@ -95,13 +92,11 @@
             <a
                 href="{{ $profile }}"
                 target="_blank"
-                class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-            >
+                class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
                 <img
                     src="{{ $avatar }}"
                     alt="{{ $uiComponent->github }}"
-                    class="h-8 w-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white"
-                />
+                    class="h-8 w-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white" />
                 <div class="flex flex-col">
                     <span class="text-left text-[10px] leading-tight text-neutral-600 dark:text-neutral-400">
                         Contributed by

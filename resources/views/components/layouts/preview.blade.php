@@ -45,19 +45,16 @@
         <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
             media="print"
-            onload="this.media = 'all'"
-        />
+            onload="this.media = 'all'" />
         <noscript>
             <link
                 href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-                rel="stylesheet"
-            />
+                rel="stylesheet" />
         </noscript>
 
         <x-theme-scripts />
@@ -89,8 +86,7 @@
                         window.matchMedia('(prefers-color-scheme: dark)').matches)
                 document.documentElement.classList.toggle('dark', isDark)
             },
-        }"
-    >
+        }">
         <x-header-preview>
             {{ $headerRight ?? '' }}
         </x-header-preview>

@@ -13,8 +13,7 @@
                         'url' => route('components.category', ['collection' => $uiComponent->categoryModel->collection, 'category' => $uiComponent->category]),
                     ],
                     ['label' => $uiComponent->title],
-                ]"
-            />
+                ]" />
 
             <!-- Header -->
             <div class="mb-8">
@@ -32,8 +31,7 @@
                 :category="$uiComponent->category"
                 :username="$uiComponent->github"
                 :author-avatar="$uiComponent->avatar_url"
-                :author-url="$uiComponent->github_url"
-            />
+                :author-url="$uiComponent->github_url" />
         </div>
     </section>
 </x-layouts.app>

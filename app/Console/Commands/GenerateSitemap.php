@@ -23,8 +23,6 @@ class GenerateSitemap extends Command
 
         $sitemap->add(Url::create('/')->setPriority(1.0));
 
-        $sitemap->add(Url::create('/collections')->setPriority(0.9));
-
         Collection::whereHas('categories.components')->get()->each(function ($collection) use ($sitemap): void {
             $sitemap->add(
                 Url::create(route('collections.show', $collection->slug))

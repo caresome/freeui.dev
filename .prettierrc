@@ -5,12 +5,23 @@
             "files": "*.blade.php",
             "options": {
                 "parser": "blade",
-                "tabWidth": 4
+                "tabWidth": 4,
+                "bracketSameLine": true
+            }
+        },
+        {
+            "files": ["*.html", "content/components/**/*.md"],
+            "options": {
+                "parser": "html",
+                "tabWidth": 4,
+                "printWidth": 120,
+                "bracketSameLine": true
             }
         }
     ],
     "tailwindFunctions": ["class"],
     "printWidth": 120,
     "tabWidth": 4,
-    "singleQuote": true
+    "singleQuote": true,
+    "bracketSameLine": true
 }
