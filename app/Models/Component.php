@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -56,7 +57,7 @@ class Component extends Model
      */
     public function getGithubUrlAttribute(): string
     {
-        return "https://github.com/{$this->github}";
+        return config('freeui.github_base_url', 'https://github.com/').$this->github;
     }
 
     /**
@@ -64,7 +65,7 @@ class Component extends Model
      */
     public function getAvatarUrlAttribute(): string
     {
-        return "https://github.com/{$this->github}.png";
+        return config('freeui.github_base_url', 'https://github.com/').$this->github.'.png';
     }
 
     /**
@@ -73,5 +74,21 @@ class Component extends Model
     public function categoryModel(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category', 'slug');
+    }
+
+    /**
+     * Scope to eager load category and collection relationships.
+     */
+    public function scopeWithRelations(Builder $query): Builder
+    {
+        return $query->with('categoryModel.collectionModel');
+    }
+
+    /**
+     * Scope to find a component by category and slug.
+     */
+    public function scopeBySlug(Builder $query, string $category, string $slug): Builder
+    {
+        return $query->where('slug', $slug)->where('category', $category);
     }
 }

@@ -44,7 +44,7 @@ class GenerateSitemap extends Command
                 );
             });
 
-        Component::with('categoryModel')->get()->each(function ($component) use ($sitemap): void {
+        Component::with('categoryModel.collectionModel')->get()->each(function ($component) use ($sitemap): void {
             $sitemap->add(
                 Url::create(route('components.show', [
                     'collection' => $component->categoryModel->collection,

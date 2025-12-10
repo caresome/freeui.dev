@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -48,5 +49,23 @@ class Collection extends Model
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class, 'collection', 'slug');
+    }
+
+    /**
+     * Scope to only include collections that have components.
+     */
+    public function scopeWithComponents(Builder $query): Builder
+    {
+        return $query->whereHas('categories.components');
+    }
+
+    /**
+     * Scope to eager load categories with component counts.
+     */
+    public function scopeWithCategoriesAndCounts(Builder $query): Builder
+    {
+        return $query->with(['categories' => function ($q): void {
+            $q->whereHas('components')->withCount('components');
+        }]);
     }
 }

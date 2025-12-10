@@ -9,10 +9,8 @@ class HomeController extends Controller
 {
     public function __invoke(): View
     {
-        $collections = Collection::with(['categories' => function ($query): void {
-            $query->whereHas('components')->orderBy('title');
-        }])
-            ->whereHas('categories.components')
+        $collections = Collection::withComponents()
+            ->with(['categories' => fn ($query) => $query->whereHas('components')->orderBy('title')])
             ->orderBy('title')
             ->get();
 
