@@ -3,6 +3,11 @@
     'description' => 'Free, open-source UI components for your next project. Copy and paste beautiful Tailwind CSS components.',
     'ogImage' => null,
     'ogUrl' => null,
+    'componentContent' => '',
+    'componentTitle' => '',
+    'collection' => null,
+    'category' => null,
+    'slug' => null,
 ])
 
 @php
@@ -10,6 +15,7 @@
     $pageDescription = $description;
     $pageOgImage = $ogImage ?? asset('og-default.png');
     $pageUrl = $ogUrl ?? url()->current();
+    $codeUrl = $collection && $category && $slug ? route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) : null;
 @endphp
 
 <!DOCTYPE html>
@@ -66,33 +72,153 @@
 
     <body
         class="flex min-h-full flex-col bg-stone-50 font-sans transition-colors duration-200 dark:bg-neutral-950"
-        x-data="{
-            theme: localStorage.getItem('theme') || 'system',
-            init() {
-                this.$watch('theme', (val) => {
-                    localStorage.setItem('theme', val)
-                    this.updateTheme()
-                })
-                window
-                    .matchMedia('(prefers-color-scheme: dark)')
-                    .addEventListener('change', () => {
-                        if (this.theme === 'system') this.updateTheme()
-                    })
-            },
-            updateTheme() {
-                let isDark =
-                    this.theme === 'dark' ||
-                    (this.theme === 'system' &&
-                        window.matchMedia('(prefers-color-scheme: dark)').matches)
-                document.documentElement.classList.toggle('dark', isDark)
-            },
-        }">
+        x-data="previewPage({
+                    rawCode: @js($componentContent),
+                    title: @js($componentTitle),
+                    codeUrl: @js($codeUrl),
+                })">
         <x-header-preview>
             {{ $headerRight ?? '' }}
         </x-header-preview>
 
-        <main class="flex-grow">
+        <main class="m-3 mt-0 rounded-2xl bg-neutral-200 dark:bg-neutral-900">
             {{ $slot }}
         </main>
+
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('previewPage', (config = {}) => ({
+                    // Theme
+                    theme: localStorage.getItem('theme') || 'system',
+
+                    // Copy states
+                    copied: false,
+                    aiPromptCopied: false,
+                    boltCopied: false,
+                    replitCopied: false,
+                    aiMenuOpen: false,
+
+                    // Config
+                    rawCode: config.rawCode || '',
+                    title: config.title || 'Component',
+                    codeUrl: config.codeUrl || null,
+
+                    init() {
+                        this.$watch('theme', (val) => {
+                            localStorage.setItem('theme', val);
+                            this.updateTheme();
+                        });
+                        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                            if (this.theme === 'system') this.updateTheme();
+                        });
+                    },
+
+                    updateTheme() {
+                        let isDark =
+                            this.theme === 'dark' ||
+                            (this.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                        document.documentElement.classList.toggle('dark', isDark);
+                    },
+
+                    async copyToClipboard(text) {
+                        try {
+                            if (navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext) {
+                                await navigator.clipboard.writeText(text);
+                                return true;
+                            }
+                        } catch (err) {}
+
+                        // Legacy fallback
+                        try {
+                            const textArea = document.createElement('textarea');
+                            textArea.value = text;
+                            textArea.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+                            document.body.appendChild(textArea);
+                            textArea.focus();
+                            textArea.select();
+                            const success = document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            return success;
+                        } catch (err) {
+                            return false;
+                        }
+                    },
+
+                    async copyCode() {
+                        if (await this.copyToClipboard(this.rawCode)) {
+                            this.copied = true;
+                            setTimeout(() => (this.copied = false), 2000);
+                        }
+                    },
+
+                    async copyAiPrompt() {
+                        const prompt = `Here's a Tailwind CSS component called "${this.title}" from FreeUI (https://freeui.dev).
+You can view the code here: ${this.codeUrl}
+
+Ready to use - just paste into your project. Ask me to customize colors, layout, or functionality.`;
+
+                        if (await this.copyToClipboard(prompt)) {
+                            this.aiPromptCopied = true;
+                            setTimeout(() => (this.aiPromptCopied = false), 2000);
+                        }
+                    },
+
+                    getAiPrompt() {
+                        return `I have this Tailwind CSS component called "${this.title}" from FreeUI.
+You can view the code here: ${this.codeUrl}
+
+Help me understand and customize this component.`;
+                    },
+
+                    openInLovable() {
+                        const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component:
+
+\`\`\`html
+${this.rawCode}
+\`\`\`
+
+Render it centered on the page with proper styling.`;
+                        window.open(
+                            `https://lovable.dev/?autosubmit=true#prompt=${encodeURIComponent(prompt)}`,
+                            '_blank',
+                        );
+                    },
+
+                    openInChatGPT() {
+                        const prompt = this.getAiPrompt();
+                        window.open(`https://chatgpt.com/?q=${encodeURIComponent(prompt)}`, '_blank');
+                    },
+
+                    openInClaude() {
+                        const prompt = this.getAiPrompt();
+                        window.open(`https://claude.ai/new?q=${encodeURIComponent(prompt)}`, '_blank');
+                    },
+
+                    async copyForBolt() {
+                        const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component.
+You can view the code here: ${this.codeUrl}
+
+Render it centered on the page with proper styling.`;
+
+                        if (await this.copyToClipboard(prompt)) {
+                            this.boltCopied = true;
+                            setTimeout(() => (this.boltCopied = false), 2000);
+                        }
+                    },
+
+                    async copyForReplit() {
+                        const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component.
+You can view the code here: ${this.codeUrl}
+
+Render it centered on the page with proper styling.`;
+
+                        if (await this.copyToClipboard(prompt)) {
+                            this.replitCopied = true;
+                            setTimeout(() => (this.replitCopied = false), 2000);
+                        }
+                    },
+                }));
+            });
+        </script>
     </body>
 </html>
