@@ -2,7 +2,7 @@
     <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
         <a href="/" class="group flex items-center gap-2">
             <div
-                class="flex h-8 w-8 items-center justify-center rounded-xl border-2 border-neutral-900 bg-neutral-900 text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] transition-all group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none group-focus-visible:translate-x-[2px] group-focus-visible:translate-y-[2px] group-focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]"
+                class="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-neutral-900 bg-neutral-900 text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] transition-all group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none group-focus-visible:translate-x-[2px] group-focus-visible:translate-y-[2px] group-focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]"
             >
                 <span class="text-sm font-black">F</span>
             </div>
