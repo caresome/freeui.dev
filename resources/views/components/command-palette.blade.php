@@ -4,12 +4,17 @@
         search: '',
         results: [],
         selectedIndex: 0,
-        loading: false,
-        debounceTimer: null,
+        fuse: null,
+        searchData: @js($searchData),
         get resultsCount() {
             return this.results.length
         },
         init() {
+            this.fuse = new Fuse(this.searchData, {
+                keys: ['title', 'breadcrumb'],
+                threshold: 0.4,
+                includeScore: true,
+            })
             this.$watch('open', (value) => {
                 if (value) {
                     document.body.style.overflow = 'hidden'
@@ -23,23 +28,12 @@
             })
             this.$watch('search', (value) => {
                 this.selectedIndex = 0
-                if (this.debounceTimer) clearTimeout(this.debounceTimer)
                 if (value.length < 2) {
                     this.results = []
                     return
                 }
-                this.debounceTimer = setTimeout(() => this.fetchResults(), 150)
+                this.results = this.fuse.search(value).map(r => r.item)
             })
-        },
-        async fetchResults() {
-            this.loading = true
-            try {
-                const response = await fetch(`/api/search?q=${encodeURIComponent(this.search)}`)
-                this.results = await response.json()
-            } catch (e) {
-                this.results = []
-            }
-            this.loading = false
         },
         toggle() {
             this.open = !this.open
@@ -177,7 +171,7 @@
                     </div>
                 </template>
 
-                <template x-if="search.length >= 2 && results.length === 0 && ! loading">
+                <template x-if="search.length >= 2 && results.length === 0">
                     <div class="px-3 py-6 text-center">
                         <p class="text-sm text-neutral-500 dark:text-neutral-400">
                             No results for "

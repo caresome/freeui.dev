@@ -23,21 +23,4 @@ return [
     */
     'tailwind_version' => '4.0',
     'alpine_version' => '3.0',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Pagination Settings
-    |--------------------------------------------------------------------------
-    |
-    | Default pagination limits for various parts of the application.
-    |
-    */
-    'pagination' => [
-        'search_results' => 12,
-        'command_palette' => [
-            'collections' => 3,
-            'categories' => 5,
-            'components' => 10,
-        ],
-    ],
 ];

@@ -1,30 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services;
 
 use App\Models\Category;
 use App\Models\Collection;
-use App\Models\Component as UiComponent;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Models\Component;
 
-class SearchController extends Controller
+class SearchDataProvider
 {
-    public function __invoke(Request $request): JsonResponse
+    /**
+     * Get all searchable data for the command palette.
+     *
+     * @return array<int, array{type: string, title: string, url: string, breadcrumb: string|null, icon: string}>
+     */
+    public function getSearchData(): array
     {
-        $search = $request->get('q', '');
-
-        if (strlen((string) $search) < 2) {
-            return response()->json([]);
-        }
-
-        $term = '%'.$search.'%';
-
-        $collections = Collection::where('title', 'like', $term)
-            ->whereHas('categories.components')
-            ->limit(config('freeui.pagination.command_palette.collections', 3))
+        $collections = Collection::whereHas('categories.components')
             ->get()
-            ->map(fn ($c): array => [
+            ->map(fn (Collection $c): array => [
                 'type' => 'collection',
                 'title' => $c->title,
                 'url' => route('collections.show', $c->slug),
@@ -33,11 +26,9 @@ class SearchController extends Controller
             ]);
 
         $categories = Category::with('collectionModel')
-            ->where('title', 'like', $term)
             ->whereHas('components')
-            ->limit(config('freeui.pagination.command_palette.categories', 5))
             ->get()
-            ->map(fn ($c): array => [
+            ->map(fn (Category $c): array => [
                 'type' => 'category',
                 'title' => $c->title,
                 'url' => route('components.category', [
@@ -48,11 +39,9 @@ class SearchController extends Controller
                 'icon' => $c->icon ?? 'heroicon-o-folder',
             ]);
 
-        $components = UiComponent::with('categoryModel.collectionModel')
-            ->where('title', 'like', $term)
-            ->limit(config('freeui.pagination.command_palette.components', 10))
+        $components = Component::with('categoryModel.collectionModel')
             ->get()
-            ->map(fn ($c): array => [
+            ->map(fn (Component $c): array => [
                 'type' => 'component',
                 'title' => $c->title,
                 'url' => route('components.show', [
@@ -64,8 +53,6 @@ class SearchController extends Controller
                 'icon' => 'heroicon-o-cube',
             ]);
 
-        return response()->json(
-            $collections->concat($categories)->concat($components)->values()
-        );
+        return $collections->concat($categories)->concat($components)->values()->all();
     }
 }
