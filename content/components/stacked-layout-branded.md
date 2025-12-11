@@ -83,7 +83,7 @@ publish_at: 2024-01-05 00:00:00
                         >
                             <img
                                 class="h-7 w-7 rounded-full object-cover ring-1 ring-neutral-200 dark:ring-neutral-700"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                src="https://github.com/caresome.png"
                                 alt="User avatar"
                             />
                             <svg
@@ -114,8 +114,8 @@ publish_at: 2024-01-05 00:00:00
                             x-cloak
                         >
                             <div class="px-3 py-2">
-                                <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Tom Cook</p>
-                                <p class="text-xs text-neutral-500 dark:text-neutral-400">tom@example.com</p>
+                                <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Ankit Thapa</p>
+                                <p class="text-xs text-neutral-500 dark:text-neutral-400">caresome@proton.me</p>
                             </div>
                             <div class="my-1 h-px bg-neutral-200 dark:bg-neutral-800"></div>
                             <a
@@ -272,12 +272,12 @@ publish_at: 2024-01-05 00:00:00
                 <div class="flex items-center gap-3">
                     <img
                         class="h-10 w-10 rounded-full object-cover ring-1 ring-neutral-200 dark:ring-neutral-700"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src="https://github.com/caresome.png"
                         alt="User avatar"
                     />
                     <div>
-                        <div class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Tom Cook</div>
-                        <div class="text-xs text-neutral-500 dark:text-neutral-400">tom@example.com</div>
+                        <div class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Ankit Thapa</div>
+                        <div class="text-xs text-neutral-500 dark:text-neutral-400">caresome@proton.me</div>
                     </div>
                     <button
                         type="button"

@@ -155,12 +155,12 @@ publish_at: 2024-01-03 00:00:00
             >
                 <img
                     class="h-9 min-h-9 w-9 min-w-9 shrink-0 rounded-full object-cover ring-2 ring-neutral-700"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="https://github.com/caresome.png"
                     alt="User avatar"
                 />
                 <div :class="sidebarCollapsed ? 'lg:hidden' : ''" class="min-w-0 flex-1">
-                    <p class="truncate text-sm font-medium text-white">Tom Cook</p>
-                    <p class="truncate text-xs text-neutral-400">tom@example.com</p>
+                    <p class="truncate text-sm font-medium text-white">Ankit Thapa</p>
+                    <p class="truncate text-xs text-neutral-400">caresome@proton.me</p>
                 </div>
                 <svg
                     :class="sidebarCollapsed ? 'lg:hidden' : ''"
