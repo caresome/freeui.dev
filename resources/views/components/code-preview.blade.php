@@ -355,7 +355,7 @@
 
         {{-- Main Content Window --}}
         <div
-            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-auto rounded-b-[10px] border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
+            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-hidden rounded-b-[10px] border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
         >
             {{-- Preview Wrapper --}}
             <div
@@ -624,10 +624,14 @@
                 // 5. Iframe Specific Styles
                 const style = doc.createElement('style');
                 style.textContent = `
-                    html, body { height: 100%; margin: 0; padding: 0; }
+                    html, body {
+                        height: 100%;
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
+                    }
                     body {
                         background-color: transparent !important;
-                        overflow: auto;
                         visibility: hidden;
                     }
                     body.loaded { visibility: visible; }
@@ -637,7 +641,7 @@
 
                 // 6. Body Content
                 doc.body.className = 'font-sans antialiased';
-                doc.body.innerHTML = `<div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div>`;
+                doc.body.innerHTML = `<div class="flex h-full items-center justify-center overflow-auto"><div class="w-full">${content}</div></div>`;
 
                 // 7. Load Handler Script
                 const loadaryScript = doc.createElement('script');

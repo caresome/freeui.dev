@@ -135,18 +135,20 @@
                 // 4. Iframe Specific Styles
                 const style = doc.createElement('style');
                 style.textContent = `
-                    html, body { height: 100%; margin: 0; padding: 0; }
-                    body {
-                        visibility: hidden;
-                        overflow: auto;
+                    html, body {
+                        height: 100%;
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;
                     }
+                    body { visibility: hidden; }
                     body.loaded { visibility: visible; }
                 `;
                 doc.head.appendChild(style);
 
                 // 5. Body Content
                 doc.body.className = 'antialiased font-sans';
-                doc.body.innerHTML = `<div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div>`;
+                doc.body.innerHTML = `<div class="flex h-full items-center justify-center overflow-auto"><div class="w-full">${content}</div></div>`;
 
                 // 6. Load Handler Script
                 const loadaryScript = doc.createElement('script');
