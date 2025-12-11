@@ -65,7 +65,25 @@
         },
         goToSelected() {
             if (this.results[this.selectedIndex]) {
-                window.location.href = this.results[this.selectedIndex].url
+                const url = this.results[this.selectedIndex].url
+                const currentUrl = new URL(window.location.href)
+                const targetUrl = new URL(url, window.location.origin)
+
+                // Check if it's same page navigation (only hash differs)
+                if (currentUrl.pathname === targetUrl.pathname && targetUrl.hash) {
+                    this.close()
+                    // Small delay to let modal close, then scroll
+                    setTimeout(() => {
+                        const element = document.querySelector(targetUrl.hash)
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' })
+                        }
+                        // Update URL hash without triggering navigation
+                        history.pushState(null, '', targetUrl.hash)
+                    }, 100)
+                } else {
+                    window.location.href = url
+                }
             }
         },
         getIcon(iconName) {

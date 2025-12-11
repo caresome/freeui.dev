@@ -28,16 +28,6 @@ class ComponentController extends Controller
         ]);
     }
 
-    public function show(string $collection, string $category, string $slug): View
-    {
-        $uiComponent = $this->findComponent($category, $slug);
-
-        return view('pages.components.show', [
-            'uiComponent' => $uiComponent,
-            'collection' => $collection,
-        ]);
-    }
-
     public function preview(string $collection, string $category, string $slug): View
     {
         $uiComponent = $this->findComponent($category, $slug);

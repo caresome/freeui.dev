@@ -30,19 +30,59 @@
         </div>
     </section>
 
-    <section class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900">
+    <section
+        class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900"
+        x-data="{
+            copiedSlug: null,
+            async copyLink(slug) {
+                const url =
+                    window.location.origin + window.location.pathname + '#' + slug
+                try {
+                    await navigator.clipboard.writeText(url)
+                    this.copiedSlug = slug
+                    setTimeout(() => (this.copiedSlug = null), 2000)
+                } catch (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea')
+                    textArea.value = url
+                    textArea.style.cssText =
+                        'position:fixed;left:-9999px;top:0;opacity:0'
+                    document.body.appendChild(textArea)
+                    textArea.select()
+                    document.execCommand('copy')
+                    document.body.removeChild(textArea)
+                    this.copiedSlug = slug
+                    setTimeout(() => (this.copiedSlug = null), 2000)
+                }
+            },
+        }"
+    >
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="space-y-12">
                 @foreach ($components as $uiComponent)
                     <div class="scroll-mt-20" id="{{ $uiComponent->slug }}">
                         <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                             <div class="flex flex-wrap items-center gap-3">
-                                <a
-                                    href="{{ route('components.show', ['collection' => $collection->slug, 'category' => $uiComponent->category, 'slug' => $uiComponent->slug]) }}"
-                                    class="text-xl font-bold text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:text-neutral-600 dark:text-white dark:hover:text-neutral-400 dark:focus-visible:text-neutral-400"
-                                >
+                                <h2 class="text-xl font-bold text-neutral-900 dark:text-white">
                                     {{ $uiComponent->title }}
-                                </a>
+                                </h2>
+                                <button
+                                    @click="copyLink('{{ $uiComponent->slug }}')"
+                                    class="group flex h-7 w-7 items-center justify-center rounded-lg border-2 border-neutral-900 bg-white text-neutral-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:text-neutral-900 focus-visible:shadow-none dark:border-white dark:bg-neutral-800 dark:text-neutral-400 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white dark:focus-visible:text-white"
+                                    :title="copiedSlug === '{{ $uiComponent->slug }}' ? 'Copied!' : 'Copy link'"
+                                >
+                                    <x-heroicon-o-link
+                                        class="h-3.5 w-3.5"
+                                        aria-hidden="true"
+                                        x-show="copiedSlug !== '{{ $uiComponent->slug }}'"
+                                    />
+                                    <x-heroicon-o-check
+                                        class="h-3.5 w-3.5 text-green-600 dark:text-green-400"
+                                        aria-hidden="true"
+                                        x-show="copiedSlug === '{{ $uiComponent->slug }}'"
+                                        x-cloak
+                                    />
+                                </button>
                                 @if ($uiComponent->dependencies)
                                     <div class="flex flex-wrap gap-1.5">
                                         @foreach ($uiComponent->dependencies as $dependency)

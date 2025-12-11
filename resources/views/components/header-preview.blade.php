@@ -10,6 +10,27 @@
         </a>
 
         <div class="flex items-center gap-2">
+            {{-- Search Button --}}
+            <button
+                x-on:click="$dispatch('open-command-palette')"
+                class="hidden h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-medium text-neutral-600 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:flex dark:border-white dark:bg-neutral-900 dark:text-neutral-400 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white"
+            >
+                <x-heroicon-o-magnifying-glass class="h-4 w-4" aria-hidden="true" />
+                <span>Search</span>
+                <kbd
+                    class="ml-1 rounded-md border-2 border-neutral-900 bg-stone-50 px-1.5 py-0.5 text-xs font-bold dark:border-white dark:bg-neutral-800"
+                    x-text="navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'"
+                ></kbd>
+            </button>
+
+            {{-- Mobile Search Button --}}
+            <button
+                x-on:click="$dispatch('open-command-palette')"
+                class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+            >
+                <span class="sr-only">Search</span>
+                <x-heroicon-o-magnifying-glass class="h-5 w-5" aria-hidden="true" />
+            </button>
             {{-- Theme Toggle --}}
             <button
                 @click="theme = theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')"

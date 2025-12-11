@@ -75,15 +75,14 @@ class SearchDataProvider
             'icon' => $c->icon ?? 'heroicon-o-folder',
         ]);
 
-        // Map components to search format
+        // Map components to search format (using hash URLs to scroll to component on category page)
         $componentData = $components->map(fn (Component $c): array => [
             'type' => 'component',
             'title' => $c->title,
-            'url' => route('components.show', [
+            'url' => route('components.category', [
                 'collection' => $c->categoryModel->collection ?? 'marketing',
                 'category' => $c->category,
-                'slug' => $c->slug,
-            ]),
+            ]).'#'.$c->slug,
             'breadcrumb' => ($c->categoryModel->collectionModel->title ?? '').' → '.($c->categoryModel->title ?? ''),
             'icon' => 'heroicon-o-cube',
         ]);

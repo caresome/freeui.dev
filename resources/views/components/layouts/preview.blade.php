@@ -91,6 +91,8 @@
             {{ $slot }}
         </main>
 
+        <x-command-palette />
+
         <script>
             document.addEventListener('alpine:init', () => {
                 Alpine.data('previewPage', (config = {}) => ({
