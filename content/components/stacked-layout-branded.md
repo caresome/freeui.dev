@@ -30,19 +30,19 @@ dependencies: []
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Team
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Projects
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Calendar
                         </a>
@@ -54,7 +54,7 @@ dependencies: []
                     <!-- Notification Button -->
                     <button
                         type="button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
                         aria-label="View notifications"
                     >
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -74,7 +74,7 @@ dependencies: []
                         <button
                             @click="userMenuOpen = !userMenuOpen"
                             type="button"
-                            class="flex items-center gap-2 rounded-md p-1.5 transition duration-150 hover:bg-neutral-100 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:hover:bg-neutral-800 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                            class="flex items-center gap-2 rounded-md p-1.5 transition-colors duration-150 hover:bg-neutral-100 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
                             :aria-expanded="userMenuOpen"
                             aria-haspopup="true"
                         >
@@ -84,7 +84,8 @@ dependencies: []
                                 alt="User avatar"
                             />
                             <svg
-                                class="h-4 w-4 text-neutral-500 dark:text-neutral-400"
+                                class="h-4 w-4 text-neutral-500 transition-transform duration-200 dark:text-neutral-400"
+                                :class="userMenuOpen && 'rotate-180'"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke-width="2"
@@ -189,7 +190,7 @@ dependencies: []
                     <button
                         @click="mobileMenuOpen = !mobileMenuOpen"
                         type="button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
                         :aria-expanded="mobileMenuOpen"
                         aria-controls="mobile-menu"
                         aria-label="Toggle menu"
@@ -247,19 +248,19 @@ dependencies: []
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Team
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Projects
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Calendar
                 </a>
@@ -277,7 +278,7 @@ dependencies: []
                     </div>
                     <button
                         type="button"
-                        class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                        class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
                         aria-label="View notifications"
                     >
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -342,7 +343,7 @@ dependencies: []
     <!-- Page Header -->
     <header class="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
         <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-wrap items-center justify-between gap-2">
                 <div>
                     <h1 class="text-lg font-semibold text-neutral-900 dark:text-neutral-50">Dashboard</h1>
                     <p class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -352,7 +353,7 @@ dependencies: []
                 <div class="flex items-center gap-2">
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition duration-150 hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                        class="inline-flex items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-colors duration-150 hover:bg-neutral-50 active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
                     >
                         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path
@@ -365,7 +366,7 @@ dependencies: []
                     </button>
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition duration-150 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                        class="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
                     >
                         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -407,7 +408,7 @@ dependencies: []
                 </p>
                 <button
                     type="button"
-                    class="mt-4 inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition duration-150 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus:ring-neutral-300 dark:focus:ring-offset-neutral-950"
+                    class="mt-4 inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
                 >
                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

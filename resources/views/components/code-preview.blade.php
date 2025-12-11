@@ -355,7 +355,7 @@
 
         {{-- Main Content Window --}}
         <div
-            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-hidden rounded-b-[10px] border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
+            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-auto rounded-b-[10px] border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
         >
             {{-- Preview Wrapper --}}
             <div
@@ -620,22 +620,19 @@
                 // 5. Iframe Specific Styles
                 const style = doc.createElement('style');
                 style.textContent = `
-                    html, body { min-height: 100%; }
+                    html, body { height: 100%; margin: 0; padding: 0; }
                     body {
                         background-color: transparent !important;
-                        margin: 0;
-                        padding: 0;
                         overflow: auto;
                         visibility: hidden;
                     }
                     body.loaded { visibility: visible; }
-                    body > * { margin-left: auto !important; margin-right: auto !important; }
                 `;
                 doc.head.appendChild(style);
 
                 // 6. Body Content
-                doc.body.className = 'h-full font-sans antialiased';
-                doc.body.innerHTML = `<div class="flex h-full items-center justify-center"><div class="w-full">${content}</div></div>`;
+                doc.body.className = 'font-sans antialiased';
+                doc.body.innerHTML = `<div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div>`;
 
                 // 7. Load Handler Script
                 const loadaryScript = doc.createElement('script');
@@ -661,6 +658,18 @@
                     })();
                 `;
                 doc.body.appendChild(loadaryScript);
+
+                // 8. Prevent hash links from affecting browser history
+                const preventHistoryScript = doc.createElement('script');
+                preventHistoryScript.textContent = `
+                    document.addEventListener('click', function(e) {
+                        const link = e.target.closest('a');
+                        if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
+                            e.preventDefault();
+                        }
+                    });
+                `;
+                doc.body.appendChild(preventHistoryScript);
 
                 // Ensure theme is synced
                 this.syncIframeTheme();

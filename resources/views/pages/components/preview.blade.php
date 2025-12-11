@@ -40,7 +40,7 @@
     @endif
 
     <div class="relative h-[calc(100vh-82px)] w-full overflow-hidden">
-        <iframe id="preview-iframe" class="h-full w-full rounded-xl border-0" tabindex="-1"></iframe>
+        <iframe id="preview-iframe" class="h-full w-full rounded-xl border-0"></iframe>
     </div>
 
     <script>
@@ -149,6 +149,18 @@
                     })();
                 `;
                 doc.body.appendChild(loadaryScript);
+
+                // 7. Prevent hash links from affecting browser history
+                const preventHistoryScript = doc.createElement('script');
+                preventHistoryScript.textContent = `
+                    document.addEventListener('click', function(e) {
+                        const link = e.target.closest('a');
+                        if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
+                            e.preventDefault();
+                        }
+                    });
+                `;
+                doc.body.appendChild(preventHistoryScript);
 
                 // Sync initial theme state
                 if (iframe.contentWindow && iframe.contentWindow.document) {
