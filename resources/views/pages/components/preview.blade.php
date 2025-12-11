@@ -39,7 +39,7 @@
         </div>
     @endif
 
-    <div class="relative h-[calc(100vh-75px)] w-full overflow-hidden">
+    <div class="relative h-[calc(100vh-82px)] w-full overflow-hidden">
         <iframe id="preview-iframe" class="h-full w-full rounded-xl border-0" tabindex="-1"></iframe>
     </div>
 

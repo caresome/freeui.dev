@@ -60,7 +60,7 @@
 
             <!-- GitHub -->
             <a
-                href="https://github.com/caresome/freeui.dev"
+                href="{{ config('freeui.github_repo') }}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"

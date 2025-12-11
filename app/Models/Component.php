@@ -94,6 +94,7 @@ class Component extends Model
     {
         return $query->where('slug', $slug)->where('category', $category);
     }
+
     protected function casts(): array
     {
         return [

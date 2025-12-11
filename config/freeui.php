@@ -13,14 +13,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Framework Versions
+    | Project Repository
     |--------------------------------------------------------------------------
     |
-    | The versions of Tailwind CSS and Alpine.js that components are built for.
-    | Used for display in the UI and README. Components may work with older
-    | versions but are primarily tested against these.
+    | The GitHub repository URL for the FreeUI project.
     |
     */
-    'tailwind_cdn' => 'https://unpkg.com/@tailwindcss/browser@4',
-    'alpine_cdn' => 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js',
+    'github_repo' => env('GITHUB_REPO', 'https://github.com/caresome/freeui.dev'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Framework CDNs
+    |--------------------------------------------------------------------------
+    |
+    | CDN URLs for Tailwind CSS and Alpine.js used in component previews.
+    | These can be overridden via environment variables if needed.
+    |
+    */
+    'tailwind_cdn' => env('TAILWIND_CDN', 'https://unpkg.com/@tailwindcss/browser@4'),
+    'alpine_cdn' => env('ALPINE_CDN', 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js'),
 ];

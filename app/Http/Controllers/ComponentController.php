@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Collection;
 use App\Models\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
@@ -12,11 +11,11 @@ class ComponentController extends Controller
 {
     public function category(string $collection, string $category): View
     {
-        $collectionModel = Collection::where('slug', $collection)->firstOrFail();
         $categoryModel = Category::with('collectionModel')
             ->where('slug', $category)
             ->where('collection', $collection)
             ->firstOrFail();
+
         $components = Component::with('categoryModel')
             ->where('category', $category)
             ->get();
@@ -24,7 +23,7 @@ class ComponentController extends Controller
         return view('pages.components.category', [
             'components' => $components,
             'category' => $categoryModel,
-            'collection' => $collectionModel,
+            'collection' => $categoryModel->collectionModel,
         ]);
     }
 
