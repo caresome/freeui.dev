@@ -39,19 +39,9 @@ publish_at: 2025-12-07 05:00:00
                 class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-105 active:scale-[0.98]"
             >
                 <span class="relative flex h-5 w-5 items-center justify-center">
-                    <span
-                        x-show="hovering !== index"
-                        x-transition:leave="transition ease-in duration-100"
-                        x-transition:leave-start="opacity-100 scale-100"
-                        x-transition:leave-end="opacity-0 scale-75"
-                        x-text="reaction.emoji"
-                        class="absolute text-base"
-                    ></span>
+                    <span x-show="hovering !== index" x-text="reaction.emoji" class="absolute text-base"></span>
                     <img
                         x-show="hovering === index"
-                        x-transition:enter="transition ease-out duration-150"
-                        x-transition:enter-start="opacity-0 scale-75"
-                        x-transition:enter-end="opacity-100 scale-100"
                         :src="getAnimatedUrl(reaction.code)"
                         class="absolute h-5 w-5"
                         :alt="reaction.emoji"

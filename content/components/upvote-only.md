@@ -20,20 +20,9 @@ publish_at: 2025-12-07 02:00:00
             class="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-[1.02] active:scale-[0.98]"
         >
             <span class="relative flex h-5 w-5 items-center justify-center">
-                <span
-                    x-show="!hovering"
-                    x-transition:leave="transition ease-in duration-100"
-                    x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-75"
-                    class="absolute text-base"
-                >
-                    👍
-                </span>
+                <span x-show="!hovering" class="absolute text-base">👍</span>
                 <img
                     x-show="hovering"
-                    x-transition:enter="transition ease-out duration-150"
-                    x-transition:enter-start="opacity-0 scale-75"
-                    x-transition:enter-end="opacity-100 scale-100"
                     src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f44d/512.webp"
                     class="absolute h-5 w-5"
                     alt="thumbs up"
