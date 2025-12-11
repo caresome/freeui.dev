@@ -40,7 +40,7 @@
     @endif
 
     <div class="relative h-[calc(100vh-82px)] w-full overflow-hidden">
-        <iframe id="preview-iframe" class="h-full w-full rounded-xl border-0"></iframe>
+        <iframe id="preview-iframe" title="Component preview" class="h-full w-full rounded-xl border-0"></iframe>
     </div>
 
     <script>

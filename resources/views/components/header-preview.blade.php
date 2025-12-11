@@ -54,6 +54,7 @@
                 {{-- Copy Action (Left) --}}
                 <button
                     @click="copyCode()"
+                    aria-label="Copy code"
                     class="group flex items-center gap-2 rounded-l-xl px-3 py-2 text-sm font-bold transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
                 >
                     <span x-show="!copied" class="flex items-center gap-2">

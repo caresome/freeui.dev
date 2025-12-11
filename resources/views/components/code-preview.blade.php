@@ -369,6 +369,7 @@
                 <div class="mx-auto h-full transition-[width] duration-300 ease-out" :style="{ width: previewWidth }">
                     <iframe
                         x-ref="previewFrame"
+                        title="Component preview"
                         class="max-h-[600px] min-h-[600px] w-full bg-neutral-200 dark:bg-neutral-800"
                         tabindex="-1"
                     ></iframe>
