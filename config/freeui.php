@@ -21,6 +21,6 @@ return [
     | versions but are primarily tested against these.
     |
     */
-    'tailwind_version' => '4.0',
-    'alpine_version' => '3.0',
+    'tailwind_cdn' => 'https://unpkg.com/@tailwindcss/browser@4',
+    'alpine_cdn' => 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js',
 ];

@@ -6,7 +6,8 @@
             "options": {
                 "parser": "blade",
                 "tabWidth": 4,
-                "bracketSameLine": true
+                "printWidth": 120,
+                "htmlWhitespaceSensitivity": "ignore"
             }
         },
         {
@@ -15,13 +16,12 @@
                 "parser": "html",
                 "tabWidth": 4,
                 "printWidth": 120,
-                "bracketSameLine": true
+                "htmlWhitespaceSensitivity": "ignore"
             }
         }
     ],
     "tailwindFunctions": ["class"],
     "printWidth": 120,
     "tabWidth": 4,
-    "singleQuote": true,
-    "bracketSameLine": true
+    "singleQuote": true
 }

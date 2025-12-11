@@ -1,4 +1,5 @@
 import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
 import Fuse from 'fuse.js';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
@@ -18,5 +19,8 @@ hljs.registerLanguage('json', json);
 window.hljs = hljs;
 window.Fuse = Fuse;
 window.Alpine = Alpine;
+
+// Register Alpine plugins
+Alpine.plugin(focus);
 
 Alpine.start();

@@ -15,6 +15,7 @@ use Orbit\Concerns\Orbital;
  * @property string $category
  * @property string|null $content
  * @property string|null $github
+ * @property array|null $dependencies
  * @property-read string $github_url
  * @property-read string $avatar_url
  * @property-read Category|null $categoryModel
@@ -36,6 +37,7 @@ class Component extends Model
         'category',
         'content',
         'github',
+        'dependencies',
     ];
 
     public static function getOrbitalPath(): string
@@ -50,6 +52,7 @@ class Component extends Model
         $table->string('category');
         $table->text('content')->nullable();
         $table->string('github')->nullable();
+        $table->json('dependencies')->nullable();
     }
 
     /**
@@ -90,5 +93,11 @@ class Component extends Model
     public function scopeBySlug(Builder $query, string $category, string $slug): Builder
     {
         return $query->where('slug', $slug)->where('category', $category);
+    }
+    protected function casts(): array
+    {
+        return [
+            'dependencies' => 'array',
+        ];
     }
 }

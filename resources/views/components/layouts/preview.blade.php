@@ -51,16 +51,19 @@
         <link
             rel="preload"
             as="style"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
             media="print"
-            onload="this.media = 'all'" />
+            onload="this.media = 'all'"
+        />
         <noscript>
             <link
                 href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-                rel="stylesheet" />
+                rel="stylesheet"
+            />
         </noscript>
 
         <x-theme-scripts />
@@ -76,12 +79,15 @@
                     rawCode: @js($componentContent),
                     title: @js($componentTitle),
                     codeUrl: @js($codeUrl),
-                })">
+                })"
+    >
         <x-header-preview>
             {{ $headerRight ?? '' }}
         </x-header-preview>
 
-        <main class="m-3 mt-0 rounded-2xl bg-neutral-200 dark:bg-neutral-900">
+        <main
+            class="relative m-4 mt-0 rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+        >
             {{ $slot }}
         </main>
 

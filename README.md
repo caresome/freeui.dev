@@ -21,6 +21,9 @@ slug: your-username-component-name
 title: Component Name
 category: cards
 github: your-github-username
+dependencies:
+    - https://cdn.jsdelivr.net/npm/some-library@version/dist/file.min.css
+    - https://cdn.jsdelivr.net/npm/some-library@version/dist/file.min.js
 ---
 
 <div class="p-8">
@@ -37,7 +40,7 @@ That's it! Submit a PR.
 1. **Dark mode required** - Use `dark:` variants
 2. **Accessible** - Semantic HTML, ARIA where needed
 3. **Tailwind only** - No custom CSS frameworks
-4. **CDNs allowed** - Alpine.js is included, other CDNs (GSAP, etc.) are fine
+4. **CDNs allowed** - Alpine.js & Tailwind are included automatically. For other libraries (Splide, Chart.js, etc.), list their CDN URLs in the `dependencies` frontmatter array.
 5. **Inline scripts/styles allowed** - Keep it self-contained
 
 ## Categories
