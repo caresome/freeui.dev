@@ -641,7 +641,7 @@
 
                 // 6. Body Content
                 doc.body.className = 'font-sans antialiased';
-                doc.body.innerHTML = `<div class="flex h-full items-center justify-center overflow-auto"><div class="w-full">${content}</div></div>`;
+                doc.body.innerHTML = `<div class="h-full overflow-auto"><div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div></div>`;
 
                 // 7. Load Handler Script
                 const loadaryScript = doc.createElement('script');
