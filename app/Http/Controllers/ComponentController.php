@@ -18,6 +18,7 @@ class ComponentController extends Controller
 
         $components = Component::with('categoryModel')
             ->where('category', $category)
+            ->orderBy('publish_at', 'desc')
             ->get();
 
         return view('pages.components.category', [

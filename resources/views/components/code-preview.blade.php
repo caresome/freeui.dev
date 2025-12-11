@@ -594,16 +594,12 @@
                 };
                 doc.head.appendChild(tailwindScript);
 
-                // Alpine CDN
-                const alpineScript = doc.createElement('script');
-                alpineScript.defer = true;
-                alpineScript.src = this.alpineCdn;
-                doc.head.appendChild(alpineScript);
-
-                // 4. Inject External Dependencies
+                // 4. Inject External Dependencies (Before Alpine)
                 if (this.dependencies && Array.isArray(this.dependencies)) {
                     this.dependencies.forEach((dep) => {
-                        const url = dep.trim();
+                        const firstSpace = dep.indexOf(' ');
+                        const url = firstSpace === -1 ? dep.trim() : dep.substring(firstSpace + 1).trim();
+
                         if (url.endsWith('.css')) {
                             const link = doc.createElement('link');
                             link.rel = 'stylesheet';
@@ -612,10 +608,17 @@
                         } else if (url.endsWith('.js')) {
                             const s = doc.createElement('script');
                             s.src = url;
+                            s.async = false; // Important: Force execution order
                             doc.head.appendChild(s);
                         }
                     });
                 }
+
+                // Alpine CDN
+                const alpineScript = doc.createElement('script');
+                alpineScript.async = false; // Important: Force execution order (after plugins)
+                alpineScript.src = this.alpineCdn;
+                doc.head.appendChild(alpineScript);
 
                 // 5. Iframe Specific Styles
                 const style = doc.createElement('style');

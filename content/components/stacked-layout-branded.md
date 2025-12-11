@@ -4,45 +4,48 @@ title: Stacked Layout Branded
 category: app-shells
 github: caresome
 dependencies: []
+publish_at: 2024-01-05 00:00:00
 ---
 
 <div x-data="{ mobileMenuOpen: false, userMenuOpen: false }" class="min-h-screen bg-neutral-50 dark:bg-neutral-950">
     <!-- Branded Navbar -->
-    <nav class="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <nav
+        class="border-b border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50/30 dark:border-neutral-800/80 dark:from-neutral-900 dark:to-neutral-900"
+    >
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-14 items-center justify-between">
                 <!-- Left side: Logo + Nav Links -->
                 <div class="flex items-center gap-6">
                     <!-- Logo -->
                     <a href="#" class="flex items-center gap-2">
-                        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white">
-                            <span class="text-sm font-bold text-white dark:text-neutral-900">F</span>
+                        <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white">
+                            <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
                         </div>
-                        <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">FreeUI</span>
+                        <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Caresome</span>
                     </a>
                     <!-- Desktop Nav Links -->
                     <div class="hidden md:flex md:items-center md:gap-1">
                         <a
                             href="#"
-                            class="rounded-md bg-neutral-100 px-3 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
+                            class="rounded-lg bg-neutral-100 px-3 py-1.5 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
                         >
                             Dashboard
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                            class="rounded-lg px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Team
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                            class="rounded-lg px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Projects
                         </a>
                         <a
                             href="#"
-                            class="rounded-md px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                            class="rounded-lg px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                         >
                             Calendar
                         </a>
@@ -54,10 +57,10 @@ dependencies: []
                     <!-- Notification Button -->
                     <button
                         type="button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
                         aria-label="View notifications"
                     >
-                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -105,7 +108,7 @@ dependencies: []
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 scale-95"
                             @keydown.escape.window="userMenuOpen = false"
-                            class="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-lg border border-neutral-200 bg-white p-1 shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
+                            class="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-xl border border-neutral-200/80 bg-white p-1 shadow-xl shadow-neutral-900/5 dark:border-neutral-800/80 dark:bg-neutral-950 dark:shadow-neutral-950/50"
                             role="menu"
                             aria-orientation="vertical"
                             x-cloak
@@ -117,14 +120,14 @@ dependencies: []
                             <div class="my-1 h-px bg-neutral-200 dark:bg-neutral-800"></div>
                             <a
                                 href="#"
-                                class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                                class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                                 role="menuitem"
                             >
                                 <svg
                                     class="h-4 w-4"
                                     fill="none"
                                     viewBox="0 0 24 24"
-                                    stroke-width="1.5"
+                                    stroke-width="2"
                                     stroke="currentColor"
                                 >
                                     <path
@@ -137,14 +140,14 @@ dependencies: []
                             </a>
                             <a
                                 href="#"
-                                class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                                class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                                 role="menuitem"
                             >
                                 <svg
                                     class="h-4 w-4"
                                     fill="none"
                                     viewBox="0 0 24 24"
-                                    stroke-width="1.5"
+                                    stroke-width="2"
                                     stroke="currentColor"
                                 >
                                     <path
@@ -163,14 +166,14 @@ dependencies: []
                             <div class="my-1 h-px bg-neutral-200 dark:bg-neutral-800"></div>
                             <a
                                 href="#"
-                                class="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                                class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                                 role="menuitem"
                             >
                                 <svg
                                     class="h-4 w-4"
                                     fill="none"
                                     viewBox="0 0 24 24"
-                                    stroke-width="1.5"
+                                    stroke-width="2"
                                     stroke="currentColor"
                                 >
                                     <path
@@ -200,7 +203,7 @@ dependencies: []
                             class="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
-                            stroke-width="1.5"
+                            stroke-width="2"
                             stroke="currentColor"
                         >
                             <path
@@ -215,7 +218,7 @@ dependencies: []
                             class="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
-                            stroke-width="1.5"
+                            stroke-width="2"
                             stroke="currentColor"
                         >
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -248,19 +251,19 @@ dependencies: []
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Team
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Projects
                 </a>
                 <a
                     href="#"
-                    class="block rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-800 dark:focus-visible:text-neutral-50"
                 >
                     Calendar
                 </a>
@@ -278,10 +281,10 @@ dependencies: []
                     </div>
                     <button
                         type="button"
-                        class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-md text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                        class="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
                         aria-label="View notifications"
                     >
-                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -293,9 +296,9 @@ dependencies: []
                 <div class="mt-3 space-y-1">
                     <a
                         href="#"
-                        class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                        class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -306,9 +309,9 @@ dependencies: []
                     </a>
                     <a
                         href="#"
-                        class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                        class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -324,9 +327,9 @@ dependencies: []
                     </a>
                     <a
                         href="#"
-                        class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                        class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -341,11 +344,13 @@ dependencies: []
     </nav>
 
     <!-- Page Header -->
-    <header class="border-b border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
-        <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+    <header class="border-b border-neutral-200/80 bg-white dark:border-neutral-800/80 dark:bg-neutral-900">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <div class="flex flex-wrap items-center justify-between gap-2">
                 <div>
-                    <h1 class="text-lg font-semibold text-neutral-900 dark:text-neutral-50">Dashboard</h1>
+                    <h1 class="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
+                        Dashboard
+                    </h1>
                     <p class="text-sm text-neutral-500 dark:text-neutral-400">
                         Welcome back, here's what's happening today.
                     </p>
@@ -353,9 +358,9 @@ dependencies: []
                 <div class="flex items-center gap-2">
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-colors duration-150 hover:bg-neutral-50 active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
+                        class="inline-flex items-center gap-2 rounded-lg border border-neutral-200/80 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:active:bg-neutral-600"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -366,9 +371,9 @@ dependencies: []
                     </button>
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
+                        class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                         New Project
@@ -379,20 +384,20 @@ dependencies: []
     </header>
 
     <!-- Main Content -->
-    <main class="py-6">
+    <main class="py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <!-- Content placeholder -->
             <div
-                class="rounded-lg border border-dashed border-neutral-300 bg-white p-12 text-center dark:border-neutral-700 dark:bg-neutral-900"
+                class="rounded-xl border border-dashed border-neutral-300 bg-white/80 p-12 text-center shadow-sm dark:border-neutral-700 dark:bg-neutral-900/80"
             >
                 <div
-                    class="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800"
+                    class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800"
                 >
                     <svg
                         class="h-6 w-6 text-neutral-500 dark:text-neutral-400"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="2"
                         stroke="currentColor"
                     >
                         <path
@@ -408,9 +413,9 @@ dependencies: []
                 </p>
                 <button
                     type="button"
-                    class="mt-4 inline-flex items-center gap-2 rounded-md bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
+                    class="mt-4 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
                 >
-                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                     Add Content

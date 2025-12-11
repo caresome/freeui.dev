@@ -103,9 +103,32 @@
                 };
                 doc.head.appendChild(tailwindScript);
 
+                // 4. Inject External Dependencies (Before Alpine)
+                @if ($uiComponent->dependencies)
+                    const dependencies = @js($uiComponent->dependencies);
+                    if (dependencies && Array.isArray(dependencies)) {
+                        dependencies.forEach((dep) => {
+                            const firstSpace = dep.indexOf(' ');
+                            const url = firstSpace === -1 ? dep.trim() : dep.substring(firstSpace + 1).trim();
+
+                            if (url.endsWith('.css')) {
+                                const link = doc.createElement('link');
+                                link.rel = 'stylesheet';
+                                link.href = url;
+                                doc.head.appendChild(link);
+                            } else if (url.endsWith('.js')) {
+                                const s = doc.createElement('script');
+                                s.src = url;
+                                s.async = false; // Important: Force execution order
+                                doc.head.appendChild(s);
+                            }
+                        });
+                    }
+                @endif
+
                 // Alpine CDN
                 const alpineScript = doc.createElement('script');
-                alpineScript.defer = true;
+                alpineScript.async = false; // Important: Force execution order (after plugins)
                 alpineScript.src = '{{ config('freeui.alpine_cdn') }}';
                 doc.head.appendChild(alpineScript);
 

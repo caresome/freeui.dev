@@ -46,10 +46,15 @@
                                 @if ($uiComponent->dependencies)
                                     <div class="flex flex-wrap gap-1.5">
                                         @foreach ($uiComponent->dependencies as $dependency)
+                                            @php
+                                                $parts = explode(' ', $dependency, 2);
+                                                $label = count($parts) === 2 ? $parts[0] : basename(parse_url($dependency, PHP_URL_PATH));
+                                            @endphp
+
                                             <span
                                                 class="inline-flex items-center rounded-md border-2 border-neutral-900 bg-white px-2 py-0.5 text-[10px] font-bold text-neutral-900 shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-800 dark:text-white dark:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)]"
                                             >
-                                                {{ basename(parse_url($dependency, PHP_URL_PATH)) }}
+                                                {{ $label }}
                                             </span>
                                         @endforeach
                                     </div>

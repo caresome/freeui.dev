@@ -38,6 +38,7 @@ class Component extends Model
         'content',
         'github',
         'dependencies',
+        'publish_at',
     ];
 
     public static function getOrbitalPath(): string
@@ -53,6 +54,7 @@ class Component extends Model
         $table->text('content')->nullable();
         $table->string('github')->nullable();
         $table->json('dependencies')->nullable();
+        $table->timestamp('publish_at')->nullable();
     }
 
     /**
@@ -99,6 +101,7 @@ class Component extends Model
     {
         return [
             'dependencies' => 'array',
+            'publish_at' => 'datetime',
         ];
     }
 }
