@@ -4,7 +4,7 @@ title: Stacked Layout Branded
 category: app-shells
 github: caresome
 dependencies: []
-publish_at: 2024-01-05 00:00:00
+publish_at: 2025-12-05 00:00:00
 ---
 
 <div x-data="{ mobileMenuOpen: false, userMenuOpen: false }" class="min-h-screen bg-neutral-50 dark:bg-neutral-950">

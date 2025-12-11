@@ -5,7 +5,7 @@ category: app-shells
 github: caresome
 dependencies:
     - alpinejs-persist@3.x https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js
-publish_at: 2024-01-01 00:00:00
+publish_at: 2025-12-01 00:00:00
 ---
 
 <div

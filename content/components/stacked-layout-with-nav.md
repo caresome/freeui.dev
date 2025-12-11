@@ -4,7 +4,7 @@ title: Stacked Layout With Nav
 category: app-shells
 github: caresome
 dependencies: []
-publish_at: 2024-01-06 00:00:00
+publish_at: 2025-12-06 00:00:00
 ---
 
 <div x-data="{ mobileMenuOpen: false }" class="min-h-screen bg-neutral-50 dark:bg-neutral-950">

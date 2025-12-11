@@ -65,7 +65,7 @@ class Collection extends Model
     public function scopeWithCategoriesAndCounts(Builder $query): Builder
     {
         return $query->with(['categories' => function ($q): void {
-            $q->whereHas('components')->withCount('components');
+            $q->whereHas('components')->withCount('components')->orderBy('title');
         }]);
     }
 }

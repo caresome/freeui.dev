@@ -4,7 +4,7 @@ title: Multi Column Layout
 category: app-shells
 github: caresome
 dependencies: []
-publish_at: 2024-01-02 00:00:00
+publish_at: 2025-12-02 00:00:00
 ---
 
 <div x-data="{ selectedChat: 1, mobileView: 'list' }" class="flex h-screen bg-neutral-50 dark:bg-neutral-950">

@@ -370,7 +370,7 @@
                     <iframe
                         x-ref="previewFrame"
                         title="Component preview"
-                        class="max-h-[600px] min-h-[600px] w-full bg-neutral-200 dark:bg-neutral-800"
+                        class="max-h-[600px] min-h-[600px] w-full bg-transparent"
                         tabindex="-1"
                     ></iframe>
                 </div>
@@ -419,7 +419,7 @@
                 <pre
                     class="p-3 transition-opacity duration-150"
                     :class="codeReady ? 'opacity-100' : 'opacity-0'"
-                ><code x-ref="codeBlock" class="language-html h-full">{{ $content }}</code></pre>
+                ><code x-ref="codeBlock" class="language-html h-full" x-text="getCleanCode()"></code></pre>
             </div>
         </div>
     </div>
@@ -499,7 +499,7 @@
             },
 
             async copyCode() {
-                const code = this.rawCode;
+                const code = this.getCleanCode();
 
                 // Try modern Clipboard API (works in secure contexts)
                 try {
@@ -631,6 +631,7 @@
                         visibility: hidden;
                     }
                     body.loaded { visibility: visible; }
+                    [x-cloak] { display: none !important; }
                 `;
                 doc.head.appendChild(style);
 
@@ -689,9 +690,24 @@
                 }
             },
 
+            // Strip data-preview-only wrappers from code
+            getCleanCode() {
+                const temp = document.createElement('div');
+                temp.innerHTML = this.rawCode;
+
+                // Find all elements with data-preview-only attribute
+                temp.querySelectorAll('[data-preview-only]').forEach((el) => {
+                    // Replace the wrapper with its children
+                    el.replaceWith(...el.childNodes);
+                });
+
+                // Clean up whitespace and return
+                return temp.innerHTML.trim();
+            },
+
             // AI Integration Methods
             getCode() {
-                return this.rawCode;
+                return this.getCleanCode();
             },
 
             async copyToClipboard(text) {
