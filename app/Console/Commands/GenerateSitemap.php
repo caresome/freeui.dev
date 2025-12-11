@@ -56,11 +56,10 @@ class GenerateSitemap extends Command
 
         foreach ($components as $component) {
             $sitemap->add(
-                Url::create(route('components.show', [
+                Url::create(route('components.category', [
                     'collection' => $component->categoryModel?->collection,
                     'category' => $component->category,
-                    'slug' => $component->slug,
-                ]))->setPriority(0.6)
+                ]).'#'.$component->slug)->setPriority(0.6)
             );
         }
 
