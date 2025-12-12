@@ -111,13 +111,14 @@
                                     {{ $category->description ?? 'Explore ' . strtolower($category->title) . ' components' }}
                                 </p>
 
-                                <!-- Arrow -->
-                                <div
-                                    class="mt-4 flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white"
-                                >
-                                    <span>View components</span>
+                                <!-- Footer -->
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                                        {{ $category->components_count }}
+                                        {{ Str::plural('component', $category->components_count) }}
+                                    </span>
                                     <x-heroicon-o-arrow-right
-                                        class="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
+                                        class="h-4 w-4 text-neutral-900 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1 dark:text-white"
                                         aria-hidden="true"
                                     />
                                 </div>
