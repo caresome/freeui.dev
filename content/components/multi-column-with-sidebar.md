@@ -13,10 +13,31 @@ publish_at: 2025-12-01 00:00:00
         sidebarOpen: false,
         sidebarCollapsed: $persist(false).as('multi-column-with-sidebar-collapsed'),
         selectedItem: 1,
-        mobileView: 'list'
+        mobileView: 'list',
+        init() {
+            this.$watch('mobileView', (view) => {
+                if (view === 'content') {
+                    this.$nextTick(() => {
+                        document.getElementById('main-content')?.focus();
+                    });
+                } else if (view === 'list') {
+                    this.$nextTick(() => {
+                        document.getElementById('project-search')?.focus();
+                    });
+                }
+            });
+        }
     }"
     class="flex h-screen bg-neutral-50 dark:bg-neutral-950"
 >
+    <!-- Skip Navigation Link -->
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:focus:bg-white dark:focus:text-neutral-900"
+    >
+        Skip to main content
+    </a>
+
     <!-- Mobile sidebar backdrop -->
     <div
         x-show="sidebarOpen"
@@ -38,15 +59,21 @@ publish_at: 2025-12-01 00:00:00
             sidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
         ]"
         @keydown.escape.window="sidebarOpen = false"
-        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-neutral-200/80 bg-white lg:relative lg:translate-x-0 dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:relative lg:translate-x-0 dark:bg-neutral-900 dark:shadow-neutral-950/50"
+        role="navigation"
+        aria-label="Main navigation"
     >
         <!-- Logo -->
-        <div
-            :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : 'px-4'"
-            class="flex h-16 shrink-0 items-center justify-between border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
-            <a href="#" :class="sidebarCollapsed ? 'lg:justify-center' : ''" class="flex items-center gap-2">
-                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white">
+        <div class="flex h-16 shrink-0 items-center gap-3 border-b border-neutral-200 px-4 dark:border-neutral-800">
+            <a
+                href="#"
+                class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                aria-label="Caresome - Go to homepage"
+            >
+                <div
+                    class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 shadow-sm transition-transform duration-150 group-hover:scale-105 dark:bg-white"
+                    aria-hidden="true"
+                >
                     <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
                 </div>
                 <span
@@ -61,23 +88,38 @@ publish_at: 2025-12-01 00:00:00
                 x-show="!sidebarCollapsed"
                 @click="sidebarOpen = false"
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 aria-label="Close sidebar"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 space-y-1 overflow-x-hidden overflow-y-auto px-3 py-4">
+        <nav class="flex-1 space-y-1 overflow-x-hidden overflow-y-auto px-3 py-4" aria-label="Sidebar navigation">
             <a
                 href="#"
-                :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
+                :title="sidebarCollapsed ? 'Dashboard' : null"
+                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                aria-current="page"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -88,10 +130,17 @@ publish_at: 2025-12-01 00:00:00
             </a>
             <a
                 href="#"
-                :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                :title="sidebarCollapsed ? 'Projects' : null"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -102,10 +151,17 @@ publish_at: 2025-12-01 00:00:00
             </a>
             <a
                 href="#"
-                :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                :title="sidebarCollapsed ? 'Team' : null"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -116,10 +172,17 @@ publish_at: 2025-12-01 00:00:00
             </a>
             <a
                 href="#"
-                :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                :title="sidebarCollapsed ? 'Settings' : null"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -132,64 +195,90 @@ publish_at: 2025-12-01 00:00:00
         </nav>
 
         <!-- Collapse toggle -->
-        <div class="hidden border-t border-neutral-200/80 p-3 lg:block dark:border-neutral-800/80">
+        <div class="hidden border-t border-neutral-100 p-3 lg:block dark:border-neutral-800">
             <button
                 @click="sidebarCollapsed = !sidebarCollapsed"
-                :class="sidebarCollapsed ? 'justify-center' : ''"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                type="button"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                :aria-expanded="(!sidebarCollapsed).toString()"
+                aria-controls="sidebar-nav"
             >
                 <svg
                     :class="sidebarCollapsed ? 'rotate-180' : ''"
-                    class="h-5 w-5 shrink-0"
+                    class="h-5 w-5 shrink-0 transition-transform duration-150"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
                 <span :class="sidebarCollapsed ? 'lg:hidden' : ''">Collapse</span>
+                <span class="sr-only" x-text="sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'">
+                    Collapse sidebar
+                </span>
             </button>
         </div>
 
         <!-- User -->
-        <div class="border-t border-neutral-200/80 p-3 dark:border-neutral-800/80">
+        <div class="border-t border-neutral-100 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                :title="sidebarCollapsed ? 'Ankit Thapa' : null"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100"
+                aria-label="View profile for Ankit Thapa"
             >
-                <img
-                    class="h-8 min-h-8 w-8 min-w-8 shrink-0 rounded-full object-cover"
-                    src="https://github.com/caresome.png"
-                    alt="User avatar"
-                />
+                <div class="relative">
+                    <img
+                        class="h-8 min-h-8 w-8 min-w-8 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
+                        src="https://github.com/caresome.png"
+                        alt=""
+                    />
+                    <!-- Online Status -->
+                    <span
+                        class="absolute -right-0.5 -bottom-0.5 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-neutral-900"
+                        aria-hidden="true"
+                    ></span>
+                </div>
                 <div :class="sidebarCollapsed ? 'lg:hidden' : ''" class="min-w-0 flex-1">
                     <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">Ankit Thapa</p>
                     <p class="truncate text-xs text-neutral-500 dark:text-neutral-400">caresome@proton.me</p>
                 </div>
+                <span class="sr-only">(Online)</span>
             </a>
         </div>
     </aside>
 
+    <!-- Vertical Divider -->
+    <div class="hidden w-px bg-neutral-100 lg:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
+
     <!-- Secondary Column -->
     <aside
         :class="mobileView === 'list' ? 'flex' : 'hidden lg:flex'"
-        class="w-full flex-col border-r border-neutral-200/80 bg-white lg:w-80 dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="w-full flex-col border-r border-neutral-200 bg-white lg:w-80 dark:border-neutral-800 dark:bg-neutral-900"
+        role="region"
+        aria-label="Projects"
     >
         <!-- Header -->
-        <div
-            class="flex h-16 items-center justify-between border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
             <div class="flex items-center gap-3">
                 <!-- Mobile menu button -->
                 <button
                     @click="sidebarOpen = true"
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                     aria-label="Open sidebar"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -197,28 +286,39 @@ publish_at: 2025-12-01 00:00:00
                         />
                     </svg>
                 </button>
-                <h2 class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Projects</h2>
+                <h2 id="projects-heading" class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">
+                    Projects
+                </h2>
             </div>
             <button
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                aria-label="Add project"
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                aria-label="Add new project"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
             </button>
-        </div>
+        </header>
 
         <!-- Search -->
-        <div class="border-b border-neutral-200/80 p-3 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 p-3 dark:border-neutral-800">
             <div class="relative">
+                <label for="project-search" class="sr-only">Search projects</label>
                 <svg
                     class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path
                         stroke-linecap="round"
@@ -227,25 +327,37 @@ publish_at: 2025-12-01 00:00:00
                     />
                 </svg>
                 <input
-                    type="text"
+                    type="search"
+                    id="project-search"
                     placeholder="Search projects..."
-                    class="h-9 w-full rounded-lg border border-neutral-200/80 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700"
+                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-800/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                 />
             </div>
         </div>
 
         <!-- Project List -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 space-y-1 overflow-y-auto p-2" role="listbox" aria-labelledby="projects-heading">
             <button
                 @click="selectedItem = 1; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 1 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 rounded-lg p-3 text-left transition-colors duration-150"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedItem === 1).toString()"
+                id="project-1"
             >
                 <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                    aria-hidden="true"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -262,12 +374,23 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 2; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 2 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 rounded-lg p-3 text-left transition-colors duration-150"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedItem === 2).toString()"
+                id="project-2"
             >
                 <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                    aria-hidden="true"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -284,12 +407,23 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 3; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 3 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 rounded-lg p-3 text-left transition-colors duration-150"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedItem === 3).toString()"
+                id="project-3"
             >
                 <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+                    aria-hidden="true"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -306,12 +440,23 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 4; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 4 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 rounded-lg p-3 text-left transition-colors duration-150"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedItem === 4).toString()"
+                id="project-4"
             >
                 <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
+                    aria-hidden="true"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -329,22 +474,30 @@ publish_at: 2025-12-01 00:00:00
 
     <!-- Main Content -->
     <main
+        id="main-content"
         :class="mobileView === 'content' ? 'flex' : 'hidden lg:flex'"
         class="flex-1 flex-col bg-white dark:bg-neutral-900"
+        tabindex="-1"
+        aria-label="Project details: Website Redesign"
     >
         <!-- Header -->
-        <div
-            class="flex h-16 items-center justify-between border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
             <div class="flex items-center gap-3">
                 <!-- Mobile Back Button -->
                 <button
                     @click="mobileView = 'list'"
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                    aria-label="Back to list"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    aria-label="Back to projects list"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                 </button>
@@ -356,10 +509,17 @@ publish_at: 2025-12-01 00:00:00
             <div class="flex items-center gap-2">
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                    aria-label="Share"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    aria-label="Share project"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -369,10 +529,17 @@ publish_at: 2025-12-01 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                     aria-label="More options"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -381,118 +548,189 @@ publish_at: 2025-12-01 00:00:00
                     </svg>
                 </button>
             </div>
-        </div>
+        </header>
 
         <!-- Content -->
         <div class="flex-1 overflow-y-auto p-6">
             <div class="mx-auto max-w-4xl">
                 <!-- File Grid -->
-                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                <section aria-label="Project files">
+                    <h2 class="sr-only">Files</h2>
+                    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="Homepage.fig, 2.4 MB, Figma design file"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">Homepage.fig</p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">2.4 MB</p>
-                    </div>
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                                Homepage.fig
+                            </p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">2.4 MB</p>
+                        </article>
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="hero-image.png, 1.8 MB, Image file"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">hero-image.png</p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">1.8 MB</p>
-                    </div>
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                                hero-image.png
+                            </p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">1.8 MB</p>
+                        </article>
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="style-guide.pdf, 856 KB, PDF document"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
-                            style-guide.pdf
-                        </p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">856 KB</p>
-                    </div>
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                                style-guide.pdf
+                            </p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">856 KB</p>
+                        </article>
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="components.tsx, 24 KB, TypeScript file"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">components.tsx</p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">24 KB</p>
-                    </div>
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400"
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                                components.tsx
+                            </p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">24 KB</p>
+                        </article>
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="demo-video.mp4, 48 MB, Video file"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">demo-video.mp4</p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">48 MB</p>
-                    </div>
-                    <div
-                        class="group relative rounded-xl border border-neutral-200/80 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                    >
-                        <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400"
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                                demo-video.mp4
+                            </p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">48 MB</p>
+                        </article>
+                        <article
+                            class="group relative rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:border-neutral-700 dark:hover:bg-neutral-700"
+                            tabindex="0"
+                            aria-label="notes.md, 12 KB, Markdown file"
                         >
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
-                                />
-                            </svg>
-                        </div>
-                        <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">notes.md</p>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">12 KB</p>
+                            <div
+                                class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="2"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                                    />
+                                </svg>
+                            </div>
+                            <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">notes.md</p>
+                            <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">12 KB</p>
+                        </article>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     </main>

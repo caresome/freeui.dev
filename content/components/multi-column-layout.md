@@ -43,7 +43,7 @@ publish_at: 2025-12-02 00:00:00
         aria-label="Quick navigation"
     >
         <!-- Logo -->
-        <div class="flex h-16 items-center justify-center border-b border-neutral-200 dark:border-neutral-700">
+        <div class="flex h-16 items-center justify-center border-b border-neutral-200 dark:border-neutral-800">
             <a
                 href="#"
                 class="group flex items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
@@ -145,7 +145,7 @@ publish_at: 2025-12-02 00:00:00
         </nav>
 
         <!-- User Avatar -->
-        <div class="border-t border-neutral-200 p-3 dark:border-neutral-700">
+        <div class="border-t border-neutral-200 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 class="flex items-center justify-center rounded-lg p-1 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
@@ -168,7 +168,7 @@ publish_at: 2025-12-02 00:00:00
     </aside>
 
     <!-- Vertical Divider -->
-    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-700" role="separator" aria-hidden="true"></div>
+    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
 
     <!-- Conversations List -->
     <aside
@@ -179,7 +179,7 @@ publish_at: 2025-12-02 00:00:00
         aria-label="Conversations"
     >
         <!-- Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-700">
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
             <h2 id="conversations-heading" class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">
                 Messages
             </h2>
@@ -206,7 +206,7 @@ publish_at: 2025-12-02 00:00:00
         </header>
 
         <!-- Search -->
-        <div class="border-b border-neutral-200 p-3 dark:border-neutral-700">
+        <div class="border-b border-neutral-200 p-3 dark:border-neutral-800">
             <div class="relative">
                 <label for="conversation-search" class="sr-only">Search conversations</label>
                 <svg
@@ -227,7 +227,7 @@ publish_at: 2025-12-02 00:00:00
                     type="search"
                     id="conversation-search"
                     placeholder="Search conversations..."
-                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-800/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                 />
             </div>
         </div>
@@ -360,7 +360,7 @@ publish_at: 2025-12-02 00:00:00
     </aside>
 
     <!-- Vertical Divider -->
-    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-700" role="separator" aria-hidden="true"></div>
+    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
 
     <!-- Chat Area -->
     <main
@@ -371,7 +371,7 @@ publish_at: 2025-12-02 00:00:00
         aria-label="Chat with Sarah Johnson"
     >
         <!-- Chat Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-700">
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
             <div class="flex items-center gap-3">
                 <!-- Mobile Back Button -->
                 <button
@@ -596,7 +596,7 @@ publish_at: 2025-12-02 00:00:00
         </div>
 
         <!-- Message Input -->
-        <footer class="border-t border-neutral-200 p-4 dark:border-neutral-700">
+        <footer class="border-t border-neutral-200 p-4 dark:border-neutral-800">
             <div class="flex items-end gap-3">
                 <button
                     type="button"
@@ -624,7 +624,7 @@ publish_at: 2025-12-02 00:00:00
                         id="message-input"
                         rows="1"
                         placeholder="Type a message..."
-                        class="w-full resize-none rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-2.5 text-sm text-neutral-900 placeholder-neutral-400 shadow-sm transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+                        class="w-full resize-none rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-2.5 text-sm text-neutral-900 placeholder-neutral-400 shadow-sm transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-800/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                         aria-describedby="message-hint"
                     ></textarea>
                     <span id="message-hint" class="sr-only">Press Enter to send, Shift+Enter for new line</span>

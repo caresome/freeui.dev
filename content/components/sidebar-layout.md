@@ -55,7 +55,7 @@ publish_at: 2025-12-04 00:00:00
             sidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
         ]"
         @keydown.escape.window="sidebarOpen = false"
-        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:bg-neutral-900 dark:shadow-neutral-950/50"
+        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50"
         role="navigation"
         aria-label="Main sidebar"
     >
@@ -90,6 +90,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 x-ref="sidebarFirstLink"
+                :title="sidebarCollapsed ? 'Dashboard' : null"
                 class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
                 aria-current="page"
@@ -112,6 +113,7 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
+                :title="sidebarCollapsed ? 'Team' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
@@ -133,6 +135,7 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
+                :title="sidebarCollapsed ? 'Projects' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
@@ -154,6 +157,7 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
+                :title="sidebarCollapsed ? 'Calendar' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
@@ -175,6 +179,7 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
+                :title="sidebarCollapsed ? 'Reports' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
@@ -196,6 +201,7 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
+                :title="sidebarCollapsed ? 'Settings' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
@@ -250,6 +256,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
+                :title="sidebarCollapsed ? 'Ankit Thapa' : null"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100"
                 aria-label="View profile for Ankit Thapa"
             >
@@ -278,38 +285,42 @@ publish_at: 2025-12-04 00:00:00
     <div :class="sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'" class="transition-all duration-150">
         <!-- Top bar -->
         <header
-            class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-neutral-100 bg-white px-4 sm:px-6 lg:px-8 dark:border-neutral-800 dark:bg-neutral-900"
+            class="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-neutral-100 bg-white px-4 sm:px-6 lg:px-8 dark:border-neutral-800 dark:bg-neutral-900"
             role="banner"
         >
-            <!-- Mobile menu button -->
-            <button
-                @click="sidebarOpen = true"
-                type="button"
-                class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
-                :aria-expanded="sidebarOpen.toString()"
-                aria-controls="sidebar"
-                aria-haspopup="dialog"
-            >
-                <span class="sr-only">Open sidebar</span>
-                <svg
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    aria-hidden="true"
+            <!-- Left side -->
+            <div class="flex items-center gap-4">
+                <!-- Mobile menu button -->
+                <button
+                    @click="sidebarOpen = true"
+                    type="button"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                    :aria-expanded="sidebarOpen.toString()"
+                    aria-controls="sidebar"
+                    aria-haspopup="dialog"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                </svg>
-            </button>
+                    <span class="sr-only">Open sidebar</span>
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                    </svg>
+                </button>
+            </div>
 
-            <!-- Search -->
-            <div class="flex flex-1 items-center gap-4">
-                <div class="relative w-full max-w-md">
+            <!-- Right side actions -->
+            <div class="flex items-center gap-2">
+                <!-- Search -->
+                <div class="relative">
                     <label for="topbar-search" class="sr-only">Search</label>
                     <svg
                         class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
@@ -329,13 +340,10 @@ publish_at: 2025-12-04 00:00:00
                         type="search"
                         id="topbar-search"
                         placeholder="Search..."
-                        class="h-9 w-full rounded-lg border border-neutral-200 bg-neutral-50 py-2 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+                        class="h-9 w-48 rounded-lg border border-neutral-200 bg-neutral-50 py-2 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-300 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 sm:w-64 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                     />
                 </div>
-            </div>
-
-            <!-- Right side actions -->
-            <div class="flex items-center gap-2">
+                <!-- Notifications -->
                 <button
                     type="button"
                     class="relative inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
