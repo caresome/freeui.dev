@@ -57,24 +57,36 @@
 
                 {{-- View Toggles --}}
                 <div
+                    role="tablist"
+                    aria-label="View options"
                     class="flex items-center rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                 >
                     <button
+                        type="button"
+                        role="tab"
+                        id="preview-tab"
+                        :aria-selected="activeTab === 'preview'"
+                        aria-controls="preview-panel"
                         @click="switchTab('preview')"
+                        :tabindex="activeTab === 'preview' ? 0 : -1"
                         :class="activeTab === 'preview' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
-                        aria-label="Show Preview"
                     >
                         <x-heroicon-o-eye class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Preview</span>
                     </button>
                     <button
+                        type="button"
+                        role="tab"
+                        id="code-tab"
+                        :aria-selected="activeTab === 'code'"
+                        aria-controls="code-panel"
                         @click="switchTab('code')"
+                        :tabindex="activeTab === 'code' ? 0 : -1"
                         :class="activeTab === 'code' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
                         class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
-                        aria-label="Show Code"
                     >
                         <x-heroicon-o-code-bracket class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Code</span>
@@ -89,39 +101,47 @@
                     x-transition:enter="transition duration-200 ease-out"
                     x-transition:enter-start="translate-y-1 opacity-0"
                     x-transition:enter-end="translate-y-0 opacity-100"
+                    role="radiogroup"
+                    aria-label="Preview width"
                     class="pointer-events-auto hidden items-center gap-1 rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] lg:flex dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
                     x-cloak
                 >
                     <button
+                        type="button"
+                        role="radio"
                         @click="setDevice('100%')"
-                        title="Desktop"
+                        :aria-checked="previewWidth === '100%'"
                         :class="previewWidth === '100%' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
-                        aria-label="Desktop specific view"
+                        aria-label="Desktop view"
                     >
                         <x-heroicon-o-computer-desktop class="h-4 w-4" aria-hidden="true" />
                     </button>
                     <button
+                        type="button"
+                        role="radio"
                         @click="setDevice('768px')"
-                        title="Tablet"
+                        :aria-checked="previewWidth === '768px'"
                         :class="previewWidth === '768px' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
-                        aria-label="Tablet specific view"
+                        aria-label="Tablet view"
                     >
                         <x-heroicon-o-device-tablet class="h-4 w-4" aria-hidden="true" />
                     </button>
                     <button
+                        type="button"
+                        role="radio"
                         @click="setDevice('375px')"
-                        title="Mobile"
+                        :aria-checked="previewWidth === '375px'"
                         :class="previewWidth === '375px' ?
                             'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
                             'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
                         class="rounded-lg p-1.5 transition-colors"
-                        aria-label="Mobile specific view"
+                        aria-label="Mobile view"
                     >
                         <x-heroicon-o-device-phone-mobile class="h-4 w-4" aria-hidden="true" />
                     </button>
@@ -143,6 +163,11 @@
                     </a>
                 @endif
 
+                {{-- Screen reader announcement for copy --}}
+                <div aria-live="polite" class="sr-only">
+                    <span x-show="copied">Code copied to clipboard</span>
+                </div>
+
                 {{-- Split Button (Copy + AI) --}}
                 <div
                     class="relative flex rounded-xl border-2 border-neutral-900 bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
@@ -150,7 +175,9 @@
                 >
                     {{-- Copy Action (Left) --}}
                     <button
+                        type="button"
                         @click="copyCode()"
+                        :aria-label="copied ? 'Code copied' : 'Copy code'"
                         class="group flex items-center gap-2 rounded-l-xl px-3 py-2.5 text-xs font-bold transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
                     >
                         <span x-show="!copied" class="flex items-center gap-2">
@@ -172,10 +199,14 @@
 
                     {{-- AI Menu Trigger (Right) --}}
                     <button
+                        type="button"
                         @click="aiMenuOpen = !aiMenuOpen"
                         class="group flex items-center rounded-r-xl px-1.5 py-2.5 transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
                         :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-800' : ''"
                         aria-label="AI Options"
+                        :aria-expanded="aiMenuOpen"
+                        aria-haspopup="menu"
+                        aria-controls="ai-menu"
                     >
                         <span class="transition-transform duration-200" :class="aiMenuOpen && 'rotate-180'">
                             <x-heroicon-o-chevron-down class="h-4 w-4" aria-hidden="true" />
@@ -184,7 +215,12 @@
 
                     {{-- Dropdown Menu --}}
                     <div
+                        id="ai-menu"
+                        role="menu"
+                        aria-label="AI options"
+                        x-ref="aiMenu"
                         x-show="aiMenuOpen"
+                        x-init="$watch('aiMenuOpen', (value) => value && $nextTick(() => $focus.first()))"
                         x-transition:enter="transition duration-100 ease-out"
                         x-transition:enter-start="scale-95 opacity-0"
                         x-transition:enter-end="scale-100 opacity-100"
@@ -193,11 +229,15 @@
                         x-transition:leave-end="scale-95 opacity-0"
                         class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-xl border-2 border-neutral-900 bg-white p-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                         x-cloak
+                        @keydown.escape="aiMenuOpen = false"
+                        @keydown.arrow-down.prevent="$focus.wrap().next()"
+                        @keydown.arrow-up.prevent="$focus.wrap().previous()"
                     >
                         {{-- Copy AI Prompt --}}
                         <button
                             @click="copyAiPrompt()"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
                         >
                             <template x-if="!aiPromptCopied">
@@ -220,6 +260,7 @@
                         <button
                             @click="openInLovable(); aiMenuOpen = false"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                         >
                             <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -256,6 +297,7 @@
                         <button
                             @click="openInChatGPT(); aiMenuOpen = false"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                         >
                             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -270,6 +312,7 @@
                         <button
                             @click="openInClaude(); aiMenuOpen = false"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                         >
                             <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -289,6 +332,7 @@
                         <button
                             @click="copyForBolt()"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                         >
                             <template x-if="!boltCopied">
@@ -327,6 +371,7 @@
                         <button
                             @click="copyForReplit()"
                             type="button"
+                            role="menuitem"
                             class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                         >
                             <template x-if="!replitCopied">
@@ -359,6 +404,9 @@
         >
             {{-- Preview Wrapper --}}
             <div
+                id="preview-panel"
+                role="tabpanel"
+                aria-labelledby="preview-tab"
                 x-show="activeTab === 'preview'"
                 x-transition:enter="transition duration-200 ease-out"
                 x-transition:enter-start="opacity-0"
@@ -409,6 +457,9 @@
 
             {{-- Code Wrapper --}}
             <div
+                id="code-panel"
+                role="tabpanel"
+                aria-labelledby="code-tab"
                 x-show="activeTab === 'code'"
                 x-transition:enter="transition duration-200 ease-out"
                 x-transition:enter-start="opacity-0"
@@ -565,15 +616,30 @@
 
                 // 3. Inject Core Scripts programmatically (No escaping needed!)
 
-                // Suppress Tailwind CDN warning
+                // Suppress Tailwind CDN warning and Alpine errors in preview iframe
                 const suppressScript = doc.createElement('script');
                 suppressScript.textContent = `
                     (function() {
+                        // Suppress Tailwind CDN warning
                         const originalWarn = console.warn;
                         console.warn = function(...args) {
                             if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
                             originalWarn.apply(console, args);
                         };
+                        // Suppress Alpine errors in preview iframe (components may have incomplete context)
+                        const originalError = console.error;
+                        console.error = function(...args) {
+                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
+                            originalError.apply(console, args);
+                        };
+                        // Catch uncaught errors from Alpine expression evaluation
+                        window.addEventListener('error', function(e) {
+                            if (e.message && (e.message.includes('is not defined') || e.message.includes('Illegal invocation') || e.message.includes('Invalid or unexpected token'))) {
+                                e.preventDefault();
+                                return true;
+                            }
+                        });
                     })();
                 `;
                 doc.head.appendChild(suppressScript);
@@ -592,6 +658,13 @@
                     `;
                     doc.head.appendChild(tailwindConfig);
                     this.syncIframeTheme();
+
+                    // Wait for Tailwind to process styles before showing content
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            doc.body.classList.add('loaded');
+                        });
+                    });
                 };
                 doc.head.appendChild(tailwindScript);
 
@@ -643,32 +716,7 @@
                 doc.body.className = 'font-sans antialiased';
                 doc.body.innerHTML = `<div class="h-full overflow-auto"><div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div></div>`;
 
-                // 7. Load Handler Script
-                const loadaryScript = doc.createElement('script');
-                loadaryScript.textContent = `
-                    (function() {
-                        const links = document.querySelectorAll('link[rel="stylesheet"]');
-                        if (links.length === 0) {
-                            document.body.classList.add('loaded');
-                            return;
-                        }
-                        let loaded = 0;
-                        const checkDone = () => {
-                            loaded++;
-                            if (loaded >= links.length) document.body.classList.add('loaded');
-                        };
-                        links.forEach(link => {
-                            if (link.sheet) checkDone();
-                            else {
-                                link.addEventListener('load', checkDone);
-                                link.addEventListener('error', checkDone);
-                            }
-                        });
-                    })();
-                `;
-                doc.body.appendChild(loadaryScript);
-
-                // 8. Prevent hash links from affecting browser history
+                // 7. Prevent hash links from affecting browser history
                 const preventHistoryScript = doc.createElement('script');
                 preventHistoryScript.textContent = `
                     document.addEventListener('click', function(e) {
@@ -694,19 +742,41 @@
                 }
             },
 
-            // Strip data-preview-only wrappers from code
+            // Strip data-preview-only wrappers from code (using string manipulation to preserve formatting)
             getCleanCode() {
-                const temp = document.createElement('div');
-                temp.innerHTML = this.rawCode;
+                let code = this.rawCode;
 
-                // Find all elements with data-preview-only attribute
-                temp.querySelectorAll('[data-preview-only]').forEach((el) => {
-                    // Replace the wrapper with its children
-                    el.replaceWith(...el.childNodes);
-                });
+                // Check if wrapped with data-preview-only
+                const wrapperMatch = code.match(/^(\s*)<([a-z][a-z0-9]*)\s+[^>]*data-preview-only[^>]*>/i);
 
-                // Clean up whitespace and return
-                return temp.innerHTML.trim();
+                if (wrapperMatch) {
+                    const leadingWhitespace = wrapperMatch[1];
+                    const tagName = wrapperMatch[2];
+
+                    // Remove opening tag (first occurrence)
+                    code = code.replace(/^(\s*)<([a-z][a-z0-9]*)\s+[^>]*data-preview-only[^>]*>\n?/i, '');
+
+                    // Remove closing tag (last occurrence of that tag type)
+                    const closingTagRegex = new RegExp(`\\n?${leadingWhitespace}</${tagName}>\\s*$`, 'i');
+                    code = code.replace(closingTagRegex, '');
+
+                    // Dedent by one level (4 spaces) since we removed the wrapper
+                    const lines = code.split('\n');
+                    const dedentMatch = lines.find((line) => line.trim())?.match(/^(\s+)/);
+                    if (dedentMatch) {
+                        const indentToRemove = dedentMatch[1];
+                        code = lines
+                            .map((line) => {
+                                if (line.startsWith(indentToRemove)) {
+                                    return line.slice(indentToRemove.length);
+                                }
+                                return line;
+                            })
+                            .join('\n');
+                    }
+                }
+
+                return code.trim();
             },
 
             // AI Integration Methods

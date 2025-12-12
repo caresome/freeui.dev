@@ -23,6 +23,7 @@
         <div class="flex items-center gap-2">
             <!-- Search Button -->
             <button
+                type="button"
                 x-on:click="$dispatch('open-command-palette')"
                 class="hidden h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-medium text-neutral-600 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:flex dark:border-white dark:bg-neutral-900 dark:text-neutral-400 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white"
             >
@@ -36,6 +37,7 @@
 
             <!-- Mobile Search Button -->
             <button
+                type="button"
                 x-on:click="$dispatch('open-command-palette')"
                 class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
             >
@@ -45,6 +47,7 @@
 
             <!-- Theme Toggle -->
             <button
+                type="button"
                 @click="theme = theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')"
                 class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-semibold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                 :aria-label="'Switch to ' + (theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')) + ' theme'"

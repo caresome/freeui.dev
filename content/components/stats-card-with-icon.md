@@ -9,7 +9,7 @@ publish_at: 2025-12-07 02:00:00
 
 <div data-preview-only class="mx-auto max-w-sm">
     <div
-        class="rounded-xl border border-neutral-200/80 bg-white p-6 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <div class="flex items-center gap-4">
             <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
@@ -19,6 +19,7 @@ publish_at: 2025-12-07 02:00:00
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path
                         stroke-linecap="round"

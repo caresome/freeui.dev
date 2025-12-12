@@ -17,7 +17,7 @@ publish_at: 2025-12-07 03:00:00
             :class="liked
                 ? 'text-red-500 dark:text-red-400'
                 : 'text-neutral-400 hover:text-red-500 dark:text-neutral-500 dark:hover:text-red-400'"
-            class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150"
+            class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
         >
             <span class="relative flex h-6 w-6 items-center justify-center">
                 <span x-show="!hovering" class="absolute text-xl">❤️</span>

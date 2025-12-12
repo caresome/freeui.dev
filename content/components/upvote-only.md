@@ -16,8 +16,8 @@ publish_at: 2025-12-07 02:00:00
             type="button"
             :class="upvoted
                 ? 'bg-green-50 text-green-600 border-green-200 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20'
-                : 'bg-white text-neutral-500 border-neutral-200/80 hover:bg-neutral-50 hover:text-green-600 dark:bg-neutral-900 dark:text-neutral-400 dark:border-neutral-800/80 dark:hover:bg-neutral-800 dark:hover:text-green-400'"
-            class="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-[1.02] active:scale-[0.98]"
+                : 'bg-white text-neutral-500 border-neutral-200 hover:bg-neutral-50 hover:text-green-600 dark:bg-neutral-900 dark:text-neutral-400 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:text-green-400'"
+            class="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
         >
             <span class="relative flex h-5 w-5 items-center justify-center">
                 <span x-show="!hovering" class="absolute text-base">👍</span>

@@ -50,7 +50,11 @@
     </section>
 
     <!-- Collections & Categories Section -->
-    <section id="components" class="bg-white py-20 transition-colors duration-200 sm:py-28 dark:bg-neutral-900">
+    <section
+        id="components"
+        aria-labelledby="components-heading"
+        class="bg-white py-20 transition-colors duration-200 sm:py-28 dark:bg-neutral-900"
+    >
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             @foreach ($collections as $collection)
                 <div
@@ -67,7 +71,10 @@
                         @endif
 
                         <div>
-                            <h2 class="text-2xl font-black text-neutral-900 sm:text-3xl dark:text-white">
+                            <h2
+                                @if ($loop->first) id="components-heading" @endif
+                                class="text-2xl font-black text-neutral-900 sm:text-3xl dark:text-white"
+                            >
                                 {{ $collection->title }}
                             </h2>
                             @if ($collection->description)

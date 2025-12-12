@@ -10,7 +10,7 @@ publish_at: 2025-12-07 12:00:00
 <div data-preview-only class="mx-auto max-w-lg">
     <div
         x-data="{ score: null, showFollowUp: false }"
-        class="rounded-xl border border-neutral-200/80 bg-white p-5 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
             How likely are you to recommend us to a friend or colleague?
@@ -35,7 +35,7 @@ publish_at: 2025-12-07 12:00:00
                             'bg-amber-50 text-amber-600 hover:bg-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:hover:bg-amber-500/20': score !== n - 1 && (n - 1 === 7 || n - 1 === 8),
                             'bg-green-50 text-green-600 hover:bg-green-100 dark:bg-green-500/10 dark:text-green-400 dark:hover:bg-green-500/20': score !== n - 1 && n - 1 >= 9
                         }"
-                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 active:scale-95"
+                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
                         x-text="n - 1"
                     ></button>
                 </template>
@@ -65,7 +65,7 @@ publish_at: 2025-12-07 12:00:00
             x-transition:enter="transition ease-out duration-200"
             x-transition:enter-start="opacity-0 -translate-y-2"
             x-transition:enter-end="opacity-100 translate-y-0"
-            class="mt-4 border-t border-neutral-200/80 pt-4 dark:border-neutral-800/80"
+            class="mt-4 border-t border-neutral-200 pt-4 dark:border-neutral-800"
         >
             <label for="nps-feedback" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
                 <span
@@ -76,13 +76,13 @@ publish_at: 2025-12-07 12:00:00
                 id="nps-feedback"
                 rows="3"
                 placeholder="Your feedback helps us improve..."
-                class="mt-2 block w-full rounded-lg border border-neutral-200/80 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:ring-0 focus:outline-none dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600"
+                class="mt-2 block w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:ring-0 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600"
             ></textarea>
 
             <div class="mt-4 flex justify-end">
                 <button
                     type="button"
-                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
+                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
                 >
                     Submit Feedback
                 </button>

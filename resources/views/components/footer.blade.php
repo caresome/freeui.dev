@@ -9,7 +9,7 @@
                 </div>
                 <span class="text-lg font-bold text-neutral-900 dark:text-white">FreeUI</span>
             </div>
-            <div class="flex items-center gap-6">
+            <nav aria-label="Footer navigation" class="flex items-center gap-6">
                 <a
                     href="{{ route('home') }}#components"
                     class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
@@ -24,7 +24,7 @@
                 >
                     GitHub
                 </a>
-            </div>
+            </nav>
         </div>
         <div class="mt-8 border-t-2 border-dashed border-neutral-200 pt-8 dark:border-neutral-800">
             <p class="text-center text-sm text-neutral-600 dark:text-neutral-400">

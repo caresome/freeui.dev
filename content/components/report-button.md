@@ -8,17 +8,64 @@ publish_at: 2025-12-07 14:00:00
 ---
 
 <div data-preview-only class="flex min-h-[120px] items-center justify-center">
-    <div x-data="{ open: false, selected: null, submitted: false }" class="relative inline-block">
+    <div
+        x-data="{
+            open: false,
+            selected: null,
+            submitted: false,
+            focusedIndex: 0,
+            menuItems: ['spam', 'inappropriate', 'harassment', 'misinformation', 'submit'],
+            focusItem(index) {
+                this.focusedIndex = index;
+                this.$nextTick(() => {
+                    const buttons = this.$refs.menuContainer?.querySelectorAll('button');
+                    buttons?.[index]?.focus();
+                });
+            },
+            handleKeydown(e) {
+                if (!this.open || this.submitted) return;
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    this.focusItem((this.focusedIndex + 1) % this.menuItems.length);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    this.focusItem((this.focusedIndex - 1 + this.menuItems.length) % this.menuItems.length);
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    this.open = false;
+                    this.$refs.trigger?.focus();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    this.focusItem(0);
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    this.focusItem(this.menuItems.length - 1);
+                }
+            }
+        }"
+        @keydown="handleKeydown"
+        class="relative inline-block"
+    >
         <!-- Report Button -->
         <button
-            @click="open = !open; submitted = false; selected = null"
+            x-ref="trigger"
+            @click="open = !open; submitted = false; selected = null; if (open) $nextTick(() => focusItem(0))"
             type="button"
+            :aria-expanded="open"
+            aria-haspopup="menu"
             :class="open || submitted
                 ? 'text-red-600 dark:text-red-400'
                 : 'text-neutral-400 hover:text-red-600 dark:hover:text-red-400'"
-            class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 hover:bg-red-50 dark:hover:bg-red-500/10"
+            class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-red-500/10 dark:focus-visible:ring-neutral-100"
         >
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <svg
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+            >
                 <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -38,22 +85,38 @@ publish_at: 2025-12-07 14:00:00
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
             @click.outside="open = false"
-            class="absolute left-0 z-10 mt-1 w-56 origin-top-left rounded-xl border border-neutral-200/80 bg-white p-1.5 shadow-xl shadow-neutral-900/5 dark:border-neutral-700/80 dark:bg-neutral-800 dark:shadow-neutral-950/50"
+            x-ref="menuContainer"
+            role="menu"
+            aria-label="Report options"
+            class="absolute left-0 z-10 mt-1 w-56 origin-top-left rounded-xl border border-neutral-200 bg-white p-1.5 shadow-xl shadow-neutral-900/5 dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-neutral-950/50"
             x-cloak
         >
-            <p class="px-3 py-2 text-xs font-medium tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
+            <p
+                class="px-3 py-2 text-xs font-medium tracking-wider text-neutral-500 uppercase dark:text-neutral-400"
+                id="report-menu-label"
+            >
                 Report this content as:
             </p>
 
             <button
                 @click="selected = 'spam'"
+                @focus="focusedIndex = 0"
                 type="button"
+                role="menuitemradio"
+                :aria-checked="selected === 'spam'"
                 :class="selected === 'spam'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-4 w-4 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -65,13 +128,23 @@ publish_at: 2025-12-07 14:00:00
 
             <button
                 @click="selected = 'inappropriate'"
+                @focus="focusedIndex = 1"
                 type="button"
+                role="menuitemradio"
+                :aria-checked="selected === 'inappropriate'"
                 :class="selected === 'inappropriate'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-4 w-4 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -83,13 +156,23 @@ publish_at: 2025-12-07 14:00:00
 
             <button
                 @click="selected = 'harassment'"
+                @focus="focusedIndex = 2"
                 type="button"
+                role="menuitemradio"
+                :aria-checked="selected === 'harassment'"
                 :class="selected === 'harassment'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-4 w-4 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -101,13 +184,23 @@ publish_at: 2025-12-07 14:00:00
 
             <button
                 @click="selected = 'misinformation'"
+                @focus="focusedIndex = 3"
                 type="button"
+                role="menuitemradio"
+                :aria-checked="selected === 'misinformation'"
                 :class="selected === 'misinformation'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
             >
-                <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-4 w-4 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -117,16 +210,18 @@ publish_at: 2025-12-07 14:00:00
                 Misinformation
             </button>
 
-            <div class="my-1.5 border-t border-neutral-200/80 dark:border-neutral-700/80"></div>
+            <div class="my-1.5 border-t border-neutral-200 dark:border-neutral-700" role="separator"></div>
 
             <button
-                @click="submitted = true; open = false"
+                @click="submitted = true; open = false; $refs.trigger?.focus()"
+                @focus="focusedIndex = 4"
                 type="button"
+                role="menuitem"
                 :disabled="!selected"
                 :class="selected
                     ? 'bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700'
                     : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-700 dark:text-neutral-500'"
-                class="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 active:scale-[0.98]"
+                class="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
             >
                 Submit Report
             </button>
@@ -147,6 +242,7 @@ publish_at: 2025-12-07 14:00:00
                 viewBox="0 0 24 24"
                 stroke-width="2"
                 stroke="currentColor"
+                aria-hidden="true"
             >
                 <path
                     stroke-linecap="round"
@@ -160,9 +256,17 @@ publish_at: 2025-12-07 14:00:00
             <button
                 @click="submitted = false"
                 type="button"
-                class="shrink-0 rounded p-0.5 text-green-600 transition-colors hover:bg-green-100 hover:text-green-800 dark:text-green-400 dark:hover:bg-green-800/50 dark:hover:text-green-300"
+                class="shrink-0 rounded p-0.5 text-green-600 transition-colors hover:bg-green-100 hover:text-green-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-green-400 dark:hover:bg-green-800/50 dark:hover:text-green-300 dark:focus-visible:ring-neutral-100"
+                aria-label="Dismiss notification"
             >
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>

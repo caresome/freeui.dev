@@ -22,6 +22,7 @@
             <a
                 href="{{ $profile }}"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
             >
                 <img
@@ -70,15 +71,30 @@
 
                 // 3. Inject Core Scripts programmatically
 
-                // Suppress Tailwind CDN warning
+                // Suppress Tailwind CDN warning and Alpine errors in preview iframe
                 const suppressScript = doc.createElement('script');
                 suppressScript.textContent = `
                     (function() {
+                        // Suppress Tailwind CDN warning
                         const originalWarn = console.warn;
                         console.warn = function(...args) {
                             if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
                             originalWarn.apply(console, args);
                         };
+                        // Suppress Alpine errors in preview iframe (components may have incomplete context)
+                        const originalError = console.error;
+                        console.error = function(...args) {
+                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
+                            originalError.apply(console, args);
+                        };
+                        // Catch uncaught errors from Alpine expression evaluation
+                        window.addEventListener('error', function(e) {
+                            if (e.message && (e.message.includes('is not defined') || e.message.includes('Illegal invocation') || e.message.includes('Invalid or unexpected token'))) {
+                                e.preventDefault();
+                                return true;
+                            }
+                        });
                     })();
                 `;
                 doc.head.appendChild(suppressScript);
@@ -100,6 +116,14 @@
                     // Re-apply theme just in case
                     const isDark = document.documentElement.classList.contains('dark');
                     doc.documentElement.classList.toggle('dark', isDark);
+
+                    // Wait for Tailwind to process styles before showing content
+                    // Double rAF ensures styles are computed and painted
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            doc.body.classList.add('loaded');
+                        });
+                    });
                 };
                 doc.head.appendChild(tailwindScript);
 
@@ -150,32 +174,7 @@
                 doc.body.className = 'antialiased font-sans';
                 doc.body.innerHTML = `<div class="h-full overflow-auto"><div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div></div>`;
 
-                // 6. Load Handler Script
-                const loadaryScript = doc.createElement('script');
-                loadaryScript.textContent = `
-                    (function() {
-                        const links = document.querySelectorAll('link[rel="stylesheet"]');
-                        if (links.length === 0) {
-                            document.body.classList.add('loaded');
-                            return;
-                        }
-                        let loaded = 0;
-                        const checkDone = () => {
-                            loaded++;
-                            if (loaded >= links.length) document.body.classList.add('loaded');
-                        };
-                        links.forEach(link => {
-                            if (link.sheet) checkDone();
-                            else {
-                                link.addEventListener('load', checkDone);
-                                link.addEventListener('error', checkDone);
-                            }
-                        });
-                    })();
-                `;
-                doc.body.appendChild(loadaryScript);
-
-                // 7. Prevent hash links from affecting browser history
+                // 6. Prevent hash links from affecting browser history
                 const preventHistoryScript = doc.createElement('script');
                 preventHistoryScript.textContent = `
                     document.addEventListener('click', function(e) {

@@ -9,7 +9,7 @@ publish_at: 2025-12-07 06:00:00
 
 <div data-preview-only class="mx-auto max-w-sm">
     <div
-        class="rounded-xl border border-neutral-200/80 bg-white p-6 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <div class="flex items-center gap-4">
             <img
@@ -21,7 +21,14 @@ publish_at: 2025-12-07 06:00:00
                 <h3 class="truncate text-base font-semibold text-neutral-900 dark:text-neutral-50">Michael Chen</h3>
                 <p class="truncate text-sm text-neutral-500 dark:text-neutral-400">Senior Software Engineer</p>
                 <div class="mt-1 flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400">
-                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -38,7 +45,7 @@ publish_at: 2025-12-07 06:00:00
             </div>
             <button
                 type="button"
-                class="inline-flex items-center gap-2 rounded-lg border border-neutral-200/80 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                class="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:ring-neutral-100"
             >
                 Follow
             </button>

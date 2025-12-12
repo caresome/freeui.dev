@@ -35,8 +35,8 @@ publish_at: 2025-12-07 05:00:00
                 type="button"
                 :class="reaction.active
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 bg-white hover:bg-neutral-50 dark:border-neutral-700/80 dark:bg-neutral-900 dark:hover:bg-neutral-800'"
-                class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-105 active:scale-[0.98]"
+                    : 'border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800'"
+                class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
             >
                 <span class="relative flex h-5 w-5 items-center justify-center">
                     <span x-show="hovering !== index" x-text="reaction.emoji" class="absolute text-base"></span>
@@ -58,10 +58,17 @@ publish_at: 2025-12-07 05:00:00
         </template>
         <button
             type="button"
-            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-neutral-300 text-neutral-400 transition-all duration-150 hover:border-neutral-400 hover:bg-neutral-50 hover:text-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-neutral-300 text-neutral-400 transition-all duration-150 hover:border-neutral-400 hover:bg-neutral-50 hover:text-neutral-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300 dark:focus-visible:ring-neutral-100"
             aria-label="Add reaction"
         >
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <svg
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+            >
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
         </button>

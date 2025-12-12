@@ -9,7 +9,7 @@ publish_at: 2025-12-07 08:00:00
 
 <div data-preview-only class="mx-auto max-w-sm">
     <div
-        class="overflow-hidden rounded-xl border border-neutral-200/80 bg-white shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <div class="aspect-video bg-neutral-100 dark:bg-neutral-800">
             <img

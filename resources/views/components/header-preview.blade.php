@@ -12,6 +12,7 @@
         <div class="flex items-center gap-2">
             {{-- Search Button --}}
             <button
+                type="button"
                 x-on:click="$dispatch('open-command-palette')"
                 class="hidden h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-medium text-neutral-600 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:flex dark:border-white dark:bg-neutral-900 dark:text-neutral-400 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white"
             >
@@ -25,6 +26,7 @@
 
             {{-- Mobile Search Button --}}
             <button
+                type="button"
                 x-on:click="$dispatch('open-command-palette')"
                 class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
             >
@@ -33,6 +35,7 @@
             </button>
             {{-- Theme Toggle --}}
             <button
+                type="button"
                 @click="theme = theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')"
                 class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-semibold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
                 :aria-label="'Switch to ' + (theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')) + ' theme'"
@@ -53,8 +56,9 @@
             >
                 {{-- Copy Action (Left) --}}
                 <button
+                    type="button"
                     @click="copyCode()"
-                    aria-label="Copy code"
+                    :aria-label="copied ? 'Code copied' : 'Copy code'"
                     class="group flex items-center gap-2 rounded-l-xl px-3 py-2 text-sm font-bold transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
                 >
                     <span x-show="!copied" class="flex items-center gap-2">
@@ -72,10 +76,14 @@
 
                 {{-- AI Menu Trigger (Right) --}}
                 <button
+                    type="button"
                     @click="aiMenuOpen = !aiMenuOpen"
                     class="group flex items-center rounded-r-xl px-1.5 py-2 transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
                     :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-800' : ''"
                     aria-label="AI Options"
+                    :aria-expanded="aiMenuOpen"
+                    aria-haspopup="menu"
+                    aria-controls="ai-menu-header"
                 >
                     <span class="transition-transform duration-200" :class="aiMenuOpen && 'rotate-180'">
                         <x-heroicon-o-chevron-down class="h-4 w-4" aria-hidden="true" />
@@ -84,7 +92,11 @@
 
                 {{-- Dropdown Menu --}}
                 <div
+                    id="ai-menu-header"
+                    role="menu"
+                    aria-label="AI options"
                     x-show="aiMenuOpen"
+                    x-init="$watch('aiMenuOpen', (value) => value && $nextTick(() => $focus.first()))"
                     x-transition:enter="transition duration-100 ease-out"
                     x-transition:enter-start="scale-95 opacity-0"
                     x-transition:enter-end="scale-100 opacity-100"
@@ -93,11 +105,15 @@
                     x-transition:leave-end="scale-95 opacity-0"
                     class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-xl border-2 border-neutral-900 bg-white p-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
                     x-cloak
+                    @keydown.escape="aiMenuOpen = false"
+                    @keydown.arrow-down.prevent="$focus.wrap().next()"
+                    @keydown.arrow-up.prevent="$focus.wrap().previous()"
                 >
                     {{-- Copy AI Prompt --}}
                     <button
                         @click="copyAiPrompt()"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
                     >
                         <template x-if="!aiPromptCopied">
@@ -120,6 +136,7 @@
                     <button
                         @click="openInLovable(); aiMenuOpen = false"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -156,6 +173,7 @@
                     <button
                         @click="openInChatGPT(); aiMenuOpen = false"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -170,6 +188,7 @@
                     <button
                         @click="openInClaude(); aiMenuOpen = false"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -189,6 +208,7 @@
                     <button
                         @click="copyForBolt()"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
                         <template x-if="!boltCopied">
@@ -227,6 +247,7 @@
                     <button
                         @click="copyForReplit()"
                         type="button"
+                        role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
                         <template x-if="!replitCopied">

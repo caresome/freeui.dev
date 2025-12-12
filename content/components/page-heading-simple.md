@@ -9,7 +9,7 @@ publish_at: 2025-12-07 01:00:00
 
 <div data-preview-only class="mx-auto max-w-3xl px-4">
     <div class="bg-white dark:bg-neutral-900">
-        <div class="border-b border-neutral-200/80 pb-5 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 pb-5 dark:border-neutral-800">
             <h1 class="text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl dark:text-neutral-50">
                 Dashboard
             </h1>

@@ -8,10 +8,8 @@ publish_at: 2025-12-07 06:00:00
 ---
 
 <div data-preview-only class="mx-auto max-w-md">
-    <div
-        class="rounded-xl border border-neutral-200/80 bg-white shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
-    >
-        <div class="border-b border-neutral-200/80 px-5 py-4 dark:border-neutral-800/80">
+    <div class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="border-b border-neutral-200 px-5 py-4 dark:border-neutral-800">
             <div class="flex items-center gap-3">
                 <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
                     <svg
@@ -20,6 +18,7 @@ publish_at: 2025-12-07 06:00:00
                         viewBox="0 0 24 24"
                         stroke-width="2"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path
                             stroke-linecap="round"

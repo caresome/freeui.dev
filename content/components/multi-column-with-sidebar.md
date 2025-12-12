@@ -64,7 +64,7 @@ publish_at: 2025-12-01 00:00:00
         aria-label="Main navigation"
     >
         <!-- Logo -->
-        <div class="flex h-16 shrink-0 items-center gap-3 border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <div class="flex h-16 shrink-0 items-center gap-3 px-4">
             <a
                 href="#"
                 class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
@@ -131,7 +131,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Projects' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -152,7 +152,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Team' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -173,7 +173,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Settings' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -195,11 +195,11 @@ publish_at: 2025-12-01 00:00:00
         </nav>
 
         <!-- Collapse toggle -->
-        <div class="hidden border-t border-neutral-100 p-3 lg:block dark:border-neutral-800">
+        <div class="hidden border-t border-neutral-200 p-3 lg:block dark:border-neutral-800">
             <button
                 @click="sidebarCollapsed = !sidebarCollapsed"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 :aria-expanded="(!sidebarCollapsed).toString()"
                 aria-controls="sidebar-nav"
             >
@@ -222,7 +222,7 @@ publish_at: 2025-12-01 00:00:00
         </div>
 
         <!-- User -->
-        <div class="border-t border-neutral-100 p-3 dark:border-neutral-800">
+        <div class="border-t border-neutral-200 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
@@ -251,18 +251,15 @@ publish_at: 2025-12-01 00:00:00
         </div>
     </aside>
 
-    <!-- Vertical Divider -->
-    <div class="hidden w-px bg-neutral-100 lg:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
-
     <!-- Secondary Column -->
     <aside
         :class="mobileView === 'list' ? 'flex' : 'hidden lg:flex'"
-        class="w-full flex-col border-r border-neutral-200 bg-white lg:w-80 dark:border-neutral-800 dark:bg-neutral-900"
+        class="w-full flex-col bg-neutral-50 lg:w-80 dark:bg-neutral-950"
         role="region"
         aria-label="Projects"
     >
         <!-- Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <header class="flex h-16 items-center justify-between px-4">
             <div class="flex items-center gap-3">
                 <!-- Mobile menu button -->
                 <button
@@ -309,7 +306,7 @@ publish_at: 2025-12-01 00:00:00
         </header>
 
         <!-- Search -->
-        <div class="border-b border-neutral-200 p-3 dark:border-neutral-800">
+        <div class="p-3">
             <div class="relative">
                 <label for="project-search" class="sr-only">Search projects</label>
                 <svg
@@ -340,7 +337,7 @@ publish_at: 2025-12-01 00:00:00
             <button
                 @click="selectedItem = 1; mobileView = 'content'"
                 type="button"
-                :class="selectedItem === 1 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedItem === 1 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 1).toString()"
@@ -373,7 +370,7 @@ publish_at: 2025-12-01 00:00:00
             <button
                 @click="selectedItem = 2; mobileView = 'content'"
                 type="button"
-                :class="selectedItem === 2 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedItem === 2 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 2).toString()"
@@ -406,7 +403,7 @@ publish_at: 2025-12-01 00:00:00
             <button
                 @click="selectedItem = 3; mobileView = 'content'"
                 type="button"
-                :class="selectedItem === 3 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedItem === 3 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 3).toString()"
@@ -439,7 +436,7 @@ publish_at: 2025-12-01 00:00:00
             <button
                 @click="selectedItem = 4; mobileView = 'content'"
                 type="button"
-                :class="selectedItem === 4 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedItem === 4 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 4).toString()"
@@ -481,7 +478,7 @@ publish_at: 2025-12-01 00:00:00
         aria-label="Project details: Website Redesign"
     >
         <!-- Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <header class="flex h-16 items-center justify-between px-4">
             <div class="flex items-center gap-3">
                 <!-- Mobile Back Button -->
                 <button

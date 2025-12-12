@@ -10,7 +10,7 @@ publish_at: 2025-12-07 07:00:00
 <div data-preview-only class="mx-auto max-w-md">
     <div
         x-data="{ selected: [] }"
-        class="rounded-xl border border-neutral-200/80 bg-white p-5 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
             Which features are most important to you?
@@ -19,10 +19,10 @@ publish_at: 2025-12-07 07:00:00
 
         <div class="mt-4 space-y-2">
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected.includes('performance')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="checkbox" value="performance" x-model="selected" class="sr-only" />
                 <span
@@ -38,6 +38,7 @@ publish_at: 2025-12-07 07:00:00
                         viewBox="0 0 24 24"
                         stroke-width="3"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
@@ -46,10 +47,10 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected.includes('security')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="checkbox" value="security" x-model="selected" class="sr-only" />
                 <span
@@ -65,6 +66,7 @@ publish_at: 2025-12-07 07:00:00
                         viewBox="0 0 24 24"
                         stroke-width="3"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
@@ -73,10 +75,10 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected.includes('ease-of-use')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="checkbox" value="ease-of-use" x-model="selected" class="sr-only" />
                 <span
@@ -92,6 +94,7 @@ publish_at: 2025-12-07 07:00:00
                         viewBox="0 0 24 24"
                         stroke-width="3"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
@@ -100,10 +103,10 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected.includes('documentation')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="checkbox" value="documentation" x-model="selected" class="sr-only" />
                 <span
@@ -119,6 +122,7 @@ publish_at: 2025-12-07 07:00:00
                         viewBox="0 0 24 24"
                         stroke-width="3"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
@@ -135,7 +139,7 @@ publish_at: 2025-12-07 07:00:00
                 :class="selected.length > 0
                     ? 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'
                     : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500'"
-                class="rounded-lg px-4 py-2 text-sm font-medium shadow-sm transition-all duration-150 active:scale-[0.98]"
+                class="rounded-lg px-4 py-2 text-sm font-medium shadow-sm transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
             >
                 Submit
             </button>

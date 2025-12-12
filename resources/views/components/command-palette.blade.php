@@ -1,107 +1,5 @@
 <div
-    x-data="{
-        open: false,
-        search: '',
-        results: [],
-        selectedIndex: 0,
-        fuse: null,
-        searchData: @js($searchData),
-        get resultsCount() {
-            return this.results.length
-        },
-        init() {
-            this.fuse = new Fuse(this.searchData, {
-                keys: ['title', 'breadcrumb'],
-                threshold: 0.4,
-                includeScore: true,
-            })
-            this.$watch('open', (value) => {
-                if (value) {
-                    document.body.style.overflow = 'hidden'
-                    this.$nextTick(() => this.$refs.searchInput?.focus())
-                } else {
-                    document.body.style.overflow = ''
-                    this.search = ''
-                    this.results = []
-                    this.selectedIndex = 0
-                }
-            })
-            this.$watch('search', (value) => {
-                this.selectedIndex = 0
-                if (value.length < 2) {
-                    this.results = []
-                    return
-                }
-                this.results = this.fuse.search(value).map(r => r.item)
-            })
-        },
-        toggle() {
-            this.open = !this.open
-        },
-        close() {
-            this.open = false
-        },
-        selectPrevious() {
-            const count = this.resultsCount
-            if (count > 0) {
-                this.selectedIndex = (this.selectedIndex - 1 + count) % count
-                this.scrollToSelected()
-            }
-        },
-        selectNext() {
-            const count = this.resultsCount
-            if (count > 0) {
-                this.selectedIndex = (this.selectedIndex + 1) % count
-                this.scrollToSelected()
-            }
-        },
-        scrollToSelected() {
-            this.$nextTick(() => {
-                const selected = this.$refs.resultsList?.querySelector('[data-index=\'' + this.selectedIndex + '\']')
-                if (selected) {
-                    selected.scrollIntoView({ block: 'nearest' })
-                }
-            })
-        },
-        goToSelected() {
-            if (this.results[this.selectedIndex]) {
-                const url = this.results[this.selectedIndex].url
-                const currentUrl = new URL(window.location.href)
-                const targetUrl = new URL(url, window.location.origin)
-
-                // Check if it's same page navigation (only hash differs)
-                if (currentUrl.pathname === targetUrl.pathname && targetUrl.hash) {
-                    this.close()
-                    // Small delay to let modal close, then scroll
-                    setTimeout(() => {
-                        const element = document.querySelector(targetUrl.hash)
-                        if (element) {
-                            element.scrollIntoView({ behavior: 'smooth' })
-                        }
-                        // Update URL hash without triggering navigation
-                        history.pushState(null, '', targetUrl.hash)
-                    }, 100)
-                } else {
-                    window.location.href = url
-                }
-            }
-        },
-        getIcon(iconName) {
-            const icons = {
-                'heroicon-o-rectangle-stack': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3' /></svg>`,
-                'heroicon-o-folder': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z' /></svg>`,
-                'heroicon-o-cube': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9' /></svg>`,
-            }
-            return icons[iconName] || icons['heroicon-o-cube']
-        },
-        groupedResults() {
-            const groups = { collection: [], category: [], component: [] }
-            this.results.forEach(r => {
-                if (groups[r.type]) groups[r.type].push(r)
-            })
-            return groups
-        }
-    }"
+    x-data="commandPalette()"
     x-on:keydown.window="
         if (($event.metaKey || $event.ctrlKey) && $event.key === 'k') {
             $event.preventDefault()
@@ -165,6 +63,10 @@
                     x-model="search"
                     type="text"
                     placeholder="Search..."
+                    aria-label="Search components"
+                    aria-autocomplete="list"
+                    aria-controls="search-results"
+                    :aria-activedescendant="results.length > 0 ? 'result-' + selectedIndex : ''"
                     class="w-full bg-transparent py-3 pr-3 pl-10 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-500"
                     x-on:keydown.arrow-up.prevent="selectPrevious()"
                     x-on:keydown.arrow-down.prevent="selectNext()"
@@ -200,8 +102,13 @@
                     </div>
                 </template>
 
+                {{-- Screen reader announcement for results --}}
+                <div aria-live="polite" class="sr-only">
+                    <span x-show="open && search.length >= 2" x-text="resultsCount + ' results found'"></span>
+                </div>
+
                 <template x-if="search.length >= 2 && results.length > 0">
-                    <div class="p-1.5" role="listbox">
+                    <div id="search-results" class="p-1.5" role="listbox">
                         <template
                             x-for="
                                 (label, type) in
@@ -225,6 +132,7 @@
                                         <a
                                             :href="result.url"
                                             data-result
+                                            :id="'result-' + results.indexOf(result)"
                                             :data-index="results.indexOf(result)"
                                             tabindex="-1"
                                             role="option"
@@ -310,3 +218,128 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('commandPalette', () => ({
+            open: false,
+            search: '',
+            results: [],
+            selectedIndex: 0,
+            fuse: null,
+            searchData: @js($searchData),
+
+            get resultsCount() {
+                return this.results.length;
+            },
+
+            init() {
+                this.fuse = new Fuse(this.searchData, {
+                    keys: ['title', 'breadcrumb'],
+                    threshold: 0.4,
+                    includeScore: true,
+                });
+
+                this.$watch('open', (value) => {
+                    if (value) {
+                        document.body.style.overflow = 'hidden';
+                        this.$nextTick(() => this.$refs.searchInput?.focus());
+                    } else {
+                        document.body.style.overflow = '';
+                        this.search = '';
+                        this.results = [];
+                        this.selectedIndex = 0;
+                    }
+                });
+
+                this.$watch('search', (value) => {
+                    this.selectedIndex = 0;
+                    if (value.length < 2) {
+                        this.results = [];
+                        return;
+                    }
+                    this.results = this.fuse.search(value).map((r) => r.item);
+                });
+            },
+
+            toggle() {
+                this.open = !this.open;
+            },
+
+            close() {
+                this.open = false;
+                // Return focus to the trigger element
+                this.$nextTick(() => {
+                    const trigger = document.querySelector('[x-on\\:click="$dispatch(\'open-command-palette\')"]');
+                    trigger?.focus();
+                });
+            },
+
+            selectPrevious() {
+                const count = this.resultsCount;
+                if (count > 0) {
+                    this.selectedIndex = (this.selectedIndex - 1 + count) % count;
+                    this.scrollToSelected();
+                }
+            },
+
+            selectNext() {
+                const count = this.resultsCount;
+                if (count > 0) {
+                    this.selectedIndex = (this.selectedIndex + 1) % count;
+                    this.scrollToSelected();
+                }
+            },
+
+            scrollToSelected() {
+                this.$nextTick(() => {
+                    const selected = this.$refs.resultsList?.querySelector("[data-index='" + this.selectedIndex + "']");
+                    if (selected) {
+                        selected.scrollIntoView({ block: 'nearest' });
+                    }
+                });
+            },
+
+            goToSelected() {
+                if (this.results[this.selectedIndex]) {
+                    const url = this.results[this.selectedIndex].url;
+                    const currentUrl = new URL(window.location.href);
+                    const targetUrl = new URL(url, window.location.origin);
+
+                    // Check if it's same page navigation (only hash differs)
+                    if (currentUrl.pathname === targetUrl.pathname && targetUrl.hash) {
+                        this.close();
+                        // Small delay to let modal close, then scroll
+                        setTimeout(() => {
+                            const element = document.querySelector(targetUrl.hash);
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth' });
+                            }
+                            // Update URL hash without triggering navigation
+                            history.pushState(null, '', targetUrl.hash);
+                        }, 100);
+                    } else {
+                        window.location.href = url;
+                    }
+                }
+            },
+
+            getIcon(iconName) {
+                const icons = {
+                    'heroicon-o-rectangle-stack': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3' /></svg>`,
+                    'heroicon-o-folder': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z' /></svg>`,
+                    'heroicon-o-cube': `<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='h-3.5 w-3.5'><path stroke-linecap='round' stroke-linejoin='round' d='m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9' /></svg>`,
+                };
+                return icons[iconName] || icons['heroicon-o-cube'];
+            },
+
+            groupedResults() {
+                const groups = { collection: [], category: [], component: [] };
+                this.results.forEach((r) => {
+                    if (groups[r.type]) groups[r.type].push(r);
+                });
+                return groups;
+            },
+        }));
+    });
+</script>

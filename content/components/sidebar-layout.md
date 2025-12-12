@@ -55,12 +55,12 @@ publish_at: 2025-12-04 00:00:00
             sidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
         ]"
         @keydown.escape.window="sidebarOpen = false"
-        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50"
+        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:bg-neutral-900 dark:shadow-neutral-950/50"
         role="navigation"
         aria-label="Main sidebar"
     >
         <!-- Logo -->
-        <div class="flex h-16 shrink-0 items-center gap-3 border-b border-neutral-100 px-4 dark:border-neutral-800">
+        <div class="flex h-16 shrink-0 items-center gap-3 px-4">
             <a
                 href="#"
                 class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
@@ -114,7 +114,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Team' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
                 <svg
@@ -136,7 +136,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Projects' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
                 <svg
@@ -158,7 +158,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Calendar' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
                 <svg
@@ -180,7 +180,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Reports' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
                 <svg
@@ -202,7 +202,7 @@ publish_at: 2025-12-04 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Settings' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 role="menuitem"
             >
                 <svg
@@ -225,11 +225,11 @@ publish_at: 2025-12-04 00:00:00
         </nav>
 
         <!-- Collapse toggle -->
-        <div class="hidden border-t border-neutral-100 p-3 lg:block dark:border-neutral-800">
+        <div class="hidden border-t border-neutral-200 p-3 lg:block dark:border-neutral-800">
             <button
                 @click="sidebarCollapsed = !sidebarCollapsed"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 :aria-expanded="(!sidebarCollapsed).toString()"
                 aria-controls="sidebar-nav"
             >
@@ -252,7 +252,7 @@ publish_at: 2025-12-04 00:00:00
         </div>
 
         <!-- User -->
-        <div class="border-t border-neutral-100 p-3 dark:border-neutral-800">
+        <div class="border-t border-neutral-200 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
@@ -285,7 +285,7 @@ publish_at: 2025-12-04 00:00:00
     <div :class="sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'" class="transition-all duration-150">
         <!-- Top bar -->
         <header
-            class="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-neutral-100 bg-white px-4 sm:px-6 lg:px-8 dark:border-neutral-800 dark:bg-neutral-900"
+            class="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 bg-neutral-50 px-4 sm:px-6 lg:px-8 dark:bg-neutral-950"
             role="banner"
         >
             <!-- Left side -->

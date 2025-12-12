@@ -9,7 +9,7 @@ publish_at: 2025-12-07 04:00:00
 
 <div data-preview-only class="mx-auto max-w-3xl px-4">
     <div class="bg-white dark:bg-neutral-900">
-        <div class="border-b border-neutral-200/80 pb-4 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 pb-4 dark:border-neutral-800">
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">

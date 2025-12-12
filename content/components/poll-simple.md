@@ -10,7 +10,7 @@ publish_at: 2025-12-07 06:00:00
 <div data-preview-only class="mx-auto max-w-md">
     <div
         x-data="{ selected: null }"
-        class="rounded-xl border border-neutral-200/80 bg-white p-5 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
             What's your favorite JavaScript framework?
@@ -19,10 +19,10 @@ publish_at: 2025-12-07 06:00:00
 
         <div class="mt-4 space-y-2">
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected === 'react'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="radio" name="poll" value="react" x-model="selected" class="sr-only" />
                 <span
@@ -40,10 +40,10 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected === 'vue'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="radio" name="poll" value="vue" x-model="selected" class="sr-only" />
                 <span
@@ -61,10 +61,10 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected === 'angular'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="radio" name="poll" value="angular" x-model="selected" class="sr-only" />
                 <span
@@ -82,10 +82,10 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:ring-2 focus-within:ring-neutral-900 focus-within:ring-offset-2 dark:focus-within:ring-neutral-100"
                 :class="selected === 'svelte'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
-                    : 'border-neutral-200/80 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700/80 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
+                    : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
                 <input type="radio" name="poll" value="svelte" x-model="selected" class="sr-only" />
                 <span
@@ -109,7 +109,7 @@ publish_at: 2025-12-07 06:00:00
             :class="selected
                 ? 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'
                 : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500'"
-            class="mt-4 w-full rounded-lg px-4 py-2.5 text-sm font-medium shadow-sm transition-all duration-150 active:scale-[0.98]"
+            class="mt-4 w-full rounded-lg px-4 py-2.5 text-sm font-medium shadow-sm transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
         >
             Vote
         </button>

@@ -8,10 +8,8 @@ publish_at: 2025-12-07 10:00:00
 ---
 
 <div data-preview-only class="mx-auto max-w-md">
-    <div
-        class="rounded-xl border border-neutral-200/80 bg-white shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
-    >
-        <div class="border-b border-neutral-200/80 px-6 py-4 dark:border-neutral-800/80">
+    <div class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="border-b border-neutral-200 px-6 py-4 dark:border-neutral-800">
             <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50">Account Settings</h3>
             <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
                 Manage your account preferences and security settings.

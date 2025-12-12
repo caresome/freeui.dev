@@ -34,13 +34,18 @@
         class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900"
         x-data="{
             copiedSlug: null,
+            announceMessage: '',
             async copyLink(slug) {
                 const url =
                     window.location.origin + window.location.pathname + '#' + slug
                 try {
                     await navigator.clipboard.writeText(url)
                     this.copiedSlug = slug
-                    setTimeout(() => (this.copiedSlug = null), 2000)
+                    this.announceMessage = 'Link copied to clipboard'
+                    setTimeout(() => {
+                        this.copiedSlug = null
+                        this.announceMessage = ''
+                    }, 2000)
                 } catch (err) {
                     // Fallback for older browsers
                     const textArea = document.createElement('textarea')
@@ -52,11 +57,18 @@
                     document.execCommand('copy')
                     document.body.removeChild(textArea)
                     this.copiedSlug = slug
-                    setTimeout(() => (this.copiedSlug = null), 2000)
+                    this.announceMessage = 'Link copied to clipboard'
+                    setTimeout(() => {
+                        this.copiedSlug = null
+                        this.announceMessage = ''
+                    }, 2000)
                 }
             },
         }"
     >
+        {{-- Screen reader announcement --}}
+        <div aria-live="polite" class="sr-only" x-text="announceMessage"></div>
+
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="space-y-12">
                 @foreach ($components as $uiComponent)
@@ -67,9 +79,10 @@
                                     {{ $uiComponent->title }}
                                 </h2>
                                 <button
+                                    type="button"
                                     @click="copyLink('{{ $uiComponent->slug }}')"
                                     class="group flex h-7 w-7 items-center justify-center rounded-lg border-2 border-neutral-900 bg-white text-neutral-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:text-neutral-900 focus-visible:shadow-none dark:border-white dark:bg-neutral-800 dark:text-neutral-400 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white dark:focus-visible:text-white"
-                                    :title="copiedSlug === '{{ $uiComponent->slug }}' ? 'Copied!' : 'Copy link'"
+                                    :aria-label="copiedSlug === '{{ $uiComponent->slug }}' ? 'Link copied' : 'Copy link to {{ $uiComponent->title }}'"
                                 >
                                     <x-heroicon-o-link
                                         class="h-3.5 w-3.5"

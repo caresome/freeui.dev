@@ -9,7 +9,7 @@ publish_at: 2025-12-07 08:00:00
 
 <div data-preview-only class="mx-auto max-w-md">
     <div
-        class="rounded-xl border border-neutral-200/80 bg-white p-5 shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50">
             What's your favorite JavaScript framework?
@@ -71,13 +71,11 @@ publish_at: 2025-12-07 08:00:00
             </div>
         </div>
 
-        <div
-            class="mt-4 flex items-center justify-between border-t border-neutral-200/80 pt-4 dark:border-neutral-800/80"
-        >
+        <div class="mt-4 flex items-center justify-between border-t border-neutral-200 pt-4 dark:border-neutral-800">
             <span class="text-xs text-neutral-500 dark:text-neutral-400">Poll ended Dec 10, 2025</span>
             <button
                 type="button"
-                class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
+                class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
             >
                 Share results
             </button>

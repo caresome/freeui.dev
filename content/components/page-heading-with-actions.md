@@ -9,7 +9,7 @@ publish_at: 2025-12-07 02:00:00
 
 <div data-preview-only class="mx-auto max-w-3xl px-4">
     <div class="bg-white dark:bg-neutral-900">
-        <div class="border-b border-neutral-200/80 pb-5 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 pb-5 dark:border-neutral-800">
             <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <h1 class="text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl dark:text-neutral-50">
@@ -22,9 +22,16 @@ publish_at: 2025-12-07 02:00:00
                 <div class="flex shrink-0 items-center gap-3">
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-lg border border-neutral-200/80 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                        class="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -35,9 +42,16 @@ publish_at: 2025-12-07 02:00:00
                     </button>
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
+                        class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-200"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                         New Project

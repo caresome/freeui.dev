@@ -10,9 +10,9 @@ publish_at: 2025-12-07 07:00:00
 <div data-preview-only class="mx-auto max-w-md">
     <div
         x-data="{ open: false }"
-        class="rounded-xl border border-neutral-200/80 bg-white shadow-sm dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
-        <div class="border-b border-neutral-200/80 px-5 py-4 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 px-5 py-4 dark:border-neutral-800">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <img
@@ -33,12 +33,19 @@ publish_at: 2025-12-07 07:00:00
                     <button
                         @click="open = !open"
                         type="button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                        aria-expanded="false"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                        :aria-expanded="open"
                         aria-haspopup="true"
                         aria-label="Open options"
                     >
-                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -58,14 +65,14 @@ publish_at: 2025-12-07 07:00:00
                         x-transition:leave-end="opacity-0 scale-95"
                         @click.outside="open = false"
                         @keydown.escape.window="open = false"
-                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-xl border border-neutral-200/80 bg-white py-1 shadow-xl shadow-neutral-900/5 dark:border-neutral-700/80 dark:bg-neutral-800 dark:shadow-neutral-950/50"
+                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-xl border border-neutral-200 bg-white py-1 shadow-xl shadow-neutral-900/5 dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-neutral-950/50"
                         role="menu"
                         aria-orientation="vertical"
                         x-cloak
                     >
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 dark:text-neutral-300 dark:hover:bg-neutral-700/50"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
                             role="menuitem"
                         >
                             <svg
@@ -74,6 +81,7 @@ publish_at: 2025-12-07 07:00:00
                                 viewBox="0 0 24 24"
                                 stroke-width="2"
                                 stroke="currentColor"
+                                aria-hidden="true"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -85,7 +93,7 @@ publish_at: 2025-12-07 07:00:00
                         </a>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 dark:text-neutral-300 dark:hover:bg-neutral-700/50"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
                             role="menuitem"
                         >
                             <svg
@@ -94,6 +102,7 @@ publish_at: 2025-12-07 07:00:00
                                 viewBox="0 0 24 24"
                                 stroke-width="2"
                                 stroke="currentColor"
+                                aria-hidden="true"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -103,13 +112,20 @@ publish_at: 2025-12-07 07:00:00
                             </svg>
                             Duplicate
                         </a>
-                        <div class="my-1 border-t border-neutral-200/80 dark:border-neutral-700/80"></div>
+                        <div class="my-1 border-t border-neutral-200 dark:border-neutral-700"></div>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus-visible:bg-red-100 dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20"
                             role="menuitem"
                         >
-                            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <svg
+                                class="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
                                 <path
                                     stroke-linecap="round"
                                     stroke-linejoin="round"

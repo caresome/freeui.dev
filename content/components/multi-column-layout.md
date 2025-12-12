@@ -43,7 +43,7 @@ publish_at: 2025-12-02 00:00:00
         aria-label="Quick navigation"
     >
         <!-- Logo -->
-        <div class="flex h-16 items-center justify-center border-b border-neutral-200 dark:border-neutral-800">
+        <div class="flex h-16 items-center justify-center">
             <a
                 href="#"
                 class="group flex items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
@@ -145,7 +145,7 @@ publish_at: 2025-12-02 00:00:00
         </nav>
 
         <!-- User Avatar -->
-        <div class="border-t border-neutral-200 p-3 dark:border-neutral-800">
+        <div class="border-t border-neutral-100 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 class="flex items-center justify-center rounded-lg p-1 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
@@ -167,19 +167,16 @@ publish_at: 2025-12-02 00:00:00
         </div>
     </aside>
 
-    <!-- Vertical Divider -->
-    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
-
     <!-- Conversations List -->
     <aside
         id="conversations-list"
         :class="mobileView === 'list' ? 'flex' : 'hidden md:flex'"
-        class="w-full flex-col bg-white md:w-80 dark:bg-neutral-900"
+        class="w-full flex-col bg-neutral-50 md:w-80 dark:bg-neutral-950"
         role="region"
         aria-label="Conversations"
     >
         <!-- Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <header class="flex h-16 items-center justify-between px-4">
             <h2 id="conversations-heading" class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">
                 Messages
             </h2>
@@ -206,7 +203,7 @@ publish_at: 2025-12-02 00:00:00
         </header>
 
         <!-- Search -->
-        <div class="border-b border-neutral-200 p-3 dark:border-neutral-800">
+        <div class="p-3">
             <div class="relative">
                 <label for="conversation-search" class="sr-only">Search conversations</label>
                 <svg
@@ -237,7 +234,7 @@ publish_at: 2025-12-02 00:00:00
             <button
                 @click="selectedChat = 1; mobileView = 'chat'"
                 type="button"
-                :class="selectedChat === 1 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedChat === 1 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedChat === 1).toString()"
@@ -268,7 +265,7 @@ publish_at: 2025-12-02 00:00:00
             <button
                 @click="selectedChat = 2; mobileView = 'chat'"
                 type="button"
-                :class="selectedChat === 2 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedChat === 2 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedChat === 2).toString()"
@@ -299,7 +296,7 @@ publish_at: 2025-12-02 00:00:00
             <button
                 @click="selectedChat = 3; mobileView = 'chat'"
                 type="button"
-                :class="selectedChat === 3 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedChat === 3 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedChat === 3).toString()"
@@ -330,7 +327,7 @@ publish_at: 2025-12-02 00:00:00
             <button
                 @click="selectedChat = 4; mobileView = 'chat'"
                 type="button"
-                :class="selectedChat === 4 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
+                :class="selectedChat === 4 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
                 class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
                 role="option"
                 :aria-selected="(selectedChat === 4).toString()"
@@ -359,9 +356,6 @@ publish_at: 2025-12-02 00:00:00
         </div>
     </aside>
 
-    <!-- Vertical Divider -->
-    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-800" role="separator" aria-hidden="true"></div>
-
     <!-- Chat Area -->
     <main
         id="main-content"
@@ -371,7 +365,7 @@ publish_at: 2025-12-02 00:00:00
         aria-label="Chat with Sarah Johnson"
     >
         <!-- Chat Header -->
-        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-800">
+        <header class="flex h-16 items-center justify-between px-4">
             <div class="flex items-center gap-3">
                 <!-- Mobile Back Button -->
                 <button
@@ -596,7 +590,7 @@ publish_at: 2025-12-02 00:00:00
         </div>
 
         <!-- Message Input -->
-        <footer class="border-t border-neutral-200 p-4 dark:border-neutral-800">
+        <footer class="border-t border-neutral-100 p-4 dark:border-neutral-800">
             <div class="flex items-end gap-3">
                 <button
                     type="button"
