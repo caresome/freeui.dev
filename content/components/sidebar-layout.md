@@ -9,9 +9,29 @@ publish_at: 2025-12-04 00:00:00
 ---
 
 <div
-    x-data="{ sidebarOpen: false, sidebarCollapsed: $persist(false).as('sidebar-layout-collapsed') }"
+    x-data="{
+        sidebarOpen: false,
+        sidebarCollapsed: $persist(false).as('sidebar-layout-collapsed'),
+        init() {
+            this.$watch('sidebarOpen', (open) => {
+                if (open) {
+                    this.$nextTick(() => {
+                        this.$refs.sidebarFirstLink?.focus();
+                    });
+                }
+            });
+        }
+    }"
     class="min-h-screen bg-neutral-50 dark:bg-neutral-950"
 >
+    <!-- Skip Navigation Link -->
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:focus:bg-white dark:focus:text-neutral-900"
+    >
+        Skip to main content
+    </a>
+
     <!-- Mobile sidebar backdrop -->
     <div
         x-show="sidebarOpen"
@@ -23,40 +43,65 @@ publish_at: 2025-12-04 00:00:00
         x-transition:leave-end="opacity-0"
         @click="sidebarOpen = false"
         class="fixed inset-0 z-40 bg-neutral-900/50 lg:hidden"
+        aria-hidden="true"
         x-cloak
     ></div>
 
     <!-- Sidebar -->
     <aside
+        id="sidebar"
         :class="[
             sidebarOpen ? 'translate-x-0' : '-translate-x-full',
             sidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
         ]"
         @keydown.escape.window="sidebarOpen = false"
-        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-neutral-200/80 bg-white transition-transform duration-150 ease-out lg:translate-x-0 dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:bg-neutral-900 dark:shadow-neutral-950/50"
+        role="navigation"
+        aria-label="Main sidebar"
     >
         <!-- Logo -->
-        <div
-            class="flex h-16 shrink-0 items-center gap-3 border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white">
-                <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
-            </div>
-            <span
-                :class="sidebarCollapsed ? 'lg:hidden' : ''"
-                class="text-sm font-semibold text-neutral-900 dark:text-neutral-50"
+        <div class="flex h-16 shrink-0 items-center gap-3 border-b border-neutral-100 px-4 dark:border-neutral-800">
+            <a
+                href="#"
+                class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                aria-label="Caresome - Go to homepage"
             >
-                Caresome
-            </span>
+                <div
+                    class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 shadow-sm transition-transform duration-150 group-hover:scale-105 dark:bg-white"
+                    aria-hidden="true"
+                >
+                    <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
+                </div>
+                <span
+                    :class="sidebarCollapsed ? 'lg:hidden' : ''"
+                    class="text-sm font-semibold text-neutral-900 dark:text-neutral-50"
+                >
+                    Caresome
+                </span>
+            </a>
         </div>
 
         <!-- Navigation -->
-        <nav class="flex-1 space-y-1 overflow-x-hidden overflow-y-auto px-3 py-4">
+        <nav
+            id="sidebar-nav"
+            class="flex-1 space-y-1 overflow-x-hidden overflow-y-auto px-3 py-4"
+            aria-label="Main navigation"
+        >
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
+                x-ref="sidebarFirstLink"
+                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
+                aria-current="page"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -67,9 +112,17 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -80,9 +133,17 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -93,9 +154,17 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -106,9 +175,17 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -119,9 +196,17 @@ publish_at: 2025-12-04 00:00:00
             </a>
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                role="menuitem"
             >
-                <svg class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5 shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -134,59 +219,86 @@ publish_at: 2025-12-04 00:00:00
         </nav>
 
         <!-- Collapse toggle -->
-        <div class="hidden border-t border-neutral-200/80 p-3 lg:block dark:border-neutral-800/80">
+        <div class="hidden border-t border-neutral-100 p-3 lg:block dark:border-neutral-800">
             <button
                 @click="sidebarCollapsed = !sidebarCollapsed"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                type="button"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-50 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                :aria-expanded="(!sidebarCollapsed).toString()"
+                aria-controls="sidebar-nav"
             >
                 <svg
                     :class="sidebarCollapsed ? 'rotate-180' : ''"
-                    class="h-5 w-5 shrink-0"
+                    class="h-5 w-5 shrink-0 transition-transform duration-150"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
                 <span :class="sidebarCollapsed ? 'lg:hidden' : ''">Collapse</span>
+                <span class="sr-only" x-text="sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'">
+                    Collapse sidebar
+                </span>
             </button>
         </div>
 
         <!-- User -->
-        <div class="border-t border-neutral-200/80 p-3 dark:border-neutral-800/80">
+        <div class="border-t border-neutral-100 p-3 dark:border-neutral-800">
             <a
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100"
+                aria-label="View profile for Ankit Thapa"
             >
-                <img
-                    class="h-8 min-h-8 w-8 min-w-8 shrink-0 rounded-full object-cover"
-                    src="https://github.com/caresome.png"
-                    alt="User avatar"
-                />
+                <div class="relative">
+                    <img
+                        class="h-8 min-h-8 w-8 min-w-8 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
+                        src="https://github.com/caresome.png"
+                        alt=""
+                    />
+                    <!-- Online Status -->
+                    <span
+                        class="absolute -right-0.5 -bottom-0.5 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-neutral-900"
+                        aria-hidden="true"
+                    ></span>
+                </div>
                 <div :class="sidebarCollapsed ? 'lg:hidden' : ''" class="min-w-0 flex-1">
                     <p class="truncate text-sm font-medium text-neutral-900 dark:text-neutral-50">Ankit Thapa</p>
                     <p class="truncate text-xs text-neutral-500 dark:text-neutral-400">caresome@proton.me</p>
                 </div>
+                <span class="sr-only">(Online)</span>
             </a>
         </div>
     </aside>
 
     <!-- Main content wrapper -->
-    <div :class="sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'" class="">
+    <div :class="sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'" class="transition-all duration-150">
         <!-- Top bar -->
         <header
-            class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-neutral-200/80 bg-white px-4 sm:px-6 lg:px-8 dark:border-neutral-800/80 dark:bg-neutral-900"
+            class="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-neutral-100 bg-white px-4 sm:px-6 lg:px-8 dark:border-neutral-800 dark:bg-neutral-900"
+            role="banner"
         >
             <!-- Mobile menu button -->
             <button
                 @click="sidebarOpen = true"
                 type="button"
-                class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                aria-label="Open sidebar"
+                class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                :aria-expanded="sidebarOpen.toString()"
+                aria-controls="sidebar"
+                aria-haspopup="dialog"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <span class="sr-only">Open sidebar</span>
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -198,12 +310,14 @@ publish_at: 2025-12-04 00:00:00
             <!-- Search -->
             <div class="flex flex-1 items-center gap-4">
                 <div class="relative w-full max-w-md">
+                    <label for="topbar-search" class="sr-only">Search</label>
                     <svg
                         class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="2"
                         stroke="currentColor"
+                        aria-hidden="true"
                     >
                         <path
                             stroke-linecap="round"
@@ -212,9 +326,10 @@ publish_at: 2025-12-04 00:00:00
                         />
                     </svg>
                     <input
-                        type="text"
+                        type="search"
+                        id="topbar-search"
                         placeholder="Search..."
-                        class="h-9 w-full rounded-lg border border-neutral-200/80 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700"
+                        class="h-9 w-full rounded-lg border border-neutral-200 bg-neutral-50 py-2 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                     />
                 </div>
             </div>
@@ -223,35 +338,52 @@ publish_at: 2025-12-04 00:00:00
             <div class="flex items-center gap-2">
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                    aria-label="View notifications"
+                    class="relative inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                    aria-label="View notifications, 3 unread"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.75"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
                         />
                     </svg>
+                    <!-- Notification Dot -->
+                    <span class="absolute top-1.5 right-1.5 flex h-2 w-2" aria-hidden="true">
+                        <span
+                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-neutral-500 opacity-75"
+                        ></span>
+                        <span
+                            class="relative inline-flex h-2 w-2 rounded-full bg-neutral-600 dark:bg-neutral-400"
+                        ></span>
+                    </span>
                 </button>
             </div>
         </header>
 
         <!-- Main content -->
-        <main class="py-6">
+        <main id="main-content" class="py-8" tabindex="-1">
             <div class="px-4 sm:px-6 lg:px-8">
-                <!-- Content placeholder -->
-                <div
-                    class="rounded-xl border border-dashed border-neutral-300/80 bg-white p-12 text-center dark:border-neutral-700/80 dark:bg-neutral-900"
+                <!-- Content Card -->
+                <article
+                    class="rounded-2xl border border-neutral-100 bg-white p-12 text-center shadow-sm shadow-neutral-900/5 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-neutral-950/50"
                 >
                     <div
-                        class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800"
+                        class="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800"
+                        aria-hidden="true"
                     >
                         <svg
-                            class="h-6 w-6 text-neutral-500 dark:text-neutral-400"
+                            class="h-7 w-7 text-neutral-500 dark:text-neutral-400"
                             fill="none"
                             viewBox="0 0 24 24"
-                            stroke-width="2"
+                            stroke-width="1.5"
                             stroke="currentColor"
                         >
                             <path
@@ -261,22 +393,29 @@ publish_at: 2025-12-04 00:00:00
                             />
                         </svg>
                     </div>
-                    <h3 class="mt-4 text-sm font-medium text-neutral-900 dark:text-neutral-50">
+                    <h1 class="mt-5 text-base font-semibold text-neutral-900 dark:text-neutral-50">
                         Your content goes here
-                    </h3>
-                    <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
-                        This is a placeholder for your main content area.
+                    </h1>
+                    <p class="mx-auto mt-2 max-w-sm text-sm text-neutral-500 dark:text-neutral-400">
+                        This is a placeholder for your main content area. Start building something amazing.
                     </p>
                     <button
                         type="button"
-                        class="mt-4 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
+                        class="mt-6 inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                         </svg>
                         Get Started
                     </button>
-                </div>
+                </article>
             </div>
         </main>
     </div>

@@ -7,26 +7,73 @@ dependencies: []
 publish_at: 2025-12-02 00:00:00
 ---
 
-<div x-data="{ selectedChat: 1, mobileView: 'list' }" class="flex h-screen bg-neutral-50 dark:bg-neutral-950">
+<div
+    x-data="{
+        selectedChat: 1,
+        mobileView: 'list',
+        init() {
+            this.$watch('mobileView', (view) => {
+                if (view === 'chat') {
+                    this.$nextTick(() => {
+                        document.getElementById('message-input')?.focus();
+                    });
+                } else if (view === 'list') {
+                    this.$nextTick(() => {
+                        document.getElementById('conversation-search')?.focus();
+                    });
+                }
+            });
+        }
+    }"
+    class="flex h-screen bg-neutral-50 dark:bg-neutral-950"
+>
+    <!-- Skip Navigation Link -->
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:focus:bg-white dark:focus:text-neutral-900"
+    >
+        Skip to main content
+    </a>
+
     <!-- Narrow Icon Sidebar -->
     <aside
-        class="hidden w-16 flex-col border-r border-neutral-200/80 bg-white md:flex dark:border-neutral-800/80 dark:bg-neutral-900"
+        id="icon-sidebar"
+        class="hidden w-16 flex-col bg-white md:flex dark:bg-neutral-900"
+        role="navigation"
+        aria-label="Quick navigation"
     >
         <!-- Logo -->
-        <div class="flex h-16 items-center justify-center border-b border-neutral-200/80 dark:border-neutral-800/80">
-            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900 dark:bg-white">
-                <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
-            </div>
+        <div class="flex h-16 items-center justify-center border-b border-neutral-200 dark:border-neutral-700">
+            <a
+                href="#"
+                class="group flex items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                aria-label="Caresome - Go to homepage"
+            >
+                <div
+                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 shadow-sm transition-transform duration-150 group-hover:scale-105 dark:bg-white"
+                    aria-hidden="true"
+                >
+                    <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
+                </div>
+            </a>
         </div>
 
         <!-- Icon Navigation -->
-        <nav class="flex flex-1 flex-col items-center gap-1 py-4">
+        <nav id="icon-nav" class="flex flex-1 flex-col items-center gap-1 py-4" aria-label="Main navigation">
             <button
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-900 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 aria-label="Messages"
+                aria-current="page"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -36,10 +83,17 @@ publish_at: 2025-12-02 00:00:00
             </button>
             <button
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                 aria-label="Contacts"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -49,10 +103,17 @@ publish_at: 2025-12-02 00:00:00
             </button>
             <button
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                 aria-label="Calls"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -62,10 +123,17 @@ publish_at: 2025-12-02 00:00:00
             </button>
             <button
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                 aria-label="Settings"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -77,37 +145,57 @@ publish_at: 2025-12-02 00:00:00
         </nav>
 
         <!-- User Avatar -->
-        <div class="border-t border-neutral-200/80 p-3 dark:border-neutral-800/80">
+        <div class="border-t border-neutral-200 p-3 dark:border-neutral-700">
             <a
                 href="#"
-                class="flex items-center justify-center rounded-lg p-1 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:active:bg-neutral-700"
-                aria-label="View profile"
+                class="flex items-center justify-center rounded-lg p-1 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                aria-label="View profile for current user"
             >
-                <img
-                    class="h-8 w-8 rounded-full object-cover ring-1 ring-neutral-200 dark:ring-neutral-700"
-                    src="https://github.com/caresome.png"
-                    alt="User avatar"
-                />
+                <div class="relative">
+                    <img
+                        class="h-8 w-8 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
+                        src="https://github.com/caresome.png"
+                        alt=""
+                    />
+                    <span
+                        class="absolute -right-0.5 -bottom-0.5 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-neutral-900"
+                        aria-hidden="true"
+                    ></span>
+                </div>
+                <span class="sr-only">(Online)</span>
             </a>
         </div>
     </aside>
 
+    <!-- Vertical Divider -->
+    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-700" role="separator" aria-hidden="true"></div>
+
     <!-- Conversations List -->
     <aside
+        id="conversations-list"
         :class="mobileView === 'list' ? 'flex' : 'hidden md:flex'"
-        class="w-full flex-col border-r border-neutral-200/80 bg-white md:w-80 dark:border-neutral-800/80 dark:bg-neutral-900"
+        class="w-full flex-col bg-white md:w-80 dark:bg-neutral-900"
+        role="region"
+        aria-label="Conversations"
     >
         <!-- Header -->
-        <div
-            class="flex h-16 items-center justify-between border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
-            <h2 class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Messages</h2>
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-700">
+            <h2 id="conversations-heading" class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">
+                Messages
+            </h2>
             <button
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                aria-label="New message"
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                aria-label="Compose new message"
             >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <svg
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -115,17 +203,19 @@ publish_at: 2025-12-02 00:00:00
                     />
                 </svg>
             </button>
-        </div>
+        </header>
 
         <!-- Search -->
-        <div class="border-b border-neutral-200/80 p-3 dark:border-neutral-800/80">
+        <div class="border-b border-neutral-200 p-3 dark:border-neutral-700">
             <div class="relative">
+                <label for="conversation-search" class="sr-only">Search conversations</label>
                 <svg
                     class="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-neutral-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
+                    aria-hidden="true"
                 >
                     <path
                         stroke-linecap="round"
@@ -134,29 +224,34 @@ publish_at: 2025-12-02 00:00:00
                     />
                 </svg>
                 <input
-                    type="text"
+                    type="search"
+                    id="conversation-search"
                     placeholder="Search conversations..."
-                    class="h-9 w-full rounded-lg border border-neutral-200/80 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700"
+                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
                 />
             </div>
         </div>
 
         <!-- Conversation List -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 space-y-1 overflow-y-auto p-2" role="listbox" aria-labelledby="conversations-heading">
             <button
                 @click="selectedChat = 1; mobileView = 'chat'"
                 type="button"
                 :class="selectedChat === 1 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 border-b border-neutral-100 p-4 text-left transition-colors duration-150 dark:border-neutral-800"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedChat === 1).toString()"
+                id="conversation-1"
             >
                 <div class="relative">
                     <img
-                        class="h-12 w-12 shrink-0 rounded-full object-cover"
+                        class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                     />
                     <span
-                        class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-green-500 dark:border-neutral-900"
+                        class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-neutral-900"
+                        aria-hidden="true"
                     ></span>
                 </div>
                 <div class="min-w-0 flex-1">
@@ -168,21 +263,26 @@ publish_at: 2025-12-02 00:00:00
                         Sounds great! Let me know when you're free 😊
                     </p>
                 </div>
+                <span class="sr-only">Online</span>
             </button>
             <button
                 @click="selectedChat = 2; mobileView = 'chat'"
                 type="button"
                 :class="selectedChat === 2 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 border-b border-neutral-100 p-4 text-left transition-colors duration-150 dark:border-neutral-800"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedChat === 2).toString()"
+                id="conversation-2"
             >
                 <div class="relative">
                     <img
-                        class="h-12 w-12 shrink-0 rounded-full object-cover"
+                        class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                     />
                     <span
-                        class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-green-500 dark:border-neutral-900"
+                        class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-neutral-900"
+                        aria-hidden="true"
                     ></span>
                 </div>
                 <div class="min-w-0 flex-1">
@@ -194,21 +294,26 @@ publish_at: 2025-12-02 00:00:00
                         The meeting is confirmed for tomorrow
                     </p>
                 </div>
+                <span class="sr-only">Online</span>
             </button>
             <button
                 @click="selectedChat = 3; mobileView = 'chat'"
                 type="button"
                 :class="selectedChat === 3 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 border-b border-neutral-100 p-4 text-left transition-colors duration-150 dark:border-neutral-800"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedChat === 3).toString()"
+                id="conversation-3"
             >
                 <div class="relative">
                     <img
-                        class="h-12 w-12 shrink-0 rounded-full object-cover"
+                        class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                     />
                     <span
                         class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-neutral-300 dark:border-neutral-900 dark:bg-neutral-600"
+                        aria-hidden="true"
                     ></span>
                 </div>
                 <div class="min-w-0 flex-1">
@@ -220,21 +325,26 @@ publish_at: 2025-12-02 00:00:00
                         I've sent over the design files
                     </p>
                 </div>
+                <span class="sr-only">Offline</span>
             </button>
             <button
                 @click="selectedChat = 4; mobileView = 'chat'"
                 type="button"
                 :class="selectedChat === 4 ? 'bg-neutral-100 dark:bg-neutral-800' : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/50'"
-                class="m-1 flex w-full gap-3 border-b border-neutral-100 p-4 text-left transition-colors duration-150 dark:border-neutral-800"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                role="option"
+                :aria-selected="(selectedChat === 4).toString()"
+                id="conversation-4"
             >
                 <div class="relative">
                     <img
-                        class="h-12 w-12 shrink-0 rounded-full object-cover"
+                        class="h-12 w-12 shrink-0 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
                     />
                     <span
                         class="absolute right-0 bottom-0 h-3 w-3 rounded-full border-2 border-white bg-neutral-300 dark:border-neutral-900 dark:bg-neutral-600"
+                        aria-hidden="true"
                     ></span>
                 </div>
                 <div class="min-w-0 flex-1">
@@ -244,53 +354,76 @@ publish_at: 2025-12-02 00:00:00
                     </div>
                     <p class="mt-1 truncate text-sm text-neutral-500 dark:text-neutral-400">Thanks for your help!</p>
                 </div>
+                <span class="sr-only">Offline</span>
             </button>
         </div>
     </aside>
 
+    <!-- Vertical Divider -->
+    <div class="hidden w-px bg-neutral-200 md:block dark:bg-neutral-700" role="separator" aria-hidden="true"></div>
+
     <!-- Chat Area -->
     <main
+        id="main-content"
         :class="mobileView === 'chat' ? 'flex' : 'hidden md:flex'"
         class="flex-1 flex-col bg-white dark:bg-neutral-900"
+        tabindex="-1"
+        aria-label="Chat with Sarah Johnson"
     >
         <!-- Chat Header -->
-        <div
-            class="flex h-16 items-center justify-between border-b border-neutral-200/80 px-4 dark:border-neutral-800/80"
-        >
+        <header class="flex h-16 items-center justify-between border-b border-neutral-200 px-4 dark:border-neutral-700">
             <div class="flex items-center gap-3">
                 <!-- Mobile Back Button -->
                 <button
                     @click="mobileView = 'list'"
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 md:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
-                    aria-label="Back to list"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 md:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    aria-label="Back to conversations list"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                 </button>
                 <div class="relative">
                     <img
-                        class="h-10 w-10 rounded-full object-cover"
+                        class="h-10 w-10 rounded-full object-cover ring-2 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        alt="Sarah Johnson"
                     />
                     <span
-                        class="absolute right-0 bottom-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-green-500 dark:border-neutral-900"
+                        class="absolute right-0 bottom-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald-500 dark:border-neutral-900"
+                        aria-hidden="true"
                     ></span>
                 </div>
                 <div>
                     <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Sarah Johnson</p>
-                    <p class="text-xs text-green-600 dark:text-green-400">Online</p>
+                    <p class="text-xs text-emerald-600 dark:text-emerald-400">
+                        <span aria-hidden="true">Online</span>
+                        <span class="sr-only">Status: Online</span>
+                    </p>
                 </div>
             </div>
             <div class="flex items-center gap-1">
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                     aria-label="Voice call"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -300,10 +433,17 @@ publish_at: 2025-12-02 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                     aria-label="Video call"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -313,10 +453,17 @@ publish_at: 2025-12-02 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                     aria-label="More options"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -325,107 +472,145 @@ publish_at: 2025-12-02 00:00:00
                     </svg>
                 </button>
             </div>
-        </div>
+        </header>
 
         <!-- Messages -->
-        <div class="flex-1 overflow-y-auto p-4">
+        <div
+            class="flex-1 overflow-y-auto p-4"
+            role="log"
+            aria-live="polite"
+            aria-label="Chat messages"
+            aria-relevant="additions"
+        >
             <div class="mx-auto max-w-2xl space-y-4">
                 <!-- Date Divider -->
-                <div class="flex items-center justify-center">
+                <div class="flex items-center justify-center" role="separator" aria-label="Today">
                     <span
-                        class="rounded-full bg-neutral-100 px-3 py-1 text-xs text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400"
+                        class="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-500 shadow-sm dark:bg-neutral-800 dark:text-neutral-400"
                     >
                         Today
                     </span>
                 </div>
 
                 <!-- Received Message -->
-                <div class="flex gap-3">
+                <article class="flex gap-3" aria-label="Message from Sarah Johnson at 10:24 AM">
                     <img
-                        class="h-8 w-8 shrink-0 rounded-full object-cover"
+                        class="h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        alt="Sarah Johnson"
                     />
                     <div class="max-w-[75%]">
-                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2 dark:bg-neutral-800">
+                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2.5 shadow-sm dark:bg-neutral-800">
                             <p class="text-sm text-neutral-900 dark:text-neutral-50">
                                 Hey! How's the project coming along?
                             </p>
                         </div>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">10:24 AM</p>
+                        <time
+                            class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400"
+                            datetime="2025-12-12T10:24:00"
+                        >
+                            10:24 AM
+                        </time>
                     </div>
-                </div>
+                </article>
 
                 <!-- Sent Message -->
-                <div class="flex justify-end">
+                <article class="flex justify-end" aria-label="Your message at 10:26 AM">
                     <div class="max-w-[75%]">
-                        <div class="rounded-2xl rounded-tr-md bg-neutral-900 px-4 py-2 dark:bg-white">
+                        <div class="rounded-2xl rounded-tr-md bg-neutral-900 px-4 py-2.5 shadow-sm dark:bg-white">
                             <p class="text-sm text-white dark:text-neutral-900">
                                 Going well! Just finished the main layout. Should be ready for review by end of day.
                             </p>
                         </div>
-                        <p class="mt-1 text-right text-xs text-neutral-500 dark:text-neutral-400">10:26 AM</p>
+                        <time
+                            class="mt-1 block text-right text-xs text-neutral-500 dark:text-neutral-400"
+                            datetime="2025-12-12T10:26:00"
+                        >
+                            10:26 AM
+                        </time>
                     </div>
-                </div>
+                </article>
 
                 <!-- Received Message -->
-                <div class="flex gap-3">
+                <article class="flex gap-3" aria-label="Message from Sarah Johnson at 10:28 AM">
                     <img
-                        class="h-8 w-8 shrink-0 rounded-full object-cover"
+                        class="h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        alt="Sarah Johnson"
                     />
                     <div class="max-w-[75%]">
-                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2 dark:bg-neutral-800">
+                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2.5 shadow-sm dark:bg-neutral-800">
                             <p class="text-sm text-neutral-900 dark:text-neutral-50">
                                 That's awesome! Can't wait to see it. Do you need any help with the responsive design?
                             </p>
                         </div>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">10:28 AM</p>
+                        <time
+                            class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400"
+                            datetime="2025-12-12T10:28:00"
+                        >
+                            10:28 AM
+                        </time>
                     </div>
-                </div>
+                </article>
 
                 <!-- Sent Message -->
-                <div class="flex justify-end">
+                <article class="flex justify-end" aria-label="Your message at 10:30 AM">
                     <div class="max-w-[75%]">
-                        <div class="rounded-2xl rounded-tr-md bg-neutral-900 px-4 py-2 dark:bg-white">
+                        <div class="rounded-2xl rounded-tr-md bg-neutral-900 px-4 py-2.5 shadow-sm dark:bg-white">
                             <p class="text-sm text-white dark:text-neutral-900">
                                 Actually yes! Could use some input on the mobile breakpoints. Free for a quick call
                                 later?
                             </p>
                         </div>
-                        <p class="mt-1 text-right text-xs text-neutral-500 dark:text-neutral-400">10:30 AM</p>
+                        <time
+                            class="mt-1 block text-right text-xs text-neutral-500 dark:text-neutral-400"
+                            datetime="2025-12-12T10:30:00"
+                        >
+                            10:30 AM
+                        </time>
                     </div>
-                </div>
+                </article>
 
                 <!-- Received Message -->
-                <div class="flex gap-3">
+                <article class="flex gap-3" aria-label="Message from Sarah Johnson at 10:32 AM">
                     <img
-                        class="h-8 w-8 shrink-0 rounded-full object-cover"
+                        class="h-8 w-8 shrink-0 rounded-full object-cover ring-1 ring-neutral-100 dark:ring-neutral-800"
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        alt="Sarah Johnson"
                     />
                     <div class="max-w-[75%]">
-                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2 dark:bg-neutral-800">
+                        <div class="rounded-2xl rounded-tl-md bg-neutral-100 px-4 py-2.5 shadow-sm dark:bg-neutral-800">
                             <p class="text-sm text-neutral-900 dark:text-neutral-50">
                                 Sounds great! Let me know when you're free 😊
                             </p>
                         </div>
-                        <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">10:32 AM</p>
+                        <time
+                            class="mt-1 block text-xs text-neutral-500 dark:text-neutral-400"
+                            datetime="2025-12-12T10:32:00"
+                        >
+                            10:32 AM
+                        </time>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
 
         <!-- Message Input -->
-        <div class="border-t border-neutral-200/80 p-4 dark:border-neutral-800/80">
+        <footer class="border-t border-neutral-200 p-4 dark:border-neutral-700">
             <div class="flex items-end gap-3">
                 <button
                     type="button"
-                    class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:active:bg-neutral-700"
+                    class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
                     aria-label="Attach file"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -434,18 +619,29 @@ publish_at: 2025-12-02 00:00:00
                     </svg>
                 </button>
                 <div class="flex-1">
+                    <label for="message-input" class="sr-only">Type a message to Sarah Johnson</label>
                     <textarea
+                        id="message-input"
                         rows="1"
                         placeholder="Type a message..."
-                        class="w-full resize-none rounded-xl border border-neutral-200/80 bg-neutral-50 px-4 py-2.5 text-sm text-neutral-900 placeholder-neutral-400 transition-colors duration-150 focus:border-neutral-300 focus:bg-white focus:outline-none dark:border-neutral-700/80 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus:bg-neutral-700"
+                        class="w-full resize-none rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-2.5 text-sm text-neutral-900 placeholder-neutral-400 shadow-sm transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-700/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+                        aria-describedby="message-hint"
                     ></textarea>
+                    <span id="message-hint" class="sr-only">Press Enter to send, Shift+Enter for new line</span>
                 </div>
                 <button
-                    type="button"
-                    class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:active:bg-neutral-200"
+                    type="submit"
+                    class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-200"
                     aria-label="Send message"
                 >
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -454,6 +650,6 @@ publish_at: 2025-12-02 00:00:00
                     </svg>
                 </button>
             </div>
-        </div>
+        </footer>
     </main>
 </div>
