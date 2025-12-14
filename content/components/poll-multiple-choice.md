@@ -19,12 +19,12 @@ publish_at: 2025-12-07 07:00:00
 
         <div class="mt-4 space-y-2">
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('performance')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="performance" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="performance" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('performance')
@@ -47,12 +47,12 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('security')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="security" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="security" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('security')
@@ -75,12 +75,12 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('ease-of-use')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="ease-of-use" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="ease-of-use" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('ease-of-use')
@@ -103,12 +103,12 @@ publish_at: 2025-12-07 07:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('documentation')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="documentation" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="documentation" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('documentation')

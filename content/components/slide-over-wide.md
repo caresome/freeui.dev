@@ -213,7 +213,7 @@ publish_at: 2025-12-14 00:00:00
             >
                 <button
                     type="button"
-                    class="text-sm font-medium text-red-600 hover:text-red-700 focus-visible:outline dark:text-red-400 dark:hover:text-red-300"
+                    class="text-sm font-medium text-red-600 hover:text-red-700 focus-visible:outline focus-visible:outline-neutral-900 dark:text-red-400 dark:hover:text-red-300 dark:focus-visible:outline-neutral-100"
                 >
                     Delete Project
                 </button>

@@ -76,7 +76,7 @@ publish_at: 2025-12-07 12:00:00
                 id="nps-feedback"
                 rows="3"
                 placeholder="Your feedback helps us improve..."
-                class="mt-2 block w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:outline-0 focus-visible:outline dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600"
+                class="mt-2 block w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:outline-0 focus-visible:outline focus-visible:outline-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600 dark:focus-visible:outline-neutral-100"
             ></textarea>
 
             <div class="mt-4 flex justify-end">

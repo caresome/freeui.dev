@@ -119,7 +119,7 @@ publish_at: 2025-12-14 00:00:00
                             </span>
                         </label>
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                             :class="categories.includes('electronics')
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
@@ -145,7 +145,7 @@ publish_at: 2025-12-14 00:00:00
                             <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Electronics</span>
                         </label>
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                             :class="categories.includes('clothing')
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
@@ -171,7 +171,7 @@ publish_at: 2025-12-14 00:00:00
                             <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Clothing</span>
                         </label>
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                             :class="categories.includes('home')
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
@@ -211,7 +211,7 @@ publish_at: 2025-12-14 00:00:00
                                 type="number"
                                 id="min-price"
                                 placeholder="Min"
-                                class="block w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-500 focus:outline-0 focus-visible:outline dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500"
+                                class="block w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-500 focus:outline-0 focus-visible:outline focus-visible:outline-neutral-900 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500 dark:focus-visible:outline-neutral-100"
                             />
                         </div>
                         <div>
@@ -220,7 +220,7 @@ publish_at: 2025-12-14 00:00:00
                                 type="number"
                                 id="max-price"
                                 placeholder="Max"
-                                class="block w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-500 focus:outline-0 focus-visible:outline dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500"
+                                class="block w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-500 focus:outline-0 focus-visible:outline focus-visible:outline-neutral-900 dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500 dark:focus-visible:outline-neutral-100"
                             />
                         </div>
                     </div>
@@ -231,12 +231,18 @@ publish_at: 2025-12-14 00:00:00
                     <h3 class="text-sm font-medium text-neutral-900 dark:text-neutral-50">Rating</h3>
                     <div class="mt-3 space-y-2">
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                             :class="rating === 'any'
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
                         >
-                            <input type="radio" name="rating" value="any" x-model="rating" class="sr-only" />
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="any"
+                                x-model="rating"
+                                class="sr-only focus:outline-none"
+                            />
                             <span
                                 class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                                 :class="rating === 'any'
@@ -251,12 +257,18 @@ publish_at: 2025-12-14 00:00:00
                             <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Any rating</span>
                         </label>
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                             :class="rating === '4plus'
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
                         >
-                            <input type="radio" name="rating" value="4plus" x-model="rating" class="sr-only" />
+                            <input
+                                type="radio"
+                                name="rating"
+                                value="4plus"
+                                x-model="rating"
+                                class="sr-only focus:outline-none"
+                            />
                             <span
                                 class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                                 :class="rating === '4plus'
@@ -280,7 +292,7 @@ publish_at: 2025-12-14 00:00:00
                             </span>
                         </label>
                         <label
-                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150"
+                            class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                             :class="rating === '3plus'
                                 ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                                 : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"

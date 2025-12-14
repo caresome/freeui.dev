@@ -33,7 +33,7 @@ publish_at: 2025-12-01 00:00:00
     <!-- Skip Navigation Link -->
     <a
         href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline dark:focus:bg-white dark:focus:text-neutral-900"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline focus-visible:outline-neutral-900 dark:focus:bg-white dark:focus:text-neutral-900 dark:focus-visible:outline-neutral-100"
     >
         Skip to main content
     </a>

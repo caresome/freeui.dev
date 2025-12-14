@@ -72,7 +72,7 @@ publish_at: 2025-12-07 07:00:00
                     >
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                             role="menuitem"
                         >
                             <svg
@@ -93,7 +93,7 @@ publish_at: 2025-12-07 07:00:00
                         </a>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                             role="menuitem"
                         >
                             <svg
@@ -115,7 +115,7 @@ publish_at: 2025-12-07 07:00:00
                         <div class="my-1 border-t border-neutral-200 dark:border-neutral-700"></div>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus-visible:bg-red-100 focus-visible:outline dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus-visible:bg-red-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20 dark:focus-visible:outline-neutral-100"
                             role="menuitem"
                         >
                             <svg

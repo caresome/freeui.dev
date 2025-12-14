@@ -614,7 +614,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'home'"
             type="button"
             :class="activeTab === 'home' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:focus-visible:bg-neutral-800 dark:focus-visible:outline-neutral-100"
             :aria-current="activeTab === 'home' ? 'page' : null"
             aria-label="Home"
         >
@@ -654,7 +654,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'search'"
             type="button"
             :class="activeTab === 'search' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:focus-visible:bg-neutral-800 dark:focus-visible:outline-neutral-100"
             :aria-current="activeTab === 'search' ? 'page' : null"
             aria-label="Search"
         >
@@ -693,7 +693,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'create'"
             type="button"
             :class="activeTab === 'create' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:focus-visible:bg-neutral-800 dark:focus-visible:outline-neutral-100"
             :aria-current="activeTab === 'create' ? 'page' : null"
             aria-label="Create"
         >
@@ -732,7 +732,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'activity'"
             type="button"
             :class="activeTab === 'activity' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:focus-visible:bg-neutral-800 dark:focus-visible:outline-neutral-100"
             :aria-current="activeTab === 'activity' ? 'page' : null"
             aria-label="Activity"
         >
@@ -769,7 +769,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'profile'"
             type="button"
             :class="activeTab === 'profile' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:focus-visible:bg-neutral-800 dark:focus-visible:outline-neutral-100"
             :aria-current="activeTab === 'profile' ? 'page' : null"
             aria-label="Profile"
         >

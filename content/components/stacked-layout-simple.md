@@ -56,7 +56,7 @@ publish_at: 2025-12-07 00:00:00
     <!-- Skip Navigation Link -->
     <a
         href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline dark:focus:bg-white dark:focus:text-neutral-900"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline focus-visible:outline-neutral-900 dark:focus:bg-white dark:focus:text-neutral-900 dark:focus-visible:outline-neutral-100"
     >
         Skip to main content
     </a>
@@ -236,7 +236,7 @@ publish_at: 2025-12-07 00:00:00
                             <!-- Menu Items -->
                             <a
                                 href="#"
-                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                                 role="menuitem"
                                 tabindex="-1"
                             >
@@ -258,7 +258,7 @@ publish_at: 2025-12-07 00:00:00
                             </a>
                             <a
                                 href="#"
-                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                                 role="menuitem"
                                 tabindex="-1"
                             >
@@ -290,7 +290,7 @@ publish_at: 2025-12-07 00:00:00
                             <!-- Sign Out -->
                             <a
                                 href="#"
-                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                                class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 focus:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                                 role="menuitem"
                                 tabindex="-1"
                             >

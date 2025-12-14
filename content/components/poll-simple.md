@@ -19,12 +19,12 @@ publish_at: 2025-12-07 06:00:00
 
         <div class="mt-4 space-y-2">
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected === 'react'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="radio" name="poll" value="react" x-model="selected" class="sr-only" />
+                <input type="radio" name="poll" value="react" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                     :class="selected === 'react'
@@ -40,12 +40,12 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected === 'vue'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="radio" name="poll" value="vue" x-model="selected" class="sr-only" />
+                <input type="radio" name="poll" value="vue" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                     :class="selected === 'vue'
@@ -61,12 +61,12 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected === 'angular'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="radio" name="poll" value="angular" x-model="selected" class="sr-only" />
+                <input type="radio" name="poll" value="angular" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                     :class="selected === 'angular'
@@ -82,12 +82,12 @@ publish_at: 2025-12-07 06:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected === 'svelte'
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="radio" name="poll" value="svelte" x-model="selected" class="sr-only" />
+                <input type="radio" name="poll" value="svelte" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors"
                     :class="selected === 'svelte'

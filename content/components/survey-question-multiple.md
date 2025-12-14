@@ -29,12 +29,12 @@ publish_at: 2025-12-07 10:00:00
 
         <div class="mt-4 space-y-2">
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('dashboard')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="dashboard" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="dashboard" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('dashboard')
@@ -57,12 +57,12 @@ publish_at: 2025-12-07 10:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('reports')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="reports" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="reports" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('reports')
@@ -85,12 +85,12 @@ publish_at: 2025-12-07 10:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('team')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="team" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="team" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('team')
@@ -113,12 +113,12 @@ publish_at: 2025-12-07 10:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('integrations')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="integrations" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="integrations" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('integrations')
@@ -141,12 +141,12 @@ publish_at: 2025-12-07 10:00:00
             </label>
 
             <label
-                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 focus-within:outline-1 focus-within:outline-offset-2 focus-within:outline-neutral-900 dark:focus-within:outline-neutral-100"
+                class="flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition-all duration-150 has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-neutral-900 dark:has-[:focus-visible]:outline-neutral-100"
                 :class="selected.includes('settings')
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-800'"
             >
-                <input type="checkbox" value="settings" x-model="selected" class="sr-only" />
+                <input type="checkbox" value="settings" x-model="selected" class="sr-only focus:outline-none" />
                 <span
                     class="flex h-4 w-4 shrink-0 items-center justify-center rounded border-2 transition-colors"
                     :class="selected.includes('settings')
