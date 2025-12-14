@@ -33,7 +33,7 @@ publish_at: 2025-12-07 07:00:00
         </p>
         <a
             href="#"
-            class="mt-4 inline-flex items-center gap-1.5 rounded-lg text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-50 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
+            class="mt-4 inline-flex items-center gap-1.5 rounded-lg text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-50 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
         >
             Learn more
             <svg

@@ -103,7 +103,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="view"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 0 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -129,7 +129,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="edit"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 1 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -154,7 +154,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="duplicate"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 2 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -182,7 +182,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="delete"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-red-600 dark:text-red-400 dark:focus-visible:outline-red-400"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 dark:text-red-400 dark:focus-visible:outline-red-400"
                 :class="activeIndex === 3 ? 'bg-red-50 dark:bg-red-500/10' : 'hover:bg-red-50 dark:hover:bg-red-500/10'"
                 role="menuitem"
                 tabindex="-1"

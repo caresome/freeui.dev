@@ -16,7 +16,7 @@ publish_at: 2025-12-14 00:00:00
             @focus="show = true"
             @blur="show = false"
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             aria-describedby="arrow-tooltip-top"
         >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -60,7 +60,7 @@ publish_at: 2025-12-14 00:00:00
             @focus="show = true"
             @blur="show = false"
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             aria-describedby="arrow-tooltip-right"
         >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -104,7 +104,7 @@ publish_at: 2025-12-14 00:00:00
             @focus="show = true"
             @blur="show = false"
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             aria-describedby="arrow-tooltip-bottom"
         >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -148,7 +148,7 @@ publish_at: 2025-12-14 00:00:00
             @focus="show = true"
             @blur="show = false"
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             aria-describedby="arrow-tooltip-left"
         >
             <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">

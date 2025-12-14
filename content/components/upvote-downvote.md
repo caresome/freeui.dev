@@ -18,7 +18,7 @@ publish_at: 2025-12-07 01:00:00
             :class="vote === 'up'
                 ? 'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400'
                 : 'text-neutral-400 hover:bg-neutral-100 hover:text-green-600 dark:text-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-green-400'"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
             aria-label="Upvote"
         >
             <svg
@@ -47,7 +47,7 @@ publish_at: 2025-12-07 01:00:00
             :class="vote === 'down'
                 ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                 : 'text-neutral-400 hover:bg-neutral-100 hover:text-red-600 dark:text-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-red-400'"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
             aria-label="Downvote"
         >
             <svg

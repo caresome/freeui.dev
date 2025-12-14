@@ -16,7 +16,7 @@ publish_at: 2025-12-07 03:00:00
                     <li>
                         <a
                             href="#"
-                            class="rounded text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                            class="rounded text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
                         >
                             Projects
                         </a>
@@ -34,7 +34,7 @@ publish_at: 2025-12-07 03:00:00
                         </svg>
                         <a
                             href="#"
-                            class="rounded text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                            class="rounded text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
                         >
                             Engineering
                         </a>
@@ -128,7 +128,7 @@ publish_at: 2025-12-07 03:00:00
                 <div class="flex shrink-0 items-center gap-3">
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
+                        class="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm font-medium text-neutral-700 shadow-sm transition-all duration-150 hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] active:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                     >
                         <svg
                             class="h-4 w-4"
@@ -148,7 +148,7 @@ publish_at: 2025-12-07 03:00:00
                     </button>
                     <button
                         type="button"
-                        class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-200"
+                        class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] active:bg-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-200"
                     >
                         <svg
                             class="h-4 w-4"

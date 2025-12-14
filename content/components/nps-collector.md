@@ -35,7 +35,7 @@ publish_at: 2025-12-07 12:00:00
                             'bg-amber-50 text-amber-600 hover:bg-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:hover:bg-amber-500/20': score !== n - 1 && (n - 1 === 7 || n - 1 === 8),
                             'bg-green-50 text-green-600 hover:bg-green-100 dark:bg-green-500/10 dark:text-green-400 dark:hover:bg-green-500/20': score !== n - 1 && n - 1 >= 9
                         }"
-                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
+                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                         x-text="n - 1"
                     ></button>
                 </template>
@@ -82,7 +82,7 @@ publish_at: 2025-12-07 12:00:00
             <div class="mt-4 flex justify-end">
                 <button
                     type="button"
-                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
+                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
                 >
                     Submit Feedback
                 </button>
