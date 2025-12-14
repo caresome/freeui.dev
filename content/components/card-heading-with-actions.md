@@ -9,7 +9,46 @@ publish_at: 2025-12-07 07:00:00
 
 <div data-preview-only class="mx-auto max-w-md">
     <div
-        x-data="{ open: false }"
+        x-data="{
+            open: false,
+            activeIndex: -1,
+            items: ['edit', 'duplicate', 'delete'],
+            toggle() {
+                this.open = !this.open;
+                if (this.open) {
+                    this.$nextTick(() => this.focusItem(0));
+                }
+            },
+            close() {
+                this.open = false;
+                this.activeIndex = -1;
+                this.$refs.trigger.focus();
+            },
+            focusItem(index) {
+                this.activeIndex = index;
+                this.$nextTick(() => {
+                    this.$refs[this.items[index]]?.focus();
+                });
+            },
+            next() {
+                const nextIndex = this.activeIndex < this.items.length - 1 ? this.activeIndex + 1 : 0;
+                this.focusItem(nextIndex);
+            },
+            prev() {
+                const prevIndex = this.activeIndex > 0 ? this.activeIndex - 1 : this.items.length - 1;
+                this.focusItem(prevIndex);
+            },
+            selectItem() {
+                if (this.activeIndex >= 0) {
+                    this.$refs[this.items[this.activeIndex]].click();
+                }
+            }
+        }"
+        @keydown.escape.window="if (open) close()"
+        @keydown.arrow-down.prevent="open ? next() : null"
+        @keydown.arrow-up.prevent="open ? prev() : null"
+        @keydown.enter.prevent="open && activeIndex >= 0 ? selectItem() : null"
+        @keydown.tab="if (open) close()"
         class="rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
     >
         <div class="border-b border-neutral-200 px-5 py-4 dark:border-neutral-800">
@@ -31,7 +70,8 @@ publish_at: 2025-12-07 07:00:00
                 <!-- Dropdown -->
                 <div class="relative">
                     <button
-                        @click="open = !open"
+                        x-ref="trigger"
+                        @click="toggle()"
                         type="button"
                         class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                         :aria-expanded="open"
@@ -63,17 +103,21 @@ publish_at: 2025-12-07 07:00:00
                         x-transition:leave="transition ease-in duration-75"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        @click.outside="open = false"
-                        @keydown.escape.window="open = false"
-                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-xl border border-neutral-200 bg-white py-1 shadow-xl shadow-neutral-900/5 dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-neutral-950/50"
+                        @click.outside="close()"
+                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-xl border border-neutral-200 bg-white p-1.5 shadow-xl shadow-neutral-900/5 dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-neutral-950/50"
                         role="menu"
                         aria-orientation="vertical"
                         x-cloak
                     >
                         <a
+                            x-ref="edit"
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700 dark:focus-visible:outline-neutral-100"
+                            class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                            :class="activeIndex === 0 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                             role="menuitem"
+                            tabindex="-1"
+                            @mouseenter="activeIndex = 0"
+                            @mouseleave="activeIndex = -1"
                         >
                             <svg
                                 class="h-4 w-4 text-neutral-500 dark:text-neutral-400"
@@ -92,9 +136,14 @@ publish_at: 2025-12-07 07:00:00
                             Edit
                         </a>
                         <a
+                            x-ref="duplicate"
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700 dark:focus-visible:outline-neutral-100"
+                            class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                            :class="activeIndex === 1 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                             role="menuitem"
+                            tabindex="-1"
+                            @mouseenter="activeIndex = 1"
+                            @mouseleave="activeIndex = -1"
                         >
                             <svg
                                 class="h-4 w-4 text-neutral-500 dark:text-neutral-400"
@@ -114,9 +163,14 @@ publish_at: 2025-12-07 07:00:00
                         </a>
                         <div class="my-1 border-t border-neutral-200 dark:border-neutral-700"></div>
                         <a
+                            x-ref="delete"
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus-visible:bg-red-100 focus-visible:outline focus-visible:outline-neutral-900 dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20 dark:focus-visible:outline-neutral-100"
+                            class="flex items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-600 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 dark:text-red-400 dark:focus-visible:outline-red-400"
+                            :class="activeIndex === 2 ? 'bg-red-50 dark:bg-red-500/10' : 'hover:bg-red-50 dark:hover:bg-red-500/10'"
                             role="menuitem"
+                            tabindex="-1"
+                            @mouseenter="activeIndex = 2"
+                            @mouseleave="activeIndex = -1"
                         >
                             <svg
                                 class="h-4 w-4"
