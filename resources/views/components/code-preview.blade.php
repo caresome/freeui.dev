@@ -7,32 +7,23 @@
     'username' => null,
     'authorAvatar' => null,
     'authorUrl' => null,
-    'dependencies' => [],
-    'tailwindCdn',
-    'alpineCdn',
 ])
 
 @php
     $componentUrl = $collection && $category && $slug ? url("/{$collection}/{$category}/{$slug}") : null;
+    $embedUrl = $collection && $category && $slug ? route('components.embed', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) : null;
 @endphp
 
 <div
     x-data="codePreviewComponent({
                 title: @js($title),
                 componentUrl: @js($componentUrl),
+                embedUrl: @js($embedUrl),
                 rawCode: @js($content),
                 codeUrl: @js(route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug])),
-                dependencies: @js($dependencies),
-                tailwindCdn: @js($tailwindCdn),
-                alpineCdn: @js($alpineCdn),
             })"
     class="w-full"
 >
-    {{-- Data Storage --}}
-    <template x-ref="originalContent">
-        {!! $content !!}
-    </template>
-
     <div
         class="group relative flex flex-col rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
     >
@@ -411,16 +402,40 @@
                 x-transition:enter="transition duration-200 ease-out"
                 x-transition:enter-start="opacity-0"
                 x-transition:enter-end="opacity-100"
-                class="h-full w-full flex-1 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#333_1px,transparent_1px)]"
+                class="relative h-full w-full flex-1 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#333_1px,transparent_1px)]"
             >
+                {{-- Loading Indicator --}}
+                <div
+                    x-show="!iframeLoaded"
+                    x-transition:leave="transition-opacity duration-300"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="absolute inset-0 z-10 flex items-center justify-center"
+                >
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="relative">
+                            <x-heroicon-o-cube class="h-10 w-10 text-neutral-300 dark:text-neutral-600" />
+                            <x-heroicon-o-cube
+                                class="absolute inset-0 h-10 w-10 animate-ping text-neutral-300 opacity-40 dark:text-neutral-600"
+                            />
+                        </div>
+                        <span class="text-xs font-medium text-neutral-400 dark:text-neutral-500">
+                            Loading preview...
+                        </span>
+                    </div>
+                </div>
+
                 {{-- Responsive Width Container --}}
                 <div class="mx-auto h-full transition-[width] duration-300 ease-out" :style="{ width: previewWidth }">
                     <iframe
                         x-ref="previewFrame"
+                        :src="embedUrl"
                         title="Component preview"
                         class="max-h-[600px] min-h-[600px] w-full bg-transparent"
+                        :class="{ 'opacity-0': !iframeLoaded, 'opacity-100': iframeLoaded }"
                         tabindex="-1"
                         loading="lazy"
+                        @load="onIframeLoad()"
                     ></iframe>
                 </div>
             </div>
@@ -488,16 +503,15 @@
             replitCopied: false,
             previewWidth: '100%',
             aiMenuOpen: false,
+            iframeLoaded: false,
             title: config.title || 'Component',
             componentUrl: config.componentUrl || window.location.href,
+            embedUrl: config.embedUrl || null,
             rawCode: config.rawCode || '',
             codeUrl: config.codeUrl || null,
-            dependencies: config.dependencies || [],
-            tailwindCdn: config.tailwindCdn,
-            alpineCdn: config.alpineCdn,
 
             init() {
-                // Watch for theme changes on parent document
+                // Watch for theme changes and sync to iframe via postMessage
                 const observer = new MutationObserver((mutations) => {
                     mutations.forEach((mutation) => {
                         if (mutation.attributeName === 'class') {
@@ -537,9 +551,12 @@
                         }, 100);
                     }
                 });
+            },
 
-                // Load iframe initial content
-                this.$nextTick(() => this.updateIframe());
+            onIframeLoad() {
+                this.iframeLoaded = true;
+                // Sync theme immediately after load
+                this.syncIframeTheme();
             },
 
             switchTab(tab) {
@@ -594,129 +611,13 @@
                 }
             },
 
-            updateIframe() {
-                const iframe = this.$refs.previewFrame;
-                if (!iframe) return;
-
-                const content = this.$refs.originalContent.innerHTML;
-                const isDark = document.documentElement.classList.contains('dark');
-
-                // Build dependency tags
-                let dependencyTags = '';
-                if (this.dependencies && Array.isArray(this.dependencies)) {
-                    this.dependencies.forEach((dep) => {
-                        const firstSpace = dep.indexOf(' ');
-                        const url = firstSpace === -1 ? dep.trim() : dep.substring(firstSpace + 1).trim();
-
-                        if (url.endsWith('.css')) {
-                            dependencyTags += `<link rel="stylesheet" href="${url}">`;
-                        } else if (url.endsWith('.js')) {
-                            dependencyTags += `<script src="${url}"><\/script>`;
-                        }
-                    });
-                }
-
-                // Clone parent styles (LINK and STYLE tags only)
-                let parentStyles = '';
-                Array.from(document.head.children).forEach((child) => {
-                    if (['LINK', 'STYLE'].includes(child.tagName)) {
-                        parentStyles += child.outerHTML;
-                    }
-                });
-
-                // Build complete document as srcdoc
-                const srcdoc = `<!DOCTYPE html>
-<html class="${isDark ? 'dark' : ''}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    ${parentStyles}
-    <script>
-        // Suppress Tailwind CDN warning and Alpine errors
-        (function() {
-            const originalWarn = console.warn;
-            console.warn = function(...args) {
-                if (args[0] && typeof args[0] === 'string' && (args[0].includes('cdn.tailwindcss.com') || args[0].includes('Alpine'))) return;
-                originalWarn.apply(console, args);
-            };
-            const originalError = console.error;
-            console.error = function(...args) {
-                if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
-                originalError.apply(console, args);
-            };
-            window.addEventListener('error', function(e) {
-                if (e.message && (e.message.includes('is not defined') || e.message.includes('Illegal invocation') || e.message.includes('Invalid or unexpected token'))) {
-                    e.preventDefault();
-                    return true;
-                }
-            });
-        })();
-    <\/script>
-    <script src="${this.tailwindCdn}"><\/script>
-    <style type="text/tailwindcss">
-        @theme {
-            --font-sans: 'Inter', sans-serif;
-        }
-        @variant dark (&:where(.dark, .dark *));
-    </style>
-    ${dependencyTags}
-    <script defer src="${this.alpineCdn}"><\/script>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        body {
-            background-color: transparent !important;
-            visibility: hidden;
-        }
-        body.loaded { visibility: visible; }
-        [x-cloak] { display: none !important; }
-    </style>
-</head>
-<body class="font-sans antialiased preview-iframe">
-    <div class="h-full overflow-auto">
-        <div class="flex min-h-full items-center justify-center">
-            <div class="w-full">${content}</div>
-        </div>
-    </div>
-    <script>
-        // Show body once Tailwind processes styles
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                document.body.classList.add('loaded');
-            });
-        });
-        // Prevent hash links from affecting browser history
-        document.addEventListener('click', function(e) {
-            const link = e.target.closest('a');
-            if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
-                e.preventDefault();
-            }
-        });
-    <\/script>
-</body>
-</html>`;
-
-                // Single assignment - browser handles parsing efficiently
-                iframe.srcdoc = srcdoc;
-
-                // Set up theme sync after iframe loads
-                iframe.onload = () => {
-                    this.syncIframeTheme();
-                };
-            },
-
             syncIframeTheme() {
                 const iframe = this.$refs.previewFrame;
                 if (!iframe || !iframe.contentWindow) return;
 
                 const isDark = document.documentElement.classList.contains('dark');
-                if (iframe.contentWindow.document && iframe.contentWindow.document.documentElement) {
-                    iframe.contentWindow.document.documentElement.classList.toggle('dark', isDark);
-                }
+                // Use postMessage to sync theme to iframe
+                iframe.contentWindow.postMessage({ type: 'theme-sync', isDark }, '*');
             },
 
             // Strip data-preview-only wrappers from code (using string manipulation to preserve formatting)

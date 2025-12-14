@@ -122,12 +122,9 @@
                                 :slug="$uiComponent->slug"
                                 :collection="$collection->slug"
                                 :category="$uiComponent->category"
-                                :dependencies="$uiComponent->dependencies"
                                 :username="$uiComponent->github"
                                 :author-avatar="$uiComponent->avatar_url"
                                 :author-url="$uiComponent->github_url"
-                                :tailwind-cdn="config('freeui.tailwind_cdn')"
-                                :alpine-cdn="config('freeui.alpine_cdn')"
                             />
                         </div>
                     </div>

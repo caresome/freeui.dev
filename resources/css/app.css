@@ -20,12 +20,6 @@
         'Noto Color Emoji';
 }
 
-/* Smooth scrolling for hash navigation */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom Focus Ring for Accessibility (Excluded from Previews) */
 body:not(.preview-iframe) :focus-visible {
     outline: 2px solid var(--color-neutral-900);
     outline-offset: 2px;
