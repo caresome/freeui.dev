@@ -15,17 +15,27 @@ publish_at: 2025-12-14 00:00:00
             items: ['account', 'support', 'license', 'signout'],
             toggle() {
                 this.open = !this.open;
-                if (this.open) this.activeIndex = -1;
+                if (this.open) {
+                    this.activeIndex = -1;
+                }
             },
             close() {
                 this.open = false;
                 this.activeIndex = -1;
             },
+            focusItem(index) {
+                this.activeIndex = index;
+                this.$nextTick(() => {
+                    this.$refs[this.items[index]]?.focus();
+                });
+            },
             next() {
-                this.activeIndex = this.activeIndex < this.items.length - 1 ? this.activeIndex + 1 : 0;
+                const nextIndex = this.activeIndex < this.items.length - 1 ? this.activeIndex + 1 : 0;
+                this.focusItem(nextIndex);
             },
             prev() {
-                this.activeIndex = this.activeIndex > 0 ? this.activeIndex - 1 : this.items.length - 1;
+                const prevIndex = this.activeIndex > 0 ? this.activeIndex - 1 : this.items.length - 1;
+                this.focusItem(prevIndex);
             },
             selectItem() {
                 if (this.activeIndex >= 0) {
@@ -45,7 +55,7 @@ publish_at: 2025-12-14 00:00:00
         <button
             @click="toggle()"
             type="button"
-            class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 shadow-sm ring-1 ring-neutral-200 transition-all hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-700 dark:hover:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+            class="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-neutral-700 shadow-sm ring-1 ring-neutral-200 transition-all hover:bg-neutral-50 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-700 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
             :aria-expanded="open"
             aria-haspopup="true"
         >
@@ -73,7 +83,7 @@ publish_at: 2025-12-14 00:00:00
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
             @click.outside="close()"
-            class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-lg border border-neutral-200 bg-white py-1 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+            class="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-xl border border-neutral-200 bg-white p-1.5 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
             role="menu"
             aria-orientation="vertical"
             x-cloak
@@ -81,7 +91,7 @@ publish_at: 2025-12-14 00:00:00
             <a
                 x-ref="account"
                 href="#"
-                class="block px-4 py-2 text-sm text-neutral-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:text-neutral-300 dark:focus-visible:ring-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 0 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -93,7 +103,7 @@ publish_at: 2025-12-14 00:00:00
             <a
                 x-ref="support"
                 href="#"
-                class="block px-4 py-2 text-sm text-neutral-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:text-neutral-300 dark:focus-visible:ring-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 1 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -105,7 +115,7 @@ publish_at: 2025-12-14 00:00:00
             <a
                 x-ref="license"
                 href="#"
-                class="block px-4 py-2 text-sm text-neutral-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:text-neutral-300 dark:focus-visible:ring-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 2 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -117,7 +127,7 @@ publish_at: 2025-12-14 00:00:00
             <a
                 x-ref="signout"
                 href="#"
-                class="block px-4 py-2 text-sm text-neutral-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:text-neutral-300 dark:focus-visible:ring-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 3 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"

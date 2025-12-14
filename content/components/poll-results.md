@@ -75,7 +75,7 @@ publish_at: 2025-12-07 08:00:00
             <span class="text-xs text-neutral-500 dark:text-neutral-400">Poll ended Dec 10, 2025</span>
             <button
                 type="button"
-                class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             >
                 Share results
             </button>

@@ -22,7 +22,7 @@ publish_at: 2025-12-14 00:00:00
             <div class="flex items-center gap-1">
                 <a
                     href="#"
-                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 >
                     Home
                 </a>
@@ -39,7 +39,7 @@ publish_at: 2025-12-14 00:00:00
                         @focus="open = true"
                         @click="open = !open"
                         type="button"
-                        class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                        class="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                         :aria-expanded="open"
                         aria-haspopup="true"
                     >
@@ -86,7 +86,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <div
                                                     class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400"
@@ -118,7 +118,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <div
                                                     class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400"
@@ -150,7 +150,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <div
                                                     class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400"
@@ -191,7 +191,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">
                                                     Documentation
@@ -202,7 +202,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">
                                                     API Reference
@@ -213,7 +213,7 @@ publish_at: 2025-12-14 00:00:00
                                         <li>
                                             <a
                                                 href="#"
-                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                                                class="block rounded-lg p-2 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                                             >
                                                 <p class="text-sm font-medium text-neutral-900 dark:text-neutral-50">
                                                     Community
@@ -233,7 +233,7 @@ publish_at: 2025-12-14 00:00:00
                                 </p>
                                 <a
                                     href="#"
-                                    class="mt-2 inline-flex text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-50"
+                                    class="mt-2 inline-flex rounded-lg text-sm font-medium text-neutral-900 hover:underline focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-50 dark:focus-visible:outline-neutral-100"
                                 >
                                     Contact support →
                                 </a>
@@ -244,13 +244,13 @@ publish_at: 2025-12-14 00:00:00
 
                 <a
                     href="#"
-                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 >
                     Pricing
                 </a>
                 <a
                     href="#"
-                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50"
+                    class="rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 >
                     Contact
                 </a>
@@ -259,7 +259,7 @@ publish_at: 2025-12-14 00:00:00
             <!-- CTA -->
             <button
                 type="button"
-                class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
+                class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             >
                 Get Started
             </button>

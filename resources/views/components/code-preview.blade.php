@@ -713,7 +713,7 @@
                 doc.head.appendChild(style);
 
                 // 6. Body Content
-                doc.body.className = 'font-sans antialiased';
+                doc.body.className = 'font-sans antialiased preview-iframe';
                 doc.body.innerHTML = `<div class="h-full overflow-auto"><div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div></div>`;
 
                 // 7. Prevent hash links from affecting browser history

@@ -36,7 +36,7 @@ publish_at: 2025-12-07 05:00:00
                 :class="reaction.active
                     ? 'border-neutral-900 bg-neutral-50 dark:border-neutral-50 dark:bg-neutral-800'
                     : 'border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800'"
-                class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
+                class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:focus-visible:outline-neutral-100"
             >
                 <span class="relative flex h-5 w-5 items-center justify-center">
                     <span x-show="hovering !== index" x-text="reaction.emoji" class="absolute text-base"></span>
@@ -58,7 +58,7 @@ publish_at: 2025-12-07 05:00:00
         </template>
         <button
             type="button"
-            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-neutral-300 text-neutral-400 transition-all duration-150 hover:border-neutral-400 hover:bg-neutral-50 hover:text-neutral-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300 dark:focus-visible:ring-neutral-100"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-neutral-300 text-neutral-400 transition-all duration-150 hover:border-neutral-400 hover:bg-neutral-50 hover:text-neutral-600 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
             aria-label="Add reaction"
         >
             <svg

@@ -39,7 +39,7 @@ publish_at: 2025-12-07 11:00:00
                     :class="rating === 1
                         ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700'"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                 >
                     1
                 </button>
@@ -49,7 +49,7 @@ publish_at: 2025-12-07 11:00:00
                     :class="rating === 2
                         ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700'"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                 >
                     2
                 </button>
@@ -59,7 +59,7 @@ publish_at: 2025-12-07 11:00:00
                     :class="rating === 3
                         ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700'"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                 >
                     3
                 </button>
@@ -69,7 +69,7 @@ publish_at: 2025-12-07 11:00:00
                     :class="rating === 4
                         ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700'"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                 >
                     4
                 </button>
@@ -79,7 +79,7 @@ publish_at: 2025-12-07 11:00:00
                     :class="rating === 5
                         ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
                         : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700'"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg text-lg font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                 >
                     5
                 </button>
@@ -103,7 +103,7 @@ publish_at: 2025-12-07 11:00:00
         <div class="mt-5 flex items-center justify-between border-t border-neutral-200 pt-4 dark:border-neutral-800">
             <button
                 type="button"
-                class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-4 w-4"
@@ -123,7 +123,7 @@ publish_at: 2025-12-07 11:00:00
                 :class="rating
                     ? 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'
                     : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500'"
-                class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium shadow-sm transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
+                class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium shadow-sm transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:focus-visible:outline-neutral-100"
             >
                 Next
                 <svg

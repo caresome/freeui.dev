@@ -19,18 +19,25 @@ publish_at: 2025-12-14 00:00:00
                 this.open = true;
                 this.x = e.clientX;
                 this.y = e.clientY;
-                this.activeIndex = 0;
-                this.$nextTick(() => this.$refs.menu?.focus());
+                this.$nextTick(() => this.focusItem(0));
             },
             close() {
                 this.open = false;
                 this.activeIndex = -1;
             },
+            focusItem(index) {
+                this.activeIndex = index;
+                this.$nextTick(() => {
+                    this.$refs[this.items[index]]?.focus();
+                });
+            },
             next() {
-                this.activeIndex = this.activeIndex < this.items.length - 1 ? this.activeIndex + 1 : 0;
+                const nextIndex = this.activeIndex < this.items.length - 1 ? this.activeIndex + 1 : 0;
+                this.focusItem(nextIndex);
             },
             prev() {
-                this.activeIndex = this.activeIndex > 0 ? this.activeIndex - 1 : this.items.length - 1;
+                const prevIndex = this.activeIndex > 0 ? this.activeIndex - 1 : this.items.length - 1;
+                this.focusItem(prevIndex);
             },
             selectItem() {
                 if (this.activeIndex >= 0) {
@@ -76,7 +83,7 @@ publish_at: 2025-12-14 00:00:00
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-95"
             :style="`position: fixed; left: ${x}px; top: ${y}px;`"
-            class="z-50 w-48 origin-top-left rounded-lg border border-neutral-200 bg-white py-1 shadow-lg outline-none dark:border-neutral-700 dark:bg-neutral-800"
+            class="z-50 w-48 origin-top-left rounded-xl border border-neutral-200 bg-white p-1.5 shadow-lg outline-none dark:border-neutral-700 dark:bg-neutral-800"
             role="menu"
             @click.outside="close()"
             x-cloak
@@ -96,7 +103,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="view"
                 type="button"
-                class="flex w-full items-center gap-3 px-3 py-2 text-sm text-neutral-700 transition-colors outline-none dark:text-neutral-300"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 0 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -122,7 +129,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="edit"
                 type="button"
-                class="flex w-full items-center gap-3 px-3 py-2 text-sm text-neutral-700 transition-colors outline-none dark:text-neutral-300"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 1 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -147,7 +154,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="duplicate"
                 type="button"
-                class="flex w-full items-center gap-3 px-3 py-2 text-sm text-neutral-700 transition-colors outline-none dark:text-neutral-300"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 2 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -175,7 +182,7 @@ publish_at: 2025-12-14 00:00:00
             <button
                 x-ref="delete"
                 type="button"
-                class="flex w-full items-center gap-3 px-3 py-2 text-sm text-red-600 transition-colors outline-none dark:text-red-400"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-600 transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-red-600 dark:text-red-400 dark:focus-visible:outline-red-400"
                 :class="activeIndex === 3 ? 'bg-red-50 dark:bg-red-500/10' : 'hover:bg-red-50 dark:hover:bg-red-500/10'"
                 role="menuitem"
                 tabindex="-1"

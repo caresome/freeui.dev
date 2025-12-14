@@ -33,7 +33,7 @@ publish_at: 2025-12-07 07:00:00
                     <button
                         @click="open = !open"
                         type="button"
-                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                         :aria-expanded="open"
                         aria-haspopup="true"
                         aria-label="Open options"
@@ -72,7 +72,7 @@ publish_at: 2025-12-07 07:00:00
                     >
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
                             role="menuitem"
                         >
                             <svg
@@ -93,7 +93,7 @@ publish_at: 2025-12-07 07:00:00
                         </a>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus:outline-none focus-visible:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:bg-neutral-100 focus-visible:outline dark:text-neutral-300 dark:hover:bg-neutral-700/50 dark:focus-visible:bg-neutral-700"
                             role="menuitem"
                         >
                             <svg
@@ -115,7 +115,7 @@ publish_at: 2025-12-07 07:00:00
                         <div class="my-1 border-t border-neutral-200 dark:border-neutral-700"></div>
                         <a
                             href="#"
-                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus-visible:bg-red-100 dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20"
+                            class="flex items-center gap-2 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50 focus-visible:bg-red-100 focus-visible:outline dark:text-red-400 dark:hover:bg-red-500/10 dark:focus-visible:bg-red-500/20"
                             role="menuitem"
                         >
                             <svg

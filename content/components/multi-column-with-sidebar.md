@@ -33,7 +33,7 @@ publish_at: 2025-12-01 00:00:00
     <!-- Skip Navigation Link -->
     <a
         href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:focus:bg-white dark:focus:text-neutral-900"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline dark:focus:bg-white dark:focus:text-neutral-900"
     >
         Skip to main content
     </a>
@@ -67,7 +67,7 @@ publish_at: 2025-12-01 00:00:00
         <div class="flex h-16 shrink-0 items-center gap-3 px-4">
             <a
                 href="#"
-                class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="group flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 aria-label="Caresome - Go to homepage"
             >
                 <div
@@ -88,7 +88,7 @@ publish_at: 2025-12-01 00:00:00
                 x-show="!sidebarCollapsed"
                 @click="sidebarOpen = false"
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 aria-label="Close sidebar"
             >
                 <svg
@@ -109,7 +109,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Dashboard' : null"
-                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg bg-neutral-100 px-3 py-2 text-sm font-medium text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:bg-neutral-800 dark:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 aria-current="page"
             >
                 <svg
@@ -131,7 +131,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Projects' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -152,7 +152,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Team' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -173,7 +173,7 @@ publish_at: 2025-12-01 00:00:00
             <a
                 href="#"
                 :title="sidebarCollapsed ? 'Settings' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-5 w-5 shrink-0"
@@ -199,7 +199,7 @@ publish_at: 2025-12-01 00:00:00
             <button
                 @click="sidebarCollapsed = !sidebarCollapsed"
                 type="button"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-neutral-600 transition-all duration-150 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 :aria-expanded="(!sidebarCollapsed).toString()"
                 aria-controls="sidebar-nav"
             >
@@ -227,7 +227,7 @@ publish_at: 2025-12-01 00:00:00
                 href="#"
                 :class="sidebarCollapsed ? 'lg:justify-center lg:px-0' : ''"
                 :title="sidebarCollapsed ? 'Ankit Thapa' : null"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-50 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                 aria-label="View profile for Ankit Thapa"
             >
                 <div class="relative">
@@ -265,7 +265,7 @@ publish_at: 2025-12-01 00:00:00
                 <button
                     @click="sidebarOpen = true"
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                     aria-label="Open sidebar"
                 >
                     <svg
@@ -289,7 +289,7 @@ publish_at: 2025-12-01 00:00:00
             </div>
             <button
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                class="inline-flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                 aria-label="Add new project"
             >
                 <svg
@@ -327,7 +327,7 @@ publish_at: 2025-12-01 00:00:00
                     type="search"
                     id="project-search"
                     placeholder="Search projects..."
-                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:border-neutral-800/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:ring-neutral-100"
+                    class="h-9 w-full rounded-lg border border-neutral-300 bg-neutral-50 pr-3 pl-9 text-sm text-neutral-900 placeholder-neutral-400 transition-all duration-150 focus:border-neutral-400 focus:bg-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:border-neutral-800/50 dark:bg-neutral-800 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-600/50 dark:focus:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                 />
             </div>
         </div>
@@ -338,7 +338,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 1; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 1 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
-                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 1).toString()"
                 id="project-1"
@@ -371,7 +371,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 2; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 2 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
-                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 2).toString()"
                 id="project-2"
@@ -404,7 +404,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 3; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 3 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
-                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 3).toString()"
                 id="project-3"
@@ -437,7 +437,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="selectedItem = 4; mobileView = 'content'"
                 type="button"
                 :class="selectedItem === 4 ? 'bg-white shadow-sm dark:bg-neutral-900' : 'hover:bg-white/70 dark:hover:bg-neutral-900/50'"
-                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-inset dark:focus-visible:ring-neutral-100"
+                class="flex w-full gap-3 rounded-lg p-3 text-left transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 role="option"
                 :aria-selected="(selectedItem === 4).toString()"
                 id="project-4"
@@ -484,7 +484,7 @@ publish_at: 2025-12-01 00:00:00
                 <button
                     @click="mobileView = 'list'"
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                     aria-label="Back to projects list"
                 >
                     <svg
@@ -506,7 +506,7 @@ publish_at: 2025-12-01 00:00:00
             <div class="flex items-center gap-2">
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                     aria-label="Share project"
                 >
                     <svg
@@ -526,7 +526,7 @@ publish_at: 2025-12-01 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100 dark:active:bg-neutral-700"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100 dark:active:bg-neutral-700"
                     aria-label="More options"
                 >
                     <svg

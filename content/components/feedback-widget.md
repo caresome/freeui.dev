@@ -16,7 +16,7 @@ publish_at: 2025-12-07 13:00:00
             :class="open
                 ? 'bg-neutral-800 text-white dark:bg-neutral-200 dark:text-neutral-900'
                 : 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'"
-            class="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium shadow-lg transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+            class="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium shadow-lg transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
         >
             <svg
                 class="h-4 w-4 transition-transform duration-200"
@@ -88,7 +88,7 @@ publish_at: 2025-12-07 13:00:00
                         :class="mood === 'sad'
                             ? 'bg-red-100 ring-2 ring-red-500 dark:bg-red-500/20'
                             : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-700 dark:hover:bg-neutral-600'"
-                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                     >
                         <span x-show="hovering !== 'sad'" class="text-2xl">😞</span>
                         <img
@@ -106,7 +106,7 @@ publish_at: 2025-12-07 13:00:00
                         :class="mood === 'neutral'
                             ? 'bg-amber-100 ring-2 ring-amber-500 dark:bg-amber-500/20'
                             : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-700 dark:hover:bg-neutral-600'"
-                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                     >
                         <span x-show="hovering !== 'neutral'" class="text-2xl">😐</span>
                         <img
@@ -124,7 +124,7 @@ publish_at: 2025-12-07 13:00:00
                         :class="mood === 'happy'
                             ? 'bg-green-100 ring-2 ring-green-500 dark:bg-green-500/20'
                             : 'bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-700 dark:hover:bg-neutral-600'"
-                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                        class="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-150 hover:scale-110 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                     >
                         <span x-show="hovering !== 'happy'" class="text-2xl">😊</span>
                         <img
@@ -141,7 +141,7 @@ publish_at: 2025-12-07 13:00:00
                     <textarea
                         rows="3"
                         placeholder="Tell us more about your experience..."
-                        class="block w-full resize-none rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:ring-0 focus:outline-none dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500"
+                        class="block w-full resize-none rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:outline-0 focus-visible:outline dark:border-neutral-600 dark:bg-neutral-700 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-500"
                     ></textarea>
                 </div>
 
@@ -153,7 +153,7 @@ publish_at: 2025-12-07 13:00:00
                     :class="mood
                         ? 'bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100'
                         : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-700 dark:text-neutral-500'"
-                    class="mt-4 w-full rounded-lg px-4 py-2.5 text-sm font-medium shadow-sm transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
+                    class="mt-4 w-full rounded-lg px-4 py-2.5 text-sm font-medium shadow-sm transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:focus-visible:outline-neutral-100"
                 >
                     Submit Feedback
                 </button>

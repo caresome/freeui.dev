@@ -18,7 +18,7 @@ publish_at: 2025-12-14 00:00:00
             x-ref="trigger"
             @click="open = !open"
             type="button"
-            class="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+            class="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
             :aria-expanded="open"
             aria-haspopup="true"
             aria-label="Notifications"
@@ -66,7 +66,7 @@ publish_at: 2025-12-14 00:00:00
                 <h3 class="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Notifications</h3>
                 <button
                     type="button"
-                    class="text-xs font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
+                    class="rounded-lg px-2 py-1 text-xs font-medium text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                 >
                     Mark all read
                 </button>
@@ -180,7 +180,7 @@ publish_at: 2025-12-14 00:00:00
             <div class="border-t border-neutral-200 px-4 py-3 dark:border-neutral-700">
                 <a
                     href="#"
-                    class="block text-center text-sm font-medium text-neutral-900 hover:underline dark:text-neutral-50"
+                    class="block rounded-lg px-4 py-2 text-center text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-50 dark:hover:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                 >
                     View all notifications
                 </a>

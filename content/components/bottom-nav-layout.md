@@ -15,7 +15,7 @@ publish_at: 2025-12-01 00:00:00
     <!-- Skip Navigation Link -->
     <a
         href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-none dark:focus:bg-white dark:focus:text-neutral-900"
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-neutral-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-1 focus:outline-offset-2 focus:outline-neutral-500 focus-visible:outline dark:focus:bg-white dark:focus:text-neutral-900"
     >
         Skip to main content
     </a>
@@ -30,7 +30,7 @@ publish_at: 2025-12-01 00:00:00
         <div class="flex h-16 shrink-0 items-center gap-3 px-4">
             <a
                 href="#"
-                class="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="group flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 aria-label="Caresome - Go to homepage"
             >
                 <div
@@ -49,7 +49,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="activeTab = 'home'"
                 type="button"
                 :class="activeTab === 'home' ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 :aria-current="activeTab === 'home' ? 'page' : null"
             >
                 <svg
@@ -88,7 +88,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="activeTab = 'search'"
                 type="button"
                 :class="activeTab === 'search' ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 :aria-current="activeTab === 'search' ? 'page' : null"
             >
                 <svg
@@ -126,7 +126,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="activeTab = 'create'"
                 type="button"
                 :class="activeTab === 'create' ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 :aria-current="activeTab === 'create' ? 'page' : null"
             >
                 <svg
@@ -164,7 +164,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="activeTab = 'activity'"
                 type="button"
                 :class="activeTab === 'activity' ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 :aria-current="activeTab === 'activity' ? 'page' : null"
             >
                 <svg
@@ -200,7 +200,7 @@ publish_at: 2025-12-01 00:00:00
                 @click="activeTab = 'profile'"
                 type="button"
                 :class="activeTab === 'profile' ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50' : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
                 :aria-current="activeTab === 'profile' ? 'page' : null"
             >
                 <svg
@@ -240,7 +240,7 @@ publish_at: 2025-12-01 00:00:00
         <div class="border-t border-neutral-200 p-3 dark:border-neutral-800">
             <a
                 href="#"
-                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-100"
+                class="flex items-center gap-3 rounded-lg px-3 py-2 transition-all duration-150 hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-neutral-800 dark:focus-visible:outline-neutral-100"
                 aria-label="View profile for Ankit Thapa"
             >
                 <div class="relative">
@@ -276,7 +276,7 @@ publish_at: 2025-12-01 00:00:00
             <div class="flex items-center gap-2">
                 <button
                     type="button"
-                    class="relative inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                    class="relative inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                     aria-label="View notifications"
                 >
                     <svg
@@ -302,7 +302,7 @@ publish_at: 2025-12-01 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"
                     aria-label="Messages"
                 >
                     <svg
@@ -614,7 +614,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'home'"
             type="button"
             :class="activeTab === 'home' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus:outline-none focus-visible:bg-neutral-100 dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
             :aria-current="activeTab === 'home' ? 'page' : null"
             aria-label="Home"
         >
@@ -654,7 +654,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'search'"
             type="button"
             :class="activeTab === 'search' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus:outline-none focus-visible:bg-neutral-100 dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
             :aria-current="activeTab === 'search' ? 'page' : null"
             aria-label="Search"
         >
@@ -693,7 +693,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'create'"
             type="button"
             :class="activeTab === 'create' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus:outline-none focus-visible:bg-neutral-100 dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
             :aria-current="activeTab === 'create' ? 'page' : null"
             aria-label="Create"
         >
@@ -732,7 +732,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'activity'"
             type="button"
             :class="activeTab === 'activity' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus:outline-none focus-visible:bg-neutral-100 dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
             :aria-current="activeTab === 'activity' ? 'page' : null"
             aria-label="Activity"
         >
@@ -769,7 +769,7 @@ publish_at: 2025-12-01 00:00:00
             @click="activeTab = 'profile'"
             type="button"
             :class="activeTab === 'profile' ? 'text-neutral-900 dark:text-neutral-50' : 'text-neutral-500 dark:text-neutral-400'"
-            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus:outline-none focus-visible:bg-neutral-100 dark:focus-visible:bg-neutral-800"
+            class="flex h-full min-w-[64px] flex-col items-center justify-center gap-1 transition-colors focus-visible:bg-neutral-100 focus-visible:outline dark:focus-visible:bg-neutral-800"
             :aria-current="activeTab === 'profile' ? 'page' : null"
             aria-label="Profile"
         >

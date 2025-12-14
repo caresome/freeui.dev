@@ -35,7 +35,7 @@ publish_at: 2025-12-07 12:00:00
                             'bg-amber-50 text-amber-600 hover:bg-amber-100 dark:bg-amber-500/10 dark:text-amber-400 dark:hover:bg-amber-500/20': score !== n - 1 && (n - 1 === 7 || n - 1 === 8),
                             'bg-green-50 text-green-600 hover:bg-green-100 dark:bg-green-500/10 dark:text-green-400 dark:hover:bg-green-500/20': score !== n - 1 && n - 1 >= 9
                         }"
-                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-95 dark:focus-visible:ring-neutral-100"
+                        class="flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition-all duration-150 hover:scale-105 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 dark:focus-visible:outline-neutral-100"
                         x-text="n - 1"
                     ></button>
                 </template>
@@ -76,13 +76,13 @@ publish_at: 2025-12-07 12:00:00
                 id="nps-feedback"
                 rows="3"
                 placeholder="Your feedback helps us improve..."
-                class="mt-2 block w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:ring-0 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600"
+                class="mt-2 block w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-900 placeholder-neutral-400 transition-colors focus:border-neutral-400 focus:outline-0 focus-visible:outline dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:placeholder-neutral-500 dark:focus:border-neutral-600"
             ></textarea>
 
             <div class="mt-4 flex justify-end">
                 <button
                     type="button"
-                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
+                    class="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
                 >
                     Submit Feedback
                 </button>

@@ -13,7 +13,7 @@ publish_at: 2025-12-14 00:00:00
         <button
             @click="open = !open"
             type="button"
-            class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
+            class="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-neutral-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
             :aria-expanded="open"
             aria-haspopup="true"
         >
@@ -48,10 +48,10 @@ publish_at: 2025-12-14 00:00:00
                 <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">Choose how you'd like to share</p>
             </div>
 
-            <div class="border-t border-neutral-200 py-2 dark:border-neutral-700">
+            <div class="border-t border-neutral-200 p-1.5 dark:border-neutral-700">
                 <button
                     type="button"
-                    class="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                    class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                 >
                     <svg
                         class="h-5 w-5 text-neutral-400"
@@ -70,7 +70,7 @@ publish_at: 2025-12-14 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                    class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                 >
                     <svg class="h-5 w-5 text-[#1DA1F2]" viewBox="0 0 24 24" fill="currentColor">
                         <path
@@ -81,7 +81,7 @@ publish_at: 2025-12-14 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                    class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                 >
                     <svg class="h-5 w-5 text-[#0A66C2]" viewBox="0 0 24 24" fill="currentColor">
                         <path
@@ -92,7 +92,7 @@ publish_at: 2025-12-14 00:00:00
                 </button>
                 <button
                     type="button"
-                    class="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                    class="flex w-full items-center gap-3 rounded-lg px-4 py-2.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:outline-neutral-100"
                 >
                     <svg
                         class="h-5 w-5 text-neutral-400"

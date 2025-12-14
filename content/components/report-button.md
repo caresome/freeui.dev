@@ -56,7 +56,7 @@ publish_at: 2025-12-07 14:00:00
             :class="open || submitted
                 ? 'text-red-600 dark:text-red-400'
                 : 'text-neutral-400 hover:text-red-600 dark:hover:text-red-400'"
-            class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:hover:bg-red-500/10 dark:focus-visible:ring-neutral-100"
+            class="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 hover:bg-red-50 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:hover:bg-red-500/10 dark:focus-visible:outline-neutral-100"
         >
             <svg
                 class="h-4 w-4"
@@ -107,7 +107,7 @@ publish_at: 2025-12-07 14:00:00
                 :class="selected === 'spam'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-4 w-4 shrink-0"
@@ -135,7 +135,7 @@ publish_at: 2025-12-07 14:00:00
                 :class="selected === 'inappropriate'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-4 w-4 shrink-0"
@@ -163,7 +163,7 @@ publish_at: 2025-12-07 14:00:00
                 :class="selected === 'harassment'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-4 w-4 shrink-0"
@@ -191,7 +191,7 @@ publish_at: 2025-12-07 14:00:00
                 :class="selected === 'misinformation'
                     ? 'bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                     : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700'"
-                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:focus-visible:outline-neutral-100"
             >
                 <svg
                     class="h-4 w-4 shrink-0"
@@ -221,7 +221,7 @@ publish_at: 2025-12-07 14:00:00
                 :class="selected
                     ? 'bg-red-600 text-white hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700'
                     : 'cursor-not-allowed bg-neutral-100 text-neutral-400 dark:bg-neutral-700 dark:text-neutral-500'"
-                class="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-neutral-100"
+                class="flex w-full items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:focus-visible:outline-neutral-100"
             >
                 Submit Report
             </button>
@@ -256,7 +256,7 @@ publish_at: 2025-12-07 14:00:00
             <button
                 @click="submitted = false"
                 type="button"
-                class="shrink-0 rounded p-0.5 text-green-600 transition-colors hover:bg-green-100 hover:text-green-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:text-green-400 dark:hover:bg-green-800/50 dark:hover:text-green-300 dark:focus-visible:ring-neutral-100"
+                class="shrink-0 rounded p-0.5 text-green-600 transition-colors hover:bg-green-100 hover:text-green-800 focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-green-400 dark:hover:bg-green-800/50 dark:hover:text-green-300 dark:focus-visible:outline-neutral-100"
                 aria-label="Dismiss notification"
             >
                 <svg
