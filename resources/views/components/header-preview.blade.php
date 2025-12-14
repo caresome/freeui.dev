@@ -139,29 +139,29 @@
                         role="menuitem"
                         class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
                     >
-                        <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <title>Lovable</title>
                             <path
+                                fill-rule="evenodd"
                                 clip-rule="evenodd"
                                 d="M7.082 0c3.91 0 7.081 3.179 7.081 7.1v2.7h2.357c3.91 0 7.082 3.178 7.082 7.1 0 3.923-3.17 7.1-7.082 7.1H0V7.1C0 3.18 3.17 0 7.082 0z"
-                                fill="url(#lobe-icons-lovable-fill-header)"
-                                fill-rule="evenodd"
-                            ></path>
+                                fill="url(#lovable-gradient-header)"
+                            />
                             <defs>
-                                <radialGradient
-                                    cx="0"
-                                    cy="0"
-                                    gradientTransform="matrix(-1 22.49999 -30.45394 -1.3535 14 3)"
+                                <linearGradient
+                                    id="lovable-gradient-header"
+                                    x1="0"
+                                    y1="0"
+                                    x2="24"
+                                    y2="24"
                                     gradientUnits="userSpaceOnUse"
-                                    id="lobe-icons-lovable-fill-header"
-                                    r="1"
                                 >
-                                    <stop offset=".25" stop-color="#FE7B02"></stop>
-                                    <stop offset=".433" stop-color="#FE4230"></stop>
-                                    <stop offset=".548" stop-color="#FE529A"></stop>
-                                    <stop offset=".654" stop-color="#DD67EE"></stop>
-                                    <stop offset=".95" stop-color="#4B73FF"></stop>
-                                </radialGradient>
+                                    <stop offset="0%" stop-color="#FE7B02" />
+                                    <stop offset="35%" stop-color="#FE4230" />
+                                    <stop offset="50%" stop-color="#FE529A" />
+                                    <stop offset="70%" stop-color="#DD67EE" />
+                                    <stop offset="100%" stop-color="#4B73FF" />
+                                </linearGradient>
                             </defs>
                         </svg>
                         Open in Lovable
