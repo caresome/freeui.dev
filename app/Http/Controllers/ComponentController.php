@@ -39,18 +39,6 @@ class ComponentController extends Controller
     }
 
     /**
-     * Return bare component preview for embedding in iframes.
-     */
-    public function embed(string $collection, string $category, string $slug): Response
-    {
-        $uiComponent = $this->findComponent($category, $slug);
-
-        return response()
-            ->view('pages.components.embed', ['uiComponent' => $uiComponent])
-            ->header('X-Frame-Options', 'SAMEORIGIN');
-    }
-
-    /**
      * Return component code as raw text for AI tools.
      */
     public function code(string $collection, string $category, string $slug): Response

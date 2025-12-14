@@ -35,52 +35,8 @@
         </div>
     @endif
 
-    @php
-        $embedUrl = route('components.embed', [
-            'collection' => $uiComponent->categoryModel->collection,
-            'category' => $uiComponent->category,
-            'slug' => $uiComponent->slug,
-        ]);
-    @endphp
-
-    <div class="relative h-[calc(100vh-82px)] w-full overflow-hidden">
-        <iframe
-            id="preview-iframe"
-            src="{{ $embedUrl }}"
-            title="Component preview"
-            class="h-full w-full rounded-xl border-0"
-            loading="lazy"
-        ></iframe>
+    {{-- Render component directly - no iframe needed --}}
+    <div class="flex min-h-[calc(100vh-82px)] w-full items-center justify-center overflow-auto p-4">
+        {!! $uiComponent->content !!}
     </div>
-
-    <script>
-        (function () {
-            const iframe = document.getElementById('preview-iframe');
-            if (!iframe) return;
-
-            function syncIframeTheme() {
-                const isDark = document.documentElement.classList.contains('dark');
-                if (iframe.contentWindow) {
-                    iframe.contentWindow.postMessage({ type: 'theme-sync', isDark }, '*');
-                }
-            }
-
-            // Sync theme after iframe loads
-            iframe.addEventListener('load', syncIframeTheme);
-
-            // Watch for theme changes and sync to iframe
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.attributeName === 'class') {
-                        syncIframeTheme();
-                    }
-                });
-            });
-
-            observer.observe(document.documentElement, {
-                attributes: true,
-                attributeFilter: ['class'],
-            });
-        })();
-    </script>
 </x-layouts.preview>

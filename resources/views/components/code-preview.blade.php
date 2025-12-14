@@ -11,16 +11,18 @@
 
 @php
     $componentUrl = $collection && $category && $slug ? url("/{$collection}/{$category}/{$slug}") : null;
-    $embedUrl = $collection && $category && $slug ? route('components.embed', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) : null;
+    $tailwindCdn = config('freeui.tailwind_cdn');
+    $alpineCdn = config('freeui.alpine_cdn');
 @endphp
 
 <div
     x-data="codePreviewComponent({
                 title: @js($title),
                 componentUrl: @js($componentUrl),
-                embedUrl: @js($embedUrl),
                 rawCode: @js($content),
                 codeUrl: @js(route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug])),
+                tailwindCdn: @js($tailwindCdn),
+                alpineCdn: @js($alpineCdn),
             })"
     class="w-full"
 >
@@ -429,12 +431,12 @@
                 <div class="mx-auto h-full transition-[width] duration-300 ease-out" :style="{ width: previewWidth }">
                     <iframe
                         x-ref="previewFrame"
-                        :src="embedUrl"
+                        x-show="shouldRender"
+                        :srcdoc="shouldRender ? getIframeSrcdoc() : ''"
                         title="Component preview"
                         class="max-h-[600px] min-h-[600px] w-full bg-transparent"
                         :class="{ 'opacity-0': !iframeLoaded, 'opacity-100': iframeLoaded }"
                         tabindex="-1"
-                        loading="lazy"
                         @load="onIframeLoad()"
                     ></iframe>
                 </div>
@@ -504,15 +506,31 @@
             previewWidth: '100%',
             aiMenuOpen: false,
             iframeLoaded: false,
+            shouldRender: false,
             title: config.title || 'Component',
             componentUrl: config.componentUrl || window.location.href,
-            embedUrl: config.embedUrl || null,
             rawCode: config.rawCode || '',
             codeUrl: config.codeUrl || null,
+            tailwindCdn: config.tailwindCdn || '',
+            alpineCdn: config.alpineCdn || '',
 
             init() {
+                // Lazy load: only render srcdoc when component is visible
+                const visibilityObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                this.shouldRender = true;
+                                visibilityObserver.disconnect();
+                            }
+                        });
+                    },
+                    { rootMargin: '100px' },
+                );
+                visibilityObserver.observe(this.$el);
+
                 // Watch for theme changes and sync to iframe via postMessage
-                const observer = new MutationObserver((mutations) => {
+                const themeObserver = new MutationObserver((mutations) => {
                     mutations.forEach((mutation) => {
                         if (mutation.attributeName === 'class') {
                             this.syncIframeTheme();
@@ -520,7 +538,7 @@
                     });
                 });
 
-                observer.observe(document.documentElement, {
+                themeObserver.observe(document.documentElement, {
                     attributes: true,
                     attributeFilter: ['class'],
                 });
@@ -553,10 +571,47 @@
                 });
             },
 
+            getIframeSrcdoc() {
+                const isDark = document.documentElement.classList.contains('dark');
+                return `<!DOCTYPE html>
+<html lang="en" class="${isDark ? 'dark' : ''}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="${this.tailwindCdn}"><\/script>
+    <style type="text/tailwindcss">
+        @theme { --font-sans: 'Inter', sans-serif; }
+        @variant dark (&:where(.dark, .dark *));
+    </style>
+    <script defer src="${this.alpineCdn}"><\/script>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; background-color: transparent; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div class="h-full overflow-auto">
+        <div class="flex min-h-full items-center justify-center">
+            <div class="w-full">${this.rawCode}</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a');
+            if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
+                e.preventDefault();
+            }
+        });
+    <\/script>
+</body>
+</html>`;
+            },
+
             onIframeLoad() {
                 this.iframeLoaded = true;
-                // Sync theme immediately after load
-                this.syncIframeTheme();
             },
 
             switchTab(tab) {
@@ -612,12 +667,18 @@
             },
 
             syncIframeTheme() {
-                const iframe = this.$refs.previewFrame;
-                if (!iframe || !iframe.contentWindow) return;
+                // With srcdoc, the iframe content is regenerated when getIframeSrcdoc() is called
+                // Since srcdoc binding calls getIframeSrcdoc() which reads current theme,
+                // we need to force Alpine to re-evaluate the binding
+                if (!this.shouldRender) return;
 
-                const isDark = document.documentElement.classList.contains('dark');
-                // Use postMessage to sync theme to iframe
-                iframe.contentWindow.postMessage({ type: 'theme-sync', isDark }, '*');
+                // Force srcdoc re-evaluation by toggling shouldRender
+                // This triggers Alpine to re-call getIframeSrcdoc() with new theme
+                this.iframeLoaded = false;
+                this.shouldRender = false;
+                this.$nextTick(() => {
+                    this.shouldRender = true;
+                });
             },
 
             // Strip data-preview-only wrappers from code (using string manipulation to preserve formatting)
