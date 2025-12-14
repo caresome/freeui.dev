@@ -4,7 +4,7 @@ title: Mega Menu
 category: overlays
 github: caresome
 dependencies: []
-publish_at: 2025-12-14 00:00:00
+publish_at: 2025-12-14 10:25:00
 ---
 
 <div data-preview-only class="min-h-[400px] p-4">

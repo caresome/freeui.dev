@@ -4,7 +4,7 @@ title: Dropdown Simple
 category: overlays
 github: caresome
 dependencies: []
-publish_at: 2025-12-14 00:00:00
+publish_at: 2025-12-14 11:15:00
 ---
 
 <div data-preview-only class="flex min-h-[300px] items-start justify-center p-8">

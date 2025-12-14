@@ -4,7 +4,7 @@ title: Tooltip With Arrow
 category: overlays
 github: caresome
 dependencies: []
-publish_at: 2025-12-14 00:00:00
+publish_at: 2025-12-14 10:40:00
 ---
 
 <div data-preview-only class="flex min-h-[200px] items-center justify-center gap-8 p-8">

@@ -4,7 +4,7 @@ title: Notification Panel
 category: overlays
 github: caresome
 dependencies: []
-publish_at: 2025-12-14 00:00:00
+publish_at: 2025-12-14 10:30:00
 ---
 
 <div data-preview-only class="flex min-h-[500px] items-start justify-center p-8">

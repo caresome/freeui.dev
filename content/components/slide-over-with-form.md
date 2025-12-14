@@ -5,7 +5,7 @@ category: overlays
 github: caresome
 dependencies:
     - '@alpinejs/focus https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js'
-publish_at: 2025-12-14 00:00:00
+publish_at: 2025-12-14 11:30:00
 ---
 
 <div data-preview-only class="flex min-h-[400px] items-center justify-center p-4">
