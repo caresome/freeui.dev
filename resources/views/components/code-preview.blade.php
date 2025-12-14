@@ -420,6 +420,7 @@
                         title="Component preview"
                         class="max-h-[600px] min-h-[600px] w-full bg-transparent"
                         tabindex="-1"
+                        loading="lazy"
                     ></iframe>
                 </div>
             </div>
@@ -597,139 +598,115 @@
                 const iframe = this.$refs.previewFrame;
                 if (!iframe) return;
 
-                const doc = iframe.contentWindow.document;
                 const content = this.$refs.originalContent.innerHTML;
+                const isDark = document.documentElement.classList.contains('dark');
 
-                // 1. Initialize Document
-                doc.open();
-                doc.write('');
-                doc.close();
-
-                doc.documentElement.className = document.documentElement.classList.contains('dark') ? 'dark' : '';
-
-                // 2. Clone Head Styles from Parent (excluding scripts)
-                Array.from(document.head.children).forEach((child) => {
-                    if (['LINK', 'STYLE'].includes(child.tagName)) {
-                        doc.head.appendChild(child.cloneNode(true));
-                    }
-                });
-
-                // 3. Inject Core Scripts programmatically (No escaping needed!)
-
-                // Suppress Tailwind CDN warning and Alpine errors in preview iframe
-                const suppressScript = doc.createElement('script');
-                suppressScript.textContent = `
-                    (function() {
-                        // Suppress Tailwind CDN warning
-                        const originalWarn = console.warn;
-                        console.warn = function(...args) {
-                            if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
-                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
-                            originalWarn.apply(console, args);
-                        };
-                        // Suppress Alpine errors in preview iframe (components may have incomplete context)
-                        const originalError = console.error;
-                        console.error = function(...args) {
-                            if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
-                            originalError.apply(console, args);
-                        };
-                        // Catch uncaught errors from Alpine expression evaluation
-                        window.addEventListener('error', function(e) {
-                            if (e.message && (e.message.includes('is not defined') || e.message.includes('Illegal invocation') || e.message.includes('Invalid or unexpected token'))) {
-                                e.preventDefault();
-                                return true;
-                            }
-                        });
-                    })();
-                `;
-                doc.head.appendChild(suppressScript);
-
-                // Tailwind CDN
-                const tailwindScript = doc.createElement('script');
-                tailwindScript.src = this.tailwindCdn;
-                tailwindScript.onload = () => {
-                    const tailwindConfig = doc.createElement('style');
-                    tailwindConfig.type = 'text/tailwindcss';
-                    tailwindConfig.textContent = `
-                        @theme {
-                            --font-sans: 'Inter', sans-serif;
-                        }
-                        @variant dark (&:where(.dark, .dark *));
-                    `;
-                    doc.head.appendChild(tailwindConfig);
-                    this.syncIframeTheme();
-
-                    // Wait for Tailwind to process styles before showing content
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            doc.body.classList.add('loaded');
-                        });
-                    });
-                };
-                doc.head.appendChild(tailwindScript);
-
-                // 4. Inject External Dependencies (Before Alpine)
+                // Build dependency tags
+                let dependencyTags = '';
                 if (this.dependencies && Array.isArray(this.dependencies)) {
                     this.dependencies.forEach((dep) => {
                         const firstSpace = dep.indexOf(' ');
                         const url = firstSpace === -1 ? dep.trim() : dep.substring(firstSpace + 1).trim();
 
                         if (url.endsWith('.css')) {
-                            const link = doc.createElement('link');
-                            link.rel = 'stylesheet';
-                            link.href = url;
-                            doc.head.appendChild(link);
+                            dependencyTags += `<link rel="stylesheet" href="${url}">`;
                         } else if (url.endsWith('.js')) {
-                            const s = doc.createElement('script');
-                            s.src = url;
-                            s.async = false; // Important: Force execution order
-                            doc.head.appendChild(s);
+                            dependencyTags += `<script src="${url}"><\/script>`;
                         }
                     });
                 }
 
-                // Alpine CDN
-                const alpineScript = doc.createElement('script');
-                alpineScript.async = false; // Important: Force execution order (after plugins)
-                alpineScript.src = this.alpineCdn;
-                doc.head.appendChild(alpineScript);
-
-                // 5. Iframe Specific Styles
-                const style = doc.createElement('style');
-                style.textContent = `
-                    html, body {
-                        height: 100%;
-                        margin: 0;
-                        padding: 0;
-                        overflow: hidden;
+                // Clone parent styles (LINK and STYLE tags only)
+                let parentStyles = '';
+                Array.from(document.head.children).forEach((child) => {
+                    if (['LINK', 'STYLE'].includes(child.tagName)) {
+                        parentStyles += child.outerHTML;
                     }
-                    body {
-                        background-color: transparent !important;
-                        visibility: hidden;
-                    }
-                    body.loaded { visibility: visible; }
-                    [x-cloak] { display: none !important; }
-                `;
-                doc.head.appendChild(style);
+                });
 
-                // 6. Body Content
-                doc.body.className = 'font-sans antialiased preview-iframe';
-                doc.body.innerHTML = `<div class="h-full overflow-auto"><div class="flex min-h-full items-center justify-center"><div class="w-full">${content}</div></div></div>`;
+                // Build complete document as srcdoc
+                const srcdoc = `<!DOCTYPE html>
+<html class="${isDark ? 'dark' : ''}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ${parentStyles}
+    <script>
+        // Suppress Tailwind CDN warning and Alpine errors
+        (function() {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && (args[0].includes('cdn.tailwindcss.com') || args[0].includes('Alpine'))) return;
+                originalWarn.apply(console, args);
+            };
+            const originalError = console.error;
+            console.error = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('Alpine')) return;
+                originalError.apply(console, args);
+            };
+            window.addEventListener('error', function(e) {
+                if (e.message && (e.message.includes('is not defined') || e.message.includes('Illegal invocation') || e.message.includes('Invalid or unexpected token'))) {
+                    e.preventDefault();
+                    return true;
+                }
+            });
+        })();
+    <\/script>
+    <script src="${this.tailwindCdn}"><\/script>
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Inter', sans-serif;
+        }
+        @variant dark (&:where(.dark, .dark *));
+    </style>
+    ${dependencyTags}
+    <script defer src="${this.alpineCdn}"><\/script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background-color: transparent !important;
+            visibility: hidden;
+        }
+        body.loaded { visibility: visible; }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="font-sans antialiased preview-iframe">
+    <div class="h-full overflow-auto">
+        <div class="flex min-h-full items-center justify-center">
+            <div class="w-full">${content}</div>
+        </div>
+    </div>
+    <script>
+        // Show body once Tailwind processes styles
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.add('loaded');
+            });
+        });
+        // Prevent hash links from affecting browser history
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a');
+            if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
+                e.preventDefault();
+            }
+        });
+    <\/script>
+</body>
+</html>`;
 
-                // 7. Prevent hash links from affecting browser history
-                const preventHistoryScript = doc.createElement('script');
-                preventHistoryScript.textContent = `
-                    document.addEventListener('click', function(e) {
-                        const link = e.target.closest('a');
-                        if (link && (link.getAttribute('href') === '#' || link.getAttribute('href')?.startsWith('#'))) {
-                            e.preventDefault();
-                        }
-                    });
-                `;
-                doc.body.appendChild(preventHistoryScript);
+                // Single assignment - browser handles parsing efficiently
+                iframe.srcdoc = srcdoc;
 
-                // Ensure theme is synced
-                this.syncIframeTheme();
+                // Set up theme sync after iframe loads
+                iframe.onload = () => {
+                    this.syncIframeTheme();
+                };
             },
 
             syncIframeTheme() {
