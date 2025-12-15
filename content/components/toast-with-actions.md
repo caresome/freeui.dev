@@ -12,7 +12,7 @@ publish_at: 2025-12-14 00:32:00
         <button
             @click="open = true"
             type="button"
-            class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
+            class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
         >
             Show Toast
         </button>
@@ -54,14 +54,14 @@ publish_at: 2025-12-14 00:32:00
             <div class="flex items-center gap-3 border-l border-neutral-200 pl-4 dark:border-neutral-700">
                 <button
                     type="button"
-                    class="text-sm font-semibold text-neutral-900 hover:text-neutral-700 focus:outline-none focus-visible:underline dark:text-neutral-50 dark:hover:text-neutral-300"
+                    class="text-sm font-semibold text-neutral-900 transition-colors duration-150 hover:text-neutral-700 focus:outline-none focus-visible:underline dark:text-neutral-50 dark:hover:text-neutral-300"
                 >
                     Undo
                 </button>
                 <button
                     @click="open = false"
                     type="button"
-                    class="rounded-md p-1 text-neutral-400 hover:bg-neutral-100 hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:hover:text-neutral-400 dark:focus-visible:ring-neutral-100"
+                    class="rounded-md p-1 text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:text-neutral-500 dark:hover:bg-neutral-700 dark:hover:text-neutral-400 dark:focus-visible:ring-neutral-100"
                     aria-label="Close"
                 >
                     <svg

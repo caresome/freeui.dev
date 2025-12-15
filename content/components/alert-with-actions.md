@@ -24,7 +24,7 @@ publish_at: 2025-12-14 00:23:00
             <div class="flex-1">A new software update is available.</div>
             <button
                 type="button"
-                class="ml-auto flex-shrink-0 rounded-md bg-blue-50 p-1.5 text-blue-500 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 focus:outline-none dark:bg-transparent dark:text-blue-400 dark:hover:bg-blue-500/20 dark:focus:ring-blue-400 dark:focus:ring-offset-neutral-900"
+                class="ml-auto flex-shrink-0 rounded-md bg-blue-50 p-1.5 text-blue-500 transition-colors duration-150 hover:bg-blue-100 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 focus:outline-none dark:bg-transparent dark:text-blue-400 dark:hover:bg-blue-500/20 dark:focus:ring-blue-400 dark:focus:ring-offset-neutral-900"
             >
                 <span class="sr-only">View details</span>
                 <span class="text-xs font-semibold">Details</span>
@@ -47,13 +47,13 @@ publish_at: 2025-12-14 00:23:00
             <div class="ml-auto flex flex-shrink-0 gap-2">
                 <button
                     type="button"
-                    class="font-medium text-green-700 hover:text-green-800 hover:underline dark:text-green-400 dark:hover:text-green-300"
+                    class="font-medium text-green-700 transition-colors duration-150 hover:text-green-800 hover:underline dark:text-green-400 dark:hover:text-green-300"
                 >
                     Undo
                 </button>
                 <button
                     type="button"
-                    class="font-medium text-green-700 hover:text-green-800 hover:underline dark:text-green-400 dark:hover:text-green-300"
+                    class="font-medium text-green-700 transition-colors duration-150 hover:text-green-800 hover:underline dark:text-green-400 dark:hover:text-green-300"
                 >
                     View
                 </button>
@@ -82,14 +82,14 @@ publish_at: 2025-12-14 00:23:00
                 <div class="mt-2 text-sm">
                     <button
                         type="button"
-                        class="rounded bg-amber-100 px-2 py-1.5 font-medium text-amber-800 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-amber-500/20 dark:text-amber-300 dark:hover:bg-amber-500/30 dark:focus:ring-offset-neutral-900"
+                        class="rounded bg-amber-100 px-2 py-1.5 font-medium text-amber-800 transition-colors duration-150 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-amber-500/20 dark:text-amber-300 dark:hover:bg-amber-500/30 dark:focus:ring-offset-neutral-900"
                     >
                         Renew now
                     </button>
                     <button
                         @click="show = false"
                         type="button"
-                        class="ml-2 rounded bg-amber-50 px-2 py-1.5 font-medium text-amber-800 hover:bg-amber-100 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-transparent dark:text-amber-300 dark:hover:bg-amber-500/20 dark:focus:ring-offset-neutral-900"
+                        class="ml-2 rounded bg-amber-50 px-2 py-1.5 font-medium text-amber-800 transition-colors duration-150 hover:bg-amber-100 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-transparent dark:text-amber-300 dark:hover:bg-amber-500/20 dark:focus:ring-offset-neutral-900"
                     >
                         Dismiss
                     </button>
@@ -98,7 +98,7 @@ publish_at: 2025-12-14 00:23:00
             <button
                 @click="show = false"
                 type="button"
-                class="ml-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50 p-1.5 text-amber-500 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 dark:bg-transparent dark:text-amber-400 dark:hover:bg-amber-500/30"
+                class="ml-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50 p-1.5 text-amber-500 transition-colors duration-150 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 dark:bg-transparent dark:text-amber-400 dark:hover:bg-amber-500/30"
             >
                 <span class="sr-only">Close</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

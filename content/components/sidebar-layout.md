@@ -5,6 +5,7 @@ category: app-shells
 github: caresome
 dependencies:
     - alpinejs-persist@3.x https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js
+    - '@alpinejs/focus https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js'
 publish_at: 2025-12-04 00:00:00
 ---
 
@@ -41,7 +42,7 @@ publish_at: 2025-12-04 00:00:00
         x-transition:leave="transition-opacity ease-linear duration-200"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
-        @click="sidebarOpen = false"
+        @click="sidebarOpen = false; $refs.mobileMenuButton.focus()"
         class="fixed inset-0 z-40 bg-neutral-900/50 lg:hidden"
         aria-hidden="true"
         x-cloak
@@ -50,14 +51,17 @@ publish_at: 2025-12-04 00:00:00
     <!-- Sidebar -->
     <aside
         id="sidebar"
+        x-trap.inert.noscroll="sidebarOpen"
         :class="[
             sidebarOpen ? 'translate-x-0' : '-translate-x-full',
             sidebarCollapsed ? 'lg:w-16' : 'lg:w-64'
         ]"
-        @keydown.escape.window="sidebarOpen = false"
+        @keydown.escape.window="if (sidebarOpen) { sidebarOpen = false; $refs.mobileMenuButton.focus(); }"
         class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-white shadow-sm shadow-neutral-900/5 transition-all duration-150 ease-out lg:translate-x-0 dark:bg-neutral-900 dark:shadow-neutral-950/50"
-        role="navigation"
-        aria-label="Main sidebar"
+        :role="sidebarOpen ? 'dialog' : 'navigation'"
+        :aria-modal="sidebarOpen ? 'true' : null"
+        :aria-label="sidebarOpen ? null : 'Main sidebar'"
+        :aria-labelledby="sidebarOpen ? 'sidebar-title' : null"
     >
         <!-- Logo -->
         <div class="flex h-16 shrink-0 items-center gap-3 px-4">
@@ -73,6 +77,7 @@ publish_at: 2025-12-04 00:00:00
                     <span class="text-sm font-bold text-white dark:text-neutral-900">C</span>
                 </div>
                 <span
+                    id="sidebar-title"
                     :class="sidebarCollapsed ? 'lg:hidden' : ''"
                     class="text-sm font-semibold text-neutral-900 dark:text-neutral-50"
                 >
@@ -292,6 +297,7 @@ publish_at: 2025-12-04 00:00:00
             <div class="flex items-center gap-4">
                 <!-- Mobile menu button -->
                 <button
+                    x-ref="mobileMenuButton"
                     @click="sidebarOpen = true"
                     type="button"
                     class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-neutral-500 transition-all duration-150 hover:scale-105 hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-95 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:outline-neutral-100"

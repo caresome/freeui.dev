@@ -35,8 +35,9 @@
         </div>
     @endif
 
-    {{-- Render component directly - no iframe needed --}}
-    <div class="flex min-h-[calc(100vh-82px)] w-full items-center justify-center overflow-auto p-4">
-        {!! $uiComponent->content !!}
+    <div class="flex h-[calc(100vh-82px)] w-full items-center justify-center overflow-auto rounded-xl">
+        <div class="w-full">
+            {!! $uiComponent->content !!}
+        </div>
     </div>
 </x-layouts.preview>

@@ -28,7 +28,7 @@ publish_at: 2025-12-14 00:21:00
             <button
                 @click="show = false"
                 type="button"
-                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 p-1.5 text-blue-500 hover:bg-blue-200 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 focus:outline-none dark:bg-transparent dark:text-blue-400 dark:hover:bg-blue-500/20 dark:focus:ring-offset-neutral-900"
+                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 p-1.5 text-blue-500 transition-colors duration-150 hover:bg-blue-200 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-50 focus:outline-none dark:bg-transparent dark:text-blue-400 dark:hover:bg-blue-500/20 dark:focus:ring-offset-neutral-900"
             >
                 <span class="sr-only">Close</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@ publish_at: 2025-12-14 00:21:00
             <button
                 @click="show = false"
                 type="button"
-                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-green-50 p-1.5 text-green-500 hover:bg-green-200 focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-50 focus:outline-none dark:bg-transparent dark:text-green-400 dark:hover:bg-green-500/20 dark:focus:ring-offset-neutral-900"
+                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-green-50 p-1.5 text-green-500 transition-colors duration-150 hover:bg-green-200 focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-50 focus:outline-none dark:bg-transparent dark:text-green-400 dark:hover:bg-green-500/20 dark:focus:ring-offset-neutral-900"
             >
                 <span class="sr-only">Close</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +92,7 @@ publish_at: 2025-12-14 00:21:00
             <button
                 @click="show = false"
                 type="button"
-                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50 p-1.5 text-amber-500 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-transparent dark:text-amber-400 dark:hover:bg-amber-500/20 dark:focus:ring-offset-neutral-900"
+                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-amber-50 p-1.5 text-amber-500 transition-colors duration-150 hover:bg-amber-200 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50 focus:outline-none dark:bg-transparent dark:text-amber-400 dark:hover:bg-amber-500/20 dark:focus:ring-offset-neutral-900"
             >
                 <span class="sr-only">Close</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@ publish_at: 2025-12-14 00:21:00
             <button
                 @click="show = false"
                 type="button"
-                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 p-1.5 text-red-500 hover:bg-red-200 focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 focus:outline-none dark:bg-transparent dark:text-red-400 dark:hover:bg-red-500/20 dark:focus:ring-offset-neutral-900"
+                class="-mx-1.5 -my-1.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 p-1.5 text-red-500 transition-colors duration-150 hover:bg-red-200 focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-red-50 focus:outline-none dark:bg-transparent dark:text-red-400 dark:hover:bg-red-500/20 dark:focus:ring-offset-neutral-900"
             >
                 <span class="sr-only">Close</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

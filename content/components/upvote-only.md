@@ -18,14 +18,15 @@ publish_at: 2025-12-07 02:00:00
                 ? 'bg-green-50 text-green-600 border-green-200 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20'
                 : 'bg-white text-neutral-500 border-neutral-200 hover:bg-neutral-50 hover:text-green-600 dark:bg-neutral-900 dark:text-neutral-400 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:text-green-400'"
             class="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-150 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:focus-visible:outline-neutral-100"
+            aria-label="Upvote"
         >
-            <span class="relative flex h-5 w-5 items-center justify-center">
+            <span class="relative flex h-5 w-5 items-center justify-center" aria-hidden="true">
                 <span x-show="!hovering" class="absolute text-base">👍</span>
                 <img
                     x-show="hovering"
                     src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f44d/512.webp"
                     class="absolute h-5 w-5"
-                    alt="thumbs up"
+                    alt=""
                 />
             </span>
             <span class="tabular-nums" x-text="count + (upvoted ? 1 : 0)"></span>

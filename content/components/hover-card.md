@@ -59,7 +59,14 @@ publish_at: 2025-12-14 10:20:00
 
                 <div class="mt-4 flex items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
                     <div class="flex items-center gap-1">
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -74,7 +81,14 @@ publish_at: 2025-12-14 10:20:00
                         <span>Nepal</span>
                     </div>
                     <div class="flex items-center gap-1">
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <svg
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                        >
                             <path
                                 stroke-linecap="round"
                                 stroke-linejoin="round"

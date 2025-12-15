@@ -33,7 +33,7 @@ publish_at: 2025-12-14 00:26:00
         <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <a
                 href="#"
-                class="relative flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3 shadow-sm hover:border-neutral-300 hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700 dark:focus:ring-neutral-100"
+                class="relative flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3 shadow-sm transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700 dark:focus:ring-neutral-100"
             >
                 <div class="flex-shrink-0">
                     <span
@@ -58,7 +58,7 @@ publish_at: 2025-12-14 00:26:00
 
             <a
                 href="#"
-                class="relative flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3 shadow-sm hover:border-neutral-300 hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700 dark:focus:ring-neutral-100"
+                class="relative flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3 shadow-sm transition-colors duration-150 hover:border-neutral-300 hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:hover:border-neutral-600 dark:hover:bg-neutral-700 dark:focus:ring-neutral-100"
             >
                 <div class="flex-shrink-0">
                     <span
@@ -85,7 +85,7 @@ publish_at: 2025-12-14 00:26:00
         <div class="mt-6">
             <button
                 type="button"
-                class="inline-flex items-center rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus:ring-neutral-100"
+                class="inline-flex items-center rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus:ring-neutral-100"
             >
                 <svg class="mr-2 -ml-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path

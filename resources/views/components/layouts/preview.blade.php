@@ -86,7 +86,7 @@
         </x-header-preview>
 
         <main
-            class="relative m-4 mt-0 rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+            class="relative m-4 mt-0 rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-black dark:text-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
         >
             {{ $slot }}
         </main>

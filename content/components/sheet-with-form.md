@@ -3,7 +3,7 @@ slug: sheet-with-form
 title: Sheet With Form
 category: overlays
 github: caresome
-dependencies: []
+dependencies: ['@alpinejs/focus']
 publish_at: 2025-12-14 10:05:00
 ---
 
@@ -11,6 +11,7 @@ publish_at: 2025-12-14 10:05:00
     <div x-data="{ open: false, loading: false }" class="w-full max-w-md">
         <!-- Trigger Button -->
         <button
+            x-ref="trigger"
             @click="open = true"
             type="button"
             class="mx-auto flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-150 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:scale-[0.98] dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:outline-neutral-100"
@@ -30,7 +31,7 @@ publish_at: 2025-12-14 10:05:00
             x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
-            @click="open = false"
+            @click="open = false; $refs.trigger.focus()"
             class="fixed inset-0 z-40 bg-neutral-900/50"
             x-cloak
         ></div>
@@ -44,7 +45,8 @@ publish_at: 2025-12-14 10:05:00
             x-transition:leave="transition ease-in duration-200"
             x-transition:leave-start="translate-y-0"
             x-transition:leave-end="translate-y-full"
-            @keydown.escape.window="open = false"
+            @keydown.escape.window="open = false; $refs.trigger.focus()"
+            x-trap.inert.noscroll="open"
             class="fixed inset-x-0 bottom-0 z-50 rounded-t-2xl border-t border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900"
             role="dialog"
             aria-modal="true"
@@ -66,9 +68,9 @@ publish_at: 2025-12-14 10:05:00
                         Quick Add Task
                     </h2>
                     <button
-                        @click="open = false"
+                        @click="open = false; $refs.trigger.focus()"
                         type="button"
-                        class="-m-2 rounded-lg p-2 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-600 focus-visible:outline focus-visible:outline-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                        class="-m-2 rounded-lg p-2 text-neutral-400 transition-colors duration-150 hover:bg-neutral-100 hover:text-neutral-600 focus-visible:outline focus-visible:outline-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-300 dark:focus-visible:outline-neutral-100"
                         aria-label="Close"
                     >
                         <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
@@ -128,9 +130,9 @@ publish_at: 2025-12-14 10:05:00
                 <!-- Actions -->
                 <div class="mt-6 flex gap-3">
                     <button
-                        @click="open = false"
+                        @click="open = false; $refs.trigger.focus()"
                         type="button"
-                        class="flex-1 rounded-lg bg-neutral-100 px-4 py-3 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                        class="flex-1 rounded-lg bg-neutral-100 px-4 py-3 text-sm font-medium text-neutral-700 transition-colors duration-150 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
                     >
                         Cancel
                     </button>

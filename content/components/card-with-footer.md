@@ -16,7 +16,7 @@ publish_at: 2025-12-07 11:00:00
             </p>
         </div>
         <div
-            class="flex items-center justify-end gap-3 border-t border-neutral-200 bg-neutral-50/50 px-6 py-4 dark:border-neutral-800 dark:bg-neutral-950/50"
+            class="flex items-center justify-end gap-3 rounded-b-xl border-t border-neutral-200 bg-neutral-50/50 px-6 py-4 dark:border-neutral-800 dark:bg-neutral-950/50"
         >
             <button
                 type="button"
