@@ -91,7 +91,7 @@ publish_at: 2025-12-14 11:15:00
             <a
                 x-ref="account"
                 href="#"
-                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 0 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -103,7 +103,7 @@ publish_at: 2025-12-14 11:15:00
             <a
                 x-ref="support"
                 href="#"
-                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 1 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -115,7 +115,7 @@ publish_at: 2025-12-14 11:15:00
             <a
                 x-ref="license"
                 href="#"
-                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 2 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
@@ -127,7 +127,7 @@ publish_at: 2025-12-14 11:15:00
             <a
                 x-ref="signout"
                 href="#"
-                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
+                class="block rounded-lg px-4 py-2 text-sm text-neutral-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-neutral-900 dark:text-neutral-300 dark:focus-visible:outline-neutral-100"
                 :class="activeIndex === 3 ? 'bg-neutral-100 dark:bg-neutral-700' : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'"
                 role="menuitem"
                 tabindex="-1"
