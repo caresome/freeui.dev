@@ -1,7 +1,7 @@
 ---
 slug: nps-collector
 title: NPS Collector
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 12:00:00

@@ -1,7 +1,7 @@
 ---
 slug: upvote-only
 title: Upvote Only
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 02:00:00

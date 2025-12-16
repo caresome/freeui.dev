@@ -1,7 +1,7 @@
 ---
 slug: survey-question-single
 title: Survey Question Single
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 09:00:00

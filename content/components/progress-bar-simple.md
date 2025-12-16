@@ -1,7 +1,7 @@
 ---
 slug: progress-bar-simple
 title: Progress Bar Simple
-category: feedback
+category: loading-progress
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:20:00

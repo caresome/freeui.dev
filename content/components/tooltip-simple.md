@@ -1,7 +1,7 @@
 ---
 slug: tooltip-simple
 title: Tooltip Simple
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:45:00

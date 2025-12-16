@@ -2,6 +2,6 @@
 title: Overlays
 slug: overlays
 collection: application
-description: Modals, drawers, dropdowns, popovers, sheets, and other overlay components.
+description: Modals, dialogs, sheets, slide-overs, and panel overlays.
 icon: heroicon-o-squares-plus
 ---

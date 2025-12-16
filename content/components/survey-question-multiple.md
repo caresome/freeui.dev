@@ -1,7 +1,7 @@
 ---
 slug: survey-question-multiple
 title: Survey Question Multiple
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 10:00:00

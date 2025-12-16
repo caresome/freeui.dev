@@ -1,7 +1,7 @@
 ---
 slug: dropdown-with-icons
 title: Dropdown With Icons
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 11:10:00

@@ -1,7 +1,7 @@
 ---
 slug: mega-menu
 title: Mega Menu
-category: overlays
+category: navigation
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:25:00

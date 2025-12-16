@@ -1,7 +1,7 @@
 ---
 slug: feedback-widget
 title: Feedback Widget
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 13:00:00

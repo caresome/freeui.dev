@@ -1,7 +1,7 @@
 ---
 slug: pagination-simple
 title: Pagination Simple
-category: navigation
+category: pagination
 github: caresome
 dependencies: []
 publish_at: 2025-12-15 12:00:00

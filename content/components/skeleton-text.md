@@ -1,7 +1,7 @@
 ---
 slug: skeleton-text
 title: Skeleton Text
-category: feedback
+category: loading-progress
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:15:00

@@ -1,7 +1,7 @@
 ---
 slug: reaction-picker
 title: Reaction Picker
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 04:00:00

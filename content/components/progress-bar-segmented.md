@@ -1,7 +1,7 @@
 ---
 slug: progress-bar-segmented
 title: Progress Bar Segmented
-category: feedback
+category: loading-progress
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:18:00

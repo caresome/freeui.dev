@@ -1,7 +1,7 @@
 ---
 slug: tooltip-with-arrow
 title: Tooltip With Arrow
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:40:00

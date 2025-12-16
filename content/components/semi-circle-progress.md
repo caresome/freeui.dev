@@ -1,7 +1,7 @@
 ---
 slug: semi-circle-progress
 title: Semi Circle Progress
-category: feedback
+category: loading-progress
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:09:00

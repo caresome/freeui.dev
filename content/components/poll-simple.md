@@ -1,7 +1,7 @@
 ---
 slug: poll-simple
 title: Poll Simple
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 06:00:00

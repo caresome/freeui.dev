@@ -1,7 +1,7 @@
 ---
 slug: upvote-downvote
 title: Upvote Downvote
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 01:00:00

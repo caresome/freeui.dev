@@ -1,7 +1,7 @@
 ---
 slug: popover-with-actions
 title: Popover With Actions
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:50:00

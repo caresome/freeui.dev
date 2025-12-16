@@ -1,7 +1,7 @@
 ---
 slug: loading-overlay-with-spinner
 title: Loading Overlay With Spinner
-category: feedback
+category: loading-progress
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:07:00

@@ -1,7 +1,7 @@
 ---
 slug: hover-card
 title: Hover Card
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:20:00

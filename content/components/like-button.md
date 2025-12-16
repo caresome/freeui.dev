@@ -1,7 +1,7 @@
 ---
 slug: like-button
 title: Like Button
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 03:00:00

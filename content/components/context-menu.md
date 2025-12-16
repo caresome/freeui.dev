@@ -1,7 +1,7 @@
 ---
 slug: context-menu
 title: Context Menu
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:35:00

@@ -1,7 +1,7 @@
 ---
 slug: poll-multiple-choice
 title: Poll Multiple Choice
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 07:00:00

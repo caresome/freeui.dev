@@ -1,7 +1,7 @@
 ---
 slug: dropdown-with-header
 title: Dropdown With Header
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 11:00:00

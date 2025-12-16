@@ -1,7 +1,7 @@
 ---
 slug: hover-card-with-image
 title: Hover Card With Image
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:15:00

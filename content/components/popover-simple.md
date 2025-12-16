@@ -1,7 +1,7 @@
 ---
 slug: popover-simple
 title: Popover Simple
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 10:55:00

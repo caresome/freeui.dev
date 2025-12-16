@@ -2,6 +2,6 @@
 title: Feedback
 slug: feedback
 collection: application
-description: Notifications, alerts, and status indicators.
+description: Alerts, toasts, notifications, empty states, and result pages.
 icon: heroicon-o-bell
 ---

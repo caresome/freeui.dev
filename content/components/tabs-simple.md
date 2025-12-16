@@ -1,7 +1,7 @@
 ---
 slug: tabs-simple
 title: Tabs Simple
-category: navigation
+category: tabs-accordions
 github: caresome
 dependencies: []
 publish_at: 2025-12-15 12:00:00

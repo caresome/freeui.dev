@@ -1,7 +1,7 @@
 ---
 slug: poll-results
 title: Poll Results
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 08:00:00

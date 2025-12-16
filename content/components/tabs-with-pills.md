@@ -1,7 +1,7 @@
 ---
 slug: tabs-with-pills
 title: Tabs with Pills
-category: navigation
+category: tabs-accordions
 github: caresome
 dependencies: []
 publish_at: 2025-12-15 12:00:00

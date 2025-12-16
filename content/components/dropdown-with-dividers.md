@@ -1,7 +1,7 @@
 ---
 slug: dropdown-with-dividers
 title: Dropdown With Dividers
-category: overlays
+category: menus-dropdowns
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 11:05:00

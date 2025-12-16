@@ -1,7 +1,7 @@
 ---
 slug: survey-question-scale
 title: Survey Question Scale
-category: voting
+category: user-input
 github: caresome
 dependencies: []
 publish_at: 2025-12-07 11:00:00

@@ -1,7 +1,7 @@
 ---
 slug: command-palette-with-icons
 title: Command Palette with Icons
-category: navigation
+category: command-search
 github: caresome
 dependencies:
     - '@alpinejs/focus https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js'
