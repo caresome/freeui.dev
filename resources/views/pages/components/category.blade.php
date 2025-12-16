@@ -1,6 +1,6 @@
-<x-layouts.app :title="$category->title . ' Components'">
-    <section class="bg-stone-50 py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-950">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<x-layouts.docs :title="$category->title . ' Components'">
+    <section class="bg-stone-50 py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-950">
+        <div class="px-6 lg:px-8">
             <x-breadcrumb
                 :segments="[
                     ['label' => $collection->title, 'url' => route('collections.show', $collection->slug)],
@@ -31,7 +31,7 @@
     </section>
 
     <section
-        class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900"
+        class="bg-white py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-900"
         x-data="{
             copiedSlug: null,
             announceMessage: '',
@@ -69,7 +69,7 @@
         {{-- Screen reader announcement --}}
         <div aria-live="polite" class="sr-only" x-text="announceMessage"></div>
 
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="px-6 lg:px-8">
             <div class="space-y-12">
                 @foreach ($components as $uiComponent)
                     <div class="scroll-mt-20" id="{{ $uiComponent->slug }}">
@@ -148,4 +148,4 @@
             @endif
         </div>
     </section>
-</x-layouts.app>
+</x-layouts.docs>

@@ -1,5 +1,9 @@
-<footer class="bg-stone-50 transition-colors duration-200 dark:bg-neutral-950">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+@props(['fullWidth' => false])
+
+<footer
+    class="border-t-2 border-neutral-900 bg-stone-50 transition-colors duration-200 dark:border-white dark:bg-neutral-950"
+>
+    <div class="{{ $fullWidth ? 'px-6 lg:px-8' : 'mx-auto max-w-7xl px-6 lg:px-8' }} py-12">
         <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div class="flex items-center gap-2">
                 <div

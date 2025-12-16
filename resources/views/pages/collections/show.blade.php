@@ -1,6 +1,6 @@
-<x-layouts.app :title="$collection->title">
-    <section class="bg-stone-50 py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-950">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<x-layouts.docs :title="$collection->title">
+    <section class="bg-stone-50 py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-950">
+        <div class="px-6 lg:px-8">
             <x-breadcrumb :segments="[['label' => $collection->title]]" />
 
             <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -42,8 +42,8 @@
         </div>
     </section>
 
-    <section class="bg-white py-12 transition-colors duration-200 sm:py-16 dark:bg-neutral-900">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <section class="bg-white py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-900">
+        <div class="px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($collection->categories as $category)
                     <a
@@ -114,4 +114,4 @@
             @endif
         </div>
     </section>
-</x-layouts.app>
+</x-layouts.docs>

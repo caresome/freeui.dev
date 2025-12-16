@@ -1,7 +1,9 @@
+@props(['showMenuToggle' => true])
+
 <header
-    class="sticky top-0 z-50 w-full bg-stone-50/80 backdrop-blur-xl transition-colors duration-200 dark:bg-neutral-950/80"
+    class="sticky top-0 z-50 w-full border-b-2 border-neutral-900 bg-stone-50/95 backdrop-blur-xl transition-colors duration-200 dark:border-white dark:bg-neutral-950/95"
 >
-    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between px-4 lg:px-6">
         <div class="flex items-center gap-8">
             <a href="/" class="group flex items-center gap-2">
                 <div
@@ -77,6 +79,24 @@
                     />
                 </svg>
             </a>
+
+            @if ($showMenuToggle)
+                <!-- Mobile Menu Toggle -->
+                <button
+                    type="button"
+                    x-on:click="$dispatch('toggle-mobile-sidebar')"
+                    class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none lg:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                >
+                    <span class="sr-only">Open menu</span>
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                    </svg>
+                </button>
+            @endif
         </div>
     </div>
 </header>

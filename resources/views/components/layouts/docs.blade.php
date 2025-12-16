@@ -1,10 +1,3 @@
-@props([
-    'title' => null,
-    'description' => 'Free, open-source Tailwind CSS and Alpine.js components. Copy, paste, and build amazing projects faster.',
-    'ogImage' => null,
-    'ogUrl' => null,
-])
-
 @php
     $pageTitle = $title ? $title . ' - FreeUI' : 'FreeUI - Free Tailwind CSS & Alpine.js Components';
     $pageDescription = $description;
@@ -99,13 +92,19 @@
             Skip to main content
         </a>
 
-        <x-header :show-menu-toggle="false" />
+        <x-header />
 
-        <main id="main-content" class="flex-1" tabindex="-1">
-            {{ $slot }}
-        </main>
+        <x-mobile-sidebar :collections="$sidebarCollections" />
 
-        <x-footer />
+        <div class="flex flex-1">
+            <x-sidebar :collections="$sidebarCollections" />
+
+            <main id="main-content" class="min-w-0 flex-1" tabindex="-1">
+                {{ $slot }}
+            </main>
+        </div>
+
+        <x-footer :full-width="true" />
 
         <x-command-palette />
     </body>
