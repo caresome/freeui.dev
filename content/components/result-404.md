@@ -1,7 +1,7 @@
 ---
 slug: result-404
 title: Result 404
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:02:00

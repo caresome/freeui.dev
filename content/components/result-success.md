@@ -1,7 +1,7 @@
 ---
 slug: result-success
 title: Result Success
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:06:00

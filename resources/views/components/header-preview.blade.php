@@ -1,43 +1,22 @@
-<header class="w-full bg-stone-50 transition-colors duration-200 dark:bg-neutral-950">
-    <div class="mx-auto flex h-16 w-full items-center justify-between px-6 lg:px-8">
-        <a href="/" class="group flex items-center gap-2">
+<header class="w-full bg-neutral-50 transition-colors duration-200 dark:bg-neutral-950">
+    <div class="mx-auto flex h-14 w-full items-center justify-between px-4 lg:px-6">
+        <a href="/" class="flex items-center gap-2">
             <div
-                class="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-neutral-900 bg-neutral-900 text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] transition-all group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none group-focus-visible:translate-x-[2px] group-focus-visible:translate-y-[2px] group-focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]"
+                class="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-900 bg-neutral-900 text-white dark:border-white dark:bg-white dark:text-neutral-900"
             >
-                <span class="text-sm font-black">F</span>
+                <span class="text-xs font-bold">F</span>
             </div>
-            <span class="text-lg font-bold text-neutral-900 dark:text-white">FreeUI</span>
+            <span class="text-base font-semibold text-neutral-900 dark:text-white">FreeUI</span>
         </a>
 
         <div class="flex items-center gap-2">
-            {{-- Search Button --}}
-            <button
-                type="button"
-                x-on:click="$dispatch('open-command-palette')"
-                class="hidden h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-medium text-neutral-600 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:flex dark:border-white dark:bg-neutral-900 dark:text-neutral-400 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white"
-            >
-                <x-heroicon-o-magnifying-glass class="h-4 w-4" aria-hidden="true" />
-                <span>Search</span>
-                <kbd
-                    class="ml-1 rounded-md border-2 border-neutral-900 bg-stone-50 px-1.5 py-0.5 text-xs font-bold dark:border-white dark:bg-neutral-800"
-                    x-text="navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'"
-                ></kbd>
-            </button>
+            <x-search-button />
 
-            {{-- Mobile Search Button --}}
-            <button
-                type="button"
-                x-on:click="$dispatch('open-command-palette')"
-                class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
-            >
-                <span class="sr-only">Search</span>
-                <x-heroicon-o-magnifying-glass class="h-5 w-5" aria-hidden="true" />
-            </button>
             {{-- Theme Toggle --}}
             <button
                 type="button"
                 @click="theme = theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')"
-                class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-semibold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                class="flex h-8 items-center gap-2 rounded-lg px-3 text-sm font-medium text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
                 :aria-label="'Switch to ' + (theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')) + ' theme'"
             >
                 <x-heroicon-o-sun class="h-4 w-4" x-show="theme === 'light'" aria-hidden="true" />
@@ -51,7 +30,7 @@
 
             {{-- Copy Button with AI Dropdown --}}
             <div
-                class="relative flex rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                class="relative flex rounded-lg border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800"
                 @click.away="aiMenuOpen = false"
             >
                 {{-- Copy Action (Left) --}}
@@ -59,7 +38,7 @@
                     type="button"
                     @click="copyCode()"
                     :aria-label="copied ? 'Code copied' : 'Copy code'"
-                    class="group flex items-center gap-2 rounded-l-xl px-3 py-2 text-sm font-bold transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
+                    class="flex items-center gap-2 rounded-l-lg px-3 py-2 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
                 >
                     <span x-show="!copied" class="flex items-center gap-2">
                         <x-heroicon-o-clipboard-document class="h-4 w-4" aria-hidden="true" />
@@ -72,14 +51,14 @@
                 </button>
 
                 {{-- Divider --}}
-                <div class="w-0.5 bg-neutral-900 dark:bg-white"></div>
+                <div class="w-px bg-neutral-200 dark:bg-neutral-700"></div>
 
                 {{-- AI Menu Trigger (Right) --}}
                 <button
                     type="button"
                     @click="aiMenuOpen = !aiMenuOpen"
-                    class="group flex items-center rounded-r-xl px-1.5 py-2 transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
-                    :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-800' : ''"
+                    class="flex items-center rounded-r-lg px-2 py-2 text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700"
+                    :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-700' : ''"
                     aria-label="AI Options"
                     :aria-expanded="aiMenuOpen"
                     aria-haspopup="menu"
@@ -103,7 +82,7 @@
                     x-transition:leave="transition duration-75 ease-in"
                     x-transition:leave-start="scale-100 opacity-100"
                     x-transition:leave-end="scale-95 opacity-0"
-                    class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-xl border-2 border-neutral-900 bg-white p-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                    class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-lg border border-neutral-200 bg-white p-1.5 shadow-lg dark:border-neutral-700 dark:bg-neutral-900"
                     x-cloak
                     @keydown.escape="aiMenuOpen = false"
                     @keydown.arrow-down.prevent="$focus.wrap().next()"
@@ -114,7 +93,7 @@
                         @click="copyAiPrompt()"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800"
                     >
                         <template x-if="!aiPromptCopied">
                             <div class="flex items-center gap-3">
@@ -137,7 +116,7 @@
                         @click="openInLovable(); aiMenuOpen = false"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <title>Lovable</title>
@@ -174,7 +153,7 @@
                         @click="openInChatGPT(); aiMenuOpen = false"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path
@@ -189,7 +168,7 @@
                         @click="openInClaude(); aiMenuOpen = false"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                     >
                         <svg class="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <title>Claude</title>
@@ -209,7 +188,7 @@
                         @click="copyForBolt()"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                     >
                         <template x-if="!boltCopied">
                             <div class="flex items-center gap-3">
@@ -248,7 +227,7 @@
                         @click="copyForReplit()"
                         type="button"
                         role="menuitem"
-                        class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-white/10"
+                        class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                     >
                         <template x-if="!replitCopied">
                             <div class="flex items-center gap-3">

@@ -1,20 +1,17 @@
 @props(['segments' => []])
 
 <nav
-    {{ $attributes->merge(['class' => 'flex mb-8']) }}
+    {{ $attributes->merge(['class' => 'flex mb-6']) }}
     aria-label="Breadcrumb"
 >
-    <ol
-        role="list"
-        class="flex items-center space-x-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-    >
+    <ol role="list" class="flex items-center space-x-2">
         <li>
             <div>
                 <a
                     href="{{ route('home') }}"
-                    class="text-neutral-500 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
+                    class="text-neutral-400 transition-colors hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300"
                 >
-                    <x-heroicon-s-home class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                    <x-heroicon-s-home class="h-4 w-4 flex-shrink-0" aria-hidden="true" />
                     <span class="sr-only">Home</span>
                 </a>
             </div>
@@ -24,7 +21,7 @@
             <li>
                 <div class="flex items-center">
                     <svg
-                        class="h-5 w-5 flex-shrink-0 text-neutral-400 dark:text-neutral-500"
+                        class="h-4 w-4 flex-shrink-0 text-neutral-300 dark:text-neutral-600"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
                         viewBox="0 0 20 20"
@@ -35,12 +32,15 @@
                     @if (isset($segment['url']) && ! $loop->last)
                         <a
                             href="{{ $segment['url'] }}"
-                            class="ml-2 text-sm font-bold text-neutral-500 transition-colors hover:text-neutral-900 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:text-white dark:focus-visible:text-white"
+                            class="ml-2 text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                         >
                             {{ $segment['label'] }}
                         </a>
                     @else
-                        <span class="ml-2 text-sm font-bold text-neutral-900 dark:text-white" aria-current="page">
+                        <span
+                            class="ml-2 text-sm font-medium text-neutral-700 dark:text-neutral-200"
+                            aria-current="page"
+                        >
                             {{ $segment['label'] }}
                         </span>
                     @endif

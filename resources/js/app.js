@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
+import collapse from '@alpinejs/collapse';
 import Fuse from 'fuse.js';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
@@ -20,7 +21,7 @@ window.hljs = hljs;
 window.Fuse = Fuse;
 window.Alpine = Alpine;
 
-// Register Alpine plugins
 Alpine.plugin(focus);
+Alpine.plugin(collapse);
 
 Alpine.start();

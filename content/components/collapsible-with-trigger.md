@@ -1,23 +1,24 @@
 ---
 slug: collapsible-with-trigger
 title: Collapsible With Trigger
-category: feedback
+category: tabs-accordions
 github: caresome
-dependencies: []
+dependencies:
+    - '@alpinejs/collapse https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js'
 publish_at: 2025-12-14 00:11:00
 ---
 
-<div data-preview-only class="flex min-h-[400px] items-start justify-center p-8">
+<div data-preview-only class="flex min-h-[400px] items-start justify-center p-4 sm:p-8">
     <div
         x-data="{ open: true, categories: ['electronics'] }"
         class="w-full max-w-sm overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-800"
     >
-        <div class="flex items-center justify-between px-4 py-3">
+        <div class="flex items-center justify-between px-3 py-2.5 sm:px-4 sm:py-3">
             <h3 class="font-medium text-neutral-900 dark:text-neutral-50">Filter Options</h3>
             <button
                 @click="open = !open"
                 type="button"
-                class="rounded-lg p-1.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-50 dark:focus-visible:bg-neutral-700"
+                class="rounded-lg p-1.5 text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-100"
                 :aria-expanded="open"
                 aria-label="Toggle filters"
             >
@@ -33,7 +34,12 @@ publish_at: 2025-12-14 00:11:00
             </button>
         </div>
 
-        <div x-show="open" x-collapse x-cloak class="border-t border-neutral-200 px-4 py-4 dark:border-neutral-700">
+        <div
+            x-show="open"
+            x-collapse
+            x-cloak
+            class="border-t border-neutral-200 px-3 py-3 sm:px-4 sm:py-4 dark:border-neutral-700"
+        >
             <div class="space-y-5">
                 <div>
                     <label class="mb-3 block text-sm font-medium text-neutral-900 dark:text-neutral-100">
@@ -121,7 +127,7 @@ publish_at: 2025-12-14 00:11:00
                             <input
                                 type="number"
                                 placeholder="Min"
-                                class="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 pl-7 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:ring-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
+                                class="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 pl-7 text-sm text-neutral-900 placeholder-neutral-400 outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
                             />
                         </div>
                         <span class="text-neutral-400">-</span>
@@ -132,7 +138,7 @@ publish_at: 2025-12-14 00:11:00
                             <input
                                 type="number"
                                 placeholder="Max"
-                                class="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 pl-7 text-sm text-neutral-900 placeholder-neutral-400 focus:border-neutral-900 focus:ring-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
+                                class="block w-full rounded-lg border border-neutral-300 bg-white p-2.5 pl-7 text-sm text-neutral-900 placeholder-neutral-400 outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder-neutral-500 dark:focus:border-neutral-100 dark:focus:ring-neutral-100"
                             />
                         </div>
                     </div>

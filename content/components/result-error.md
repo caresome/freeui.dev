@@ -1,7 +1,7 @@
 ---
 slug: result-error
 title: Result Error
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:05:00

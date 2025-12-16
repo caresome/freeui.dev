@@ -1,7 +1,7 @@
 ---
 slug: empty-state-with-recommendations
 title: Empty State With Recommendations
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:26:00

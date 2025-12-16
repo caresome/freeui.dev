@@ -5,6 +5,7 @@ category: navigation
 github: caresome
 dependencies:
     - alpinejs-persist@3.x https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js
+    - '@alpinejs/collapse https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js'
 publish_at: 2025-12-15 12:00:00
 ---
 

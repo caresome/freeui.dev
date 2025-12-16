@@ -1,7 +1,7 @@
 ---
 slug: result-403
 title: Result 403
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:01:00

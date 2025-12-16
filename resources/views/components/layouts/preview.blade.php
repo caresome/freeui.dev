@@ -74,7 +74,7 @@
     </head>
 
     <body
-        class="flex min-h-full flex-col bg-stone-50 font-sans transition-colors duration-200 dark:bg-neutral-950"
+        class="flex min-h-full flex-col bg-neutral-50 font-sans transition-colors duration-200 dark:bg-neutral-950"
         x-data="previewPage({
                     rawCode: @js($componentContent),
                     title: @js($componentTitle),
@@ -86,7 +86,7 @@
         </x-header-preview>
 
         <main
-            class="relative m-4 mt-0 rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-black dark:text-white dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+            class="relative m-4 mt-0 rounded-xl border border-neutral-200 bg-white text-neutral-900 shadow-sm dark:border-neutral-800 dark:bg-black dark:text-white"
         >
             {{ $slot }}
         </main>

@@ -1,7 +1,7 @@
 ---
-title: Feedback
+title: Alerts & Notifications
 slug: feedback
 collection: application
-description: Alerts, toasts, notifications, empty states, and result pages.
+description: Alerts, toasts, and notifications for user feedback.
 icon: heroicon-o-bell
 ---

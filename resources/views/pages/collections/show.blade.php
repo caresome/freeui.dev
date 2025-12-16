@@ -1,39 +1,35 @@
 <x-layouts.docs :title="$collection->title">
-    <section class="bg-stone-50 py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-950">
+    <section class="bg-neutral-50 py-6 transition-colors duration-200 sm:py-8 dark:bg-neutral-950">
         <div class="px-6 lg:px-8">
             <x-breadcrumb :segments="[['label' => $collection->title]]" />
 
             <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-3">
                         @if ($collection->icon)
                             <div
-                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                             >
                                 <x-dynamic-component
                                     :component="$collection->icon"
-                                    class="h-7 w-7 text-neutral-900 dark:text-white"
+                                    class="h-5 w-5"
                                     aria-hidden="true"
                                 />
                             </div>
                         @endif
 
-                        <h1
-                            class="text-3xl font-black tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl dark:text-white"
-                        >
+                        <h1 class="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl dark:text-white">
                             {{ $collection->title }}
                         </h1>
                     </div>
                     @if ($collection->description)
-                        <p class="mt-3 text-lg text-neutral-600 dark:text-neutral-400">
+                        <p class="mt-2 text-neutral-600 dark:text-neutral-400">
                             {{ $collection->description }}
                         </p>
                     @endif
                 </div>
-                <div
-                    class="inline-flex items-center gap-2 rounded-full border-2 border-neutral-900 bg-white px-4 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
-                >
-                    <span class="text-sm font-bold text-neutral-900 dark:text-white">
+                <div class="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 dark:bg-neutral-800">
+                    <span class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
                         {{ $collection->categories->count() }}
                         {{ Str::plural('category', $collection->categories->count()) }}
                     </span>
@@ -42,53 +38,43 @@
         </div>
     </section>
 
-    <section class="bg-white py-8 transition-colors duration-200 sm:py-12 dark:bg-neutral-900">
+    <section class="bg-white py-6 transition-colors duration-200 sm:py-8 dark:bg-neutral-900">
         <div class="px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($collection->categories as $category)
                     <a
                         href="{{ route('components.category', ['collection' => $collection->slug, 'category' => $category->slug]) }}"
-                        class="group relative overflow-hidden rounded-xl border-2 border-neutral-900 bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none focus-visible:translate-x-[4px] focus-visible:translate-y-[4px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
+                        class="group rounded-xl border border-neutral-200 bg-white p-5 transition-all hover:border-neutral-300 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700"
                     >
                         <div
-                            class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border-2 border-neutral-900 bg-stone-50 dark:border-white dark:bg-neutral-950"
+                            class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                         >
                             @if ($category->icon)
-                                <x-dynamic-component
-                                    :component="$category->icon"
-                                    class="h-6 w-6 text-neutral-900 dark:text-white"
-                                    aria-hidden="true"
-                                />
+                                <x-dynamic-component :component="$category->icon" class="h-5 w-5" aria-hidden="true" />
                             @else
-                                <x-heroicon-o-cube
-                                    class="h-6 w-6 text-neutral-900 dark:text-white"
-                                    aria-hidden="true"
-                                />
+                                <x-heroicon-o-cube class="h-5 w-5" aria-hidden="true" />
                             @endif
                         </div>
 
-                        <h2 class="text-lg font-bold text-neutral-900 dark:text-white">
+                        <h2 class="font-semibold text-neutral-900 dark:text-white">
                             {{ $category->title }}
                         </h2>
 
                         @if ($category->description)
-                            <p class="mt-2 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-400">
+                            <p class="mt-1 line-clamp-2 text-sm text-neutral-500 dark:text-neutral-400">
                                 {{ $category->description }}
                             </p>
                         @endif
 
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                        <div class="mt-3 flex items-center justify-between">
+                            <span class="text-xs text-neutral-400 dark:text-neutral-500">
                                 {{ $category->components_count }}
                                 {{ Str::plural('component', $category->components_count) }}
                             </span>
-                            <div class="flex items-center gap-1 text-sm font-bold text-neutral-900 dark:text-white">
-                                <span>Browse</span>
-                                <x-heroicon-o-arrow-right
-                                    class="h-4 w-4 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
-                                    aria-hidden="true"
-                                />
-                            </div>
+                            <x-heroicon-o-arrow-right
+                                class="h-4 w-4 text-neutral-400 transition-transform group-hover:translate-x-0.5 dark:text-neutral-500"
+                                aria-hidden="true"
+                            />
                         </div>
                     </a>
                 @endforeach
@@ -96,20 +82,20 @@
 
             @if ($collection->categories->isEmpty())
                 <div
-                    class="rounded-xl border-2 border-dashed border-neutral-200 p-12 text-center dark:border-neutral-800"
+                    class="rounded-xl border border-dashed border-neutral-200 p-10 text-center dark:border-neutral-800"
                 >
                     <div
-                        class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl border-2 border-neutral-900 bg-stone-50 dark:border-white dark:bg-neutral-950"
+                        class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800"
                     >
                         <x-heroicon-o-folder-open
-                            class="h-8 w-8 text-neutral-600 dark:text-neutral-400"
+                            class="h-6 w-6 text-neutral-400 dark:text-neutral-500"
                             aria-hidden="true"
                         />
                     </div>
-                    <h3 class="text-lg font-bold text-neutral-900 dark:text-white">
-                        No categories in this collection yet
-                    </h3>
-                    <p class="mt-2 text-neutral-600 dark:text-neutral-400">Check back soon for new categories!</p>
+                    <h3 class="font-medium text-neutral-900 dark:text-white">No categories in this collection yet</h3>
+                    <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                        Check back soon for new categories!
+                    </p>
                 </div>
             @endif
         </div>

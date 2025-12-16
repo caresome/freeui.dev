@@ -7,12 +7,26 @@
     'username' => null,
     'authorAvatar' => null,
     'authorUrl' => null,
+    'dependencies' => null,
 ])
 
 @php
     $componentUrl = $collection && $category && $slug ? url("/{$collection}/{$category}/{$slug}") : null;
     $tailwindCdn = config('freeui.tailwind_cdn');
     $alpineCdn = config('freeui.alpine_cdn');
+
+    // Extract CDN URLs from dependencies (format: "name url" or just "url")
+    $dependencyCdns = [];
+    if ($dependencies) {
+        foreach ($dependencies as $dependency) {
+            $parts = explode(' ', $dependency, 2);
+            if (count($parts) === 2) {
+                $dependencyCdns[] = $parts[1]; // Get the URL part
+            } elseif (filter_var($dependency, FILTER_VALIDATE_URL)) {
+                $dependencyCdns[] = $dependency;
+            }
+        }
+    }
 @endphp
 
 <div
@@ -23,36 +37,27 @@
                 codeUrl: @js(route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug])),
                 tailwindCdn: @js($tailwindCdn),
                 alpineCdn: @js($alpineCdn),
+                dependencyCdns: @js($dependencyCdns),
             })"
     class="w-full"
 >
     <div
-        class="group relative flex flex-col rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]"
+        class="group relative flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white text-neutral-900 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
     >
-        {{-- Header Bar --}}
         <div
-            class="relative z-20 flex flex-wrap items-center justify-between gap-4 rounded-t-[10px] border-b-2 border-neutral-900 bg-white/50 px-4 py-3 backdrop-blur-sm dark:border-white dark:bg-black/20"
+            class="relative z-20 flex flex-wrap items-center justify-between gap-4 border-b border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-800 dark:bg-neutral-950"
         >
-            {{-- Left: Dots & Toggles --}}
             <div class="flex items-center gap-4 sm:gap-6">
-                {{-- Mac Dots (Neo Style) --}}
                 <div class="flex gap-1.5 sm:gap-2">
-                    <div
-                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#ff5f57] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
-                    ></div>
-                    <div
-                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#febc2e] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
-                    ></div>
-                    <div
-                        class="h-3 w-3 rounded-full border-2 border-neutral-900 bg-[#28c840] shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:h-3.5 sm:w-3.5 dark:border-white"
-                    ></div>
+                    <div class="h-3 w-3 rounded-full bg-[#ff5f57] sm:h-3.5 sm:w-3.5"></div>
+                    <div class="h-3 w-3 rounded-full bg-[#febc2e] sm:h-3.5 sm:w-3.5"></div>
+                    <div class="h-3 w-3 rounded-full bg-[#28c840] sm:h-3.5 sm:w-3.5"></div>
                 </div>
 
-                {{-- View Toggles --}}
                 <div
                     role="tablist"
                     aria-label="View options"
-                    class="flex items-center rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    class="flex items-center rounded-lg bg-neutral-200/50 p-1 dark:bg-neutral-800"
                 >
                     <button
                         type="button"
@@ -62,9 +67,9 @@
                         aria-controls="preview-panel"
                         @click="switchTab('preview')"
                         :tabindex="activeTab === 'preview' ? 0 : -1"
-                        :class="activeTab === 'preview' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
-                        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
+                        :class="activeTab === 'preview' ? 'bg-white text-neutral-900 shadow-sm dark:bg-neutral-700 dark:text-white' :
+                            'text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'"
+                        class="flex items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-all"
                     >
                         <x-heroicon-o-eye class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Preview</span>
@@ -77,9 +82,9 @@
                         aria-controls="code-panel"
                         @click="switchTab('code')"
                         :tabindex="activeTab === 'code' ? 0 : -1"
-                        :class="activeTab === 'code' ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-neutral-900 hover:bg-neutral-900/5 focus-visible:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10 dark:focus-visible:bg-white/10'"
-                        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all"
+                        :class="activeTab === 'code' ? 'bg-white text-neutral-900 shadow-sm dark:bg-neutral-700 dark:text-white' :
+                            'text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'"
+                        class="flex items-center gap-2 rounded-md px-3 py-1.5 text-xs font-medium transition-all"
                     >
                         <x-heroicon-o-code-bracket class="h-4 w-4" aria-hidden="true" />
                         <span class="hidden sm:inline">Code</span>
@@ -87,7 +92,6 @@
                 </div>
             </div>
 
-            {{-- Center: Device Resizer --}}
             <div class="pointer-events-none absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
                 <div
                     x-show="activeTab === 'preview'"
@@ -96,7 +100,7 @@
                     x-transition:enter-end="translate-y-0 opacity-100"
                     role="radiogroup"
                     aria-label="Preview width"
-                    class="pointer-events-auto hidden items-center gap-1 rounded-xl border-2 border-neutral-900 bg-white p-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] lg:flex dark:border-white dark:bg-neutral-950 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    class="pointer-events-auto hidden items-center gap-1 rounded-lg bg-neutral-200/50 p-1 lg:flex dark:bg-neutral-800"
                     x-cloak
                 >
                     <button
@@ -105,9 +109,9 @@
                         @click="setDevice('100%')"
                         :aria-checked="previewWidth === '100%'"
                         :class="previewWidth === '100%' ?
-                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
-                        class="rounded-lg p-1.5 transition-colors"
+                            'bg-white text-neutral-900 shadow-sm dark:bg-neutral-700 dark:text-white' :
+                            'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'"
+                        class="rounded-md p-1.5 transition-colors"
                         aria-label="Desktop view"
                     >
                         <x-heroicon-o-computer-desktop class="h-4 w-4" aria-hidden="true" />
@@ -118,9 +122,9 @@
                         @click="setDevice('768px')"
                         :aria-checked="previewWidth === '768px'"
                         :class="previewWidth === '768px' ?
-                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
-                        class="rounded-lg p-1.5 transition-colors"
+                            'bg-white text-neutral-900 shadow-sm dark:bg-neutral-700 dark:text-white' :
+                            'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'"
+                        class="rounded-md p-1.5 transition-colors"
                         aria-label="Tablet view"
                     >
                         <x-heroicon-o-device-tablet class="h-4 w-4" aria-hidden="true" />
@@ -131,9 +135,9 @@
                         @click="setDevice('375px')"
                         :aria-checked="previewWidth === '375px'"
                         :class="previewWidth === '375px' ?
-                            'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' :
-                            'text-gray-500 hover:bg-gray-100 focus-visible:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5 dark:focus-visible:bg-white/5'"
-                        class="rounded-lg p-1.5 transition-colors"
+                            'bg-white text-neutral-900 shadow-sm dark:bg-neutral-700 dark:text-white' :
+                            'text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'"
+                        class="rounded-md p-1.5 transition-colors"
                         aria-label="Mobile view"
                     >
                         <x-heroicon-o-device-phone-mobile class="h-4 w-4" aria-hidden="true" />
@@ -141,14 +145,12 @@
                 </div>
             </div>
 
-            {{-- Right: Actions --}}
-            <div class="flex items-center gap-3">
-                {{-- Full Page Button --}}
+            <div class="flex items-center gap-2">
                 @if ($collection && $category && $slug)
                     <a
                         href="{{ route('components.preview', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) }}"
                         target="_blank"
-                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 py-2.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none focus-visible:translate-x-[1px] focus-visible:translate-y-[1px] focus-visible:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                        class="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
                         title="View Full Page"
                     >
                         <x-heroicon-o-arrows-pointing-out class="h-4 w-4" aria-hidden="true" />
@@ -156,22 +158,19 @@
                     </a>
                 @endif
 
-                {{-- Screen reader announcement for copy --}}
                 <div aria-live="polite" class="sr-only">
                     <span x-show="copied">Code copied to clipboard</span>
                 </div>
 
-                {{-- Split Button (Copy + AI) --}}
                 <div
-                    class="relative flex rounded-xl border-2 border-neutral-900 bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"
+                    class="relative flex rounded-lg border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-neutral-800"
                     @click.away="aiMenuOpen = false"
                 >
-                    {{-- Copy Action (Left) --}}
                     <button
                         type="button"
                         @click="copyCode()"
                         :aria-label="copied ? 'Code copied' : 'Copy code'"
-                        class="group flex items-center gap-2 rounded-l-xl px-3 py-2.5 text-xs font-bold transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
+                        class="flex items-center gap-2 rounded-l-lg px-3 py-2 text-xs font-medium transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
                     >
                         <span x-show="!copied" class="flex items-center gap-2">
                             <x-heroicon-o-clipboard-document class="h-4 w-4" aria-hidden="true" />
@@ -187,15 +186,13 @@
                         </span>
                     </button>
 
-                    {{-- Divider --}}
-                    <div class="w-0.5 bg-neutral-900 dark:bg-white"></div>
+                    <div class="w-px bg-neutral-200 dark:bg-neutral-700"></div>
 
-                    {{-- AI Menu Trigger (Right) --}}
                     <button
                         type="button"
                         @click="aiMenuOpen = !aiMenuOpen"
-                        class="group flex items-center rounded-r-xl px-1.5 py-2.5 transition-all hover:bg-neutral-100 active:translate-y-[1px] dark:hover:bg-neutral-800"
-                        :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-800' : ''"
+                        class="flex items-center rounded-r-lg px-2 py-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                        :class="aiMenuOpen ? 'bg-neutral-100 dark:bg-neutral-700' : ''"
                         aria-label="AI Options"
                         :aria-expanded="aiMenuOpen"
                         aria-haspopup="menu"
@@ -206,7 +203,6 @@
                         </span>
                     </button>
 
-                    {{-- Dropdown Menu --}}
                     <div
                         id="ai-menu"
                         role="menu"
@@ -220,18 +216,17 @@
                         x-transition:leave="transition duration-75 ease-in"
                         x-transition:leave-start="scale-100 opacity-100"
                         x-transition:leave-end="scale-95 opacity-0"
-                        class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-xl border-2 border-neutral-900 bg-white p-1.5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                        class="absolute top-full right-0 z-[100] mt-2 w-72 origin-top-right rounded-lg border border-neutral-200 bg-white p-1.5 shadow-lg dark:border-neutral-700 dark:bg-neutral-900"
                         x-cloak
                         @keydown.escape="aiMenuOpen = false"
                         @keydown.arrow-down.prevent="$focus.wrap().next()"
                         @keydown.arrow-up.prevent="$focus.wrap().previous()"
                     >
-                        {{-- Copy AI Prompt --}}
                         <button
                             @click="copyAiPrompt()"
                             type="button"
                             role="menuitem"
-                            class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-neutral-900"
+                            class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800"
                         >
                             <template x-if="!aiPromptCopied">
                                 <div class="flex items-center gap-3">
@@ -249,7 +244,6 @@
 
                         <div class="my-1.5 border-t border-neutral-200 dark:border-neutral-700"></div>
 
-                        {{-- Open in Lovable --}}
                         <button
                             @click="openInLovable(); aiMenuOpen = false"
                             type="button"
@@ -286,7 +280,6 @@
 
                         <div class="my-1.5 border-t border-neutral-200 dark:border-neutral-700"></div>
 
-                        {{-- Explain in ChatGPT --}}
                         <button
                             @click="openInChatGPT(); aiMenuOpen = false"
                             type="button"
@@ -301,7 +294,6 @@
                             Explain in ChatGPT
                         </button>
 
-                        {{-- Explain in Claude --}}
                         <button
                             @click="openInClaude(); aiMenuOpen = false"
                             type="button"
@@ -321,7 +313,6 @@
 
                         <div class="my-1.5 border-t border-neutral-200 dark:border-neutral-700"></div>
 
-                        {{-- Copy for Bolt --}}
                         <button
                             @click="copyForBolt()"
                             type="button"
@@ -360,7 +351,6 @@
                             </template>
                         </button>
 
-                        {{-- Copy for Replit --}}
                         <button
                             @click="copyForReplit()"
                             type="button"
@@ -391,11 +381,9 @@
             </div>
         </div>
 
-        {{-- Main Content Window --}}
         <div
-            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-hidden rounded-b-[10px] border-t-2 border-neutral-900 bg-gray-50/50 dark:border-white dark:bg-black/20"
+            class="relative z-10 flex max-h-[600px] min-h-[600px] flex-1 flex-col overflow-hidden bg-neutral-50/50 dark:bg-black/20"
         >
-            {{-- Preview Wrapper --}}
             <div
                 id="preview-panel"
                 role="tabpanel"
@@ -406,7 +394,6 @@
                 x-transition:enter-end="opacity-100"
                 class="relative h-full w-full flex-1 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#333_1px,transparent_1px)]"
             >
-                {{-- Loading Indicator --}}
                 <div
                     x-show="!iframeLoaded"
                     x-transition:leave="transition-opacity duration-300"
@@ -427,7 +414,6 @@
                     </div>
                 </div>
 
-                {{-- Responsive Width Container --}}
                 <div class="mx-auto h-full transition-[width] duration-300 ease-out" :style="{ width: previewWidth }">
                     <iframe
                         x-ref="previewFrame"
@@ -442,7 +428,6 @@
                 </div>
             </div>
 
-            {{-- Watermark / Author Credit --}}
             @if ($username && $username !== 'caresome')
                 @php
                     $avatar = $authorAvatar ?? "https://github.com/{$username}.png";
@@ -453,27 +438,28 @@
                     <a
                         href="{{ $profile }}"
                         target="_blank"
-                        class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                        class="group flex items-center gap-2 rounded-lg border border-neutral-200 bg-white/90 px-3 py-2 text-sm backdrop-blur-sm transition-colors hover:bg-white dark:border-neutral-700 dark:bg-neutral-900/90 dark:hover:bg-neutral-900"
                     >
                         @if ($avatar)
                             <img
                                 src="{{ $avatar }}"
                                 alt="{{ $username }}"
-                                class="h-8 w-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white"
+                                class="h-7 w-7 rounded-full object-cover"
                             />
                         @endif
 
                         <div class="flex flex-col">
-                            <span class="text-left text-[10px] leading-tight text-neutral-600 dark:text-neutral-400">
+                            <span class="text-left text-[10px] leading-tight text-neutral-500 dark:text-neutral-400">
                                 Contributed by
                             </span>
-                            <span class="leading-tight text-neutral-900 dark:text-white">{{ $username }}</span>
+                            <span class="text-xs leading-tight font-medium text-neutral-900 dark:text-white">
+                                {{ $username }}
+                            </span>
                         </div>
                     </a>
                 </div>
             @endif
 
-            {{-- Code Wrapper --}}
             <div
                 id="code-panel"
                 role="tabpanel"
@@ -513,6 +499,7 @@
             codeUrl: config.codeUrl || null,
             tailwindCdn: config.tailwindCdn || '',
             alpineCdn: config.alpineCdn || '',
+            dependencyCdns: config.dependencyCdns || [],
 
             init() {
                 // Lazy load: only render srcdoc when component is visible
@@ -573,6 +560,10 @@
 
             getIframeSrcdoc() {
                 const isDark = document.documentElement.classList.contains('dark');
+                // Generate script tags for Alpine plugin dependencies (loaded before Alpine)
+                const dependencyScripts = this.dependencyCdns
+                    .map((url) => `<script defer src="${url}"><\/script>`)
+                    .join('\n    ');
                 return `<!DOCTYPE html>
 <html lang="en" class="${isDark ? 'dark' : ''}">
 <head>
@@ -586,6 +577,7 @@
         @theme { --font-sans: 'Inter', sans-serif; }
         @variant dark (&:where(.dark, .dark *));
     </style>
+    ${dependencyScripts}
     <script defer src="${this.alpineCdn}"><\/script>
     <style>
         html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; background-color: transparent; }

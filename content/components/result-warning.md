@@ -1,7 +1,7 @@
 ---
 slug: result-warning
 title: Result Warning
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:04:00

@@ -18,18 +18,16 @@
                 href="{{ $profile }}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group flex items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-4 py-3 text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+                class="group flex items-center gap-2 rounded-lg border border-neutral-200 bg-white/90 px-3 py-2 text-sm backdrop-blur-sm transition-colors hover:bg-white dark:border-neutral-700 dark:bg-neutral-900/90 dark:hover:bg-neutral-900"
             >
-                <img
-                    src="{{ $avatar }}"
-                    alt="{{ $uiComponent->github }}"
-                    class="size-8 rounded-lg border-2 border-neutral-900 object-cover dark:border-white"
-                />
+                <img src="{{ $avatar }}" alt="{{ $uiComponent->github }}" class="size-7 rounded-full object-cover" />
                 <div class="flex flex-col">
-                    <span class="text-left text-[10px] leading-tight text-neutral-600 dark:text-neutral-400">
+                    <span class="text-left text-[10px] leading-tight text-neutral-500 dark:text-neutral-400">
                         Contributed by
                     </span>
-                    <span class="leading-tight text-neutral-900 dark:text-white">{{ $uiComponent->github }}</span>
+                    <span class="text-xs leading-tight font-medium text-neutral-900 dark:text-white">
+                        {{ $uiComponent->github }}
+                    </span>
                 </div>
             </a>
         </div>

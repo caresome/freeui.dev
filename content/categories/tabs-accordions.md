@@ -1,7 +1,7 @@
 ---
-title: Tabs & Accordions
+title: Disclosure
 slug: tabs-accordions
 collection: application
-description: Content organization components for showing/hiding sections and switching between views.
+description: Tabs, accordions, and collapsibles for showing/hiding content sections.
 icon: heroicon-o-rectangle-stack
 ---

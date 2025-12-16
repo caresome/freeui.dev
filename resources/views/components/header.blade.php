@@ -1,66 +1,40 @@
 @props(['showMenuToggle' => true])
 
 <header
-    class="sticky top-0 z-50 w-full border-b-2 border-neutral-900 bg-stone-50/95 backdrop-blur-xl transition-colors duration-200 dark:border-white dark:bg-neutral-950/95"
+    class="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-xl transition-colors duration-200 dark:border-neutral-800 dark:bg-neutral-950/80"
 >
-    <div class="flex h-16 items-center justify-between px-4 lg:px-6">
-        <div class="flex items-center gap-8">
+    <div class="flex h-14 items-center justify-between px-4 lg:px-6">
+        <div class="flex items-center gap-6">
             <a href="/" class="group flex items-center gap-2">
                 <div
-                    class="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-neutral-900 bg-neutral-900 text-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.2)] transition-all group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-hover:shadow-none group-focus-visible:translate-x-[2px] group-focus-visible:translate-y-[2px] group-focus-visible:shadow-none dark:border-white dark:bg-white dark:text-neutral-900 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]"
+                    class="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-900 bg-neutral-900 text-white transition-all dark:border-white dark:bg-white dark:text-neutral-900"
                 >
-                    <span class="text-sm font-black">F</span>
+                    <span class="text-xs font-bold">F</span>
                 </div>
-                <span class="text-lg font-bold text-neutral-900 dark:text-white">FreeUI</span>
+                <span class="text-base font-semibold text-neutral-900 dark:text-white">FreeUI</span>
             </a>
             <nav class="hidden gap-1 md:flex">
                 <a
                     href="{{ route('home') }}#components"
-                    class="rounded-xl px-3 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:bg-neutral-900/5 focus-visible:text-neutral-900 dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white dark:focus-visible:bg-white/10 dark:focus-visible:text-white"
+                    class="rounded-lg px-3 py-1.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
                 >
                     Components
                 </a>
             </nav>
         </div>
-        <div class="flex items-center gap-2">
-            <!-- Search Button -->
-            <button
-                type="button"
-                x-on:click="$dispatch('open-command-palette')"
-                class="hidden h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-medium text-neutral-600 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:text-neutral-900 hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:flex dark:border-white dark:bg-neutral-900 dark:text-neutral-400 dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:text-white"
-            >
-                <x-heroicon-o-magnifying-glass class="h-4 w-4" aria-hidden="true" />
-                <span>Search</span>
-                <kbd
-                    class="ml-1 rounded-md border-2 border-neutral-900 bg-stone-50 px-1.5 py-0.5 text-xs font-bold dark:border-white dark:bg-neutral-800"
-                    x-text="navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'"
-                ></kbd>
-            </button>
-
-            <!-- Mobile Search Button -->
-            <button
-                type="button"
-                x-on:click="$dispatch('open-command-palette')"
-                class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none sm:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
-            >
-                <span class="sr-only">Search</span>
-                <x-heroicon-o-magnifying-glass class="h-5 w-5" aria-hidden="true" />
-            </button>
+        <div class="flex items-center gap-1.5">
+            <x-search-button />
 
             <!-- Theme Toggle -->
             <button
                 type="button"
                 @click="theme = theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')"
-                class="flex h-9 items-center gap-2 rounded-xl border-2 border-neutral-900 bg-white px-3 text-sm font-semibold text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                class="flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
                 :aria-label="'Switch to ' + (theme === 'light' ? 'dark' : (theme === 'dark' ? 'system' : 'light')) + ' theme'"
             >
-                <x-heroicon-o-sun class="h-4 w-4" x-show="theme === 'light'" aria-hidden="true" />
-                <x-heroicon-o-moon class="h-4 w-4" x-show="theme === 'dark'" x-cloak aria-hidden="true" />
-                <x-heroicon-o-computer-desktop class="h-4 w-4" x-show="theme === 'system'" x-cloak aria-hidden="true" />
-                <span
-                    class="hidden sm:inline"
-                    x-text="theme === 'system' ? 'System' : theme === 'light' ? 'Light' : 'Dark'"
-                ></span>
+                <x-heroicon-o-sun class="h-5 w-5" x-show="theme === 'light'" aria-hidden="true" />
+                <x-heroicon-o-moon class="h-5 w-5" x-show="theme === 'dark'" x-cloak aria-hidden="true" />
+                <x-heroicon-o-computer-desktop class="h-5 w-5" x-show="theme === 'system'" x-cloak aria-hidden="true" />
             </button>
 
             <!-- GitHub -->
@@ -68,7 +42,7 @@
                 href="{{ config('freeui.github_repo') }}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                class="flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
             >
                 <span class="sr-only">GitHub</span>
                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -85,10 +59,10 @@
                 <button
                     type="button"
                     x-on:click="$dispatch('toggle-mobile-sidebar')"
-                    class="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-neutral-900 bg-white text-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none focus-visible:translate-x-[2px] focus-visible:translate-y-[2px] focus-visible:shadow-none lg:hidden dark:border-white dark:bg-neutral-900 dark:text-white dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)]"
+                    class="flex h-8 w-8 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-700 lg:hidden dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
                 >
                     <span class="sr-only">Open menu</span>
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path
                             stroke-linecap="round"
                             stroke-linejoin="round"

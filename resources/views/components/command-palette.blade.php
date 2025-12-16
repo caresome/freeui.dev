@@ -39,7 +39,7 @@
             role="dialog"
             aria-modal="true"
             aria-label="Search components"
-            class="overflow-hidden rounded-xl border-2 border-neutral-900 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:bg-neutral-900 dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+            class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-2xl dark:border-neutral-700 dark:bg-neutral-900"
         >
             <!-- Search Input -->
             <div class="relative">
@@ -67,7 +67,7 @@
                     aria-autocomplete="list"
                     aria-controls="search-results"
                     :aria-activedescendant="results.length > 0 ? 'result-' + selectedIndex : ''"
-                    class="w-full bg-transparent py-3 pr-3 pl-10 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-white dark:placeholder:text-neutral-500"
+                    class="w-full border-0 bg-transparent py-3 pr-3 pl-10 text-sm text-neutral-900 ring-0 outline-none placeholder:text-neutral-400 focus:border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder:text-neutral-500"
                     x-on:keydown.arrow-up.prevent="selectPrevious()"
                     x-on:keydown.arrow-down.prevent="selectNext()"
                     x-on:keydown.enter.prevent="goToSelected()"
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Divider -->
-            <div class="border-t-2 border-neutral-900 dark:border-white"></div>
+            <div class="border-t border-neutral-200 dark:border-neutral-700"></div>
 
             <!-- Results -->
             <div class="max-h-72 overflow-y-auto" x-ref="resultsList">
@@ -139,14 +139,14 @@
                                             :aria-selected="selectedIndex === results.indexOf(result) ? 'true' : 'false'"
                                             class="flex items-center gap-2.5 rounded-lg px-2.5 py-2 transition-colors"
                                             :class="selectedIndex === results.indexOf(result)
-                                                ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900'
-                                                : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'"
+                                                ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-white'
+                                                : 'text-neutral-700 hover:bg-neutral-50 dark:text-neutral-300 dark:hover:bg-neutral-800/50'"
                                             x-on:mouseenter="selectedIndex = results.indexOf(result)"
                                         >
                                             <div
                                                 class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md"
                                                 :class="selectedIndex === results.indexOf(result)
-                                                    ? 'bg-white/20 dark:bg-neutral-900/20'
+                                                    ? 'bg-neutral-200 dark:bg-neutral-700'
                                                     : 'bg-neutral-100 dark:bg-neutral-800'"
                                                 x-html="getIcon(result.icon)"
                                             ></div>
@@ -157,10 +157,7 @@
                                                 ></span>
                                                 <template x-if="result.breadcrumb">
                                                     <span
-                                                        class="block truncate text-xs"
-                                                        :class="selectedIndex === results.indexOf(result)
-                                                            ? 'text-white/60 dark:text-neutral-900/60'
-                                                            : 'text-neutral-400 dark:text-neutral-500'"
+                                                        class="block truncate text-xs text-neutral-400 dark:text-neutral-500"
                                                         x-text="result.breadcrumb"
                                                     ></span>
                                                 </template>
@@ -191,7 +188,7 @@
 
             <!-- Footer -->
             <div
-                class="flex items-center gap-3 border-t-2 border-neutral-900 bg-stone-50 px-3 py-2 dark:border-white dark:bg-neutral-800"
+                class="flex items-center gap-3 border-t border-neutral-200 bg-neutral-50 px-3 py-2 dark:border-neutral-700 dark:bg-neutral-800"
             >
                 <span class="flex items-center gap-1 text-[10px] text-neutral-400 dark:text-neutral-500">
                     <kbd

@@ -1,7 +1,7 @@
 ---
 slug: empty-state-simple
 title: Empty State Simple
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:29:00

@@ -69,7 +69,7 @@
     </head>
 
     <body
-        class="flex min-h-full flex-col bg-stone-50 font-sans transition-colors duration-200 dark:bg-neutral-950"
+        class="flex min-h-full flex-col bg-neutral-50 font-sans transition-colors duration-200 dark:bg-neutral-950"
         x-data="{
             theme: localStorage.getItem('theme') || 'system',
             init() {
@@ -94,7 +94,7 @@
     >
         <a
             href="#main-content"
-            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:border-2 focus:border-neutral-900 focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-neutral-900 focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:border-white dark:focus:bg-neutral-900 dark:focus:text-white dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+            class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:border focus:border-neutral-300 focus:bg-white focus:px-3 focus:py-1.5 focus:text-sm focus:font-medium focus:text-neutral-900 focus:shadow-lg dark:focus:border-neutral-700 dark:focus:bg-neutral-900 dark:focus:text-white"
         >
             Skip to main content
         </a>

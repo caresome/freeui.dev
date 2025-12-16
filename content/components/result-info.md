@@ -1,7 +1,7 @@
 ---
 slug: result-info
 title: Result Info
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:03:00

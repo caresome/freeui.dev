@@ -1,7 +1,7 @@
 ---
 slug: empty-state-with-illustration
 title: Empty State With Illustration
-category: feedback
+category: empty-states
 github: caresome
 dependencies: []
 publish_at: 2025-12-14 00:28:00
