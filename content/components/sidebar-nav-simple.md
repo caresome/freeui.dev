@@ -10,7 +10,7 @@ publish_at: 2025-12-15 12:00:00
 <div data-preview-only class="flex min-h-[400px] w-full">
     <!-- Sidebar -->
     <nav
-        class="w-64 shrink-0 border-r border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
+        class="w-full max-w-64 shrink-0 border-r border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
         aria-label="Main navigation"
     >
         <div class="space-y-1">

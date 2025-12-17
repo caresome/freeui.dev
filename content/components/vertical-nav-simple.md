@@ -9,7 +9,7 @@ publish_at: 2025-12-15 12:00:00
 
 <div data-preview-only class="flex min-h-[300px] items-start justify-center p-8">
     <nav
-        class="w-56 rounded-xl border border-neutral-200 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-800"
+        class="w-full max-w-56 rounded-xl border border-neutral-200 bg-white p-2 dark:border-neutral-700 dark:bg-neutral-800"
         aria-label="Main navigation"
     >
         <a

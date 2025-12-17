@@ -20,7 +20,7 @@ publish_at: 2025-12-15 12:00:00
                 { id: 'personal', name: 'Personal', avatar: 'P' }
             ]
         }"
-        class="flex w-64 shrink-0 flex-col border-r border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
+        class="flex w-full max-w-64 shrink-0 flex-col border-r border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
     >
         <!-- Team Switcher -->
         <div class="relative border-b border-neutral-200 p-3 dark:border-neutral-800">

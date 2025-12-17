@@ -10,7 +10,7 @@ publish_at: 2025-12-15 12:00:00
 <div data-preview-only class="flex min-h-[150px] items-center justify-center p-8">
     <nav aria-label="Breadcrumb">
         <ol
-            class="flex items-center rounded-lg border border-neutral-200 bg-white p-1 text-sm dark:border-neutral-700 dark:bg-neutral-800"
+            class="flex flex-wrap items-center rounded-lg border border-neutral-200 bg-white p-1 text-sm dark:border-neutral-700 dark:bg-neutral-800"
         >
             <li>
                 <a

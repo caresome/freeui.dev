@@ -19,7 +19,7 @@ publish_at: 2025-12-15 12:00:00
                 projects: false
             }
         }"
-        class="w-64 shrink-0 border-r border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
+        class="w-full max-w-64 shrink-0 border-r border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
         aria-label="Main navigation"
     >
         <div class="space-y-2">

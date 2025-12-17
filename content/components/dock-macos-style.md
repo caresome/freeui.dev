@@ -12,8 +12,8 @@ publish_at: 2025-12-15 12:00:00
         x-data="{
             mouseX: -1000,
             active: 2,
-            baseWidth: 48,
-            maxWidth: 80,
+            baseWidth: 40,
+            maxWidth: 72,
             distance: 140,
             spring: { current: {}, target: {} },
 
@@ -74,7 +74,7 @@ publish_at: 2025-12-15 12:00:00
     >
         <!-- Fixed height dock container -->
         <nav
-            class="flex h-[64px] items-end gap-[3px] rounded-2xl border border-neutral-200 bg-white/90 px-2 pb-2 shadow-lg backdrop-blur-sm dark:border-neutral-700 dark:bg-neutral-800/90"
+            class="flex h-14 items-end gap-[3px] rounded-2xl border border-neutral-200 bg-white/90 px-2 pb-2 shadow-lg backdrop-blur-sm sm:h-16 dark:border-neutral-700 dark:bg-neutral-800/90"
             aria-label="Dock"
         >
             <!-- Home -->
