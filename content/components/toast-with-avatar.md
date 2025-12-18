@@ -8,9 +8,17 @@ publish_at: 2025-12-14 00:30:00
 ---
 
 <div data-preview-only class="flex min-h-[200px] items-center justify-center p-8">
-    <div x-data="{ open: true }" class="relative">
+    <div
+        x-data="{
+            open: false,
+            show() {
+                this.open = true;
+                setTimeout(() => this.open = false, 5000);
+            }
+        }"
+    >
         <button
-            @click="open = true"
+            @click="show()"
             type="button"
             class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
         >
@@ -20,12 +28,12 @@ publish_at: 2025-12-14 00:30:00
         <div
             x-show="open"
             x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 scale-95"
-            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:enter-start="opacity-0 translate-y-2"
+            x-transition:enter-end="opacity-100 translate-y-0"
             x-transition:leave="transition ease-in duration-100"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-95"
-            class="absolute bottom-full left-1/2 mb-4 flex w-max -translate-x-1/2 items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-2"
+            class="fixed right-4 bottom-4 z-50 flex w-max items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4 shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
             role="status"
             aria-live="polite"
         >

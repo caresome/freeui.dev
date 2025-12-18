@@ -10,39 +10,35 @@ publish_at: 2025-12-14 00:31:00
 <div data-preview-only class="flex min-h-[400px] items-center justify-center p-8">
     <div
         x-data="{
-        toasts: [
-            { id: 1, message: 'Changes saved', type: 'success' },
-            { id: 2, message: 'New update available', type: 'info' }
-        ],
-        remove(id) {
-            this.toasts = this.toasts.filter(t => t.id !== id);
-        },
-        add() {
-            const id = Date.now();
-            this.toasts.push({ id, message: 'Another notification', type: 'info' });
-            setTimeout(() => this.remove(id), 5000);
-        }
-    }"
-        class="relative h-64 w-full max-w-sm"
+            toasts: [
+                { id: 1, message: 'Changes saved', type: 'success' },
+                { id: 2, message: 'New update available', type: 'info' }
+            ],
+            remove(id) {
+                this.toasts = this.toasts.filter(t => t.id !== id);
+            },
+            add() {
+                const id = Date.now();
+                this.toasts.push({ id, message: 'Another notification', type: 'info' });
+                setTimeout(() => this.remove(id), 5000);
+            }
+        }"
     >
-        <!-- Trigger to show dynamic behavior -->
-        <div class="absolute -top-16 left-1/2 -translate-x-1/2">
-            <button
-                @click="add()"
-                type="button"
-                class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
-            >
-                Add Notification
-            </button>
-        </div>
+        <button
+            @click="add()"
+            type="button"
+            class="rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors duration-150 hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 dark:focus-visible:ring-neutral-100"
+        >
+            Add Notification
+        </button>
 
-        <div class="absolute right-0 bottom-0 flex w-full flex-col gap-2 p-4">
+        <div class="fixed right-4 bottom-4 z-50 flex w-80 flex-col gap-2">
             <template x-for="toast in toasts" :key="toast.id">
                 <div
                     x-show="true"
                     x-transition:enter="transition ease-out duration-300"
-                    x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-                    x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
                     x-transition:leave="transition ease-in duration-100"
                     x-transition:leave-start="opacity-100"
                     x-transition:leave-end="opacity-0"
