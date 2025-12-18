@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Component;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Response;
 
 class ComponentController extends Controller
 {
@@ -36,17 +35,6 @@ class ComponentController extends Controller
             'uiComponent' => $uiComponent,
             'collection' => $collection,
         ]);
-    }
-
-    /**
-     * Return component code as raw text for AI tools.
-     */
-    public function code(string $collection, string $category, string $slug): Response
-    {
-        $uiComponent = $this->findComponent($category, $slug);
-
-        return response($uiComponent->content)
-            ->header('Content-Type', 'text/plain');
     }
 
     /**

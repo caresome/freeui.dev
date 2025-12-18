@@ -15,7 +15,7 @@
     $pageDescription = $description;
     $pageOgImage = $ogImage ?? asset('og-default.png');
     $pageUrl = $ogUrl ?? url()->current();
-    $codeUrl = $collection && $category && $slug ? route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug]) : null;
+    $codeUrl = $slug ? "https://raw.githubusercontent.com/caresome/freeui.dev/main/content/components/{$slug}.md" : null;
 @endphp
 
 <!DOCTYPE html>

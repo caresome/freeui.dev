@@ -34,7 +34,7 @@
                 title: @js($title),
                 componentUrl: @js($componentUrl),
                 rawCode: @js($content),
-                codeUrl: @js(route('components.code', ['collection' => $collection, 'category' => $category, 'slug' => $slug])),
+                codeUrl: @js("https://raw.githubusercontent.com/caresome/freeui.dev/main/content/components/{$slug}.md"),
                 tailwindCdn: @js($tailwindCdn),
                 alpineCdn: @js($alpineCdn),
                 dependencyCdns: @js($dependencyCdns),
@@ -256,11 +256,11 @@
                                     fill-rule="evenodd"
                                     clip-rule="evenodd"
                                     d="M7.082 0c3.91 0 7.081 3.179 7.081 7.1v2.7h2.357c3.91 0 7.082 3.178 7.082 7.1 0 3.923-3.17 7.1-7.082 7.1H0V7.1C0 3.18 3.17 0 7.082 0z"
-                                    fill="url(#lovable-gradient)"
+                                    fill="url(#lovable-gradient-{{ $slug }})"
                                 />
                                 <defs>
                                     <linearGradient
-                                        id="lovable-gradient"
+                                        id="lovable-gradient-{{ $slug }}"
                                         x1="0"
                                         y1="0"
                                         x2="24"
@@ -741,9 +741,9 @@
 
             async copyAiPrompt() {
                 const prompt = `Here's a Tailwind CSS component called "${this.title}" from FreeUI (https://freeui.dev).
-                You can view the code here: ${this.codeUrl}
+You can view the code here: ${this.codeUrl}
 
-                Ready to use - just paste into your project. Ask me to customize colors, layout, or functionality.`;
+Ready to use - just paste into your project. Ask me to customize colors, layout, or functionality.`;
 
                 if (await this.copyToClipboard(prompt)) {
                     this.aiPromptCopied = true;
@@ -755,19 +755,19 @@
                 const code = this.getCode();
                 const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component:
 
-                \`\`\`html
-                ${code}
-                \`\`\`
+\`\`\`html
+${code}
+\`\`\`
 
-                Render it centered on the page with proper styling.`;
+Render it centered on the page with proper styling.`;
                 window.open(`https://lovable.dev/?autosubmit=true#prompt=${encodeURIComponent(prompt)}`, '_blank');
             },
 
             getAiPrompt() {
                 return `I have this Tailwind CSS component called "${this.title}" from FreeUI.
-                You can view the code here: ${this.codeUrl}
+You can view the code here: ${this.codeUrl}
 
-                Help me understand and customize this component.`;
+Help me understand and customize this component.`;
             },
 
             openInChatGPT() {
@@ -777,16 +777,14 @@
 
             openInClaude() {
                 const prompt = this.getAiPrompt();
-                // Claude doesn't have a direct URL param for prompt injection currently supported publicly in the same way,
-                // but we can start a new chat.
                 window.open(`https://claude.ai/new?q=${encodeURIComponent(prompt)}`, '_blank');
             },
 
             async copyForBolt() {
                 const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component.
-                You can view the code here: ${this.codeUrl}
+You can view the code here: ${this.codeUrl}
 
-                Render it centered on the page with proper styling.`;
+Render it centered on the page with proper styling.`;
 
                 if (await this.copyToClipboard(prompt)) {
                     this.boltCopied = true;
@@ -796,9 +794,9 @@
 
             async copyForReplit() {
                 const prompt = `Create a Tailwind CSS project with this FreeUI "${this.title}" component.
-                You can view the code here: ${this.codeUrl}
+You can view the code here: ${this.codeUrl}
 
-                Render it centered on the page with proper styling.`;
+Render it centered on the page with proper styling.`;
 
                 if (await this.copyToClipboard(prompt)) {
                     this.replitCopied = true;
